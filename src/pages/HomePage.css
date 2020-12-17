@@ -1,0 +1,9 @@
+
+.home-parent {
+    display: flex;
+}
+
+.home-child {
+    justify-content: center;
+    align-items: center;
+}

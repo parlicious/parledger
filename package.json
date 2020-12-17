@@ -9,6 +9,8 @@
     "easy-peasy": "5.0.0-alpha.2",
     "firebase": "^8.2.0",
     "firebase-cli": "^1.2.0",
+    "grommet": "^2.16.2",
+    "polished": "^4.0.5",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-firebaseui": "^4.1.0",
