@@ -7,7 +7,7 @@ export const HomePage = () => {
         <React.Fragment>
             <Header background="brand" pad="small">
                 <Heading level={3}>ledger.bet</Heading>
-                <Button secondary label="Sign Up"/>
+                <Button label="Sign Up"/>
             </Header>
             <Main pad="large">
                 <Card background="brand" pad="medium">
@@ -23,7 +23,7 @@ export const HomePage = () => {
                         <Heading size="small">
                             make friendly bets
                         </Heading>
-                        <Button secondary label="Sign Up"/>
+                        <Button primary label="Sign Up"/>
                     </CardBody>
                 </Card>
             </Main>

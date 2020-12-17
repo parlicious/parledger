@@ -6,22 +6,13 @@ import {Provider} from "react-redux";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import {HomePage} from "./pages/HomePage";
 import {Grommet} from "grommet";
+import {theme} from './theme';
 
 function AuthIsLoaded({children}) {
     const auth = useStoreState(state => state.firebase.auth)
     if (!isLoaded(auth)) return <div>splash screen...</div>;
     return children
 }
-
-const theme = {
-    global: {
-        font: {
-            family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";',
-            size: '14px',
-            height: '20px',
-        },
-    },
-};
 
 const App = () => {
     return (
