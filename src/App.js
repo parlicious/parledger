@@ -1,10 +1,10 @@
 import './App.css';
 import {isLoaded, ReactReduxFirebaseProvider} from "react-redux-firebase";
 import {reactReduxFirebaseProps, store} from "./store";
-import {TestComponent} from "./TestComponent";
 import {StoreProvider, useStoreState} from "easy-peasy";
 import {Provider} from "react-redux";
-import {LoginPage} from "./pages/LoginPage";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {HomePage} from "./pages/HomePage";
 
 function AuthIsLoaded({children}) {
     const auth = useStoreState(state => state.firebase.auth)
@@ -18,7 +18,13 @@ const App = () => {
             <StoreProvider store={store}>
                 <ReactReduxFirebaseProvider {...reactReduxFirebaseProps}>
                     <AuthIsLoaded>
-                        <LoginPage/>
+                        <BrowserRouter>
+                                <Switch>
+                                    <Route exact path='/'>
+                                        <HomePage/>
+                                    </Route>
+                                </Switch>
+                        </BrowserRouter>
                     </AuthIsLoaded>
                 </ReactReduxFirebaseProvider>
             </StoreProvider>
