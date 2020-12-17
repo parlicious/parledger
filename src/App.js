@@ -1,25 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import {isLoaded, ReactReduxFirebaseProvider} from "react-redux-firebase";
+import {reactReduxFirebaseProps, store} from "./store";
+import {TestComponent} from "./TestComponent";
+import {StoreProvider, useStoreState} from "easy-peasy";
+import {Provider} from "react-redux";
+import {LoginPage} from "./pages/LoginPage";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function AuthIsLoaded({children}) {
+    const auth = useStoreState(state => state.firebase.auth)
+    if (!isLoaded(auth)) return <div>splash screen...</div>;
+    return children
 }
 
-export default App;
+const App = () => {
+    return (
+        <Provider store={store}>
+            <StoreProvider store={store}>
+                <ReactReduxFirebaseProvider {...reactReduxFirebaseProps}>
+                    <AuthIsLoaded>
+                        <LoginPage/>
+                    </AuthIsLoaded>
+                </ReactReduxFirebaseProvider>
+            </StoreProvider>
+        </Provider>
+    )
+}
+export default App
