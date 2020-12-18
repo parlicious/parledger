@@ -5,7 +5,12 @@ export const theme = {
             size: '14px',
             height: '20px',
         },
-        colors: {
+        focus: {
+            border: {
+                color: "transparent"
+            }
+        },
+        "colors": {
             "icon": {
                 "0": "#",
                 "1": "6",
@@ -23,12 +28,12 @@ export const theme = {
                 "dark": "rgba(255,255,255,0.33)",
                 "light": "rgba(0,0,0,0.33)"
             },
-            "brand": "#273c75",
+            "brand": "#574b90",
             "control": {
                 "dark": "accent-1",
                 "light": "brand"
             },
-            "focus": "#fbc531",
+            "focus": "#f7d794",
             "placeholder": "#AAAAAA",
             "selected": "brand",
             "text": {
@@ -36,10 +41,10 @@ export const theme = {
                 "light": "#444444"
             },
             "white": "#FFFFFF",
-            "accent-2": "#44bd32",
-            "accent-4": "#8c7ae6",
-            "accent-3": "#00a8ff",
-            "accent-1": "#FFCA58",
+            "accent-1": "#f7d794",
+            "accent-2": "#778beb",
+            "accent-3": "#e77f67",
+            "accent-4": "#cf6a87",
             "dark-1": "#333333",
             "dark-2": "#555555",
             "dark-3": "#777777",
@@ -52,17 +57,21 @@ export const theme = {
             "light-4": "#DADADA",
             "light-5": "#DADADA",
             "light-6": "#DADADA",
-            "neutral-1": "#192a56",
-            "neutral-2": "#718093",
-            "neutral-3": "#dcdde1",
+            "neutral-1": "#00873D",
+            "neutral-2": "#3D138D",
+            "neutral-3": "#00739D",
             "neutral-4": "#A2423D",
             "status-critical": "#FF4040",
             "status-error": "#FF4040",
             "status-warning": "#FFAA15",
             "status-ok": "#00C781",
             "status-unknown": "#CCCCCC",
-            "status-disabled": "#CCCCCC",
-            "background": "#ffffff"
+            "status-disabled": "#CCCCCC"
         },
-    },
+        drop: {
+            background: "transparent"
+        }
+    }
 };
+
+

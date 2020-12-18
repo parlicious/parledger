@@ -4,9 +4,12 @@ import {reactReduxFirebaseProps, store} from "./store";
 import {StoreProvider, useStoreState} from "easy-peasy";
 import {Provider} from "react-redux";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
-import {HomePage} from "./pages/HomePage";
+import {SignUpPage} from "./pages/SignUpPage";
 import {Grommet} from "grommet";
 import {theme} from './theme';
+import {AppContainer} from "./components/AppContainer";
+import {UserInfoPage} from "./pages/UserInfoPage";
+import {PrivateRoute} from "./components/PrivateRoute";
 
 function AuthIsLoaded({children}) {
     const auth = useStoreState(state => state.firebase.auth)
@@ -22,11 +25,16 @@ const App = () => {
                     <AuthIsLoaded>
                         <Grommet theme={theme}>
                             <BrowserRouter>
-                                <Switch>
-                                    <Route exact path='/'>
-                                        <HomePage/>
-                                    </Route>
-                                </Switch>
+                                <AppContainer>
+                                    <Switch>
+                                        <Route exact path='/'>
+                                            <SignUpPage/>
+                                        </Route>
+                                        <PrivateRoute path='/me'>
+                                            <UserInfoPage/>
+                                        </PrivateRoute>
+                                    </Switch>
+                                </AppContainer>
                             </BrowserRouter>
                         </Grommet>
                     </AuthIsLoaded>
