@@ -63,7 +63,8 @@ exports.joinGroup = functions.https.onCall(async (data, context) => {
 });
 
 exports.createWager = functions.https.onCall(async (data, context) => {
-    const {groupId, proposedTo, proposedBy, details} = data;
+    const {groupId, proposedTo, details} = data;
+    const proposedBy = context.auth.uid;
     const membersSnapshot = await db.collection(`groups/${groupId}/members`).doc(proposedBy).get();
     if (!membersSnapshot.exists) {
         throw new functions.https.HttpsError('unauthenticated', 'You must be a member of the group to create wagers in it.')

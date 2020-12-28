@@ -1,12 +1,13 @@
 import {createStore, reducer} from 'easy-peasy'
-
+import thunk from 'redux-thunk';
 import firebase from 'firebase/app';
 import 'firebase/auth'
 import 'firebase/firestore' // <- needed if using firestore
 import 'firebase/functions' // <- needed if using httpsCallable
 import 'firebase/analytics'
-import {firebaseReducer} from 'react-redux-firebase'
-import {createFirestoreInstance, firestoreReducer} from 'redux-firestore' // <- needed if using firestore
+import {firebaseReducer, getFirebase} from 'react-redux-firebase'
+import {createFirestoreInstance, firestoreReducer, getFirestore} from 'redux-firestore'
+import {wagersModel} from "./wagers"; // <- needed if using firestore
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const prodFirebaseConfig = {
@@ -55,10 +56,13 @@ if (window.location.hostname === 'localhost') {
     });
 }
 
+
+
 export const store = createStore({
     firestore: reducer(firestoreReducer),
     firebase: reducer(firebaseReducer),
-});
+    wagers: wagersModel,
+}, {injections: {getFirestore, getFirebase}});
 
 export const reactReduxFirebaseProps = {
     firebase,

@@ -25,11 +25,9 @@ const AvatarMenu = ({profile, logout}) => {
                     src={profile.avatarUrl}
                 />
                 : <Text alignSelf="center">
-                    <Link to="/me">
-                        <Anchor as="span">
-                            {profile.displayName || "Profile"}
-                        </Anchor>
-                    </Link>
+                    <Anchor as="span">
+                        {profile.displayName || "Profile"}
+                    </Anchor>
                 </Text>
             }
         </DropButton>
