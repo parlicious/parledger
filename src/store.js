@@ -1,15 +1,15 @@
-import {action, createStore, reducer} from 'easy-peasy'
+import {createStore, reducer} from 'easy-peasy'
 
-import React from 'react'
-import firebase from 'firebase/app'
+import firebase from 'firebase/app';
 import 'firebase/auth'
 import 'firebase/firestore' // <- needed if using firestore
 import 'firebase/functions' // <- needed if using httpsCallable
+import 'firebase/analytics'
 import {firebaseReducer} from 'react-redux-firebase'
 import {createFirestoreInstance, firestoreReducer} from 'redux-firestore' // <- needed if using firestore
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
+const prodFirebaseConfig = {
     apiKey: "AIzaSyDgBRkq0CxmKYpyO2_kBaqz13z2ZTzaOOU",
     authDomain: "parledger-app.firebaseapp.com",
     databaseURL: "https://parledger-app.firebaseio.com",
@@ -19,6 +19,19 @@ const firebaseConfig = {
     appId: "1:955423843573:web:f9a7b0ba602c84c86951bc",
     measurementId: "G-2CVGGBD2MH"
 };
+
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const devFirebaseConfig = {
+    apiKey: "AIzaSyCL_K2UDJmOpbwxYu2S6ySvEP8TJbltlk8",
+    authDomain: "ledgerdotbet-dev.firebaseapp.com",
+    projectId: "ledgerdotbet-dev",
+    storageBucket: "ledgerdotbet-dev.appspot.com",
+    messagingSenderId: "812605505064",
+    appId: "1:812605505064:web:0de526f3d351bdc77f3f1d",
+    measurementId: "G-4BMDL21TP0"
+};
+
+const firebaseConfig = process.env.ENV === 'prod' ? prodFirebaseConfig : devFirebaseConfig;
 
 const rrfConfig = {
     userProfile: 'users',
@@ -31,6 +44,16 @@ firebase.initializeApp(firebaseConfig)
 // Initialize other services on firebase instance
 firebase.firestore() // <- needed if using firestore
 firebase.functions() // <- needed if using httpsCallable
+firebase.analytics();
+
+if (window.location.hostname === 'localhost') {
+    console.log("testing locally -- hitting local functions and firestore emulators");
+    firebase.functions().useEmulator('localhost', 5001);
+    firebase.firestore().settings({
+        host: 'localhost:8080',
+        ssl: false
+    });
+}
 
 export const store = createStore({
     firestore: reducer(firestoreReducer),

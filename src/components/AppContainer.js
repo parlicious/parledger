@@ -1,18 +1,5 @@
 import React from "react";
-import {
-    Anchor,
-    Avatar,
-    Box,
-    Button,
-    Card,
-    CardBody,
-    CardHeader,
-    DropButton,
-    Header,
-    Heading,
-    Main,
-    Text
-} from "grommet";
+import {Anchor, Avatar, Box, Button, DropButton, Header, Heading, Main, Text} from "grommet";
 import {useStoreState} from "easy-peasy";
 import {isEmpty, useFirebase} from "react-redux-firebase";
 import {Link} from 'react-router-dom';
@@ -21,12 +8,14 @@ const AvatarMenu = ({profile, logout}) => {
     return (
         <DropButton
             focusIndicator={false}
-            dropAlign={{ top: 'bottom', right: 'right' }}
+            dropAlign={{top: 'bottom', right: 'right'}}
             dropContent={
                 <Box background="accent-1" pad="small" round="xsmall" gap="xsmall">
-                    <Anchor as={Link} to="/me">
-                        Profile
-                    </Anchor>
+                    <Link to="/me">
+                        <Anchor as="span">
+                            Profile
+                        </Anchor>
+                    </Link>
                     <Anchor onClick={logout}> Sign Out </Anchor>
                 </Box>
             }
@@ -36,9 +25,11 @@ const AvatarMenu = ({profile, logout}) => {
                     src={profile.avatarUrl}
                 />
                 : <Text alignSelf="center">
-                    <Anchor as={Link} to="/me">
-                        {profile.displayName}
-                    </Anchor>
+                    <Link to="/me">
+                        <Anchor as="span">
+                            {profile.displayName || "Profile"}
+                        </Anchor>
+                    </Link>
                 </Text>
             }
         </DropButton>
@@ -54,19 +45,17 @@ export const AppContainer = (props) => {
         await firebase.logout();
     }
 
-    const logIn = async () => {
-        await firebase.login({provider: 'google', type: 'popup'})
-    }
-
     return (<React.Fragment>
         <Header background="brand" pad="small">
             <Heading level={3}>
-                <Anchor as={Link} to="/">
-                    ledger.bet
-                </Anchor>
+                <Link to='/'>
+                    <Anchor as={'span'}>
+                        ledger.bet
+                    </Anchor>
+                </Link>
             </Heading>
             {isEmpty(auth)
-                ? <Button label="Log In" onClick={logIn}/>
+                ? <Link to='/login'><Button as="span" label="Log In"/></Link>
                 : <Box direction="row" alignContent="between" gap="small" justify="center">
                     <AvatarMenu profile={profile} logout={logOut}/>
                 </Box>}

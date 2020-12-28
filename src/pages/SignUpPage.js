@@ -1,17 +1,13 @@
 import "./HomePage.css";
-import {Box, Button, Card, CardBody, CardHeader, Header, Heading, Main, Paragraph} from "grommet";
+import {Button, Card, CardBody, CardHeader, Heading} from "grommet";
 import React from "react";
-import {useFirebase, useFirestore} from "react-redux-firebase";
-import {useStoreState} from "easy-peasy";
-import {useState} from "react/cjs/react.production.min";
+import {useFirebase} from "react-redux-firebase";
 
 export const SignUpPage = () => {
     const firebase = useFirebase()
-    const firestore = useFirestore();
-    const auth = useStoreState(state => state.firebase.auth)
 
     async function loginWithGoogle() {
-        const credentials = await firebase.login({provider: 'google', type: 'popup'})
+        await firebase.login({provider: 'google', type: 'popup'})
     }
 
     return (
@@ -20,12 +16,13 @@ export const SignUpPage = () => {
                 <Heading
                     weight="bold"
                     size="large"
+                    color="focus"
                     textAlign="center">
                     ledger.bet
                 </Heading>
             </CardHeader>
             <CardBody>
-                <Heading size="small">
+                <Heading color="focus" size="small">
                     make friendly bets
                 </Heading>
                 <Button

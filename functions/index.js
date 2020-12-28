@@ -37,11 +37,11 @@ const createGroupInFirestore = async (adminUid, groupId, session) => {
 
 const addUserToGroup = async (groupId, uid, allowDerivatives) => {
     const group = await getGroup(groupId);
-    await group.ref.collection('members').doc(uid).set({uid, allowDerivatives, joined: Date.now()})
     const userRef = await db.collection('users').doc(uid).get()
     if (userRef.exists) {
         const user = userRef.data();
-        const groups = Array.from(new Set([groupId, ...user.groups]))
+        await group.ref.collection('members').doc(uid).set({displayName: user.displayName, uid, allowDerivatives, joined: Date.now()})
+        const groups = Array.from(new Set([groupId, ...user.groups || []]))
         await db.collection('users').doc(uid).set({...user, groups})
     }
 }
@@ -52,7 +52,7 @@ exports.createGroup = functions.https.onCall(async (data, context) => {
 });
 
 exports.joinGroup = functions.https.onCall(async (data, context) => {
-    const groupId = data.groupId;
+    const groupId = data.joinCode; // TODO: change this to be group id + auth hash and check it
     const membersSnapshot = await db.collection(`groups/${groupId}/members`).doc(data.uid).get();
 
     if (membersSnapshot.exists) {
@@ -93,11 +93,11 @@ exports.createWager = functions.https.onCall(async (data, context) => {
         groupId: groupId,
         proposedBy: {
             uid: proposedBy,
-            name: creatingUserSnapshot.data().name
+            displayName: creatingUserSnapshot.data().displayName
         },
         proposedTo: {
             uid: proposedTo,
-            name: proposedToUserSnapshot.data().name,
+            displayName: proposedToUserSnapshot.data().displayName,
         },
         status: 'pending',
         details: details
@@ -150,7 +150,7 @@ exports.createOpenWager = functions.https.onCall(async (data, context) => {
         groupId: groupId,
         proposedBy: {
             uid: proposedBy,
-            name: creatingUserSnapshot.data().name
+            displayName: creatingUserSnapshot.data().displayName
         },
         status: 'open',
         details: details
@@ -197,7 +197,7 @@ exports.confirmWager = functions.https.onCall(async (data, context) => {
         const proposedToUser = snapshot.data();
         wager.proposedTo = {
             uid: context.auth.uid,
-            name: proposedToUser.name
+            displayName: proposedToUser.displayName
         }
     }
 

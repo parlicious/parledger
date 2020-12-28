@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "parledger-app"
+    "default": "parledger-app",
+    "dev": "ledgerdotbet-dev"
   }
 }
