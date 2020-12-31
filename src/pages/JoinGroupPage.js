@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import {useStoreState} from "easy-peasy";
 import {Link, useParams} from "react-router-dom"
 import {isEmpty, useFirebase} from "react-redux-firebase";
-import {Button, Form} from "grommet";
 
 const CreateGroupFormContainer = styled.form`
   display: flex;
@@ -85,7 +84,7 @@ export const JoinGroupPage = ({...props}) => {
 
         return (
             <div>
-                <Form onSubmit={handleSubmit(onSubmit)}>
+                <form onSubmit={handleSubmit(onSubmit)}>
 
                     <div>
                         <p>
@@ -95,7 +94,7 @@ export const JoinGroupPage = ({...props}) => {
                     <span>
                         <input name="joinCode" defaultValue={joinCode} ref={register({required: true})}/>
                         {' '}
-                        {(!submitting && !createGroupSuccess) && <Button type='submit' value='Submit' label='submit'/>}
+                        {(!submitting && !createGroupSuccess) && <button type='submit' value='Submit'>Submit</button>}
                         {submitting && <span>submitting</span>}
                     </span>
                     {errors.joinCode &&
@@ -104,7 +103,7 @@ export const JoinGroupPage = ({...props}) => {
                     {createGroupError && <ErrorMessage>{createGroupError}</ErrorMessage>}
                     {createGroupSuccess &&
                     <span>You joined the group! <Link to={'/groups'}>[View your groups]</Link></span>}
-                </Form>
+                </form>
             </div>
         )
     }

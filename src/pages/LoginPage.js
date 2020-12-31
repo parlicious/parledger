@@ -2,7 +2,6 @@ import {isLoaded, isEmpty, useFirebase} from "react-redux-firebase";
 import {useStoreState} from "easy-peasy";
 import {useHistory} from 'react-router-dom';
 import {StyledFirebaseAuth} from "react-firebaseui";
-import {Box, Card} from "grommet";
 
 // Configure FirebaseUI.
 
@@ -31,8 +30,8 @@ export function LoginPage () {
     };
 
     return (
-        <Box direction="row" justify="center">
-            <Card width="medium">
+        <div  >
+            <div >
                 <h2>Auth</h2>
                 {
                     !isLoaded(auth)
@@ -41,7 +40,7 @@ export function LoginPage () {
                         ?  <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
                         : <pre>{JSON.stringify(auth, null, 2)}</pre>
                 }
-            </Card>
-        </Box>
+            </div>
+        </div>
     )
 }

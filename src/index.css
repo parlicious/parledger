@@ -1,6 +1,18 @@
-body {
-    font-family: "Nunito", sans-serif;
+@font-face {
+    font-family: "Avenir";
+    src: url("./resources/Avenir-Roman.otf")
+}
+
+html, body {
+    font-family: "Avenir", sans-serif;
+    background: linear-gradient(to left, #2C5364, #203A43, #0F2027);
     margin: 0;
+    height: 100%;
+}
+
+h1 {
+    font-weight: bold;
+    font-size: 4em;
 }
 
 pre {

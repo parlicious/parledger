@@ -5,8 +5,6 @@ import {StoreProvider, useStoreState} from "easy-peasy";
 import {Provider} from "react-redux";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import {SignUpPage} from "./pages/SignUpPage";
-import {Grommet} from "grommet";
-// import {theme} from './theme';
 import {AppContainer} from "./components/AppContainer";
 import {UserInfoPage} from "./pages/UserInfoPage";
 import {PrivateRoute} from "./components/PrivateRoute";
@@ -27,7 +25,6 @@ const App = () => {
             <StoreProvider store={store}>
                 <ReactReduxFirebaseProvider {...reactReduxFirebaseProps}>
                     <AuthIsLoaded>
-                        <Grommet>
                             <BrowserRouter>
                                 <AppContainer>
                                     <Switch>
@@ -55,7 +52,6 @@ const App = () => {
                                     </Switch>
                                 </AppContainer>
                             </BrowserRouter>
-                        </Grommet>
                     </AuthIsLoaded>
                 </ReactReduxFirebaseProvider>
             </StoreProvider>

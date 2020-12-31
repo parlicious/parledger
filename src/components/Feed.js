@@ -1,4 +1,3 @@
-import {Box} from "grommet";
 import {useFirestoreConnect} from "react-redux-firebase";
 import {useStoreState} from "easy-peasy";
 
@@ -8,11 +7,11 @@ export const Feed = () => {
     const wagers = useStoreState(state => state.firestore.data.wagers)
     console.log(wagers);
     return (
-        <Box>
+        <div>
             {wagers?.length === 0
-                ? <Box> Speeds and Feeds </Box>
+                ? <div> Speeds and Feeds </div>
                 : Object.values(wagers ?? {}).map(wager => <pre>{JSON.stringify(wager, null, 2)}</pre>)
             }
-        </Box>
+        </div>
     )
 }

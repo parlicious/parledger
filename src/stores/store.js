@@ -1,10 +1,10 @@
 import {createStore, reducer} from 'easy-peasy'
-import thunk from 'redux-thunk';
 import firebase from 'firebase/app';
 import 'firebase/auth'
-import 'firebase/firestore' // <- needed if using firestore
-import 'firebase/functions' // <- needed if using httpsCallable
+import 'firebase/firestore'
+import 'firebase/functions'
 import 'firebase/analytics'
+import 'firebase/storage'
 import {firebaseReducer, getFirebase} from 'react-redux-firebase'
 import {createFirestoreInstance, firestoreReducer, getFirestore} from 'redux-firestore'
 import {wagersModel} from "./wagers"; // <- needed if using firestore
@@ -36,7 +36,15 @@ const firebaseConfig = process.env.ENV === 'prod' ? prodFirebaseConfig : devFire
 
 const rrfConfig = {
     userProfile: 'users',
-    useFirestoreForProfile: true
+    useFirestoreForProfile: true,
+    profileFactory: (userData) => { // how profiles are stored in database
+        return {
+            uid: userData.uid,
+            email: userData.email,
+            avatarUrl: userData.avatarUrl || null,
+            displayName: userData.displayName,
+        }
+    }
 }
 
 // Initialize firebase instance

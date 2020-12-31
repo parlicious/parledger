@@ -1,38 +1,45 @@
 import React from "react";
-import {Anchor, Avatar, Box, Button, DropButton, Header, Heading, Main, Text} from "grommet";
 import {useStoreState} from "easy-peasy";
 import {isEmpty, useFirebase} from "react-redux-firebase";
 import {Link} from 'react-router-dom';
+import styled, {css} from 'styled-components';
 
-const AvatarMenu = ({profile, logout}) => {
-    return (
-        <DropButton
-            focusIndicator={false}
-            dropAlign={{top: 'bottom', right: 'right'}}
-            dropContent={
-                <Box background="accent-1" pad="small" round="xsmall" gap="xsmall">
-                    <Link to="/me">
-                        <Anchor as="span">
-                            Profile
-                        </Anchor>
-                    </Link>
-                    <Anchor onClick={logout}> Sign Out </Anchor>
-                </Box>
-            }
-        >
-            {profile.avatarUrl
-                ? <Avatar
-                    src={profile.avatarUrl}
-                />
-                : <Text alignSelf="center">
-                    <Anchor as="span">
-                        {profile.displayName || "Profile"}
-                    </Anchor>
-                </Text>
-            }
-        </DropButton>
-    )
-}
+const AppHeader = styled.div`
+  padding: 0.5em;
+  height: 3em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  
+  background: linear-gradient(to bottom, #FFFFFF00, #FFFFFF09);
+  border-bottom: 1px solid #FFFFFF2F;
+`
+
+const LoggedInMenu = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+`
+const headerLinkStyles = css`
+  margin: 0.4em;
+  padding-bottom: 0.1em;
+
+  :hover {
+    border-bottom: 0.1em white solid;
+  }
+`
+const AppHeaderLink = styled(Link)`
+  ${headerLinkStyles};
+`
+
+const AppHeaderAnchor = styled.a`
+  ${headerLinkStyles};
+`
+
+const AppBody = styled.div`
+  padding: 1em;
+`
 
 export const AppContainer = (props) => {
     const auth = useStoreState(state => state.firebase.auth);
@@ -44,22 +51,34 @@ export const AppContainer = (props) => {
     }
 
     return (<React.Fragment>
-        <Header background="brand" pad="small">
-            <Heading level={3}>
+        <AppHeader>
+            <h3>
                 <Link to='/'>
-                    <Anchor as={'span'}>
                         ledger.bet
-                    </Anchor>
                 </Link>
-            </Heading>
-            {isEmpty(auth)
-                ? <Link to='/login'><Button as="span" label="Log In"/></Link>
-                : <Box direction="row" alignContent="between" gap="small" justify="center">
-                    <AvatarMenu profile={profile} logout={logOut}/>
-                </Box>}
-        </Header>
-        <Main pad="large">
+            </h3>
+            <LoggedInMenu>
+                {isEmpty(auth)
+                    ? <AppHeaderLink to='/login'>
+                        Log In
+                    </AppHeaderLink>
+                    : <React.Fragment>
+                        <AppHeaderLink to="/groups/join">
+                            Groups
+                        </AppHeaderLink>
+                        <AppHeaderLink to="/wagers/new">
+                            Make a Wager
+                        </AppHeaderLink>
+                        <AppHeaderLink to="/me">
+                            {profile.displayName}
+                        </AppHeaderLink>
+                        <AppHeaderAnchor onClick={logOut}> Sign Out </AppHeaderAnchor>
+                    </React.Fragment>
+                }
+            </LoggedInMenu>
+        </AppHeader>
+        <AppBody>
             {props.children}
-        </Main>
+        </AppBody>
     </React.Fragment>)
 }

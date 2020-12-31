@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import { Box } from 'grommet';
 
-export const PulseSpinner = styled(Box)`
+export const PulseSpinner = styled.div`
   width: 40px;
   height: 40px;
   margin: 40px auto;

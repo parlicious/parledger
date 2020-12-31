@@ -1,8 +1,31 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 const {v4: uuidv4} = require('uuid');
+const axios = require('axios');
+// For the default version
+const algoliasearch = require('algoliasearch');
 
-admin.initializeApp();
+const ALGOLIA_ID = functions.config().algolia.app_id;
+const ALGOLIA_ADMIN_KEY = functions.config().algolia.api_key;
+
+const ALGOLIA_INDEX_NAME = 'dev_users';
+const client = algoliasearch(ALGOLIA_ID, ALGOLIA_ADMIN_KEY);
+
+exports.onUserCreated = functions.firestore.document('users/{uid}').onCreate((snap, context) => {
+    // Get the note document
+    const user = snap.data();
+
+    // Add an 'objectID' field which Algolia requires
+    user.objectID = context.params.uid;
+
+    // Write to the algolia index
+    const index = client.initIndex(ALGOLIA_INDEX_NAME);
+    return index.saveObject(user);
+});
+
+admin.initializeApp({
+    storageBucket: 'ledgerdotbet-dev.appspot.com'
+});
 const db = admin.firestore()
 
 const getGroup = async (groupId) => {
@@ -40,7 +63,7 @@ const addUserToGroup = async (groupId, uid, allowDerivatives) => {
     const userRef = await db.collection('users').doc(uid).get()
     if (userRef.exists) {
         const user = userRef.data();
-        await group.ref.collection('members').doc(uid).set({displayName: user.displayName, uid, allowDerivatives, joined: Date.now()})
+        await group.ref.collection('users').doc(uid).set({displayName: user.displayName, uid, allowDerivatives, joined: Date.now(), group: groupId})
         const groups = Array.from(new Set([groupId, ...user.groups || []]))
         await db.collection('users').doc(uid).set({...user, groups})
     }
@@ -53,9 +76,9 @@ exports.createGroup = functions.https.onCall(async (data, context) => {
 
 exports.joinGroup = functions.https.onCall(async (data, context) => {
     const groupId = data.joinCode; // TODO: change this to be group id + auth hash and check it
-    const membersSnapshot = await db.collection(`groups/${groupId}/members`).doc(data.uid).get();
+    const usersSnapshot = await db.collection(`groups/${groupId}/users`).doc(data.uid).get();
 
-    if (membersSnapshot.exists) {
+    if (usersSnapshot.exists) {
         throw new functions.https.HttpsError('already-exists', 'You\'re already in this group');
     }
 
@@ -65,12 +88,12 @@ exports.joinGroup = functions.https.onCall(async (data, context) => {
 exports.createWager = functions.https.onCall(async (data, context) => {
     const {groupId, proposedTo, details} = data;
     const proposedBy = context.auth.uid;
-    const membersSnapshot = await db.collection(`groups/${groupId}/members`).doc(proposedBy).get();
-    if (!membersSnapshot.exists) {
+    const usersSnapshot = await db.collection(`groups/${groupId}/users`).doc(proposedBy).get();
+    if (!usersSnapshot.exists) {
         throw new functions.https.HttpsError('unauthenticated', 'You must be a member of the group to create wagers in it.')
     }
 
-    const proposedToSnapshot = await db.collection(`groups/${groupId}/members`).doc(proposedTo).get();
+    const proposedToSnapshot = await db.collection(`groups/${groupId}/users`).doc(proposedTo).get();
     if (!proposedToSnapshot.exists) {
         throw new functions.https.HttpsError('failed-precondition', 'The other party of the wager isn\'t in this group')
     }
@@ -130,8 +153,8 @@ exports.createWager = functions.https.onCall(async (data, context) => {
 
 exports.createOpenWager = functions.https.onCall(async (data, context) => {
     const {groupId, proposedBy, details} = data;
-    const membersSnapshot = await db.collection(`groups/${groupId}/members`).doc(proposedBy).get();
-    if (!membersSnapshot.exists) {
+    const usersSnapshot = await db.collection(`groups/${groupId}/users`).doc(proposedBy).get();
+    if (!usersSnapshot.exists) {
         throw new functions.https.HttpsError('unauthenticated', 'You must be a member of the group to create wagers in it.')
     }
 
@@ -243,3 +266,31 @@ exports.confirmWager = functions.https.onCall(async (data, context) => {
 async function notifyGroupOfWager(wager, action) {
     console.log(wager, action);
 }
+
+
+async function getAndSaveEventsFromBovada() {
+    const eventsUrl = 'https://www.bovada.lv/services/sports/event/coupon/events/A/description?marketFilterId=def&preMatchOnly=true&lang=en';
+    const axiosResult = await axios.get(eventsUrl, {
+        responseType: 'arraybuffer'
+    })
+    const resultBuffer = Buffer.from(axiosResult.data, 'binary');
+
+    const file = admin.storage().bucket().file('events.json');
+
+    const result = await file.save(resultBuffer, {
+        metadata: { contentType: "Application/JSON" },
+        public: true,
+        validation: 'md5'
+    })
+
+    console.log(result)
+}
+
+exports.getEventsFromBovada = functions.pubsub.schedule("every 1 hours").onRun(async (context) => {
+    await getAndSaveEventsFromBovada()
+});
+
+exports.manuallyUpdateBovadaEvents = functions.https.onRequest(async (req, res) => {
+    await getAndSaveEventsFromBovada()
+    res.send('ok');
+})
