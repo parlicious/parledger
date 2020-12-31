@@ -1,5 +1,6 @@
 import {useFirestoreConnect} from "react-redux-firebase";
 import {useStoreState} from "easy-peasy";
+import {PersonalWagers} from "./PersonalWagers";
 
 export const Feed = () => {
     const profile = useStoreState(state => state.firebase.profile)
@@ -8,10 +9,7 @@ export const Feed = () => {
     console.log(wagers);
     return (
         <div>
-            {wagers?.length === 0
-                ? <div> Speeds and Feeds </div>
-                : Object.values(wagers ?? {}).map(wager => <pre>{JSON.stringify(wager, null, 2)}</pre>)
-            }
+            <PersonalWagers/>
         </div>
     )
 }

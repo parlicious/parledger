@@ -4,6 +4,7 @@ import {useFirebase} from "react-redux-firebase";
 import signUpImage from "../resources/undraw_Savings_re_eq4w.svg"
 import blob from "../resources/blob_white.svg"
 import styled, {css} from 'styled-components';
+import {useHistory} from 'react-router-dom';
 
 const SignUpPageContainer = styled.div`
   display: grid;
@@ -58,9 +59,10 @@ const SignUpButton = styled.button`
 
 export const SignUpPage = () => {
     const firebase = useFirebase()
+    const history = useHistory();
 
     async function loginWithGoogle() {
-        await firebase.login({provider: 'google', type: 'popup'})
+        history.push('/signup')
     }
 
     return (

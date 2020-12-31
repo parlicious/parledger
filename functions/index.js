@@ -58,10 +58,16 @@ const createGroupInFirestore = async (adminUid, groupId, session) => {
     return groupId
 }
 
-const addUserToGroup = async (groupId, uid, allowDerivatives) => {
+const addUserToGroup = async (invitationCode, uid, allowDerivatives) => {
+    const groupId = invitationCode.split('-')[0]
     const group = await getGroup(groupId);
+    const matchingCode = group.data().codes.find(c => c.value === invitationCode);
+    const codeIsValid = matchingCode && matchingCode.expires.toDate() > Date.now();
+
     const userRef = await db.collection('users').doc(uid).get()
-    if (userRef.exists) {
+
+    console.log(userRef.exists, codeIsValid, matchingCode);
+    if (userRef.exists && codeIsValid) {
         const user = userRef.data();
         await group.ref.collection('users').doc(uid).set({displayName: user.displayName, uid, allowDerivatives, joined: Date.now(), group: groupId})
         const groups = Array.from(new Set([groupId, ...user.groups || []]))
@@ -285,6 +291,23 @@ async function getAndSaveEventsFromBovada() {
 
     console.log(result)
 }
+
+exports.isValidInvitation = functions.https.onCall(async (data, context) => {
+    // an invitation code is the groupId + some randomness. We split to get the group, then
+    // check if the invitation is still valid.
+    const invitationCode = data.invitationCode;
+    const groupId = invitationCode.split('-')[0]
+    const doc = await db.collection('groups').doc(groupId).get();
+
+    if (!doc.exists) {
+        throw new functions.https.HttpsError('failed-precondition', 'The group for this code doesn\'t exist');
+    }
+
+    const codes = doc.data().codes;
+    const matchingCode = codes.find(c => c.value === invitationCode);
+
+    return matchingCode && matchingCode.expires > Date.now()
+})
 
 exports.getEventsFromBovada = functions.pubsub.schedule("every 1 hours").onRun(async (context) => {
     await getAndSaveEventsFromBovada()

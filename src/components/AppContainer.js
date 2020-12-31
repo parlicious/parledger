@@ -53,7 +53,7 @@ export const AppContainer = (props) => {
     return (<React.Fragment>
         <AppHeader>
             <h3>
-                <Link to='/'>
+                <Link to={isEmpty(auth) ? '/': '/home'}>
                         ledger.bet
                 </Link>
             </h3>

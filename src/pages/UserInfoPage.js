@@ -6,7 +6,5 @@ export const UserInfoPage = () => {
     const profile = useStoreState(state => state.firebase.profile)
     const results = useStoreState(state => state.firestore.data.wagers)
 
-    console.log(results);
-
     return <pre>{JSON.stringify(profile, null, 2)}</pre>
 }

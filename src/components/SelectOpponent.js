@@ -2,12 +2,15 @@ import {useState, useEffect} from "react";
 import algoliasearch from 'algoliasearch';
 import {Hits, InstantSearch, SearchBox, connectStateResults} from 'react-instantsearch-dom';
 import styled from 'styled-components';
+import * as lunr from 'lunr';
 
 // Include only the reset
 import 'instantsearch.css/themes/reset.css';
 // or include the full Algolia theme
 import 'instantsearch.css/themes/algolia.css';
 import Avatar from "react-avatar";
+import {useStoreState} from "easy-peasy";
+import {useFirestoreConnect} from "react-redux-firebase";
 
 
 const searchClient = algoliasearch(
@@ -43,7 +46,7 @@ const StyledHits = styled(Hits)`
 const HitContainer = styled.div`
   color: #0F2027;
   text-align: center;
-  border: 1px solid white;
+  background: white;
   padding: 0.3em;
 
   display: flex;
@@ -62,7 +65,7 @@ const HitContainerSpan = styled.span`
   font-size: 1.17em;
 `
 
-const Hit = (opponentSelected) => ({hit}) => {
+const Hit = ({hit, opponentSelected}) => {
     return (
         <HitContainer onClick={() => opponentSelected(hit)}>
             <HitContainerSpan>{hit.avatarUrl
@@ -91,9 +94,10 @@ const SearchRow = styled.div`
   align-items: center;
 `
 
-const StyledSearchBox = styled(SearchBox)`
+const StyledSearchBox = styled.input`
   width: 100%;
-
+  font-size: 1.17em;
+  padding: 0.3em;
 
   form {
     input {
@@ -104,27 +108,28 @@ const StyledSearchBox = styled(SearchBox)`
   }
 `
 
-// const StateResults = ({ searchResults, setFirstResult }) => {
-//     useEffect(() => {
-//         setFirstResult(searchResults?.hits[0])
-//     }, [searchResults])
-//     return null;
-// };
+const doFilter = (query) => (member) => {
+    const name = member.displayName?.toLowerCase() ?? "";
+    const email = member.email?.toLowerCase() ?? "";
+    const normalizedQuery = query.toLowerCase();
 
-// const CustomStateResults = connectStateResults(StateResults);
+    return name.includes(normalizedQuery) || email.includes(normalizedQuery);
+}
 
 export const SelectOpponent = ({opponentSelected}) => {
     const [showHits, setShowHits] = useState(false);
-    const [firstResult, setFirstResult] = useState(null);
+    const [searchQuery, setSearchQuery] = useState('');
+
+    const profile = useStoreState(state => state.firebase.profile);
+    useFirestoreConnect(profile.groups.map(group => ({collection: `groups/${group}/users`, storeAs: 'groupMembers'})));
+    const members = useStoreState(state => state.firestore.data.groupMembers);
+    console.log(members);
+    const filteredMembers = Object.values(members ?? {}).filter(doFilter(searchQuery));
+
+    // console.log(filteredMembers);
+
     return (
-        <InstantSearch
-            indexName="dev_users"
-            onSearchStateChange={(searchState) => {
-                console.log(searchState);
-                setShowHits(true);
-            }}
-            searchClient={searchClient}
-        >
+        <div>
             <SearchContainer>
                 <SearchRow>
                     <h2>
@@ -136,14 +141,12 @@ export const SelectOpponent = ({opponentSelected}) => {
                             event.preventDefault();
                             console.log(event.currentTarget);
                         }}
-                        translations={{placeholder: "Search for a user"}}
-                        onChange={e => e.target.value.length === 0 && setShowHits(false)}
-                        onReset={() => setShowHits(false)}
+                        placeholder="Search for a user"
+                        onChange={e => setSearchQuery(e.target.value)}
                     />
                 </SearchRow>
-                {showHits && <StyledHits hitComponent={Hit(opponentSelected)}/>}
-                {/*<CustomStateResults setFirstResult={setFirstResult}/>*/}
+                {filteredMembers?.map(member => <Hit hit={member} opponentSelected={opponentSelected}/>)}
             </SearchContainer>
-        </InstantSearch>
+        </div>
     )
 }

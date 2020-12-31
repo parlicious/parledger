@@ -58,7 +58,7 @@ const EventHeader = styled.div`
 
 export const EventCell = styled.div`
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr 1fr;
+  grid-template-columns: 1fr 2fr 1fr 2fr;
   background: linear-gradient(to bottom, #FFFFFF04, #FFFFFF09);
   box-shadow: 3px 3px 25px #0000001C;
   border-radius: 0.3em;

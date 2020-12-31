@@ -78,6 +78,7 @@ export const ConfirmWager = ({selection, opponent}) => {
         const wager = {
             proposedTo: opponent.uid,
             groupId: profile.groups[0],
+            type: 'BOVADA',
             details: {
                 selection,
                 risk: betAmount,
