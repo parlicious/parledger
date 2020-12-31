@@ -15,11 +15,12 @@ const OddsContainer = styled.div`
 `
 
 export const Outcome = ({outcome}) => {
+    console.log(outcome)
     if (outcome) {
         return (
             <OutcomeContainer>
                 {outcome.price.handicap && <OddsContainer>
-                    {outcome.price.handicap + ' '}
+                    {['O','U'].includes(outcome.type)  && outcome.type} {outcome.price.handicap + ' '}
                 </OddsContainer>}
             </OutcomeContainer>
         )
@@ -91,17 +92,31 @@ const OddsCell = styled.div`
 `
 
 const SelectableOddsCellContainer = styled(OddsCell)`
-  background: 
+  color: ${props => {
+    if (props.selected) {
+      return '#00C781';
+    } else if (props.opponent) {
+      return '#FF4040';
+    } else {
+      return 'inherit'
+    }
+  }};
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+
   :hover {
     cursor: pointer;
     background: #FFFFFF13;
   }
 `
 
-const SelectableOddsCell = ({eventSelected, event, market, outcome}) => {
+const SelectableOddsCell = ({eventSelected, event, market, outcome, selectedMarket, selectedOutcome}) => {
+    const opponent = selectedMarket === market && selectedOutcome !== outcome;
+    const selected = selectedMarket === market && selectedOutcome === outcome;
     return (
-        <SelectableOddsCellContainer onClick={() => eventSelected({event, market, outcome})}>
-            <Outcome outcome={event?.displayGroups[0]?.markets[market]?.outcomes[outcome]}/>
+        <SelectableOddsCellContainer selected={selected} opponent={opponent} onClick={() => eventSelected({event, market, outcome})}>
+            <Outcome outcome={event?.displayGroups[0]?.markets[market]?.outcomes[outcome]}/> {selected && "You: "} {opponent && "Them: "}
         </SelectableOddsCellContainer>
     )
 }
@@ -112,7 +127,7 @@ const SectionNameCell = styled.div`
   grid-column-end: 5;
 `
 
-const TitleRow = ({name}) => {
+export const TitleRow = ({name}) => {
     return (
         <TitleCell>
             <SectionNameCell>
@@ -148,7 +163,7 @@ const SportSection = ({section, eventSelected}) => {
     )
 }
 
-export const Event = ({event, eventSelected}) => {
+export const Event = ({event, eventSelected, selectedMarket, selectedOutcome}) => {
     const eventTime = new Date(event.startTime);
     return (
         <EventCell key={event.id}>
@@ -159,13 +174,23 @@ export const Event = ({event, eventSelected}) => {
             <OddsCell>
                 {event.competitors[0]?.name}
             </OddsCell>
-            <SelectableOddsCell eventSelected={eventSelected} event={event} market={0} outcome={0}/>
-            <SelectableOddsCell eventSelected={eventSelected} event={event} market={2} outcome={0}/>
+            <SelectableOddsCell selectedOutcome={selectedOutcome}
+                                selectedMarket={selectedMarket}
+                                eventSelected={eventSelected}
+                                event={event} market={0} outcome={0}/>
+            <SelectableOddsCell selectedOutcome={selectedOutcome}
+                                selectedMarket={selectedMarket} eventSelected={eventSelected}
+                                event={event} market={2} outcome={0}/>
             <OddsCell>
                 {event.competitors[1]?.name}
             </OddsCell>
-            <SelectableOddsCell eventSelected={eventSelected} event={event} market={0} outcome={1}/>
-            <SelectableOddsCell eventSelected={eventSelected} event={event} market={2} outcome={1}/>
+            <SelectableOddsCell selectedOutcome={selectedOutcome}
+                                selectedMarket={selectedMarket} eventSelected={eventSelected}
+                                event={event} market={0} outcome={1}/>
+            <SelectableOddsCell
+                selectedOutcome={selectedOutcome}
+                selectedMarket={selectedMarket}
+                eventSelected={eventSelected} event={event} market={2} outcome={1}/>
             {event.notes && <NotesRow>
                 {event.notes}
             </NotesRow>}

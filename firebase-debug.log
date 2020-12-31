@@ -2891,3 +2891,601 @@ INFO: Detected non-HTTP/2 connection.
 [debug] [2020-12-31T02:42:34.091Z] Dec 30, 2020 9:42:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
 INFO: Detected non-HTTP/2 connection.
  {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 9:42:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T02:43:34.163Z] Dec 30, 2020 9:43:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 9:43:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T02:44:34.238Z] Dec 30, 2020 9:44:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 9:44:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T02:45:34.302Z] Dec 30, 2020 9:45:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 9:45:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T02:46:34.361Z] Dec 30, 2020 9:46:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 9:46:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T02:47:34.431Z] Dec 30, 2020 9:47:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 9:47:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T02:48:34.506Z] Dec 30, 2020 9:48:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 9:48:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T02:49:34.646Z] Dec 30, 2020 9:49:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 9:49:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T02:50:49.740Z] Dec 30, 2020 9:50:49 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 9:50:49 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T02:51:49.937Z] Dec 30, 2020 9:51:49 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 9:51:49 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T02:52:50.311Z] Dec 30, 2020 9:52:50 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 9:52:50 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T02:53:50.691Z] Dec 30, 2020 9:53:50 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 9:53:50 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T02:54:42.950Z] Dec 30, 2020 9:54:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 9:54:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T02:54:43.019Z] Dec 30, 2020 9:54:43 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 9:54:43 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt\nWARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE\n"}}
+[debug] [2020-12-31T02:54:43.690Z] Dec 30, 2020 9:54:43 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 9:54:43 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T02:55:29.862Z] Dec 30, 2020 9:55:29 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 9:55:29 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T02:55:29.889Z] Dec 30, 2020 9:55:29 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 9:55:29 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt\nWARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE\n"}}
+[debug] [2020-12-31T02:55:30.019Z] Dec 30, 2020 9:55:30 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 9:55:30 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T02:56:30.135Z] Dec 30, 2020 9:56:30 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 9:56:30 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T02:57:30.191Z] Dec 30, 2020 9:57:30 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 9:57:30 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T02:58:22.014Z] Dec 30, 2020 9:58:22 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 9:58:22 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T02:58:22.078Z] Dec 30, 2020 9:58:22 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 9:58:22 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt\nWARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE\n"}}
+[debug] [2020-12-31T02:58:22.593Z] Dec 30, 2020 9:58:22 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 9:58:22 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T02:59:22.704Z] Dec 30, 2020 9:59:22 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 9:59:22 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:00:22.764Z] Dec 30, 2020 10:00:22 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:00:22 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:01:22.842Z] Dec 30, 2020 10:01:22 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:01:22 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:02:22.906Z] Dec 30, 2020 10:02:22 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:02:22 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:03:37.961Z] Dec 30, 2020 10:03:37 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:03:37 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:04:38.047Z] Dec 30, 2020 10:04:38 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:04:38 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:05:38.122Z] Dec 30, 2020 10:05:38 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:05:38 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:06:38.199Z] Dec 30, 2020 10:06:38 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:06:38 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:07:53.246Z] Dec 30, 2020 10:07:53 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:07:53 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:08:53.351Z] Dec 30, 2020 10:08:53 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:08:53 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:09:53.510Z] Dec 30, 2020 10:09:53 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:09:53 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:10:53.710Z] Dec 30, 2020 10:10:53 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:10:53 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:11:53.810Z] Dec 30, 2020 10:11:53 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:11:53 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:12:53.868Z] Dec 30, 2020 10:12:53 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:12:53 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:13:53.929Z] Dec 30, 2020 10:13:53 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:13:53 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:14:53.995Z] Dec 30, 2020 10:14:53 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:14:53 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:15:29.685Z] Dec 30, 2020 10:15:29 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:15:29 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:15:59.799Z] Dec 30, 2020 10:15:59 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:15:59 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:16:59.925Z] Dec 30, 2020 10:16:59 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:16:59 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:18:00.097Z] Dec 30, 2020 10:18:00 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:18:00 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:18:10.240Z] Dec 30, 2020 10:18:10 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:18:10 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:19:10.447Z] Dec 30, 2020 10:19:10 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:19:10 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:20:10.526Z] Dec 30, 2020 10:20:10 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:20:10 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:21:10.644Z] Dec 30, 2020 10:21:10 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:21:10 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:22:10.717Z] Dec 30, 2020 10:22:10 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:22:10 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:23:10.795Z] Dec 30, 2020 10:23:10 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:23:10 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:24:10.866Z] Dec 30, 2020 10:24:10 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:24:10 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:25:11.037Z] Dec 30, 2020 10:25:11 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:25:11 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:26:11.144Z] Dec 30, 2020 10:26:11 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:26:11 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:27:11.214Z] Dec 30, 2020 10:27:11 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:27:11 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:28:11.281Z] Dec 30, 2020 10:28:11 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:28:11 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:29:11.348Z] Dec 30, 2020 10:29:11 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:29:11 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:30:11.421Z] Dec 30, 2020 10:30:11 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:30:11 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:31:11.482Z] Dec 30, 2020 10:31:11 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:31:11 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:31:25.969Z] Dec 30, 2020 10:31:25 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:31:25 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:31:26.047Z] Dec 30, 2020 10:31:26 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:31:26 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt\nWARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE\n"}}
+[debug] [2020-12-31T03:31:26.574Z] Dec 30, 2020 10:31:26 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:31:26 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:32:26.687Z] Dec 30, 2020 10:32:26 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:32:26 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:32:41.763Z] Dec 30, 2020 10:32:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:32:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:32:41.809Z] Dec 30, 2020 10:32:41 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:32:41 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt\nWARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE\n"}}
+[debug] [2020-12-31T03:32:42.343Z] Dec 30, 2020 10:32:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:32:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:33:42.479Z] Dec 30, 2020 10:33:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:33:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:34:42.635Z] Dec 30, 2020 10:34:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:34:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:35:42.889Z] Dec 30, 2020 10:35:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:35:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:36:34.538Z] Dec 30, 2020 10:36:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:36:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:36:34.694Z] Dec 30, 2020 10:36:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:36:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:36:37.098Z] Dec 30, 2020 10:36:37 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:36:37 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:36:37.175Z] Dec 30, 2020 10:36:37 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:36:37 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt\nWARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE\n"}}
+[debug] [2020-12-31T03:36:37.299Z] Dec 30, 2020 10:36:37 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:36:37 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:36:38.656Z] Dec 30, 2020 10:36:38 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:36:38 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:37:04.538Z] Dec 30, 2020 10:37:04 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:37:04 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:37:04.561Z] Dec 30, 2020 10:37:04 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:37:04 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt\nWARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE\n"}}
+[debug] [2020-12-31T03:37:04.719Z] Dec 30, 2020 10:37:04 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:37:04 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:38:04.864Z] Dec 30, 2020 10:38:04 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:38:04 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:39:04.944Z] Dec 30, 2020 10:39:04 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:39:04 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:40:05.100Z] Dec 30, 2020 10:40:05 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:40:05 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:41:05.289Z] Dec 30, 2020 10:41:05 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:41:05 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:42:05.723Z] Dec 30, 2020 10:42:05 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:42:05 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:43:20.787Z] Dec 30, 2020 10:43:20 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:43:20 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:43:21.397Z] Dec 30, 2020 10:43:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:43:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:43:30.878Z] Dec 30, 2020 10:43:30 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:43:30 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:43:31.016Z] Dec 30, 2020 10:43:31 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:43:31 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:44:31.191Z] Dec 30, 2020 10:44:31 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:44:31 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:45:31.341Z] Dec 30, 2020 10:45:31 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:45:31 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:46:31.428Z] Dec 30, 2020 10:46:31 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:46:31 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:47:31.562Z] Dec 30, 2020 10:47:31 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:47:31 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:48:31.650Z] Dec 30, 2020 10:48:31 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:48:31 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:49:46.693Z] Dec 30, 2020 10:49:46 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:49:46 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:50:46.755Z] Dec 30, 2020 10:50:46 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:50:46 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:51:46.834Z] Dec 30, 2020 10:51:46 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:51:46 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:52:46.891Z] Dec 30, 2020 10:52:46 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:52:46 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:53:46.957Z] Dec 30, 2020 10:53:46 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:53:46 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:54:47.033Z] Dec 30, 2020 10:54:47 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:54:47 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:55:47.166Z] Dec 30, 2020 10:55:47 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:55:47 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:56:47.246Z] Dec 30, 2020 10:56:47 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:56:47 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:57:47.306Z] Dec 30, 2020 10:57:47 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:57:47 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:58:47.360Z] Dec 30, 2020 10:58:47 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:58:47 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:59:47.404Z] Dec 30, 2020 10:59:47 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:59:47 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T03:59:58.062Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2020-12-31T03:59:58.063Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2020-12-31T03:59:58.065Z] Accepted request OPTIONS /ledgerdotbet-dev/us-central1/createWager --> createWager
+[debug] [2020-12-31T03:59:58.151Z] [worker-pool] addWorker(createWager) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(createWager)"}}
+[debug] [2020-12-31T03:59:58.152Z] [worker-pool] Adding worker with key createWager, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key createWager, total=1"}}
+[debug] [2020-12-31T03:59:58.153Z] [worker-pool] submitWork(triggerId=createWager) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitWork(triggerId=createWager)"}}
+[debug] [2020-12-31T03:59:58.153Z] [worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: Assigning socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_66986.sock {"metadata":{"emulator":{"name":"functions"},"message":"[worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: Assigning socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_66986.sock"}}
+[debug] [2020-12-31T03:59:58.153Z] [worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: BUSY"}}
+[debug] [2020-12-31T03:59:58.329Z] [runtime-status] [66986] Functions runtime initialized. {"cwd":"/Users/donnie/code/parledger/functions","node_version":"14.15.1"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Functions runtime initialized. {\"cwd\":\"/Users/donnie/code/parledger/functions\",\"node_version\":\"14.15.1\"}"}}
+[debug] [2020-12-31T03:59:58.329Z] [runtime-status] [66986] Disabled runtime features: undefined {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Disabled runtime features: undefined"}}
+[debug] [2020-12-31T03:59:58.331Z] [runtime-status] [66986] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.13.0","resolution":"/Users/donnie/code/parledger/functions/node_modules/firebase-admin/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"8.13.0\",\"resolution\":\"/Users/donnie/code/parledger/functions/node_modules/firebase-admin/lib/index.js\"}"}}
+[debug] [2020-12-31T03:59:58.332Z] [runtime-status] [66986] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.13.0","resolution":"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.13.0\",\"resolution\":\"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js\"}"}}
+[debug] [2020-12-31T03:59:58.334Z] [runtime-status] [66986] Found local functions config: /Users/donnie/code/parledger/functions/.runtimeconfig.json {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Found local functions config: /Users/donnie/code/parledger/functions/.runtimeconfig.json"}}
+[debug] [2020-12-31T03:59:58.335Z] [runtime-status] [66986] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.13.0","resolution":"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.13.0\",\"resolution\":\"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js\"}"}}
+[debug] [2020-12-31T03:59:58.336Z] [runtime-status] [66986] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Outgoing network have been stubbed. [{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"net\",\"status\":\"mocked\"}]"}}
+[debug] [2020-12-31T03:59:58.336Z] [runtime-status] [66986] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.13.0","resolution":"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.13.0\",\"resolution\":\"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js\"}"}}
+[debug] [2020-12-31T03:59:58.365Z] [runtime-status] [66986] Checked functions.config() {"config":{"algolia":{"app_id":"AT9T4ZSHO4","api_key":"7aeba7e93ef86d8a33825d53bcb5ee3d"}}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Checked functions.config() {\"config\":{\"algolia\":{\"app_id\":\"AT9T4ZSHO4\",\"api_key\":\"7aeba7e93ef86d8a33825d53bcb5ee3d\"}}}"}}
+[debug] [2020-12-31T03:59:58.365Z] [runtime-status] [66986] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"3.13.0","resolution":"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] firebase-functions has been stubbed. {\"functionsResolution\":{\"declared\":true,\"installed\":true,\"version\":\"3.13.0\",\"resolution\":\"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js\"}}"}}
+[debug] [2020-12-31T03:59:58.365Z] [runtime-status] [66986] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.13.0","resolution":"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.13.0\",\"resolution\":\"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js\"}"}}
+[debug] [2020-12-31T03:59:58.365Z] [runtime-status] [66986] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.13.0","resolution":"/Users/donnie/code/parledger/functions/node_modules/firebase-admin/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"8.13.0\",\"resolution\":\"/Users/donnie/code/parledger/functions/node_modules/firebase-admin/lib/index.js\"}"}}
+[debug] [2020-12-31T03:59:58.365Z] [runtime-status] [66986] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.13.0","resolution":"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.13.0\",\"resolution\":\"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js\"}"}}
+[debug] [2020-12-31T03:59:58.365Z] [runtime-status] [66986] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"8.13.0","resolution":"/Users/donnie/code/parledger/functions/node_modules/firebase-admin/lib/index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"8.13.0\",\"resolution\":\"/Users/donnie/code/parledger/functions/node_modules/firebase-admin/lib/index.js\"}}"}}
+[debug] [2020-12-31T03:59:58.399Z] [runtime-status] [66986] initializeApp(DEFAULT) {"storageBucket":"ledgerdotbet-dev.appspot.com"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] initializeApp(DEFAULT) {\"storageBucket\":\"ledgerdotbet-dev.appspot.com\"}"}}
+[debug] [2020-12-31T03:59:58.587Z] [runtime-status] [66986] Trigger "createWager" has been found, beginning invocation! {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Trigger \"createWager\" has been found, beginning invocation!"}}
+[info] i  functions: Beginning execution of "createWager" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"Beginning execution of \"createWager\""}}
+[debug] [2020-12-31T03:59:58.595Z] [runtime-status] [66986] triggerDefinition {"httpsTrigger":{},"labels":{"deployment-callable":"true"},"name":"createWager","entryPoint":"createWager"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] triggerDefinition {\"httpsTrigger\":{},\"labels\":{\"deployment-callable\":\"true\"},\"name\":\"createWager\",\"entryPoint\":\"createWager\"}"}}
+[debug] [2020-12-31T03:59:58.595Z] [runtime-status] [66986] Running createWager in mode HTTPS {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Running createWager in mode HTTPS"}}
+[debug] [2020-12-31T03:59:58.596Z] [runtime-status] [66986] Attempting to listen to socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_66986.sock {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Attempting to listen to socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_66986.sock"}}
+[debug] [2020-12-31T03:59:58.603Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2020-12-31T03:59:58.618Z] [runtime-status] [66986] Ephemeral server handling OPTIONS request {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Ephemeral server handling OPTIONS request"}}
+[debug] [2020-12-31T03:59:58.622Z] [runtime-status] [66986] Ephemeral server survived. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Ephemeral server survived."}}
+[debug] [2020-12-31T03:59:58.623Z] [work-queue] {"queueLength":1,"workRunningCount":1}
+[debug] [2020-12-31T03:59:58.624Z] [work-queue] {"queueLength":0,"workRunningCount":2}
+[debug] [2020-12-31T03:59:58.624Z] Accepted request POST /ledgerdotbet-dev/us-central1/createWager --> createWager
+[debug] [2020-12-31T03:59:58.626Z] ID Token: eyJhbGciOiJSUzI1NiIsImtpZCI6IjA4MGU0NWJlNGIzMTE4MzA5M2RhNzUyYmIyZGU5Y2RjYTNlNmU4ZTciLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiQm9iIFRlc3RlciIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9sZWRnZXJkb3RiZXQtZGV2IiwiYXVkIjoibGVkZ2VyZG90YmV0LWRldiIsImF1dGhfdGltZSI6MTYwOTM0OTAyOSwidXNlcl9pZCI6Im0wRE9oVEduNWxWYkhkaE5HSHA0ZGloNGNidjEiLCJzdWIiOiJtMERPaFRHbjVsVmJIZGhOR0hwNGRpaDRjYnYxIiwiaWF0IjoxNjA5Mzg2MTY2LCJleHAiOjE2MDkzODk3NjYsImVtYWlsIjoiYm9iQHRlc3QuY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbImJvYkB0ZXN0LmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.aUL9ovHv39XqcTu4aUhzxRAF1-w4Ro6S_e3epaPepByyLazol8AwLoLu80kbMoQ4wFTvS_9ouknqP98t6AKFk0b3gEtIOe7Vpn4_Z6-7xYsesneSuv2fDqWaP1YNlZCr5J6NWwDvp68XIoIfzxcfs2dSy6aNmh3aGuv7wckM_YDX9B-Ol-SmYeLq2jKLn7WUgnTwvAowR4ptx1HxyG4JUBcj3bpTIaUCOV5t69ZnQ8yQN_w4LBSmGZq2kZ4gf1pTUuxmlof4P3Ly3vd11kowdHci86yfpR9RAu2797zhBZSCRxiH1mjrf6HoErhuKKMb7afjHhIN4QQ92SouErr48Q
+[debug] [2020-12-31T03:59:58.637Z] [worker-pool] addWorker(createWager) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(createWager)"}}
+[debug] [2020-12-31T03:59:58.637Z] [worker-pool] Adding worker with key createWager, total=2 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key createWager, total=2"}}
+[debug] [2020-12-31T03:59:58.637Z] [worker-pool] submitWork(triggerId=createWager) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitWork(triggerId=createWager)"}}
+[debug] [2020-12-31T03:59:58.637Z] [worker-createWager-07a1170f-523c-4adb-a470-08134a148849]: Assigning socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_66987.sock {"metadata":{"emulator":{"name":"functions"},"message":"[worker-createWager-07a1170f-523c-4adb-a470-08134a148849]: Assigning socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_66987.sock"}}
+[debug] [2020-12-31T03:59:58.637Z] [worker-createWager-07a1170f-523c-4adb-a470-08134a148849]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-createWager-07a1170f-523c-4adb-a470-08134a148849]: BUSY"}}
+[info] i  functions: Finished "createWager" in ~1s {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"Finished \"createWager\" in ~1s"}}
+[debug] [2020-12-31T03:59:58.638Z] [worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: IDLE"}}
+[debug] [2020-12-31T03:59:58.639Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2020-12-31T03:59:58.735Z] [runtime-status] [66987] Functions runtime initialized. {"cwd":"/Users/donnie/code/parledger/functions","node_version":"14.15.1"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66987] Functions runtime initialized. {\"cwd\":\"/Users/donnie/code/parledger/functions\",\"node_version\":\"14.15.1\"}"}}
+[debug] [2020-12-31T03:59:58.736Z] [runtime-status] [66987] Disabled runtime features: undefined {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66987] Disabled runtime features: undefined"}}
+[debug] [2020-12-31T03:59:58.737Z] [runtime-status] [66987] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.13.0","resolution":"/Users/donnie/code/parledger/functions/node_modules/firebase-admin/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66987] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"8.13.0\",\"resolution\":\"/Users/donnie/code/parledger/functions/node_modules/firebase-admin/lib/index.js\"}"}}
+[debug] [2020-12-31T03:59:58.738Z] [runtime-status] [66987] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.13.0","resolution":"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66987] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.13.0\",\"resolution\":\"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js\"}"}}
+[debug] [2020-12-31T03:59:58.739Z] [runtime-status] [66987] Found local functions config: /Users/donnie/code/parledger/functions/.runtimeconfig.json {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66987] Found local functions config: /Users/donnie/code/parledger/functions/.runtimeconfig.json"}}
+[debug] [2020-12-31T03:59:58.739Z] [runtime-status] [66987] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.13.0","resolution":"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66987] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.13.0\",\"resolution\":\"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js\"}"}}
+[debug] [2020-12-31T03:59:58.740Z] [runtime-status] [66987] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66987] Outgoing network have been stubbed. [{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"net\",\"status\":\"mocked\"}]"}}
+[debug] [2020-12-31T03:59:58.744Z] [runtime-status] [66987] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.13.0","resolution":"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66987] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.13.0\",\"resolution\":\"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js\"}"}}
+[debug] [2020-12-31T03:59:58.761Z] [runtime-status] [66987] Checked functions.config() {"config":{"algolia":{"app_id":"AT9T4ZSHO4","api_key":"7aeba7e93ef86d8a33825d53bcb5ee3d"}}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66987] Checked functions.config() {\"config\":{\"algolia\":{\"app_id\":\"AT9T4ZSHO4\",\"api_key\":\"7aeba7e93ef86d8a33825d53bcb5ee3d\"}}}"}}
+[debug] [2020-12-31T03:59:58.761Z] [runtime-status] [66987] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"3.13.0","resolution":"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66987] firebase-functions has been stubbed. {\"functionsResolution\":{\"declared\":true,\"installed\":true,\"version\":\"3.13.0\",\"resolution\":\"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js\"}}"}}
+[debug] [2020-12-31T03:59:58.764Z] [runtime-status] [66987] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.13.0","resolution":"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66987] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.13.0\",\"resolution\":\"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js\"}"}}
+[debug] [2020-12-31T03:59:58.764Z] [runtime-status] [66987] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.13.0","resolution":"/Users/donnie/code/parledger/functions/node_modules/firebase-admin/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66987] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"8.13.0\",\"resolution\":\"/Users/donnie/code/parledger/functions/node_modules/firebase-admin/lib/index.js\"}"}}
+[debug] [2020-12-31T03:59:58.764Z] [runtime-status] [66987] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.13.0","resolution":"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66987] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.13.0\",\"resolution\":\"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js\"}"}}
+[debug] [2020-12-31T03:59:58.764Z] [runtime-status] [66987] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"8.13.0","resolution":"/Users/donnie/code/parledger/functions/node_modules/firebase-admin/lib/index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66987] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"8.13.0\",\"resolution\":\"/Users/donnie/code/parledger/functions/node_modules/firebase-admin/lib/index.js\"}}"}}
+[debug] [2020-12-31T03:59:58.784Z] [runtime-status] [66987] initializeApp(DEFAULT) {"storageBucket":"ledgerdotbet-dev.appspot.com"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66987] initializeApp(DEFAULT) {\"storageBucket\":\"ledgerdotbet-dev.appspot.com\"}"}}
+[debug] [2020-12-31T03:59:58.932Z] [runtime-status] [66987] Trigger "createWager" has been found, beginning invocation! {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66987] Trigger \"createWager\" has been found, beginning invocation!"}}
+[info] i  functions: Beginning execution of "createWager" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"Beginning execution of \"createWager\""}}
+[debug] [2020-12-31T03:59:58.932Z] [runtime-status] [66987] triggerDefinition {"httpsTrigger":{},"labels":{"deployment-callable":"true"},"name":"createWager","entryPoint":"createWager"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66987] triggerDefinition {\"httpsTrigger\":{},\"labels\":{\"deployment-callable\":\"true\"},\"name\":\"createWager\",\"entryPoint\":\"createWager\"}"}}
+[debug] [2020-12-31T03:59:58.932Z] [runtime-status] [66987] Running createWager in mode HTTPS {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66987] Running createWager in mode HTTPS"}}
+[debug] [2020-12-31T03:59:58.936Z] [runtime-status] [66987] Attempting to listen to socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_66987.sock {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66987] Attempting to listen to socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_66987.sock"}}
+[debug] [2020-12-31T03:59:58.939Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2020-12-31T03:59:58.971Z] [runtime-status] [66987] Ephemeral server handling POST request {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66987] Ephemeral server handling POST request"}}
+[debug] [2020-12-31T03:59:58.974Z] [runtime-status] [66987] Callable functions auth override {"key":"x-callable-context-auth","value":"%7B%22uid%22%3A%22m0DOhTGn5lVbHdhNGHp4dih4cbv1%22%2C%22token%22%3A%7B%22name%22%3A%22Bob%20Tester%22%2C%22iss%22%3A%22https%3A%2F%2Fsecuretoken.google.com%2Fledgerdotbet-dev%22%2C%22aud%22%3A%22ledgerdotbet-dev%22%2C%22auth_time%22%3A1609349029%2C%22user_id%22%3A%22m0DOhTGn5lVbHdhNGHp4dih4cbv1%22%2C%22sub%22%3A%22m0DOhTGn5lVbHdhNGHp4dih4cbv1%22%2C%22iat%22%3A1609386166%2C%22exp%22%3A1609389766%2C%22email%22%3A%22bob%40test.com%22%2C%22email_verified%22%3Afalse%2C%22firebase%22%3A%7B%22identities%22%3A%7B%22email%22%3A%5B%22bob%40test.com%22%5D%7D%2C%22sign_in_provider%22%3A%22password%22%7D%2C%22uid%22%3A%22m0DOhTGn5lVbHdhNGHp4dih4cbv1%22%7D%7D"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66987] Callable functions auth override {\"key\":\"x-callable-context-auth\",\"value\":\"%7B%22uid%22%3A%22m0DOhTGn5lVbHdhNGHp4dih4cbv1%22%2C%22token%22%3A%7B%22name%22%3A%22Bob%20Tester%22%2C%22iss%22%3A%22https%3A%2F%2Fsecuretoken.google.com%2Fledgerdotbet-dev%22%2C%22aud%22%3A%22ledgerdotbet-dev%22%2C%22auth_time%22%3A1609349029%2C%22user_id%22%3A%22m0DOhTGn5lVbHdhNGHp4dih4cbv1%22%2C%22sub%22%3A%22m0DOhTGn5lVbHdhNGHp4dih4cbv1%22%2C%22iat%22%3A1609386166%2C%22exp%22%3A1609389766%2C%22email%22%3A%22bob%40test.com%22%2C%22email_verified%22%3Afalse%2C%22firebase%22%3A%7B%22identities%22%3A%7B%22email%22%3A%5B%22bob%40test.com%22%5D%7D%2C%22sign_in_provider%22%3A%22password%22%7D%2C%22uid%22%3A%22m0DOhTGn5lVbHdhNGHp4dih4cbv1%22%7D%7D\"}"}}
+[debug] [2020-12-31T03:59:58.977Z] [runtime-status] [66987] Ephemeral server survived. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66987] Ephemeral server survived."}}
+[debug] [2020-12-31T03:59:59.141Z] Dec 30, 2020 10:59:59 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 10:59:59 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected HTTP/2 connection.\n"}}
+[info] i  functions: Finished "createWager" in ~1s {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"Finished \"createWager\" in ~1s"}}
+[debug] [2020-12-31T03:59:59.548Z] [worker-createWager-07a1170f-523c-4adb-a470-08134a148849]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-createWager-07a1170f-523c-4adb-a470-08134a148849]: IDLE"}}
+[debug] [2020-12-31T03:59:59.548Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[debug] [2020-12-31T04:00:47.491Z] Dec 30, 2020 11:00:47 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 11:00:47 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T04:01:01.611Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2020-12-31T04:01:01.611Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2020-12-31T04:01:01.611Z] Accepted request OPTIONS /ledgerdotbet-dev/us-central1/createWager --> createWager
+[debug] [2020-12-31T04:01:01.612Z] [worker-pool] submitWork(triggerId=createWager) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitWork(triggerId=createWager)"}}
+[debug] [2020-12-31T04:01:01.612Z] [worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: Assigning socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_66986.sock {"metadata":{"emulator":{"name":"functions"},"message":"[worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: Assigning socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_66986.sock"}}
+[debug] [2020-12-31T04:01:01.612Z] [worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: BUSY"}}
+[debug] [2020-12-31T04:01:01.613Z] [runtime-status] [66986] Trigger "createWager" has been found, beginning invocation! {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Trigger \"createWager\" has been found, beginning invocation!"}}
+[info] i  functions: Beginning execution of "createWager" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"Beginning execution of \"createWager\""}}
+[debug] [2020-12-31T04:01:01.615Z] [runtime-status] [66986] triggerDefinition {"httpsTrigger":{},"labels":{"deployment-callable":"true"},"name":"createWager","entryPoint":"createWager"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] triggerDefinition {\"httpsTrigger\":{},\"labels\":{\"deployment-callable\":\"true\"},\"name\":\"createWager\",\"entryPoint\":\"createWager\"}"}}
+[debug] [2020-12-31T04:01:01.615Z] [runtime-status] [66986] Running createWager in mode HTTPS {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Running createWager in mode HTTPS"}}
+[debug] [2020-12-31T04:01:01.617Z] [runtime-status] [66986] Attempting to listen to socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_66986.sock {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Attempting to listen to socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_66986.sock"}}
+[debug] [2020-12-31T04:01:01.618Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2020-12-31T04:01:01.627Z] [runtime-status] [66986] Ephemeral server handling OPTIONS request {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Ephemeral server handling OPTIONS request"}}
+[debug] [2020-12-31T04:01:01.629Z] [runtime-status] [66986] Ephemeral server survived. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Ephemeral server survived."}}
+[info] i  functions: Finished "createWager" in ~1s {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"Finished \"createWager\" in ~1s"}}
+[debug] [2020-12-31T04:01:01.631Z] [worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: IDLE"}}
+[debug] [2020-12-31T04:01:01.631Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[debug] [2020-12-31T04:01:01.632Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2020-12-31T04:01:01.632Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2020-12-31T04:01:01.632Z] Accepted request POST /ledgerdotbet-dev/us-central1/createWager --> createWager
+[debug] [2020-12-31T04:01:01.632Z] ID Token: eyJhbGciOiJSUzI1NiIsImtpZCI6IjA4MGU0NWJlNGIzMTE4MzA5M2RhNzUyYmIyZGU5Y2RjYTNlNmU4ZTciLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiQm9iIFRlc3RlciIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9sZWRnZXJkb3RiZXQtZGV2IiwiYXVkIjoibGVkZ2VyZG90YmV0LWRldiIsImF1dGhfdGltZSI6MTYwOTM0OTAyOSwidXNlcl9pZCI6Im0wRE9oVEduNWxWYkhkaE5HSHA0ZGloNGNidjEiLCJzdWIiOiJtMERPaFRHbjVsVmJIZGhOR0hwNGRpaDRjYnYxIiwiaWF0IjoxNjA5Mzg2MTY2LCJleHAiOjE2MDkzODk3NjYsImVtYWlsIjoiYm9iQHRlc3QuY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbImJvYkB0ZXN0LmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.aUL9ovHv39XqcTu4aUhzxRAF1-w4Ro6S_e3epaPepByyLazol8AwLoLu80kbMoQ4wFTvS_9ouknqP98t6AKFk0b3gEtIOe7Vpn4_Z6-7xYsesneSuv2fDqWaP1YNlZCr5J6NWwDvp68XIoIfzxcfs2dSy6aNmh3aGuv7wckM_YDX9B-Ol-SmYeLq2jKLn7WUgnTwvAowR4ptx1HxyG4JUBcj3bpTIaUCOV5t69ZnQ8yQN_w4LBSmGZq2kZ4gf1pTUuxmlof4P3Ly3vd11kowdHci86yfpR9RAu2797zhBZSCRxiH1mjrf6HoErhuKKMb7afjHhIN4QQ92SouErr48Q
+[debug] [2020-12-31T04:01:01.634Z] [worker-pool] submitWork(triggerId=createWager) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitWork(triggerId=createWager)"}}
+[debug] [2020-12-31T04:01:01.635Z] [worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: Assigning socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_66986.sock {"metadata":{"emulator":{"name":"functions"},"message":"[worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: Assigning socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_66986.sock"}}
+[debug] [2020-12-31T04:01:01.635Z] [worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: BUSY"}}
+[debug] [2020-12-31T04:01:01.641Z] [runtime-status] [66986] Trigger "createWager" has been found, beginning invocation! {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Trigger \"createWager\" has been found, beginning invocation!"}}
+[info] i  functions: Beginning execution of "createWager" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"Beginning execution of \"createWager\""}}
+[debug] [2020-12-31T04:01:01.642Z] [runtime-status] [66986] triggerDefinition {"httpsTrigger":{},"labels":{"deployment-callable":"true"},"name":"createWager","entryPoint":"createWager"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] triggerDefinition {\"httpsTrigger\":{},\"labels\":{\"deployment-callable\":\"true\"},\"name\":\"createWager\",\"entryPoint\":\"createWager\"}"}}
+[debug] [2020-12-31T04:01:01.642Z] [runtime-status] [66986] Running createWager in mode HTTPS {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Running createWager in mode HTTPS"}}
+[debug] [2020-12-31T04:01:01.642Z] [runtime-status] [66986] Attempting to listen to socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_66986.sock {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Attempting to listen to socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_66986.sock"}}
+[debug] [2020-12-31T04:01:01.643Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2020-12-31T04:01:01.658Z] [runtime-status] [66986] Ephemeral server handling POST request {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Ephemeral server handling POST request"}}
+[debug] [2020-12-31T04:01:01.659Z] [runtime-status] [66986] Callable functions auth override {"key":"x-callable-context-auth","value":"%7B%22uid%22%3A%22m0DOhTGn5lVbHdhNGHp4dih4cbv1%22%2C%22token%22%3A%7B%22name%22%3A%22Bob%20Tester%22%2C%22iss%22%3A%22https%3A%2F%2Fsecuretoken.google.com%2Fledgerdotbet-dev%22%2C%22aud%22%3A%22ledgerdotbet-dev%22%2C%22auth_time%22%3A1609349029%2C%22user_id%22%3A%22m0DOhTGn5lVbHdhNGHp4dih4cbv1%22%2C%22sub%22%3A%22m0DOhTGn5lVbHdhNGHp4dih4cbv1%22%2C%22iat%22%3A1609386166%2C%22exp%22%3A1609389766%2C%22email%22%3A%22bob%40test.com%22%2C%22email_verified%22%3Afalse%2C%22firebase%22%3A%7B%22identities%22%3A%7B%22email%22%3A%5B%22bob%40test.com%22%5D%7D%2C%22sign_in_provider%22%3A%22password%22%7D%2C%22uid%22%3A%22m0DOhTGn5lVbHdhNGHp4dih4cbv1%22%7D%7D"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Callable functions auth override {\"key\":\"x-callable-context-auth\",\"value\":\"%7B%22uid%22%3A%22m0DOhTGn5lVbHdhNGHp4dih4cbv1%22%2C%22token%22%3A%7B%22name%22%3A%22Bob%20Tester%22%2C%22iss%22%3A%22https%3A%2F%2Fsecuretoken.google.com%2Fledgerdotbet-dev%22%2C%22aud%22%3A%22ledgerdotbet-dev%22%2C%22auth_time%22%3A1609349029%2C%22user_id%22%3A%22m0DOhTGn5lVbHdhNGHp4dih4cbv1%22%2C%22sub%22%3A%22m0DOhTGn5lVbHdhNGHp4dih4cbv1%22%2C%22iat%22%3A1609386166%2C%22exp%22%3A1609389766%2C%22email%22%3A%22bob%40test.com%22%2C%22email_verified%22%3Afalse%2C%22firebase%22%3A%7B%22identities%22%3A%7B%22email%22%3A%5B%22bob%40test.com%22%5D%7D%2C%22sign_in_provider%22%3A%22password%22%7D%2C%22uid%22%3A%22m0DOhTGn5lVbHdhNGHp4dih4cbv1%22%7D%7D\"}"}}
+[debug] [2020-12-31T04:01:01.662Z] [runtime-status] [66986] Ephemeral server survived. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Ephemeral server survived."}}
+[debug] [2020-12-31T04:01:01.787Z] Dec 30, 2020 11:01:01 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 11:01:01 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected HTTP/2 connection.\n"}}
+[info] i  functions: Finished "createWager" in ~1s {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"Finished \"createWager\" in ~1s"}}
+[debug] [2020-12-31T04:01:01.909Z] [worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: IDLE"}}
+[debug] [2020-12-31T04:01:01.909Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[debug] [2020-12-31T04:01:47.602Z] Dec 30, 2020 11:01:47 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 11:01:47 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T04:01:55.838Z] Dec 30, 2020 11:01:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 11:01:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T04:01:56.694Z] Dec 30, 2020 11:01:56 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 11:01:56 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T04:02:03.766Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2020-12-31T04:02:03.767Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2020-12-31T04:02:03.767Z] Accepted request OPTIONS /ledgerdotbet-dev/us-central1/createWager --> createWager
+[debug] [2020-12-31T04:02:03.767Z] [worker-pool] submitWork(triggerId=createWager) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitWork(triggerId=createWager)"}}
+[debug] [2020-12-31T04:02:03.768Z] [worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: Assigning socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_66986.sock {"metadata":{"emulator":{"name":"functions"},"message":"[worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: Assigning socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_66986.sock"}}
+[debug] [2020-12-31T04:02:03.768Z] [worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: BUSY"}}
+[debug] [2020-12-31T04:02:03.768Z] [runtime-status] [66986] Trigger "createWager" has been found, beginning invocation! {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Trigger \"createWager\" has been found, beginning invocation!"}}
+[info] i  functions: Beginning execution of "createWager" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"Beginning execution of \"createWager\""}}
+[debug] [2020-12-31T04:02:03.769Z] [runtime-status] [66986] triggerDefinition {"httpsTrigger":{},"labels":{"deployment-callable":"true"},"name":"createWager","entryPoint":"createWager"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] triggerDefinition {\"httpsTrigger\":{},\"labels\":{\"deployment-callable\":\"true\"},\"name\":\"createWager\",\"entryPoint\":\"createWager\"}"}}
+[debug] [2020-12-31T04:02:03.769Z] [runtime-status] [66986] Running createWager in mode HTTPS {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Running createWager in mode HTTPS"}}
+[debug] [2020-12-31T04:02:03.770Z] [runtime-status] [66986] Attempting to listen to socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_66986.sock {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Attempting to listen to socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_66986.sock"}}
+[debug] [2020-12-31T04:02:03.772Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2020-12-31T04:02:03.777Z] [runtime-status] [66986] Ephemeral server handling OPTIONS request {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Ephemeral server handling OPTIONS request"}}
+[debug] [2020-12-31T04:02:03.778Z] [runtime-status] [66986] Ephemeral server survived. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Ephemeral server survived."}}
+[debug] [2020-12-31T04:02:03.780Z] [work-queue] {"queueLength":1,"workRunningCount":1}
+[debug] [2020-12-31T04:02:03.780Z] [work-queue] {"queueLength":0,"workRunningCount":2}
+[debug] [2020-12-31T04:02:03.780Z] Accepted request POST /ledgerdotbet-dev/us-central1/createWager --> createWager
+[debug] [2020-12-31T04:02:03.780Z] ID Token: eyJhbGciOiJSUzI1NiIsImtpZCI6IjA4MGU0NWJlNGIzMTE4MzA5M2RhNzUyYmIyZGU5Y2RjYTNlNmU4ZTciLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiQm9iIFRlc3RlciIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9sZWRnZXJkb3RiZXQtZGV2IiwiYXVkIjoibGVkZ2VyZG90YmV0LWRldiIsImF1dGhfdGltZSI6MTYwOTM0OTAyOSwidXNlcl9pZCI6Im0wRE9oVEduNWxWYkhkaE5HSHA0ZGloNGNidjEiLCJzdWIiOiJtMERPaFRHbjVsVmJIZGhOR0hwNGRpaDRjYnYxIiwiaWF0IjoxNjA5Mzg2MTY2LCJleHAiOjE2MDkzODk3NjYsImVtYWlsIjoiYm9iQHRlc3QuY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbImJvYkB0ZXN0LmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.aUL9ovHv39XqcTu4aUhzxRAF1-w4Ro6S_e3epaPepByyLazol8AwLoLu80kbMoQ4wFTvS_9ouknqP98t6AKFk0b3gEtIOe7Vpn4_Z6-7xYsesneSuv2fDqWaP1YNlZCr5J6NWwDvp68XIoIfzxcfs2dSy6aNmh3aGuv7wckM_YDX9B-Ol-SmYeLq2jKLn7WUgnTwvAowR4ptx1HxyG4JUBcj3bpTIaUCOV5t69ZnQ8yQN_w4LBSmGZq2kZ4gf1pTUuxmlof4P3Ly3vd11kowdHci86yfpR9RAu2797zhBZSCRxiH1mjrf6HoErhuKKMb7afjHhIN4QQ92SouErr48Q
+[debug] [2020-12-31T04:02:03.781Z] [worker-pool] submitWork(triggerId=createWager) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitWork(triggerId=createWager)"}}
+[debug] [2020-12-31T04:02:03.781Z] [worker-createWager-07a1170f-523c-4adb-a470-08134a148849]: Assigning socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_66987.sock {"metadata":{"emulator":{"name":"functions"},"message":"[worker-createWager-07a1170f-523c-4adb-a470-08134a148849]: Assigning socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_66987.sock"}}
+[debug] [2020-12-31T04:02:03.781Z] [worker-createWager-07a1170f-523c-4adb-a470-08134a148849]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-createWager-07a1170f-523c-4adb-a470-08134a148849]: BUSY"}}
+[info] i  functions: Finished "createWager" in ~1s {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"Finished \"createWager\" in ~1s"}}
+[debug] [2020-12-31T04:02:03.782Z] [worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: IDLE"}}
+[debug] [2020-12-31T04:02:03.782Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2020-12-31T04:02:03.783Z] [runtime-status] [66987] Trigger "createWager" has been found, beginning invocation! {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66987] Trigger \"createWager\" has been found, beginning invocation!"}}
+[info] i  functions: Beginning execution of "createWager" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"Beginning execution of \"createWager\""}}
+[debug] [2020-12-31T04:02:03.783Z] [runtime-status] [66987] triggerDefinition {"httpsTrigger":{},"labels":{"deployment-callable":"true"},"name":"createWager","entryPoint":"createWager"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66987] triggerDefinition {\"httpsTrigger\":{},\"labels\":{\"deployment-callable\":\"true\"},\"name\":\"createWager\",\"entryPoint\":\"createWager\"}"}}
+[debug] [2020-12-31T04:02:03.784Z] [runtime-status] [66987] Running createWager in mode HTTPS {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66987] Running createWager in mode HTTPS"}}
+[debug] [2020-12-31T04:02:03.785Z] [runtime-status] [66987] Attempting to listen to socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_66987.sock {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66987] Attempting to listen to socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_66987.sock"}}
+[debug] [2020-12-31T04:02:03.787Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2020-12-31T04:02:03.792Z] [runtime-status] [66987] Ephemeral server handling POST request {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66987] Ephemeral server handling POST request"}}
+[debug] [2020-12-31T04:02:03.793Z] [runtime-status] [66987] Callable functions auth override {"key":"x-callable-context-auth","value":"%7B%22uid%22%3A%22m0DOhTGn5lVbHdhNGHp4dih4cbv1%22%2C%22token%22%3A%7B%22name%22%3A%22Bob%20Tester%22%2C%22iss%22%3A%22https%3A%2F%2Fsecuretoken.google.com%2Fledgerdotbet-dev%22%2C%22aud%22%3A%22ledgerdotbet-dev%22%2C%22auth_time%22%3A1609349029%2C%22user_id%22%3A%22m0DOhTGn5lVbHdhNGHp4dih4cbv1%22%2C%22sub%22%3A%22m0DOhTGn5lVbHdhNGHp4dih4cbv1%22%2C%22iat%22%3A1609386166%2C%22exp%22%3A1609389766%2C%22email%22%3A%22bob%40test.com%22%2C%22email_verified%22%3Afalse%2C%22firebase%22%3A%7B%22identities%22%3A%7B%22email%22%3A%5B%22bob%40test.com%22%5D%7D%2C%22sign_in_provider%22%3A%22password%22%7D%2C%22uid%22%3A%22m0DOhTGn5lVbHdhNGHp4dih4cbv1%22%7D%7D"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66987] Callable functions auth override {\"key\":\"x-callable-context-auth\",\"value\":\"%7B%22uid%22%3A%22m0DOhTGn5lVbHdhNGHp4dih4cbv1%22%2C%22token%22%3A%7B%22name%22%3A%22Bob%20Tester%22%2C%22iss%22%3A%22https%3A%2F%2Fsecuretoken.google.com%2Fledgerdotbet-dev%22%2C%22aud%22%3A%22ledgerdotbet-dev%22%2C%22auth_time%22%3A1609349029%2C%22user_id%22%3A%22m0DOhTGn5lVbHdhNGHp4dih4cbv1%22%2C%22sub%22%3A%22m0DOhTGn5lVbHdhNGHp4dih4cbv1%22%2C%22iat%22%3A1609386166%2C%22exp%22%3A1609389766%2C%22email%22%3A%22bob%40test.com%22%2C%22email_verified%22%3Afalse%2C%22firebase%22%3A%7B%22identities%22%3A%7B%22email%22%3A%5B%22bob%40test.com%22%5D%7D%2C%22sign_in_provider%22%3A%22password%22%7D%2C%22uid%22%3A%22m0DOhTGn5lVbHdhNGHp4dih4cbv1%22%7D%7D\"}"}}
+[debug] [2020-12-31T04:02:03.793Z] [runtime-status] [66987] Ephemeral server survived. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66987] Ephemeral server survived."}}
+[info] i  functions: Finished "createWager" in ~1s {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"Finished \"createWager\" in ~1s"}}
+[debug] [2020-12-31T04:02:03.846Z] [worker-createWager-07a1170f-523c-4adb-a470-08134a148849]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-createWager-07a1170f-523c-4adb-a470-08134a148849]: IDLE"}}
+[debug] [2020-12-31T04:02:03.846Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[debug] [2020-12-31T04:02:07.229Z] Dec 30, 2020 11:02:07 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 11:02:07 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T04:02:08.235Z] Dec 30, 2020 11:02:08 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 11:02:08 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T04:02:13.642Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2020-12-31T04:02:13.642Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2020-12-31T04:02:13.642Z] Accepted request OPTIONS /ledgerdotbet-dev/us-central1/createWager --> createWager
+[debug] [2020-12-31T04:02:13.643Z] [worker-pool] submitWork(triggerId=createWager) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitWork(triggerId=createWager)"}}
+[debug] [2020-12-31T04:02:13.643Z] [worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: Assigning socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_66986.sock {"metadata":{"emulator":{"name":"functions"},"message":"[worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: Assigning socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_66986.sock"}}
+[debug] [2020-12-31T04:02:13.643Z] [worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: BUSY"}}
+[debug] [2020-12-31T04:02:13.644Z] [runtime-status] [66986] Trigger "createWager" has been found, beginning invocation! {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Trigger \"createWager\" has been found, beginning invocation!"}}
+[info] i  functions: Beginning execution of "createWager" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"Beginning execution of \"createWager\""}}
+[debug] [2020-12-31T04:02:13.644Z] [runtime-status] [66986] triggerDefinition {"httpsTrigger":{},"labels":{"deployment-callable":"true"},"name":"createWager","entryPoint":"createWager"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] triggerDefinition {\"httpsTrigger\":{},\"labels\":{\"deployment-callable\":\"true\"},\"name\":\"createWager\",\"entryPoint\":\"createWager\"}"}}
+[debug] [2020-12-31T04:02:13.644Z] [runtime-status] [66986] Running createWager in mode HTTPS {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Running createWager in mode HTTPS"}}
+[debug] [2020-12-31T04:02:13.645Z] [runtime-status] [66986] Attempting to listen to socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_66986.sock {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Attempting to listen to socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_66986.sock"}}
+[debug] [2020-12-31T04:02:13.646Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2020-12-31T04:02:13.649Z] [runtime-status] [66986] Ephemeral server handling OPTIONS request {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Ephemeral server handling OPTIONS request"}}
+[debug] [2020-12-31T04:02:13.650Z] [runtime-status] [66986] Ephemeral server survived. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Ephemeral server survived."}}
+[info] i  functions: Finished "createWager" in ~1s {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"Finished \"createWager\" in ~1s"}}
+[debug] [2020-12-31T04:02:13.651Z] [worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: IDLE"}}
+[debug] [2020-12-31T04:02:13.651Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[debug] [2020-12-31T04:02:13.652Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2020-12-31T04:02:13.652Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2020-12-31T04:02:13.652Z] Accepted request POST /ledgerdotbet-dev/us-central1/createWager --> createWager
+[debug] [2020-12-31T04:02:13.652Z] ID Token: eyJhbGciOiJSUzI1NiIsImtpZCI6IjA4MGU0NWJlNGIzMTE4MzA5M2RhNzUyYmIyZGU5Y2RjYTNlNmU4ZTciLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiQm9iIFRlc3RlciIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9sZWRnZXJkb3RiZXQtZGV2IiwiYXVkIjoibGVkZ2VyZG90YmV0LWRldiIsImF1dGhfdGltZSI6MTYwOTM0OTAyOSwidXNlcl9pZCI6Im0wRE9oVEduNWxWYkhkaE5HSHA0ZGloNGNidjEiLCJzdWIiOiJtMERPaFRHbjVsVmJIZGhOR0hwNGRpaDRjYnYxIiwiaWF0IjoxNjA5Mzg2MTY2LCJleHAiOjE2MDkzODk3NjYsImVtYWlsIjoiYm9iQHRlc3QuY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbImJvYkB0ZXN0LmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.aUL9ovHv39XqcTu4aUhzxRAF1-w4Ro6S_e3epaPepByyLazol8AwLoLu80kbMoQ4wFTvS_9ouknqP98t6AKFk0b3gEtIOe7Vpn4_Z6-7xYsesneSuv2fDqWaP1YNlZCr5J6NWwDvp68XIoIfzxcfs2dSy6aNmh3aGuv7wckM_YDX9B-Ol-SmYeLq2jKLn7WUgnTwvAowR4ptx1HxyG4JUBcj3bpTIaUCOV5t69ZnQ8yQN_w4LBSmGZq2kZ4gf1pTUuxmlof4P3Ly3vd11kowdHci86yfpR9RAu2797zhBZSCRxiH1mjrf6HoErhuKKMb7afjHhIN4QQ92SouErr48Q
+[debug] [2020-12-31T04:02:13.652Z] [worker-pool] submitWork(triggerId=createWager) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitWork(triggerId=createWager)"}}
+[debug] [2020-12-31T04:02:13.652Z] [worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: Assigning socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_66986.sock {"metadata":{"emulator":{"name":"functions"},"message":"[worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: Assigning socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_66986.sock"}}
+[debug] [2020-12-31T04:02:13.653Z] [worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: BUSY"}}
+[debug] [2020-12-31T04:02:13.662Z] [runtime-status] [66986] Trigger "createWager" has been found, beginning invocation! {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Trigger \"createWager\" has been found, beginning invocation!"}}
+[info] i  functions: Beginning execution of "createWager" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"Beginning execution of \"createWager\""}}
+[debug] [2020-12-31T04:02:13.663Z] [runtime-status] [66986] triggerDefinition {"httpsTrigger":{},"labels":{"deployment-callable":"true"},"name":"createWager","entryPoint":"createWager"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] triggerDefinition {\"httpsTrigger\":{},\"labels\":{\"deployment-callable\":\"true\"},\"name\":\"createWager\",\"entryPoint\":\"createWager\"}"}}
+[debug] [2020-12-31T04:02:13.663Z] [runtime-status] [66986] Running createWager in mode HTTPS {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Running createWager in mode HTTPS"}}
+[debug] [2020-12-31T04:02:13.663Z] [runtime-status] [66986] Attempting to listen to socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_66986.sock {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Attempting to listen to socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_66986.sock"}}
+[debug] [2020-12-31T04:02:13.664Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2020-12-31T04:02:13.673Z] [runtime-status] [66986] Ephemeral server handling POST request {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Ephemeral server handling POST request"}}
+[debug] [2020-12-31T04:02:13.675Z] [runtime-status] [66986] Callable functions auth override {"key":"x-callable-context-auth","value":"%7B%22uid%22%3A%22m0DOhTGn5lVbHdhNGHp4dih4cbv1%22%2C%22token%22%3A%7B%22name%22%3A%22Bob%20Tester%22%2C%22iss%22%3A%22https%3A%2F%2Fsecuretoken.google.com%2Fledgerdotbet-dev%22%2C%22aud%22%3A%22ledgerdotbet-dev%22%2C%22auth_time%22%3A1609349029%2C%22user_id%22%3A%22m0DOhTGn5lVbHdhNGHp4dih4cbv1%22%2C%22sub%22%3A%22m0DOhTGn5lVbHdhNGHp4dih4cbv1%22%2C%22iat%22%3A1609386166%2C%22exp%22%3A1609389766%2C%22email%22%3A%22bob%40test.com%22%2C%22email_verified%22%3Afalse%2C%22firebase%22%3A%7B%22identities%22%3A%7B%22email%22%3A%5B%22bob%40test.com%22%5D%7D%2C%22sign_in_provider%22%3A%22password%22%7D%2C%22uid%22%3A%22m0DOhTGn5lVbHdhNGHp4dih4cbv1%22%7D%7D"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Callable functions auth override {\"key\":\"x-callable-context-auth\",\"value\":\"%7B%22uid%22%3A%22m0DOhTGn5lVbHdhNGHp4dih4cbv1%22%2C%22token%22%3A%7B%22name%22%3A%22Bob%20Tester%22%2C%22iss%22%3A%22https%3A%2F%2Fsecuretoken.google.com%2Fledgerdotbet-dev%22%2C%22aud%22%3A%22ledgerdotbet-dev%22%2C%22auth_time%22%3A1609349029%2C%22user_id%22%3A%22m0DOhTGn5lVbHdhNGHp4dih4cbv1%22%2C%22sub%22%3A%22m0DOhTGn5lVbHdhNGHp4dih4cbv1%22%2C%22iat%22%3A1609386166%2C%22exp%22%3A1609389766%2C%22email%22%3A%22bob%40test.com%22%2C%22email_verified%22%3Afalse%2C%22firebase%22%3A%7B%22identities%22%3A%7B%22email%22%3A%5B%22bob%40test.com%22%5D%7D%2C%22sign_in_provider%22%3A%22password%22%7D%2C%22uid%22%3A%22m0DOhTGn5lVbHdhNGHp4dih4cbv1%22%7D%7D\"}"}}
+[debug] [2020-12-31T04:02:13.675Z] [runtime-status] [66986] Ephemeral server survived. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Ephemeral server survived."}}
+[info] >  { {"user":"{","metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"\u001b[90m> \u001b[39m {"}}
+[info] >    groupId: 'ltfxxKhyNepxfMIJ6cIU', {"user":"  groupId: 'ltfxxKhyNepxfMIJ6cIU',","metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"\u001b[90m> \u001b[39m   groupId: 'ltfxxKhyNepxfMIJ6cIU',"}}
+[info] >    id: '155e4c1c-dd15-41ca-840a-f68052960550', {"user":"  id: '155e4c1c-dd15-41ca-840a-f68052960550',","metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"\u001b[90m> \u001b[39m   id: '155e4c1c-dd15-41ca-840a-f68052960550',"}}
+[info] >    proposedBy: { uid: 'm0DOhTGn5lVbHdhNGHp4dih4cbv1', displayName: 'Bob Tester' }, {"user":"  proposedBy: { uid: 'm0DOhTGn5lVbHdhNGHp4dih4cbv1', displayName: 'Bob Tester' },","metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"\u001b[90m> \u001b[39m   proposedBy: { uid: 'm0DOhTGn5lVbHdhNGHp4dih4cbv1', displayName: 'Bob Tester' },"}}
+[info] >    proposedTo: { uid: 'WdgCNsCKVFeJM6X0cB2UWleFFED3', displayName: 'Bill Tester' }, {"user":"  proposedTo: { uid: 'WdgCNsCKVFeJM6X0cB2UWleFFED3', displayName: 'Bill Tester' },","metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"\u001b[90m> \u001b[39m   proposedTo: { uid: 'WdgCNsCKVFeJM6X0cB2UWleFFED3', displayName: 'Bill Tester' },"}}
+[info] >    status: 'pending', {"user":"  status: 'pending',","metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"\u001b[90m> \u001b[39m   status: 'pending',"}}
+[info] >    details: { {"user":"  details: {","metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"\u001b[90m> \u001b[39m   details: {"}}
+[info] >      selection: { event: [Object], market: 0, outcome: 1 }, {"user":"    selection: { event: [Object], market: 0, outcome: 1 },","metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"\u001b[90m> \u001b[39m     selection: { event: [Object], market: 0, outcome: 1 },"}}
+[info] >      risk: 50, {"user":"    risk: 50,","metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"\u001b[90m> \u001b[39m     risk: 50,"}}
+[info] >      win: 50 {"user":"    win: 50","metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"\u001b[90m> \u001b[39m     win: 50"}}
+[info] >    } {"user":"  }","metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"\u001b[90m> \u001b[39m   }"}}
+[info] >  } proposed {"user":"} proposed","metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"\u001b[90m> \u001b[39m } proposed"}}
+[info] i  functions: Finished "createWager" in ~1s {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"Finished \"createWager\" in ~1s"}}
+[debug] [2020-12-31T04:02:14.959Z] [worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: IDLE"}}
+[debug] [2020-12-31T04:02:14.959Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[debug] [2020-12-31T04:02:27.912Z] Dec 30, 2020 11:02:27 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 11:02:27 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T04:02:28.094Z] Dec 30, 2020 11:02:28 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 11:02:28 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected HTTP/2 connection.\n"}}
+[debug] [2020-12-31T04:02:28.260Z] Dec 30, 2020 11:02:28 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 11:02:28 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T04:02:28.419Z] Dec 30, 2020 11:02:28 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 11:02:28 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T04:02:28.516Z] Dec 30, 2020 11:02:28 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 11:02:28 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T04:02:29.780Z] Dec 30, 2020 11:02:29 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 11:02:29 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T04:02:30.919Z] Dec 30, 2020 11:02:30 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 11:02:30 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T04:02:34.716Z] Dec 30, 2020 11:02:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 11:02:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T04:02:37.280Z] Dec 30, 2020 11:02:37 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 11:02:37 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T04:02:44.999Z] Dec 30, 2020 11:02:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 11:02:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T04:03:37.374Z] Dec 30, 2020 11:03:37 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 11:03:37 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T04:03:45.093Z] Dec 30, 2020 11:03:45 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Dec 30, 2020 11:03:45 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2020-12-31T04:04:15.492Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2020-12-31T04:04:15.492Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2020-12-31T04:04:15.492Z] Accepted request OPTIONS /ledgerdotbet-dev/us-central1/createWager --> createWager
+[debug] [2020-12-31T04:04:15.494Z] [worker-pool] submitWork(triggerId=createWager) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitWork(triggerId=createWager)"}}
+[debug] [2020-12-31T04:04:15.494Z] [worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: Assigning socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_66986.sock {"metadata":{"emulator":{"name":"functions"},"message":"[worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: Assigning socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_66986.sock"}}
+[debug] [2020-12-31T04:04:15.494Z] [worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: BUSY"}}
+[debug] [2020-12-31T04:04:15.496Z] [runtime-status] [66986] Trigger "createWager" has been found, beginning invocation! {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Trigger \"createWager\" has been found, beginning invocation!"}}
+[info] i  functions: Beginning execution of "createWager" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"Beginning execution of \"createWager\""}}
+[debug] [2020-12-31T04:04:15.497Z] [runtime-status] [66986] triggerDefinition {"httpsTrigger":{},"labels":{"deployment-callable":"true"},"name":"createWager","entryPoint":"createWager"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] triggerDefinition {\"httpsTrigger\":{},\"labels\":{\"deployment-callable\":\"true\"},\"name\":\"createWager\",\"entryPoint\":\"createWager\"}"}}
+[debug] [2020-12-31T04:04:15.497Z] [runtime-status] [66986] Running createWager in mode HTTPS {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Running createWager in mode HTTPS"}}
+[debug] [2020-12-31T04:04:15.498Z] [runtime-status] [66986] Attempting to listen to socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_66986.sock {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Attempting to listen to socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_66986.sock"}}
+[debug] [2020-12-31T04:04:15.507Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2020-12-31T04:04:15.512Z] [runtime-status] [66986] Ephemeral server handling OPTIONS request {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Ephemeral server handling OPTIONS request"}}
+[debug] [2020-12-31T04:04:15.513Z] [runtime-status] [66986] Ephemeral server survived. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Ephemeral server survived."}}
+[info] i  functions: Finished "createWager" in ~1s {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"Finished \"createWager\" in ~1s"}}
+[debug] [2020-12-31T04:04:15.514Z] [worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: IDLE"}}
+[debug] [2020-12-31T04:04:15.514Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[debug] [2020-12-31T04:04:15.515Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2020-12-31T04:04:15.515Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2020-12-31T04:04:15.515Z] Accepted request POST /ledgerdotbet-dev/us-central1/createWager --> createWager
+[debug] [2020-12-31T04:04:15.515Z] ID Token: eyJhbGciOiJSUzI1NiIsImtpZCI6IjA4MGU0NWJlNGIzMTE4MzA5M2RhNzUyYmIyZGU5Y2RjYTNlNmU4ZTciLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiQm9iIFRlc3RlciIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9sZWRnZXJkb3RiZXQtZGV2IiwiYXVkIjoibGVkZ2VyZG90YmV0LWRldiIsImF1dGhfdGltZSI6MTYwOTM0OTAyOSwidXNlcl9pZCI6Im0wRE9oVEduNWxWYkhkaE5HSHA0ZGloNGNidjEiLCJzdWIiOiJtMERPaFRHbjVsVmJIZGhOR0hwNGRpaDRjYnYxIiwiaWF0IjoxNjA5Mzg2MTY2LCJleHAiOjE2MDkzODk3NjYsImVtYWlsIjoiYm9iQHRlc3QuY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbImJvYkB0ZXN0LmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.aUL9ovHv39XqcTu4aUhzxRAF1-w4Ro6S_e3epaPepByyLazol8AwLoLu80kbMoQ4wFTvS_9ouknqP98t6AKFk0b3gEtIOe7Vpn4_Z6-7xYsesneSuv2fDqWaP1YNlZCr5J6NWwDvp68XIoIfzxcfs2dSy6aNmh3aGuv7wckM_YDX9B-Ol-SmYeLq2jKLn7WUgnTwvAowR4ptx1HxyG4JUBcj3bpTIaUCOV5t69ZnQ8yQN_w4LBSmGZq2kZ4gf1pTUuxmlof4P3Ly3vd11kowdHci86yfpR9RAu2797zhBZSCRxiH1mjrf6HoErhuKKMb7afjHhIN4QQ92SouErr48Q
+[debug] [2020-12-31T04:04:15.515Z] [worker-pool] submitWork(triggerId=createWager) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitWork(triggerId=createWager)"}}
+[debug] [2020-12-31T04:04:15.515Z] [worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: Assigning socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_66986.sock {"metadata":{"emulator":{"name":"functions"},"message":"[worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: Assigning socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_66986.sock"}}
+[debug] [2020-12-31T04:04:15.516Z] [worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: BUSY"}}
+[debug] [2020-12-31T04:04:15.525Z] [runtime-status] [66986] Trigger "createWager" has been found, beginning invocation! {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Trigger \"createWager\" has been found, beginning invocation!"}}
+[info] i  functions: Beginning execution of "createWager" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"Beginning execution of \"createWager\""}}
+[debug] [2020-12-31T04:04:15.526Z] [runtime-status] [66986] triggerDefinition {"httpsTrigger":{},"labels":{"deployment-callable":"true"},"name":"createWager","entryPoint":"createWager"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] triggerDefinition {\"httpsTrigger\":{},\"labels\":{\"deployment-callable\":\"true\"},\"name\":\"createWager\",\"entryPoint\":\"createWager\"}"}}
+[debug] [2020-12-31T04:04:15.526Z] [runtime-status] [66986] Running createWager in mode HTTPS {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Running createWager in mode HTTPS"}}
+[debug] [2020-12-31T04:04:15.526Z] [runtime-status] [66986] Attempting to listen to socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_66986.sock {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Attempting to listen to socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_66986.sock"}}
+[debug] [2020-12-31T04:04:15.527Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2020-12-31T04:04:15.532Z] [runtime-status] [66986] Ephemeral server handling POST request {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Ephemeral server handling POST request"}}
+[debug] [2020-12-31T04:04:15.532Z] [runtime-status] [66986] Callable functions auth override {"key":"x-callable-context-auth","value":"%7B%22uid%22%3A%22m0DOhTGn5lVbHdhNGHp4dih4cbv1%22%2C%22token%22%3A%7B%22name%22%3A%22Bob%20Tester%22%2C%22iss%22%3A%22https%3A%2F%2Fsecuretoken.google.com%2Fledgerdotbet-dev%22%2C%22aud%22%3A%22ledgerdotbet-dev%22%2C%22auth_time%22%3A1609349029%2C%22user_id%22%3A%22m0DOhTGn5lVbHdhNGHp4dih4cbv1%22%2C%22sub%22%3A%22m0DOhTGn5lVbHdhNGHp4dih4cbv1%22%2C%22iat%22%3A1609386166%2C%22exp%22%3A1609389766%2C%22email%22%3A%22bob%40test.com%22%2C%22email_verified%22%3Afalse%2C%22firebase%22%3A%7B%22identities%22%3A%7B%22email%22%3A%5B%22bob%40test.com%22%5D%7D%2C%22sign_in_provider%22%3A%22password%22%7D%2C%22uid%22%3A%22m0DOhTGn5lVbHdhNGHp4dih4cbv1%22%7D%7D"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Callable functions auth override {\"key\":\"x-callable-context-auth\",\"value\":\"%7B%22uid%22%3A%22m0DOhTGn5lVbHdhNGHp4dih4cbv1%22%2C%22token%22%3A%7B%22name%22%3A%22Bob%20Tester%22%2C%22iss%22%3A%22https%3A%2F%2Fsecuretoken.google.com%2Fledgerdotbet-dev%22%2C%22aud%22%3A%22ledgerdotbet-dev%22%2C%22auth_time%22%3A1609349029%2C%22user_id%22%3A%22m0DOhTGn5lVbHdhNGHp4dih4cbv1%22%2C%22sub%22%3A%22m0DOhTGn5lVbHdhNGHp4dih4cbv1%22%2C%22iat%22%3A1609386166%2C%22exp%22%3A1609389766%2C%22email%22%3A%22bob%40test.com%22%2C%22email_verified%22%3Afalse%2C%22firebase%22%3A%7B%22identities%22%3A%7B%22email%22%3A%5B%22bob%40test.com%22%5D%7D%2C%22sign_in_provider%22%3A%22password%22%7D%2C%22uid%22%3A%22m0DOhTGn5lVbHdhNGHp4dih4cbv1%22%7D%7D\"}"}}
+[debug] [2020-12-31T04:04:15.532Z] [runtime-status] [66986] Ephemeral server survived. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [66986] Ephemeral server survived."}}
+[info] >  { {"user":"{","metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"\u001b[90m> \u001b[39m {"}}
+[info] >    groupId: 'ltfxxKhyNepxfMIJ6cIU', {"user":"  groupId: 'ltfxxKhyNepxfMIJ6cIU',","metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"\u001b[90m> \u001b[39m   groupId: 'ltfxxKhyNepxfMIJ6cIU',"}}
+[info] >    id: 'e8ae9787-6098-4924-b1fb-2fcbc5328b82', {"user":"  id: 'e8ae9787-6098-4924-b1fb-2fcbc5328b82',","metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"\u001b[90m> \u001b[39m   id: 'e8ae9787-6098-4924-b1fb-2fcbc5328b82',"}}
+[info] >    proposedBy: { uid: 'm0DOhTGn5lVbHdhNGHp4dih4cbv1', displayName: 'Bob Tester' }, {"user":"  proposedBy: { uid: 'm0DOhTGn5lVbHdhNGHp4dih4cbv1', displayName: 'Bob Tester' },","metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"\u001b[90m> \u001b[39m   proposedBy: { uid: 'm0DOhTGn5lVbHdhNGHp4dih4cbv1', displayName: 'Bob Tester' },"}}
+[info] >    proposedTo: { uid: 'WdgCNsCKVFeJM6X0cB2UWleFFED3', displayName: 'Bill Tester' }, {"user":"  proposedTo: { uid: 'WdgCNsCKVFeJM6X0cB2UWleFFED3', displayName: 'Bill Tester' },","metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"\u001b[90m> \u001b[39m   proposedTo: { uid: 'WdgCNsCKVFeJM6X0cB2UWleFFED3', displayName: 'Bill Tester' },"}}
+[info] >    status: 'pending', {"user":"  status: 'pending',","metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"\u001b[90m> \u001b[39m   status: 'pending',"}}
+[info] >    details: { {"user":"  details: {","metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"\u001b[90m> \u001b[39m   details: {"}}
+[info] >      selection: { event: [Object], market: 0, outcome: 1 }, {"user":"    selection: { event: [Object], market: 0, outcome: 1 },","metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"\u001b[90m> \u001b[39m     selection: { event: [Object], market: 0, outcome: 1 },"}}
+[info] >      risk: 20, {"user":"    risk: 20,","metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"\u001b[90m> \u001b[39m     risk: 20,"}}
+[info] >      win: 20 {"user":"    win: 20","metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"\u001b[90m> \u001b[39m     win: 20"}}
+[info] >    } {"user":"  }","metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"\u001b[90m> \u001b[39m   }"}}
+[info] >  } proposed {"user":"} proposed","metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"\u001b[90m> \u001b[39m } proposed"}}
+[info] i  functions: Finished "createWager" in ~1s {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"Finished \"createWager\" in ~1s"}}
+[debug] [2020-12-31T04:04:16.513Z] [worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-createWager-82a95cbd-43fe-4d14-a148-f69e4ac1df06]: IDLE"}}
+[debug] [2020-12-31T04:04:16.513Z] [work-queue] {"queueLength":0,"workRunningCount":0}
