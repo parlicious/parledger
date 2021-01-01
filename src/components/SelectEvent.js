@@ -15,12 +15,11 @@ const OddsContainer = styled.div`
 `
 
 export const Outcome = ({outcome}) => {
-    console.log(outcome)
     if (outcome) {
         return (
             <OutcomeContainer>
                 {outcome.price.handicap && <OddsContainer>
-                    {['O','U'].includes(outcome.type)  && outcome.type} {outcome.price.handicap + ' '}
+                    {['O', 'U'].includes(outcome.type) && outcome.type} {outcome.price.handicap + ' '}
                 </OddsContainer>}
             </OutcomeContainer>
         )
@@ -73,8 +72,7 @@ export const TitleCell = styled(EventCell)`
 
 const TimeAndDateCell = styled.div`
   grid-column: 1;
-  grid-row-start: 1;
-  grid-row-end: 3;
+  grid-row: span 2;
 
   padding: 1em;
 
@@ -102,6 +100,7 @@ const SelectableOddsCellContainer = styled(OddsCell)`
     }
   }};
   display: flex;
+  flex-wrap: wrap-reverse;
   flex-direction: row-reverse;
   justify-content: space-between;
 
@@ -111,12 +110,11 @@ const SelectableOddsCellContainer = styled(OddsCell)`
   }
 `
 
-const SelectableOddsCell = ({eventSelected, event, market, outcome, selectedMarket, selectedOutcome}) => {
-    const opponent = selectedMarket === market && selectedOutcome !== outcome;
-    const selected = selectedMarket === market && selectedOutcome === outcome;
+const SelectableOddsCell = ({eventSelected, event, market, outcome, selected, opponent}) => {
     return (
-        <SelectableOddsCellContainer selected={selected} opponent={opponent} onClick={() => eventSelected({event, market, outcome})}>
-            <Outcome outcome={event?.displayGroups[0]?.markets[market]?.outcomes[outcome]}/> {selected && "You: "} {opponent && "Them: "}
+        <SelectableOddsCellContainer selected={selected} opponent={opponent}
+                                     onClick={() => eventSelected({event, market, outcome})}>
+            <Outcome outcome={event?.displayGroups[0]?.markets[market]?.outcomes[outcome]}/>
         </SelectableOddsCellContainer>
     )
 }
@@ -145,6 +143,11 @@ export const TitleRow = ({name}) => {
     )
 }
 
+const EventHeaderContainer = styled.div`
+  grid-column-start: 1;
+  grid-column-end: 5;
+`
+
 const NotesRow = styled.div`
   grid-column-start: 1;
   grid-column-end: 5;
@@ -163,10 +166,40 @@ const SportSection = ({section, eventSelected}) => {
     )
 }
 
-export const Event = ({event, eventSelected, selectedMarket, selectedOutcome}) => {
+const OutcomesRow = ({event, wagerMembers, selectedOutcome, selectedMarket, eventSelected, rowNum}) => {
+    const auth = useStoreState(state => state.firebase.auth);
+    if (!!wagerMembers) {
+        const selected = wagerMembers[rowNum].uid === auth.uid;
+        const opponent = wagerMembers[(rowNum + 1) % 2].uid === auth.uid;
+        return (
+            <React.Fragment>
+                <SelectableOddsCellContainer selected={selected} opponent={opponent}>
+                    {wagerMembers[rowNum].displayName}
+                </SelectableOddsCellContainer>
+                <SelectableOddsCell selected={selected} opponent={opponent} event={event} market={selectedMarket}
+                                    outcome={rowNum}/>
+            </React.Fragment>
+        )
+    } else {
+        return (
+            <React.Fragment>
+                <SelectableOddsCell
+                    eventSelected={eventSelected}
+                    event={event} market={0} outcome={rowNum}/>
+                <SelectableOddsCell
+                    eventSelected={eventSelected}
+                    event={event} market={2} outcome={rowNum}/>
+            </React.Fragment>
+        )
+    }
+}
+
+export const Event = (props) => {
+    const {headerComponent, footerComponent, event} = props;
     const eventTime = new Date(event.startTime);
     return (
         <EventCell key={event.id}>
+            {headerComponent && <EventHeaderContainer>{headerComponent}</EventHeaderContainer>}
             <TimeAndDateCell>
                 <div>{eventTime.toLocaleDateString()}</div>
                 <div>{eventTime.toLocaleTimeString()}</div>
@@ -174,26 +207,15 @@ export const Event = ({event, eventSelected, selectedMarket, selectedOutcome}) =
             <OddsCell>
                 {event.competitors[0]?.name}
             </OddsCell>
-            <SelectableOddsCell selectedOutcome={selectedOutcome}
-                                selectedMarket={selectedMarket}
-                                eventSelected={eventSelected}
-                                event={event} market={0} outcome={0}/>
-            <SelectableOddsCell selectedOutcome={selectedOutcome}
-                                selectedMarket={selectedMarket} eventSelected={eventSelected}
-                                event={event} market={2} outcome={0}/>
+            <OutcomesRow {...props} rowNum={0}/>
             <OddsCell>
                 {event.competitors[1]?.name}
             </OddsCell>
-            <SelectableOddsCell selectedOutcome={selectedOutcome}
-                                selectedMarket={selectedMarket} eventSelected={eventSelected}
-                                event={event} market={0} outcome={1}/>
-            <SelectableOddsCell
-                selectedOutcome={selectedOutcome}
-                selectedMarket={selectedMarket}
-                eventSelected={eventSelected} event={event} market={2} outcome={1}/>
+            <OutcomesRow {...props} rowNum={1}/>
             {event.notes && <NotesRow>
                 {event.notes}
             </NotesRow>}
+            {footerComponent && <EventHeaderContainer> {footerComponent} </EventHeaderContainer>}
         </EventCell>
     )
 };
@@ -204,8 +226,6 @@ export const SelectEvent = ({eventSelected}) => {
     const [numSections, setNumSections] = useState(2);
     const renderedEvents = events.slice(0, numSections)
     const fetchMoreData = () => setNumSections(numSections + 1)
-
-    console.log(events[0])
 
     return (
         <React.Fragment>
@@ -220,7 +240,8 @@ export const SelectEvent = ({eventSelected}) => {
                     </p>
                 }
             >
-                {renderedEvents.map(section => <SportSection eventSelected={eventSelected} section={section}/>)}
+                {renderedEvents.map(section => <SportSection key={section.id} eventSelected={eventSelected}
+                                                             section={section}/>)}
             </InfiniteScroll>
         </React.Fragment>
     )

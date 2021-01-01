@@ -69,7 +69,7 @@ const addUserToGroup = async (invitationCode, uid, allowDerivatives) => {
     console.log(userRef.exists, codeIsValid, matchingCode);
     if (userRef.exists && codeIsValid) {
         const user = userRef.data();
-        await group.ref.collection('users').doc(uid).set({displayName: user.displayName, uid, allowDerivatives, joined: Date.now(), group: groupId})
+        await group.ref.collection('users').doc(uid).set({displayName: user.displayName, avatarUrl: user.avatarUrl, uid, allowDerivatives, joined: Date.now(), group: groupId})
         const groups = Array.from(new Set([groupId, ...user.groups || []]))
         await db.collection('users').doc(uid).set({...user, groups})
     }
@@ -92,7 +92,7 @@ exports.joinGroup = functions.https.onCall(async (data, context) => {
 });
 
 exports.createWager = functions.https.onCall(async (data, context) => {
-    const {groupId, proposedTo, details} = data;
+    const {groupId, proposedTo, details, type} = data;
     const proposedBy = context.auth.uid;
     const usersSnapshot = await db.collection(`groups/${groupId}/users`).doc(proposedBy).get();
     if (!usersSnapshot.exists) {
@@ -121,6 +121,7 @@ exports.createWager = functions.https.onCall(async (data, context) => {
     const wagerToSave = {
         id: uuidv4(),
         groupId: groupId,
+        type,
         proposedBy: {
             uid: proposedBy,
             displayName: creatingUserSnapshot.data().displayName

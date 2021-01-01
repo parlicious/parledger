@@ -41,7 +41,7 @@ const rrfConfig = {
         return {
             uid: userData.uid,
             email: userData.email,
-            avatarUrl: userData.avatarUrl || null,
+            avatarUrl: userData.photoURL || null,
             displayName: userData.displayName,
         }
     }

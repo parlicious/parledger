@@ -44,9 +44,23 @@ export const wagersModel = {
             actions.saveEvents(events);
         }
     }),
+    groupWagers: [],
+    setGroupWagers: action((state, payload) => {
+        state.groupWagers = Object.values(payload ?? {})
+            .filter(wager => wager.status !== 'rejected')
+            .filter(wager => wager.proposedTo.uid !== state.auth.uid && wager.proposedTo.uid !== state.auth.uid)
+    }),
+    loadGroupWagers: thunk(async (actions, payload, helpers) => {
+        const state = helpers.getStoreState();
+        console.log(state);
+        actions.setGroupWagers(state.firestore.data.wagers);
+    }),
     createWager: thunk(async (actions, payload, helpers) => {
         const firebase = helpers.injections.getFirebase()
-        console.log(payload);
         await firebase.functions().httpsCallable('createWager')(payload);
+    }),
+    respondToWager: thunk(async (actions, payload, helpers) => {
+        const firebase = helpers.injections.getFirebase();
+        await firebase.functions().httpsCallable('confirmWager')(payload)
     })
 }
