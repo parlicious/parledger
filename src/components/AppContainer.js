@@ -63,14 +63,8 @@ export const AppContainer = (props) => {
                         Log In
                     </AppHeaderLink>
                     : <React.Fragment>
-                        <AppHeaderLink to="/groups/join">
-                            Groups
-                        </AppHeaderLink>
                         <AppHeaderLink to="/wagers/new">
                             Make a Wager
-                        </AppHeaderLink>
-                        <AppHeaderLink to="/me">
-                            {profile.displayName}
                         </AppHeaderLink>
                         <AppHeaderAnchor onClick={logOut}> Sign Out </AppHeaderAnchor>
                     </React.Fragment>
