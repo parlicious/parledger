@@ -32,7 +32,8 @@ const devFirebaseConfig = {
     measurementId: "G-4BMDL21TP0"
 };
 
-const firebaseConfig = process.env.ENV === 'prod' ? prodFirebaseConfig : devFirebaseConfig;
+console.log(`Built with env ${process.env.REACT_APP_FIREBASE_PROJECT}`)
+const firebaseConfig = process.env.REACT_APP_FIREBASE_PROJECT === 'prod' ? prodFirebaseConfig : devFirebaseConfig;
 
 const rrfConfig = {
     userProfile: 'users',
