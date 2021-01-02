@@ -4,8 +4,11 @@ import {Redirect, useHistory} from 'react-router-dom';
 import {StyledFirebaseAuth} from "react-firebaseui";
 import {JoinGroupPage} from "./JoinGroupPage";
 import React, {useState} from "react";
+import {authProviderIds} from "../stores/store";
 
 // Configure FirebaseUI.
+
+
 
 export function LoginPage({signup}) {
     const firebase = useFirebase()
@@ -15,10 +18,7 @@ export function LoginPage({signup}) {
     const uiConfig = {
         // Popup signin flow rather than redirect flow.
         signInFlow: 'popup',
-        signInOptions: [
-            firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-            // firebase.auth.EmailAuthProvider.PROVIDER_ID
-        ],
+        signInOptions: authProviderIds,
         callbacks: {
             signInSuccessWithAuthResult: (authResult, redirectUrl) => {
                 firebase.handleRedirectResult(authResult).then(() => {

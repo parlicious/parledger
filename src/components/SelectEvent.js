@@ -83,6 +83,7 @@ const SelectableOddsCellContainer = styled(OddsCell)`
   flex-wrap: wrap-reverse;
   flex-direction: row-reverse;
   justify-content: space-between;
+  text-transform: capitalize;
 
   :hover {
     cursor: pointer;

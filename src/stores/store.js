@@ -11,30 +11,24 @@ import {wagersModel} from "./wagers";
 import {usersModel} from "./users"; // <- needed if using firestore
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const prodFirebaseConfig = {
-    apiKey: "AIzaSyDgBRkq0CxmKYpyO2_kBaqz13z2ZTzaOOU",
-    authDomain: "parledger-app.firebaseapp.com",
-    databaseURL: "https://parledger-app.firebaseio.com",
-    projectId: "parledger-app",
-    storageBucket: "parledger-app.appspot.com",
-    messagingSenderId: "955423843573",
-    appId: "1:955423843573:web:f9a7b0ba602c84c86951bc",
-    measurementId: "G-2CVGGBD2MH"
+const firebaseConfig = {
+    apiKey: process.env.REACT_APP_APIKEY,
+    authDomain: process.env.REACT_APP_AUTHDOMAIN,
+    databaseURL: process.env.REACT_APP_DATABASEURL,
+    projectId: process.env.REACT_APP_PROJECTID,
+    storageBucket: process.env.REACT_APP_STORAGEBUCKET,
+    messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID,
+    appId: process.env.REACT_APP_APPID,
+    measurementId: process.env.REACT_APP_MEASUREMENTID,
 };
 
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const devFirebaseConfig = {
-    apiKey: "AIzaSyCL_K2UDJmOpbwxYu2S6ySvEP8TJbltlk8",
-    authDomain: "ledgerdotbet-dev.firebaseapp.com",
-    projectId: "ledgerdotbet-dev",
-    storageBucket: "ledgerdotbet-dev.appspot.com",
-    messagingSenderId: "812605505064",
-    appId: "1:812605505064:web:0de526f3d351bdc77f3f1d",
-    measurementId: "G-4BMDL21TP0"
-};
+console.log(firebaseConfig);
+
+export const authProviderIds = process.env.REACT_APP_FIREBASE_PROJECT === 'prod'
+    ? [firebase.auth.GoogleAuthProvider.PROVIDER_ID]
+    : [firebase.auth.EmailAuthProvider.PROVIDER_ID]
 
 console.log(`Built with env ${process.env.REACT_APP_FIREBASE_PROJECT}`)
-const firebaseConfig = process.env.REACT_APP_FIREBASE_PROJECT === 'prod' ? prodFirebaseConfig : devFirebaseConfig;
 
 const rrfConfig = {
     userProfile: 'users',
