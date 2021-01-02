@@ -19,7 +19,7 @@ export const Outcome = ({outcome}) => {
         return (
             <OutcomeContainer>
                 {outcome.price.handicap && <OddsContainer>
-                    {['O', 'U'].includes(outcome.type) && outcome.type} {outcome.price.handicap + ' '}
+                    {['O', 'U'].includes(outcome.type) && outcome.type}&nbsp;{outcome.price.handicap + ' '}
                 </OddsContainer>}
             </OutcomeContainer>
         )
@@ -185,11 +185,11 @@ export const Event = (props) => {
                 <div>{eventTime.toLocaleTimeString()}</div>
             </TimeAndDateCell>
             <OddsCell>
-                {event.competitors[0]?.name}
+                {event.competitors[1]?.name}
             </OddsCell>
             <OutcomesRow {...props} rowNum={0}/>
             <OddsCell>
-                {event.competitors[1]?.name}
+                {event.competitors[0]?.name}
             </OddsCell>
             <OutcomesRow {...props} rowNum={1}/>
             {event.notes && <NotesRow>

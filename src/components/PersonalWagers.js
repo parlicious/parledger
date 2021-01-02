@@ -16,8 +16,8 @@ const WagerDescriptionRowContainer = styled.div`
   border-radius: 0.3em 0.3em 0 0;
   background: white;
   color: #0F2027;
-  
-  @media(max-width: 600px){
+
+  @media (max-width: 600px) {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
@@ -44,7 +44,13 @@ const WagerAmount = ({risk, toWin}) => {
 }
 
 const WagerDescriptionIcon = styled.i`
-    padding-right: 0.5em;
+  padding-right: 0.5em;
+`
+
+const MemberAndAmountContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 `
 
 const WagerDescriptionRow = ({eventDescription, pending, risk, toWin, wager}) => {
@@ -62,8 +68,10 @@ const WagerDescriptionRow = ({eventDescription, pending, risk, toWin, wager}) =>
 
                 {eventDescription}
             </WagerDescriptionText>
-            <WagerMembers wager={wager}/>
-            <WagerAmount risk={risk} toWin={toWin}/>
+            <MemberAndAmountContainer>
+                <WagerMembers wager={wager}/>
+                <WagerAmount risk={risk} toWin={toWin}/>
+            </MemberAndAmountContainer>
         </WagerDescriptionRowContainer>
     );
 }
@@ -109,7 +117,7 @@ const ConfirmWagerText = styled.span`
 
 const WagerMembersContainer = styled.span`
   display: flex;
-  padding: 0 0.3em;
+  padding-right: 0.5em;
   justify-content: center;
   align-items: center;
 `
@@ -233,7 +241,8 @@ export const PersonalWagers = ({}) => {
             {wagers.length > 0
                 ? wagers.map(wager => <Wager onConfirm={confirmWager} wager={wager}/>)
                 : <PersonalWagersTitle>
-                    You haven't made any wagers yet, maybe you should <InlineLink to={'/wagers/new'}>propose one </InlineLink>
+                    You haven't made any wagers yet, maybe you should <InlineLink to={'/wagers/new'}>propose
+                    one </InlineLink>
                 </PersonalWagersTitle>
             }
         </div>

@@ -58,6 +58,7 @@ const BetAmountButton = styled.button`
 
 const BetAmountRow = styled.div`
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
 `

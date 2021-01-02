@@ -375,3 +375,412 @@ INFO: Detected non-HTTP/2 connection.
 [debug] [2021-01-02T00:48:40.803Z] Jan 01, 2021 7:48:40 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
 INFO: Detected non-HTTP/2 connection.
  {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:48:40 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:48:55.041Z] Jan 01, 2021 7:48:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:48:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:49:18.747Z] Jan 01, 2021 7:49:18 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:49:18 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:49:40.911Z] Jan 01, 2021 7:49:40 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:49:40 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:49:55.196Z] Jan 01, 2021 7:49:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:49:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:50:18.840Z] Jan 01, 2021 7:50:18 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:50:18 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:50:41.039Z] Jan 01, 2021 7:50:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:50:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:50:55.288Z] Jan 01, 2021 7:50:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:50:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:50:57.256Z] Jan 01, 2021 7:50:57 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:50:57 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:51:00.523Z] Jan 01, 2021 7:51:00 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:51:00 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:51:30.617Z] Jan 01, 2021 7:51:30 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:51:30 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:51:40.709Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2021-01-02T00:51:40.713Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2021-01-02T00:51:40.717Z] Accepted request OPTIONS /ledgerdotbet-dev/us-central1/createWager --> createWager
+[debug] [2021-01-02T00:51:40.755Z] [worker-pool] addWorker(createWager) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(createWager)"}}
+[debug] [2021-01-02T00:51:40.755Z] [worker-pool] Adding worker with key createWager, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key createWager, total=1"}}
+[debug] [2021-01-02T00:51:40.755Z] [worker-pool] submitWork(triggerId=createWager) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitWork(triggerId=createWager)"}}
+[debug] [2021-01-02T00:51:40.755Z] [worker-createWager-b8aea9a2-11c4-4775-b766-a19753aa07d3]: Assigning socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_15310.sock {"metadata":{"emulator":{"name":"functions"},"message":"[worker-createWager-b8aea9a2-11c4-4775-b766-a19753aa07d3]: Assigning socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_15310.sock"}}
+[debug] [2021-01-02T00:51:40.756Z] [worker-createWager-b8aea9a2-11c4-4775-b766-a19753aa07d3]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-createWager-b8aea9a2-11c4-4775-b766-a19753aa07d3]: BUSY"}}
+[debug] [2021-01-02T00:51:40.888Z] [runtime-status] [15310] Functions runtime initialized. {"cwd":"/Users/donnie/code/parledger/functions","node_version":"14.15.1"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [15310] Functions runtime initialized. {\"cwd\":\"/Users/donnie/code/parledger/functions\",\"node_version\":\"14.15.1\"}"}}
+[debug] [2021-01-02T00:51:40.888Z] [runtime-status] [15310] Disabled runtime features: undefined {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [15310] Disabled runtime features: undefined"}}
+[debug] [2021-01-02T00:51:40.890Z] [runtime-status] [15310] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.13.0","resolution":"/Users/donnie/code/parledger/functions/node_modules/firebase-admin/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [15310] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"8.13.0\",\"resolution\":\"/Users/donnie/code/parledger/functions/node_modules/firebase-admin/lib/index.js\"}"}}
+[debug] [2021-01-02T00:51:40.892Z] [runtime-status] [15310] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.13.0","resolution":"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [15310] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.13.0\",\"resolution\":\"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js\"}"}}
+[debug] [2021-01-02T00:51:40.893Z] [runtime-status] [15310] Found local functions config: /Users/donnie/code/parledger/functions/.runtimeconfig.json {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [15310] Found local functions config: /Users/donnie/code/parledger/functions/.runtimeconfig.json"}}
+[debug] [2021-01-02T00:51:40.893Z] [runtime-status] [15310] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.13.0","resolution":"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [15310] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.13.0\",\"resolution\":\"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js\"}"}}
+[debug] [2021-01-02T00:51:40.894Z] [runtime-status] [15310] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [15310] Outgoing network have been stubbed. [{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"net\",\"status\":\"mocked\"}]"}}
+[debug] [2021-01-02T00:51:40.894Z] [runtime-status] [15310] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.13.0","resolution":"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [15310] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.13.0\",\"resolution\":\"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js\"}"}}
+[debug] [2021-01-02T00:51:40.922Z] [runtime-status] [15310] Checked functions.config() {"config":{"storage":{"bucket":"ledgerdotbet-dev.appspot.com"}}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [15310] Checked functions.config() {\"config\":{\"storage\":{\"bucket\":\"ledgerdotbet-dev.appspot.com\"}}}"}}
+[debug] [2021-01-02T00:51:40.923Z] [runtime-status] [15310] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"3.13.0","resolution":"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [15310] firebase-functions has been stubbed. {\"functionsResolution\":{\"declared\":true,\"installed\":true,\"version\":\"3.13.0\",\"resolution\":\"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js\"}}"}}
+[debug] [2021-01-02T00:51:40.923Z] [runtime-status] [15310] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.13.0","resolution":"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [15310] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.13.0\",\"resolution\":\"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js\"}"}}
+[debug] [2021-01-02T00:51:40.923Z] [runtime-status] [15310] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.13.0","resolution":"/Users/donnie/code/parledger/functions/node_modules/firebase-admin/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [15310] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"8.13.0\",\"resolution\":\"/Users/donnie/code/parledger/functions/node_modules/firebase-admin/lib/index.js\"}"}}
+[debug] [2021-01-02T00:51:40.923Z] [runtime-status] [15310] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.13.0","resolution":"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [15310] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.13.0\",\"resolution\":\"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js\"}"}}
+[debug] [2021-01-02T00:51:40.923Z] [runtime-status] [15310] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"8.13.0","resolution":"/Users/donnie/code/parledger/functions/node_modules/firebase-admin/lib/index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [15310] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"8.13.0\",\"resolution\":\"/Users/donnie/code/parledger/functions/node_modules/firebase-admin/lib/index.js\"}}"}}
+[debug] [2021-01-02T00:51:40.942Z] [runtime-status] [15310] initializeApp(DEFAULT) {"storageBucket":"ledgerdotbet-dev.appspot.com"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [15310] initializeApp(DEFAULT) {\"storageBucket\":\"ledgerdotbet-dev.appspot.com\"}"}}
+[debug] [2021-01-02T00:51:41.110Z] [runtime-status] [15310] Trigger "createWager" has been found, beginning invocation! {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [15310] Trigger \"createWager\" has been found, beginning invocation!"}}
+[info] i  functions: Beginning execution of "createWager" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"Beginning execution of \"createWager\""}}
+[debug] [2021-01-02T00:51:41.112Z] [runtime-status] [15310] triggerDefinition {"httpsTrigger":{},"labels":{"deployment-callable":"true"},"name":"createWager","entryPoint":"createWager"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [15310] triggerDefinition {\"httpsTrigger\":{},\"labels\":{\"deployment-callable\":\"true\"},\"name\":\"createWager\",\"entryPoint\":\"createWager\"}"}}
+[debug] [2021-01-02T00:51:41.112Z] [runtime-status] [15310] Running createWager in mode HTTPS {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [15310] Running createWager in mode HTTPS"}}
+[debug] [2021-01-02T00:51:41.116Z] [runtime-status] [15310] Attempting to listen to socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_15310.sock {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [15310] Attempting to listen to socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_15310.sock"}}
+[debug] [2021-01-02T00:51:41.121Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2021-01-02T00:51:41.131Z] [runtime-status] [15310] Ephemeral server handling OPTIONS request {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [15310] Ephemeral server handling OPTIONS request"}}
+[debug] [2021-01-02T00:51:41.136Z] [work-queue] {"queueLength":1,"workRunningCount":1}
+[debug] [2021-01-02T00:51:41.136Z] [work-queue] {"queueLength":0,"workRunningCount":2}
+[debug] [2021-01-02T00:51:41.136Z] Accepted request POST /ledgerdotbet-dev/us-central1/createWager --> createWager
+[debug] [2021-01-02T00:51:41.136Z] ID Token: eyJhbGciOiJSUzI1NiIsImtpZCI6IjA4MGU0NWJlNGIzMTE4MzA5M2RhNzUyYmIyZGU5Y2RjYTNlNmU4ZTciLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiVGVzdGVyIEYiLCJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vbGVkZ2VyZG90YmV0LWRldiIsImF1ZCI6ImxlZGdlcmRvdGJldC1kZXYiLCJhdXRoX3RpbWUiOjE2MDk1Mzk3MTUsInVzZXJfaWQiOiJKMnZKTGpZRnpYY0JRRVBURmpJa3dlN3o4Mk4yIiwic3ViIjoiSjJ2SkxqWUZ6WGNCUUVQVEZqSWt3ZTd6ODJOMiIsImlhdCI6MTYwOTU0NzA1MywiZXhwIjoxNjA5NTUwNjUzLCJlbWFpbCI6ImZAZi5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsiZkBmLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.tPBDJpHlf5-rEQ0sn01lYJcWd1WIGOeyI4FkWrhHLgVdCVy1yz-NOLmEuHaulxLzoWKIRMrlTN9NT7Z_aHS9Mm-vLh6pd5mxgzFIPUhRD-gcFC15hvZcZGRqw5BTqSTzdmiotBkaIkfjrob80Vibh2JuSoC2n0mi0iphFjFipffyqPbz2YtVrPd5YF3lporXj1ut1TuHqQ7OeFOaRtQmKoPwJdrrdgLxj6Tf5TeUoPhHtb9BzG69-S5yFODM8Vk1iyE1A-I4rkQKWlatGfBOc9FYdg1SGxCQ9uV3if6UPYxXre8MjTtJje0xUYy7trbb1m2haChOmw82L_TJv4rUNA
+[debug] [2021-01-02T00:51:41.147Z] [worker-pool] addWorker(createWager) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(createWager)"}}
+[debug] [2021-01-02T00:51:41.147Z] [worker-pool] Adding worker with key createWager, total=2 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key createWager, total=2"}}
+[debug] [2021-01-02T00:51:41.148Z] [worker-pool] submitWork(triggerId=createWager) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitWork(triggerId=createWager)"}}
+[debug] [2021-01-02T00:51:41.149Z] [worker-createWager-3568f3b0-da5e-467d-a8c1-c9dfae2a9700]: Assigning socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_15311.sock {"metadata":{"emulator":{"name":"functions"},"message":"[worker-createWager-3568f3b0-da5e-467d-a8c1-c9dfae2a9700]: Assigning socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_15311.sock"}}
+[debug] [2021-01-02T00:51:41.149Z] [worker-createWager-3568f3b0-da5e-467d-a8c1-c9dfae2a9700]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-createWager-3568f3b0-da5e-467d-a8c1-c9dfae2a9700]: BUSY"}}
+[debug] [2021-01-02T00:51:41.149Z] [runtime-status] [15310] Ephemeral server survived. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [15310] Ephemeral server survived."}}
+[info] i  functions: Finished "createWager" in ~1s {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"Finished \"createWager\" in ~1s"}}
+[debug] [2021-01-02T00:51:41.150Z] [worker-createWager-b8aea9a2-11c4-4775-b766-a19753aa07d3]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-createWager-b8aea9a2-11c4-4775-b766-a19753aa07d3]: IDLE"}}
+[debug] [2021-01-02T00:51:41.150Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2021-01-02T00:51:41.152Z] Jan 01, 2021 7:51:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:51:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:51:41.258Z] [runtime-status] [15311] Functions runtime initialized. {"cwd":"/Users/donnie/code/parledger/functions","node_version":"14.15.1"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [15311] Functions runtime initialized. {\"cwd\":\"/Users/donnie/code/parledger/functions\",\"node_version\":\"14.15.1\"}"}}
+[debug] [2021-01-02T00:51:41.259Z] [runtime-status] [15311] Disabled runtime features: undefined {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [15311] Disabled runtime features: undefined"}}
+[debug] [2021-01-02T00:51:41.261Z] [runtime-status] [15311] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.13.0","resolution":"/Users/donnie/code/parledger/functions/node_modules/firebase-admin/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [15311] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"8.13.0\",\"resolution\":\"/Users/donnie/code/parledger/functions/node_modules/firebase-admin/lib/index.js\"}"}}
+[debug] [2021-01-02T00:51:41.261Z] [runtime-status] [15311] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.13.0","resolution":"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [15311] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.13.0\",\"resolution\":\"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js\"}"}}
+[debug] [2021-01-02T00:51:41.262Z] [runtime-status] [15311] Found local functions config: /Users/donnie/code/parledger/functions/.runtimeconfig.json {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [15311] Found local functions config: /Users/donnie/code/parledger/functions/.runtimeconfig.json"}}
+[debug] [2021-01-02T00:51:41.262Z] [runtime-status] [15311] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.13.0","resolution":"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [15311] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.13.0\",\"resolution\":\"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js\"}"}}
+[debug] [2021-01-02T00:51:41.263Z] [runtime-status] [15311] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [15311] Outgoing network have been stubbed. [{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"net\",\"status\":\"mocked\"}]"}}
+[debug] [2021-01-02T00:51:41.263Z] [runtime-status] [15311] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.13.0","resolution":"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [15311] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.13.0\",\"resolution\":\"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js\"}"}}
+[debug] [2021-01-02T00:51:41.284Z] [runtime-status] [15311] Checked functions.config() {"config":{"storage":{"bucket":"ledgerdotbet-dev.appspot.com"}}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [15311] Checked functions.config() {\"config\":{\"storage\":{\"bucket\":\"ledgerdotbet-dev.appspot.com\"}}}"}}
+[debug] [2021-01-02T00:51:41.285Z] [runtime-status] [15311] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"3.13.0","resolution":"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [15311] firebase-functions has been stubbed. {\"functionsResolution\":{\"declared\":true,\"installed\":true,\"version\":\"3.13.0\",\"resolution\":\"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js\"}}"}}
+[debug] [2021-01-02T00:51:41.285Z] [runtime-status] [15311] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.13.0","resolution":"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [15311] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.13.0\",\"resolution\":\"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js\"}"}}
+[debug] [2021-01-02T00:51:41.285Z] [runtime-status] [15311] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.13.0","resolution":"/Users/donnie/code/parledger/functions/node_modules/firebase-admin/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [15311] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"8.13.0\",\"resolution\":\"/Users/donnie/code/parledger/functions/node_modules/firebase-admin/lib/index.js\"}"}}
+[debug] [2021-01-02T00:51:41.285Z] [runtime-status] [15311] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.13.0","resolution":"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [15311] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.13.0\",\"resolution\":\"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js\"}"}}
+[debug] [2021-01-02T00:51:41.286Z] [runtime-status] [15311] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"8.13.0","resolution":"/Users/donnie/code/parledger/functions/node_modules/firebase-admin/lib/index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [15311] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"8.13.0\",\"resolution\":\"/Users/donnie/code/parledger/functions/node_modules/firebase-admin/lib/index.js\"}}"}}
+[debug] [2021-01-02T00:51:41.299Z] [runtime-status] [15311] initializeApp(DEFAULT) {"storageBucket":"ledgerdotbet-dev.appspot.com"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [15311] initializeApp(DEFAULT) {\"storageBucket\":\"ledgerdotbet-dev.appspot.com\"}"}}
+[debug] [2021-01-02T00:51:41.419Z] [runtime-status] [15311] Trigger "createWager" has been found, beginning invocation! {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [15311] Trigger \"createWager\" has been found, beginning invocation!"}}
+[info] i  functions: Beginning execution of "createWager" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"Beginning execution of \"createWager\""}}
+[debug] [2021-01-02T00:51:41.419Z] [runtime-status] [15311] triggerDefinition {"httpsTrigger":{},"labels":{"deployment-callable":"true"},"name":"createWager","entryPoint":"createWager"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [15311] triggerDefinition {\"httpsTrigger\":{},\"labels\":{\"deployment-callable\":\"true\"},\"name\":\"createWager\",\"entryPoint\":\"createWager\"}"}}
+[debug] [2021-01-02T00:51:41.419Z] [runtime-status] [15311] Running createWager in mode HTTPS {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [15311] Running createWager in mode HTTPS"}}
+[debug] [2021-01-02T00:51:41.424Z] [runtime-status] [15311] Attempting to listen to socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_15311.sock {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [15311] Attempting to listen to socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_15311.sock"}}
+[debug] [2021-01-02T00:51:41.426Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2021-01-02T00:51:41.442Z] [runtime-status] [15311] Ephemeral server handling POST request {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [15311] Ephemeral server handling POST request"}}
+[debug] [2021-01-02T00:51:41.444Z] [runtime-status] [15311] Callable functions auth override {"key":"x-callable-context-auth","value":"%7B%22uid%22%3A%22J2vJLjYFzXcBQEPTFjIkwe7z82N2%22%2C%22token%22%3A%7B%22name%22%3A%22Tester%20F%22%2C%22iss%22%3A%22https%3A%2F%2Fsecuretoken.google.com%2Fledgerdotbet-dev%22%2C%22aud%22%3A%22ledgerdotbet-dev%22%2C%22auth_time%22%3A1609539715%2C%22user_id%22%3A%22J2vJLjYFzXcBQEPTFjIkwe7z82N2%22%2C%22sub%22%3A%22J2vJLjYFzXcBQEPTFjIkwe7z82N2%22%2C%22iat%22%3A1609547053%2C%22exp%22%3A1609550653%2C%22email%22%3A%22f%40f.com%22%2C%22email_verified%22%3Afalse%2C%22firebase%22%3A%7B%22identities%22%3A%7B%22email%22%3A%5B%22f%40f.com%22%5D%7D%2C%22sign_in_provider%22%3A%22password%22%7D%2C%22uid%22%3A%22J2vJLjYFzXcBQEPTFjIkwe7z82N2%22%7D%7D"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [15311] Callable functions auth override {\"key\":\"x-callable-context-auth\",\"value\":\"%7B%22uid%22%3A%22J2vJLjYFzXcBQEPTFjIkwe7z82N2%22%2C%22token%22%3A%7B%22name%22%3A%22Tester%20F%22%2C%22iss%22%3A%22https%3A%2F%2Fsecuretoken.google.com%2Fledgerdotbet-dev%22%2C%22aud%22%3A%22ledgerdotbet-dev%22%2C%22auth_time%22%3A1609539715%2C%22user_id%22%3A%22J2vJLjYFzXcBQEPTFjIkwe7z82N2%22%2C%22sub%22%3A%22J2vJLjYFzXcBQEPTFjIkwe7z82N2%22%2C%22iat%22%3A1609547053%2C%22exp%22%3A1609550653%2C%22email%22%3A%22f%40f.com%22%2C%22email_verified%22%3Afalse%2C%22firebase%22%3A%7B%22identities%22%3A%7B%22email%22%3A%5B%22f%40f.com%22%5D%7D%2C%22sign_in_provider%22%3A%22password%22%7D%2C%22uid%22%3A%22J2vJLjYFzXcBQEPTFjIkwe7z82N2%22%7D%7D\"}"}}
+[debug] [2021-01-02T00:51:41.446Z] [runtime-status] [15311] Ephemeral server survived. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"[runtime-status] [15311] Ephemeral server survived."}}
+[debug] [2021-01-02T00:51:41.540Z] Jan 01, 2021 7:51:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:51:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected HTTP/2 connection.\n"}}
+[info] >  { {"user":"{","metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"\u001b[90m> \u001b[39m {"}}
+[info] >    groupId: 'xmzYSWvKQi9NNj8FLA7M', {"user":"  groupId: 'xmzYSWvKQi9NNj8FLA7M',","metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"\u001b[90m> \u001b[39m   groupId: 'xmzYSWvKQi9NNj8FLA7M',"}}
+[info] >    id: '40fc0596-5bc6-4543-ad7c-4549d06c5fe4', {"user":"  id: '40fc0596-5bc6-4543-ad7c-4549d06c5fe4',","metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"\u001b[90m> \u001b[39m   id: '40fc0596-5bc6-4543-ad7c-4549d06c5fe4',"}}
+[info] >    type: 'BOVADA', {"user":"  type: 'BOVADA',","metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"\u001b[90m> \u001b[39m   type: 'BOVADA',"}}
+[info] >    proposedBy: { uid: 'J2vJLjYFzXcBQEPTFjIkwe7z82N2', displayName: 'Tester F' }, {"user":"  proposedBy: { uid: 'J2vJLjYFzXcBQEPTFjIkwe7z82N2', displayName: 'Tester F' },","metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"\u001b[90m> \u001b[39m   proposedBy: { uid: 'J2vJLjYFzXcBQEPTFjIkwe7z82N2', displayName: 'Tester F' },"}}
+[info] >    proposedTo: { uid: 'JR41oGox05d46JZlsOV1VtakM7i2', displayName: 'Dave Daveson' }, {"user":"  proposedTo: { uid: 'JR41oGox05d46JZlsOV1VtakM7i2', displayName: 'Dave Daveson' },","metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"\u001b[90m> \u001b[39m   proposedTo: { uid: 'JR41oGox05d46JZlsOV1VtakM7i2', displayName: 'Dave Daveson' },"}}
+[info] >    status: 'pending', {"user":"  status: 'pending',","metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"\u001b[90m> \u001b[39m   status: 'pending',"}}
+[info] >    details: { {"user":"  details: {","metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"\u001b[90m> \u001b[39m   details: {"}}
+[info] >      selection: { event: [Object], market: 2, outcome: 0 }, {"user":"    selection: { event: [Object], market: 2, outcome: 0 },","metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"\u001b[90m> \u001b[39m     selection: { event: [Object], market: 2, outcome: 0 },"}}
+[info] >      risk: '200', {"user":"    risk: '200',","metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"\u001b[90m> \u001b[39m     risk: '200',"}}
+[info] >      win: '200' {"user":"    win: '200'","metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"\u001b[90m> \u001b[39m     win: '200'"}}
+[info] >    } {"user":"  }","metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"\u001b[90m> \u001b[39m   }"}}
+[info] >  } proposed {"user":"} proposed","metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"\u001b[90m> \u001b[39m } proposed"}}
+[info] i  functions: Finished "createWager" in ~1s {"metadata":{"emulator":{"name":"functions"},"function":{"name":"createWager"},"message":"Finished \"createWager\" in ~1s"}}
+[debug] [2021-01-02T00:51:42.039Z] [worker-createWager-3568f3b0-da5e-467d-a8c1-c9dfae2a9700]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-createWager-3568f3b0-da5e-467d-a8c1-c9dfae2a9700]: IDLE"}}
+[debug] [2021-01-02T00:51:42.039Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[debug] [2021-01-02T00:51:44.252Z] Jan 01, 2021 7:51:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:51:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:51:55.342Z] Jan 01, 2021 7:51:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:51:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:52:22.311Z] Jan 01, 2021 7:52:22 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:52:22 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:52:22.367Z] Jan 01, 2021 7:52:22 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:52:22 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:52:37.859Z] Jan 01, 2021 7:52:37 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:52:37 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:52:37.884Z] Jan 01, 2021 7:52:37 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:52:37 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt\nWARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE\n"}}
+[debug] [2021-01-02T00:52:37.953Z] Jan 01, 2021 7:52:37 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:52:37 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:52:37.996Z] Jan 01, 2021 7:52:37 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:52:37 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:52:41.213Z] Jan 01, 2021 7:52:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:52:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:52:44.855Z] Jan 01, 2021 7:52:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:52:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:52:44.865Z] Jan 01, 2021 7:52:44 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:52:44 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt\nWARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE\n"}}
+[debug] [2021-01-02T00:52:44.897Z] Jan 01, 2021 7:52:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:52:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:52:44.942Z] Jan 01, 2021 7:52:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:52:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:52:50.537Z] Jan 01, 2021 7:52:50 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:52:50 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:52:50.548Z] Jan 01, 2021 7:52:50 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:52:50 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt\nWARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE\n"}}
+[debug] [2021-01-02T00:52:50.571Z] Jan 01, 2021 7:52:50 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:52:50 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:52:50.618Z] Jan 01, 2021 7:52:50 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:52:50 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:52:55.395Z] Jan 01, 2021 7:52:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:52:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:53:41.267Z] Jan 01, 2021 7:53:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:53:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:53:46.584Z] Jan 01, 2021 7:53:46 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:53:46 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:53:46.633Z] Jan 01, 2021 7:53:46 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:53:46 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:53:55.447Z] Jan 01, 2021 7:53:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:53:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:54:41.345Z] Jan 01, 2021 7:54:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:54:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:54:46.678Z] Jan 01, 2021 7:54:46 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:54:46 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:54:55.483Z] Jan 01, 2021 7:54:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:54:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:55:41.465Z] Jan 01, 2021 7:55:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:55:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:55:46.734Z] Jan 01, 2021 7:55:46 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:55:46 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:55:55.607Z] Jan 01, 2021 7:55:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:55:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:56:41.529Z] Jan 01, 2021 7:56:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:56:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:56:46.789Z] Jan 01, 2021 7:56:46 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:56:46 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:56:55.680Z] Jan 01, 2021 7:56:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:56:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:57:41.598Z] Jan 01, 2021 7:57:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:57:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:57:46.828Z] Jan 01, 2021 7:57:46 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:57:46 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:57:55.751Z] Jan 01, 2021 7:57:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:57:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:58:12.742Z] Jan 01, 2021 7:58:12 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:58:12 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:58:14.156Z] Jan 01, 2021 7:58:14 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:58:14 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:58:41.670Z] Jan 01, 2021 7:58:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:58:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:58:44.238Z] Jan 01, 2021 7:58:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:58:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:58:55.813Z] Jan 01, 2021 7:58:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:58:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:59:41.778Z] Jan 01, 2021 7:59:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:59:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:59:44.293Z] Jan 01, 2021 7:59:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:59:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T00:59:55.879Z] Jan 01, 2021 7:59:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 7:59:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T01:00:41.857Z] Jan 01, 2021 8:00:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 8:00:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T01:00:44.329Z] Jan 01, 2021 8:00:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 8:00:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T01:00:55.947Z] Jan 01, 2021 8:00:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 8:00:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T01:01:41.927Z] Jan 01, 2021 8:01:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 8:01:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T01:01:44.438Z] Jan 01, 2021 8:01:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 8:01:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T01:01:56.014Z] Jan 01, 2021 8:01:56 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 8:01:56 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T01:02:20.139Z] Jan 01, 2021 8:02:20 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 8:02:20 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T01:02:20.166Z] Jan 01, 2021 8:02:20 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 8:02:20 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt\nWARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE\n"}}
+[debug] [2021-01-02T01:02:20.211Z] Jan 01, 2021 8:02:20 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 8:02:20 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T01:02:20.239Z] Jan 01, 2021 8:02:20 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 8:02:20 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T01:02:21.429Z] Jan 01, 2021 8:02:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 8:02:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T01:02:42.020Z] Jan 01, 2021 8:02:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 8:02:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T01:02:56.154Z] Jan 01, 2021 8:02:56 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 8:02:56 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T01:03:21.558Z] Jan 01, 2021 8:03:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 8:03:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T01:03:42.073Z] Jan 01, 2021 8:03:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 8:03:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T01:03:56.217Z] Jan 01, 2021 8:03:56 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 8:03:56 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T01:04:21.631Z] Jan 01, 2021 8:04:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 8:04:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T01:04:42.133Z] Jan 01, 2021 8:04:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 8:04:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T01:04:56.270Z] Jan 01, 2021 8:04:56 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 8:04:56 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T01:05:21.694Z] Jan 01, 2021 8:05:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 8:05:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T01:05:42.217Z] Jan 01, 2021 8:05:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 8:05:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T01:05:56.390Z] Jan 01, 2021 8:05:56 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 8:05:56 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T01:06:21.849Z] Jan 01, 2021 8:06:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 8:06:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T01:06:42.339Z] Jan 01, 2021 8:06:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 8:06:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T01:06:56.542Z] Jan 01, 2021 8:06:56 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 8:06:56 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T01:07:21.927Z] Jan 01, 2021 8:07:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 8:07:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T01:07:25.027Z] Jan 01, 2021 8:07:25 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 8:07:25 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T01:07:25.051Z] Jan 01, 2021 8:07:25 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 8:07:25 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt\nWARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE\n"}}
+[debug] [2021-01-02T01:07:25.097Z] Jan 01, 2021 8:07:25 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 8:07:25 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T01:07:25.128Z] Jan 01, 2021 8:07:25 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 8:07:25 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T01:07:26.782Z] Jan 01, 2021 8:07:26 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 8:07:26 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T01:07:42.399Z] Jan 01, 2021 8:07:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 8:07:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T01:07:44.214Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2021-01-02T01:07:44.214Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2021-01-02T01:07:44.216Z] Accepted request GET /ledgerdotbet-dev/us-central1/manuallyUpdateBovadaEvents --> manuallyUpdateBovadaEvents
+[debug] [2021-01-02T01:07:44.330Z] [worker-pool] addWorker(manuallyUpdateBovadaEvents) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(manuallyUpdateBovadaEvents)"}}
+[debug] [2021-01-02T01:07:44.330Z] [worker-pool] Adding worker with key manuallyUpdateBovadaEvents, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key manuallyUpdateBovadaEvents, total=1"}}
+[debug] [2021-01-02T01:07:44.331Z] [worker-pool] submitWork(triggerId=manuallyUpdateBovadaEvents) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitWork(triggerId=manuallyUpdateBovadaEvents)"}}
+[debug] [2021-01-02T01:07:44.331Z] [worker-manuallyUpdateBovadaEvents-9c422835-7b6c-4985-a496-76c541f38835]: Assigning socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_15441.sock {"metadata":{"emulator":{"name":"functions"},"message":"[worker-manuallyUpdateBovadaEvents-9c422835-7b6c-4985-a496-76c541f38835]: Assigning socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_15441.sock"}}
+[debug] [2021-01-02T01:07:44.331Z] [worker-manuallyUpdateBovadaEvents-9c422835-7b6c-4985-a496-76c541f38835]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-manuallyUpdateBovadaEvents-9c422835-7b6c-4985-a496-76c541f38835]: BUSY"}}
+[debug] [2021-01-02T01:07:44.473Z] [runtime-status] [15441] Functions runtime initialized. {"cwd":"/Users/donnie/code/parledger/functions","node_version":"14.15.1"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"manuallyUpdateBovadaEvents"},"message":"[runtime-status] [15441] Functions runtime initialized. {\"cwd\":\"/Users/donnie/code/parledger/functions\",\"node_version\":\"14.15.1\"}"}}
+[debug] [2021-01-02T01:07:44.473Z] [runtime-status] [15441] Disabled runtime features: undefined {"metadata":{"emulator":{"name":"functions"},"function":{"name":"manuallyUpdateBovadaEvents"},"message":"[runtime-status] [15441] Disabled runtime features: undefined"}}
+[debug] [2021-01-02T01:07:44.475Z] [runtime-status] [15441] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.13.0","resolution":"/Users/donnie/code/parledger/functions/node_modules/firebase-admin/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"manuallyUpdateBovadaEvents"},"message":"[runtime-status] [15441] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"8.13.0\",\"resolution\":\"/Users/donnie/code/parledger/functions/node_modules/firebase-admin/lib/index.js\"}"}}
+[debug] [2021-01-02T01:07:44.476Z] [runtime-status] [15441] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.13.0","resolution":"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"manuallyUpdateBovadaEvents"},"message":"[runtime-status] [15441] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.13.0\",\"resolution\":\"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js\"}"}}
+[debug] [2021-01-02T01:07:44.477Z] [runtime-status] [15441] Found local functions config: /Users/donnie/code/parledger/functions/.runtimeconfig.json {"metadata":{"emulator":{"name":"functions"},"function":{"name":"manuallyUpdateBovadaEvents"},"message":"[runtime-status] [15441] Found local functions config: /Users/donnie/code/parledger/functions/.runtimeconfig.json"}}
+[debug] [2021-01-02T01:07:44.478Z] [runtime-status] [15441] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.13.0","resolution":"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"manuallyUpdateBovadaEvents"},"message":"[runtime-status] [15441] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.13.0\",\"resolution\":\"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js\"}"}}
+[debug] [2021-01-02T01:07:44.479Z] [runtime-status] [15441] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] {"metadata":{"emulator":{"name":"functions"},"function":{"name":"manuallyUpdateBovadaEvents"},"message":"[runtime-status] [15441] Outgoing network have been stubbed. [{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"net\",\"status\":\"mocked\"}]"}}
+[debug] [2021-01-02T01:07:44.479Z] [runtime-status] [15441] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.13.0","resolution":"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"manuallyUpdateBovadaEvents"},"message":"[runtime-status] [15441] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.13.0\",\"resolution\":\"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js\"}"}}
+[debug] [2021-01-02T01:07:44.505Z] [runtime-status] [15441] Checked functions.config() {"config":{"storage":{"bucket":"ledgerdotbet-dev.appspot.com"}}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"manuallyUpdateBovadaEvents"},"message":"[runtime-status] [15441] Checked functions.config() {\"config\":{\"storage\":{\"bucket\":\"ledgerdotbet-dev.appspot.com\"}}}"}}
+[debug] [2021-01-02T01:07:44.506Z] [runtime-status] [15441] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"3.13.0","resolution":"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"manuallyUpdateBovadaEvents"},"message":"[runtime-status] [15441] firebase-functions has been stubbed. {\"functionsResolution\":{\"declared\":true,\"installed\":true,\"version\":\"3.13.0\",\"resolution\":\"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js\"}}"}}
+[debug] [2021-01-02T01:07:44.506Z] [runtime-status] [15441] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.13.0","resolution":"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"manuallyUpdateBovadaEvents"},"message":"[runtime-status] [15441] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.13.0\",\"resolution\":\"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js\"}"}}
+[debug] [2021-01-02T01:07:44.506Z] [runtime-status] [15441] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.13.0","resolution":"/Users/donnie/code/parledger/functions/node_modules/firebase-admin/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"manuallyUpdateBovadaEvents"},"message":"[runtime-status] [15441] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"8.13.0\",\"resolution\":\"/Users/donnie/code/parledger/functions/node_modules/firebase-admin/lib/index.js\"}"}}
+[debug] [2021-01-02T01:07:44.506Z] [runtime-status] [15441] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.13.0","resolution":"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"manuallyUpdateBovadaEvents"},"message":"[runtime-status] [15441] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.13.0\",\"resolution\":\"/Users/donnie/code/parledger/functions/node_modules/firebase-functions/lib/index.js\"}"}}
+[debug] [2021-01-02T01:07:44.506Z] [runtime-status] [15441] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"8.13.0","resolution":"/Users/donnie/code/parledger/functions/node_modules/firebase-admin/lib/index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"manuallyUpdateBovadaEvents"},"message":"[runtime-status] [15441] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"8.13.0\",\"resolution\":\"/Users/donnie/code/parledger/functions/node_modules/firebase-admin/lib/index.js\"}}"}}
+[debug] [2021-01-02T01:07:44.524Z] [runtime-status] [15441] initializeApp(DEFAULT) {"storageBucket":"ledgerdotbet-dev.appspot.com"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"manuallyUpdateBovadaEvents"},"message":"[runtime-status] [15441] initializeApp(DEFAULT) {\"storageBucket\":\"ledgerdotbet-dev.appspot.com\"}"}}
+[debug] [2021-01-02T01:07:44.691Z] [runtime-status] [15441] Trigger "manuallyUpdateBovadaEvents" has been found, beginning invocation! {"metadata":{"emulator":{"name":"functions"},"function":{"name":"manuallyUpdateBovadaEvents"},"message":"[runtime-status] [15441] Trigger \"manuallyUpdateBovadaEvents\" has been found, beginning invocation!"}}
+[info] i  functions: Beginning execution of "manuallyUpdateBovadaEvents" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"manuallyUpdateBovadaEvents"},"message":"Beginning execution of \"manuallyUpdateBovadaEvents\""}}
+[debug] [2021-01-02T01:07:44.693Z] [runtime-status] [15441] triggerDefinition {"httpsTrigger":{},"name":"manuallyUpdateBovadaEvents","entryPoint":"manuallyUpdateBovadaEvents"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"manuallyUpdateBovadaEvents"},"message":"[runtime-status] [15441] triggerDefinition {\"httpsTrigger\":{},\"name\":\"manuallyUpdateBovadaEvents\",\"entryPoint\":\"manuallyUpdateBovadaEvents\"}"}}
+[debug] [2021-01-02T01:07:44.693Z] [runtime-status] [15441] Running manuallyUpdateBovadaEvents in mode HTTPS {"metadata":{"emulator":{"name":"functions"},"function":{"name":"manuallyUpdateBovadaEvents"},"message":"[runtime-status] [15441] Running manuallyUpdateBovadaEvents in mode HTTPS"}}
+[debug] [2021-01-02T01:07:44.696Z] [runtime-status] [15441] Attempting to listen to socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_15441.sock {"metadata":{"emulator":{"name":"functions"},"function":{"name":"manuallyUpdateBovadaEvents"},"message":"[runtime-status] [15441] Attempting to listen to socketPath: /var/folders/9j/wn2dp5xj4fzbj2kj0sjgn2hc0000gn/T/fire_emu_15441.sock"}}
+[debug] [2021-01-02T01:07:44.701Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2021-01-02T01:07:44.710Z] [runtime-status] [15441] Ephemeral server handling GET request {"metadata":{"emulator":{"name":"functions"},"function":{"name":"manuallyUpdateBovadaEvents"},"message":"[runtime-status] [15441] Ephemeral server handling GET request"}}
+[warn] ⚠  Google API requested!
+   - URL: "https://oauth2.googleapis.com/token"
+   - Be careful, this may be a production service. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"manuallyUpdateBovadaEvents"},"message":"Google API requested!\n   - URL: \"https://oauth2.googleapis.com/token\"\n   - Be careful, this may be a production service."}}
+[warn] ⚠  Google API requested!
+   - URL: "https://storage.googleapis.com/upload/storage/v1/b/ledgerdotbet-dev.appspot.com/o?name=events.json&uploadType=resumable&predefinedAcl=publicRead"
+   - Be careful, this may be a production service. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"manuallyUpdateBovadaEvents"},"message":"Google API requested!\n   - URL: \"https://storage.googleapis.com/upload/storage/v1/b/ledgerdotbet-dev.appspot.com/o?name=events.json&uploadType=resumable&predefinedAcl=publicRead\"\n   - Be careful, this may be a production service."}}
+[warn] ⚠  Google API requested!
+   - URL: "https://storage.googleapis.com/upload/storage/v1/b/ledgerdotbet-dev.appspot.com/o?name=events.json&uploadType=resumable&predefinedAcl=publicRead&upload_id=ABg5-UwUreInGcQq3ymrDeixGHu2bga53mvAD_LsAphI5USIBkpmO52vlDN3WiMjtRPH6xZhRM6pYWTDBY1MB0hZFnE"
+   - Be careful, this may be a production service. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"manuallyUpdateBovadaEvents"},"message":"Google API requested!\n   - URL: \"https://storage.googleapis.com/upload/storage/v1/b/ledgerdotbet-dev.appspot.com/o?name=events.json&uploadType=resumable&predefinedAcl=publicRead&upload_id=ABg5-UwUreInGcQq3ymrDeixGHu2bga53mvAD_LsAphI5USIBkpmO52vlDN3WiMjtRPH6xZhRM6pYWTDBY1MB0hZFnE\"\n   - Be careful, this may be a production service."}}
+[info] >  [] {"user":[],"metadata":{"emulator":{"name":"functions"},"function":{"name":"manuallyUpdateBovadaEvents"},"message":"\u001b[90m> \u001b[39m []"}}
+[debug] [2021-01-02T01:07:55.985Z] [runtime-status] [15441] Ephemeral server survived. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"manuallyUpdateBovadaEvents"},"message":"[runtime-status] [15441] Ephemeral server survived."}}
+[info] i  functions: Finished "manuallyUpdateBovadaEvents" in ~11s {"metadata":{"emulator":{"name":"functions"},"function":{"name":"manuallyUpdateBovadaEvents"},"message":"Finished \"manuallyUpdateBovadaEvents\" in ~11s"}}
+[debug] [2021-01-02T01:07:55.988Z] [worker-manuallyUpdateBovadaEvents-9c422835-7b6c-4985-a496-76c541f38835]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-manuallyUpdateBovadaEvents-9c422835-7b6c-4985-a496-76c541f38835]: IDLE"}}
+[debug] [2021-01-02T01:07:55.989Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[debug] [2021-01-02T01:07:56.642Z] Jan 01, 2021 8:07:56 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 8:07:56 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T01:07:58.129Z] Jan 01, 2021 8:07:58 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 8:07:58 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T01:07:58.139Z] Jan 01, 2021 8:07:58 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 8:07:58 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt\nWARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE\n"}}
+[debug] [2021-01-02T01:07:58.162Z] Jan 01, 2021 8:07:58 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 8:07:58 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T01:07:58.196Z] Jan 01, 2021 8:07:58 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 8:07:58 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T01:08:00.247Z] Jan 01, 2021 8:08:00 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 8:08:00 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T01:08:27.426Z] Jan 01, 2021 8:08:27 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 8:08:27 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-01-02T01:08:56.706Z] Jan 01, 2021 8:08:56 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jan 01, 2021 8:08:56 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
