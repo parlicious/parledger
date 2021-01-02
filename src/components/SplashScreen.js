@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import signUpImage from "../resources/undraw_Savings_re_eq4w.svg"
 
-const LoadingImage = styled.img`
+export const LoadingImage = styled.img`
   animation: sk-scaleout 2.0s infinite ease-in-out;
   
-  width: 50vw;
+  width: 50%;
 
   @keyframes sk-scaleout {
     0% {

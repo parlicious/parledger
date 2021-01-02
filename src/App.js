@@ -44,6 +44,9 @@ const App = () => {
                                 <Route exact path='/groups/join'>
                                     <JoinGroupPage/>
                                 </Route>
+                                <Route exact path='/groups/join/:joinCode'>
+                                    <JoinGroupPage/>
+                                </Route>
                                 <AuthIsLoaded>
                                     <PrivateRoute exact path='/home'>
                                         <HomePage/>
@@ -53,9 +56,6 @@ const App = () => {
                                     </PrivateRoute>
                                     <PrivateRoute exact path='/wagers/new'>
                                         <NewWagerPage/>
-                                    </PrivateRoute>
-                                    <PrivateRoute exact path='/groups/join/:joinCode'>
-                                        <JoinGroupPage/>
                                     </PrivateRoute>
                                 </AuthIsLoaded>
                             </Switch>

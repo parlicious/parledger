@@ -41,7 +41,7 @@ const SignUpPageImage = styled.img`
   width: 100%;
 `
 
-const SignUpButton = styled.button`
+export const SignUpButton = styled.button`
   border-radius: 0.3em;
   color: white;
   font-size: 1.2em;

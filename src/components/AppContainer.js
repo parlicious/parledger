@@ -1,9 +1,8 @@
 import React from "react";
 import {useStoreState} from "easy-peasy";
 import {isEmpty, useFirebase} from "react-redux-firebase";
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import styled, {css} from 'styled-components';
-
 const AppHeader = styled.div`
   padding: 0.5em;
   height: 3em;
@@ -45,9 +44,11 @@ export const AppContainer = (props) => {
     const auth = useStoreState(state => state.firebase.auth);
     const profile = useStoreState(state => state.firebase.profile);
     const firebase = useFirebase();
+    const history = useHistory();
 
     const logOut = async () => {
         await firebase.logout();
+        history.push('/')
     }
 
     return (<React.Fragment>

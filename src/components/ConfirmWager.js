@@ -1,8 +1,11 @@
 import {Event, Outcome, TitleRow} from "./SelectEvent";
 import React, {useState} from "react";
 import {useForm} from "react-hook-form";
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import {useStoreActions, useStoreState} from "easy-peasy";
+import {InlineLink, shadow} from "../styles";
+import {LoadingImage, SplashScreen} from "./SplashScreen";
+import signUpImage from "../resources/undraw_Savings_re_eq4w.svg";
 
 
 const OutcomeDescription = ({outcome}) => {
@@ -67,8 +70,128 @@ const SuccessMessage = styled.div`
   color: #00C781;
 `
 
-export const ConfirmWager = ({selection, opponent}) => {
-    const {handleSubmit, control, errors, register} = useForm();
+const membersFromWager = (selection, profile, opponent) => {
+    return {
+        [selection.outcome]: profile,
+        [(selection.outcome + 1) % 2]: opponent
+    }
+}
+
+const CustomAmountButtonContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`
+
+const CustomAmountForm = styled.form`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  --border-color: white;
+
+  :focus-within {
+    --border-color: #afafaf;
+  }
+`
+
+const customAmountInputCss = css`
+  color: white;
+  font-size: 1.2em;
+  background: none;
+
+  padding: 0.3em;
+`
+
+const CustomAmountInput = styled.input`
+  ${customAmountInputCss};
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  border-left: none;
+  border-right: none;
+
+  border-radius: 0;
+
+  :focus {
+    outline: none;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    border-left: none;
+    border-right: none;
+  }
+`
+
+const CustomAmountInputCurrency = styled.div`
+  ${customAmountInputCss};
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  border-left: 1px solid var(--border-color);
+  border-right: none;
+
+  border-radius: 0.3em 0 0 0.3em;
+`
+
+const CustomAmountInputButton = styled.button`
+  ${customAmountInputCss};
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+  border-left: none;
+
+  border-radius: 0 0.3em 0.3em 0;
+
+  :hover {
+    cursor: pointer;
+    color: #FFFFFFaF;
+  }
+`
+
+const CustomAmountButton = ({saveWager}) => {
+    const [selected, setSelected] = useState(false);
+    const {register, handleSubmit, watch, errors} = useForm();
+    const onSubmit = (data) => {
+        saveWager(data.betAmount);
+    }
+    return (
+        <CustomAmountButtonContainer>
+            {!selected
+                ? <BetAmountButton
+                    onClick={() => setSelected(true)}>
+                    Custom
+                </BetAmountButton>
+                : <React.Fragment>
+                    <CustomAmountForm onSubmit={handleSubmit(onSubmit)}>
+                        <CustomAmountInputCurrency>$</CustomAmountInputCurrency>
+                        <CustomAmountInput
+                            ref={register()}
+                            placeholder={0}
+                            name='betAmount'
+                            type='number'/>
+
+                        <CustomAmountInputButton
+                            onClick={() => setSelected(true)}>
+                            Submit
+                        </CustomAmountInputButton>
+                    </CustomAmountForm>
+                </React.Fragment>}
+        </CustomAmountButtonContainer>
+    )
+}
+
+const SubmittingImageContainer = styled.div`
+  width: 30%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
+export const ConfirmWager = (
+    {
+        selection, opponent
+    }
+) => {
+    const [submitting, setSubmitting] = useState(false);
     const profile = useStoreState(state => state.firebase.profile);
     const createWager = useStoreActions(actions => actions.wagers.createWager);
     const [apiError, setApiError] = useState(null);
@@ -87,11 +210,14 @@ export const ConfirmWager = ({selection, opponent}) => {
         }
 
         try {
+            setSubmitting(true);
             await createWager(wager);
             setApiSuccess("Wager was proposed!")
         } catch (error) {
             setApiError(error.message);
         }
+
+        setSubmitting(false);
     }
 
     return (
@@ -100,17 +226,33 @@ export const ConfirmWager = ({selection, opponent}) => {
                 Confirm your proposed bet with {opponent.displayName}
             </div>
             <TitleRow name={selection.event.description}/>
-            <Event eventSelected={() => {
-            }} event={selection.event} selectedMarket={selection.market} selectedOutcome={selection.outcome}/>
-            {apiSuccess
-                ? <SuccessMessage>{apiSuccess}</SuccessMessage>
-                : <div>
-                    How much to bet?
-                    <BetAmountRow>
-                        {[10, 20, 50, 100].map(it => <BetAmountButton
-                            onClick={() => saveWager(it)}>${it}</BetAmountButton>)}
-                    </BetAmountRow>
-                </div>}
+            <Event
+                wagerMembers={membersFromWager(selection, profile, opponent)}
+                eventSelected={() => {
+                }}
+                event={selection.event}
+                selectedMarket={selection.market}
+                selectedOutcome={selection.outcome}
+            />
+            {submitting
+                ? <SubmittingImageContainer>
+                    <LoadingImage src={signUpImage}/>
+                </SubmittingImageContainer>
+                : apiSuccess
+                    ? <div>
+                        <SuccessMessage>{apiSuccess}</SuccessMessage>
+                        <InlineLink to={'/home'}>Go Home</InlineLink>
+                    </div>
+                    : <div>
+                        How much to bet?
+                        <BetAmountRow>
+                            {[10, 20, 50, 100].map(it => <BetAmountButton
+                                onClick={() => saveWager(it)}>${it}</BetAmountButton>)}
+                            <CustomAmountButton
+                                saveWager={saveWager}
+                            />
+                        </BetAmountRow>
+                    </div>}
             {apiError && <ErrorMessage>
                 {apiError}
             </ErrorMessage>}

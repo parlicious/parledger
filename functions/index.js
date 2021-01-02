@@ -2,30 +2,11 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 const {v4: uuidv4} = require('uuid');
 const axios = require('axios');
-// For the default version
-const algoliasearch = require('algoliasearch');
-
-const ALGOLIA_ID = functions.config().algolia.app_id;
-const ALGOLIA_ADMIN_KEY = functions.config().algolia.api_key;
-
-const ALGOLIA_INDEX_NAME = 'dev_users';
-const client = algoliasearch(ALGOLIA_ID, ALGOLIA_ADMIN_KEY);
-
-exports.onUserCreated = functions.firestore.document('users/{uid}').onCreate((snap, context) => {
-    // Get the note document
-    const user = snap.data();
-
-    // Add an 'objectID' field which Algolia requires
-    user.objectID = context.params.uid;
-
-    // Write to the algolia index
-    const index = client.initIndex(ALGOLIA_INDEX_NAME);
-    return index.saveObject(user);
-});
 
 admin.initializeApp({
-    storageBucket: 'ledgerdotbet-dev.appspot.com'
+    storageBucket: functions.config().storage.bucket
 });
+
 const db = admin.firestore()
 
 const getGroup = async (groupId) => {

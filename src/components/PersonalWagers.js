@@ -16,6 +16,12 @@ const WagerDescriptionRowContainer = styled.div`
   border-radius: 0.3em 0.3em 0 0;
   background: white;
   color: #0F2027;
+  
+  @media(max-width: 600px){
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
 `
 
 const WagerDescriptionText = styled.div`
@@ -37,16 +43,20 @@ const WagerAmount = ({risk, toWin}) => {
     }
 }
 
+const WagerDescriptionIcon = styled.i`
+    padding-right: 0.5em;
+`
+
 const WagerDescriptionRow = ({eventDescription, pending, risk, toWin, wager}) => {
     return (<WagerDescriptionRowContainer>
             <WagerDescriptionText>
                 {pending
                     ? <span>
-                    <i title="This wager is pending" className="fas fa-user-clock"/>
+                    <WagerDescriptionIcon title="This wager is pending" className="fas fa-user-clock"/>
                         {'  '}
                 </span>
                     : <span>
-                        <i title="This wager was confirmed" className="fas fa-check-circle"/>
+                        <WagerDescriptionIcon title="This wager was confirmed" className="fas fa-check-circle"/>
                         {'  '}
                     </span>}
 

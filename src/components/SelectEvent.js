@@ -33,31 +33,9 @@ const MarketDescription = styled.div`
   margin-bottom: 1em;
 `
 
-const EventMarket = ({market}) => {
-    return (
-        <div>
-            <MarketDescription>{market.description}</MarketDescription>
-            {market.outcomes.map(it => <Outcome outcome={it}/>)}
-        </div>
-    )
-};
-
-const MarketContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-
-  margin-top: 1em;
-`
-
-const EventHeader = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-`
-
 export const EventCell = styled.div`
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr 2fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   background: linear-gradient(to bottom, #FFFFFF04, #FFFFFF09);
   box-shadow: 3px 3px 25px #0000001C;
   border-radius: 0.3em;
@@ -78,6 +56,8 @@ const TimeAndDateCell = styled.div`
 
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   background: linear-gradient(to bottom, #FFFFFF14, #FFFFFF19);
 `
@@ -224,7 +204,7 @@ export const Event = (props) => {
 export const SelectEvent = ({eventSelected}) => {
     const events = useStoreState(state => state.wagers.headToHeadEvents);
     const [numSections, setNumSections] = useState(2);
-    const renderedEvents = events.slice(0, numSections)
+    const renderedEvents = events?.slice(0, numSections) ?? [];
     const fetchMoreData = () => setNumSections(numSections + 1)
 
     return (

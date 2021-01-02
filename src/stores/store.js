@@ -7,7 +7,8 @@ import 'firebase/analytics'
 import 'firebase/storage'
 import {firebaseReducer, getFirebase} from 'react-redux-firebase'
 import {createFirestoreInstance, firestoreReducer, getFirestore} from 'redux-firestore'
-import {wagersModel} from "./wagers"; // <- needed if using firestore
+import {wagersModel} from "./wagers";
+import {usersModel} from "./users"; // <- needed if using firestore
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const prodFirebaseConfig = {
@@ -71,6 +72,7 @@ export const store = createStore({
     firestore: reducer(firestoreReducer),
     firebase: reducer(firebaseReducer),
     wagers: wagersModel,
+    users: usersModel,
 }, {injections: {getFirestore, getFirebase}});
 
 export const reactReduxFirebaseProps = {
