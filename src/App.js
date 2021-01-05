@@ -13,6 +13,11 @@ import {HomePage} from "./pages/HomePage";
 import {JoinGroupPage} from "./pages/JoinGroupPage";
 import {NewWagerPage} from "./pages/NewWagerPage";
 import {SplashScreen} from "./components/SplashScreen";
+import {ManageWager} from "./components/ManageWager";
+import {SelectEvent} from "./components/SelectEvent";
+import {ConfirmWagerProposal} from "./components/ConfirmWagerProposal";
+import {SelectWagerType} from "./components/SelectWagerType";
+import {ProposeCustomWager} from "./components/ProposeCustomWager";
 
 function AuthIsLoaded({children}) {
     const auth = useStoreState(state => state.firebase.auth)
@@ -56,6 +61,21 @@ const App = () => {
                                     </PrivateRoute>
                                     <PrivateRoute exact path='/wagers/new'>
                                         <NewWagerPage/>
+                                    </PrivateRoute>
+                                    <PrivateRoute exact path='/wagers/new/type'>
+                                        <SelectWagerType/>
+                                    </PrivateRoute>
+                                    <PrivateRoute exact path='/wagers/new/sports'>
+                                        <SelectEvent/>
+                                    </PrivateRoute>
+                                    <PrivateRoute exact path='/wagers/new/custom'>
+                                        <ProposeCustomWager/>
+                                    </PrivateRoute>
+                                    <PrivateRoute exact path='/wagers/new/confirm'>
+                                        <ConfirmWagerProposal/>
+                                    </PrivateRoute>
+                                    <PrivateRoute exact path='/wagers/manage'>
+                                        <ManageWager/>
                                     </PrivateRoute>
                                 </AuthIsLoaded>
                             </Switch>

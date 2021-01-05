@@ -3,7 +3,8 @@ import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import {SelectOpponent} from "../components/SelectOpponent";
 import {SelectEvent} from "../components/SelectEvent";
-import {ConfirmWager} from "../components/ConfirmWager";
+import {ConfirmWagerProposal} from "../components/ConfirmWagerProposal";
+import {useHistory} from 'react-router-dom';
 
 export const AppCell = styled.div`
   display: flex;
@@ -18,29 +19,14 @@ export const AppCell = styled.div`
 `
 
 export const NewWagerPage = () => {
-    const profile = useStoreState(state => state.firebase.profile)
-    const updateEvents = useStoreActions(actions => actions.wagers.loadEvents);
-
-    const [opponent, setOpponent] = useState(null)
-    const [event, setEvent] = useState(null);
-
-    useEffect(() => (async () => {
-        await updateEvents().catch(console.error);
-    })(), [profile]);
-
-    if(opponent === null){
-        return (
-            <AppCell>
-                <SelectOpponent opponentSelected={setOpponent}/>
-            </AppCell>
-        )
-    } else if(event === null){
-        return (
-            <SelectEvent eventSelected={setEvent}/>
-        )
-    } else {
-        return (
-            <ConfirmWager selection={event} opponent={opponent}/>
-        )
+    const setOpponent = useStoreActions(actions => actions.wagers.new.setOpponent);
+    const history = useHistory();
+    const opponentSelected = (opponent) => {
+        setOpponent(opponent);
+        history.push('/wagers/new/type')
     }
+
+    return (
+        <SelectOpponent opponentSelected={opponentSelected}/>
+    )
 }

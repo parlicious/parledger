@@ -6,6 +6,8 @@ import {useStoreActions, useStoreState} from "easy-peasy";
 import {InlineLink, shadow} from "../styles";
 import {LoadingImage, SplashScreen} from "./SplashScreen";
 import signUpImage from "../resources/undraw_Savings_re_eq4w.svg";
+import {useSaveWager} from "../stores/wagers";
+import {Redirect} from 'react-router-dom';
 
 
 const OutcomeDescription = ({outcome}) => {
@@ -71,7 +73,7 @@ const SuccessMessage = styled.div`
   color: #00C781;
 `
 
-const membersFromWager = (selection, profile, opponent) => {
+export const membersFromWager = (selection, profile, opponent) => {
     return {
         [selection.outcome]: profile,
         [(selection.outcome + 1) % 2]: opponent
@@ -187,38 +189,23 @@ const SubmittingImageContainer = styled.div`
   justify-content: center;
 `
 
-export const ConfirmWager = (
-    {
-        selection, opponent
-    }
-) => {
-    const [submitting, setSubmitting] = useState(false);
+export const ConfirmWagerProposal = () => {
+    const selection = useStoreState(state => state.wagers.new.details);
+    const opponent = useStoreState(state => state.wagers.new.opponent);
     const profile = useStoreState(state => state.firebase.profile);
-    const createWager = useStoreActions(actions => actions.wagers.createWager);
-    const [apiError, setApiError] = useState(null);
-    const [apiSuccess, setApiSuccess] = useState(null);
 
-    const saveWager = async (betAmount) => {
-        const wager = {
-            proposedTo: opponent.uid,
-            groupId: profile.groups[0],
-            type: 'BOVADA',
-            details: {
-                selection,
-                risk: betAmount,
-                win: betAmount
-            }
-        }
 
-        try {
-            setSubmitting(true);
-            await createWager(wager);
-            setApiSuccess("Wager was proposed!")
-        } catch (error) {
-            setApiError(error.message);
-        }
+    const {submitting, apiError, apiSuccess, save} = useSaveWager()
+    const saveWager = async (betAmount) => save({
+        risk: betAmount,
+        toWin: betAmount,
+        details: selection,
+        opponent: opponent,
+        type: 'BOVADA'
+    });
 
-        setSubmitting(false);
+    if (opponent === null) {
+        return <Redirect to={'/wagers/new'}/>
     }
 
     return (

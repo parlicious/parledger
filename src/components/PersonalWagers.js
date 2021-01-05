@@ -1,7 +1,7 @@
 import {useStoreActions, useStoreState} from "easy-peasy";
-import {Event} from "./SelectEvent";
+import {Event, EventCell} from "./SelectEvent";
 import styled from 'styled-components';
-import {buttonCss, InlineLink} from "../styles";
+import {buttonCss, ButtonLink, InlineLink} from "../styles";
 import {useState, useEffect} from "react";
 import {useFirestoreConnect} from "react-redux-firebase";
 import {Link} from "react-router-dom";
@@ -32,15 +32,11 @@ const WagerAmountContainer = styled.div`
 `
 
 const WagerAmount = ({risk, toWin}) => {
-    if (toWin) {
-
-    } else {
-        return (
-            <WagerAmountContainer>
-                ${risk}
-            </WagerAmountContainer>
-        );
-    }
+    return (
+        <WagerAmountContainer>
+            ${risk}
+        </WagerAmountContainer>
+    );
 }
 
 const WagerDescriptionIcon = styled.i`
@@ -53,7 +49,26 @@ const MemberAndAmountContainer = styled.div`
   justify-content: space-between;
 `
 
-const WagerDescriptionRow = ({eventDescription, pending, risk, toWin, wager}) => {
+const MemberAndAmount = ({wager, risk, toWin}) => {
+    const auth = useStoreState(state => state.firebase.auth);
+    const proposedBy = wager.proposedBy.uid === auth.uid ? "You" : wager.proposedBy.displayName;
+    const proposedTo = wager.proposedTo.uid === auth.uid ? "You" : wager.proposedTo.displayName;
+    console.log(risk, toWin);
+    if (risk === toWin) {
+        return <MemberAndAmountContainer>
+            <WagerMembers wager={wager}/>
+            <WagerAmount risk={risk} toWin={toWin}/>
+        </MemberAndAmountContainer>
+    } else {
+        return (
+            <WagerMembersContainer>
+                {proposedBy} risked ${risk} to win ${toWin} from {proposedTo}
+            </WagerMembersContainer>
+        )
+    }
+}
+
+export const WagerDescriptionRow = ({eventDescription, pending, risk, toWin, wager}) => {
     return (<WagerDescriptionRowContainer>
             <WagerDescriptionText>
                 {pending
@@ -68,10 +83,7 @@ const WagerDescriptionRow = ({eventDescription, pending, risk, toWin, wager}) =>
 
                 {eventDescription}
             </WagerDescriptionText>
-            <MemberAndAmountContainer>
-                <WagerMembers wager={wager}/>
-                <WagerAmount risk={risk} toWin={toWin}/>
-            </MemberAndAmountContainer>
+            <MemberAndAmount {...{toWin, risk, wager}}/>
         </WagerDescriptionRowContainer>
     );
 }
@@ -183,6 +195,18 @@ const ConfirmWagerRow = ({onConfirm, wager}) => {
                 </WagerActionsGroup>
             </ConfirmWagerContainer>
         )
+    } else if (wager.proposedBy.uid === auth.uid || wager.proposedTo.uid === auth.uid) {
+        const linkOptions = {
+            pathname: '/wagers/manage',
+            state: wager
+        };
+
+        return (
+            <ButtonLink
+                to={linkOptions}>
+                Manage this wager
+            </ButtonLink>
+        )
     } else {
         return null;
     }
@@ -190,15 +214,23 @@ const ConfirmWagerRow = ({onConfirm, wager}) => {
 
 const membersFromWager = (wager) => {
     return {
-        [wager.details.selection.outcome]: wager.proposedBy,
-        [(wager.details.selection.outcome + 1) % 2]: wager.proposedTo
+        [wager.details.outcome]: wager.proposedBy,
+        [(wager.details.outcome + 1) % 2]: wager.proposedTo
     }
 }
+
+const CustomWagerContainer = styled.div`
+  background: linear-gradient(to bottom, #FFFFFF04, #FFFFFF09);
+  box-shadow: 3px 3px 25px #0000001C;
+  border-radius: 0.3em;
+  max-width: 800px;
+  margin: 1em auto;
+`
 
 const Wager = (props) => {
     const {wager} = props;
     if (wager.type === 'BOVADA') {
-        const selection = wager.details.selection;
+        const selection = wager.details.selection || wager.details;
         return <Event
             wagerMembers={membersFromWager(wager)}
             eventSelected={() => {
@@ -215,7 +247,25 @@ const Wager = (props) => {
             selectedMarket={selection.market}
             selectedOutcome={selection.outcome}
         />
+    } else if (wager.type === 'CUSTOM') {
+        return (
+            <CustomWagerContainer>
+                <WagerDescriptionRow
+                    wager={wager}
+                    pending={wager.status === 'pending'}
+                    eventDescription={"Custom Wager"}
+                    risk={wager.details.risk}
+                    toWin={wager.details.toWin}
+                />
+                <p>
+                    {wager.details.description}
+                </p>
+                <ConfirmWagerRow {...props}/>
+            </CustomWagerContainer>
+        )
     }
+
+    return null;
 }
 
 const PersonalWagersTitle = styled.div`

@@ -1,5 +1,5 @@
-import {action, computed, thunk} from "easy-peasy"
-
+import {action, computed, thunk, useStoreActions, useStoreState} from "easy-peasy"
+import {useState} from 'react';
 
 const eventsByCategory = (sections) => {
     sections?.flatMap(section => {
@@ -7,6 +7,23 @@ const eventsByCategory = (sections) => {
         const key = slice && slice[0]
         return section.events.map(it => [key, it])
     }).reduce((acc, val) => ({...acc, [val[0]]: val[1]}), {})
+}
+
+const newWagerModel = {
+    type: null,
+    setType: action((state, payload) => {
+        state.type = payload;
+    }),
+    opponent: null,
+    setOpponent: action((state, payload) => {
+        state.opponent = payload;
+        return state;
+    }),
+    details: null,
+    setDetails: action((state, payload) => {
+        state.details = payload;
+        return state;
+    })
 }
 
 export const wagersModel = {
@@ -62,5 +79,47 @@ export const wagersModel = {
     respondToWager: thunk(async (actions, payload, helpers) => {
         const firebase = helpers.injections.getFirebase();
         await firebase.functions().httpsCallable('confirmWager')(payload)
-    })
+    }),
+    activeWager: null,
+    setActiveWager: action((state, payload) => {
+        state.activeWager = payload;
+        return state;
+    }),
+    new: newWagerModel
+}
+
+
+export const useSaveWager = () => {
+    const profile = useStoreState(state => state.firebase.profile);
+    const [submitting, setSubmitting] = useState(false);
+    const [apiSuccess, setApiSuccess] = useState(null);
+    const [apiError, setApiError] = useState(null);
+    const createWager = useStoreActions(actions => actions.wagers.createWager);
+
+    const save = async ({risk, toWin, opponent, details, type}) => {
+        const wager = {
+            proposedTo: opponent.uid,
+            groupId: profile.groups[0],
+            type,
+            details: {
+                risk,
+                toWin,
+                ...details,
+            }
+        }
+
+        console.log(wager);
+
+        try {
+            setSubmitting(true);
+            await createWager(wager);
+            setApiSuccess("Wager was proposed!")
+        } catch (error) {
+            setApiError(error.message);
+        }
+
+        setSubmitting(false);
+    }
+
+    return {submitting, apiError, apiSuccess, save};
 }
