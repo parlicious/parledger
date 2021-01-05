@@ -38,6 +38,10 @@ const AppHeaderAnchor = styled.a`
 
 const AppBody = styled.div`
   padding: 1em;
+  
+  @media(max-width: 450px){
+    padding: 0;
+  }
 `
 
 export const AppContainer = (props) => {

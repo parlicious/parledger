@@ -1,8 +1,8 @@
-import {useStoreState} from "easy-peasy";
-import React, {useState} from "react";
+import {useStoreActions, useStoreState} from "easy-peasy";
+import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 import InfiniteScroll from "react-infinite-scroll-component";
-import {SportSelect} from "./SportSelect";
+import {useHistory} from 'react-router-dom';
 
 const OutcomeContainer = styled.div`
   display: flex;
@@ -91,7 +91,8 @@ const SelectableOddsCellContainer = styled(OddsCell)`
   }
 `
 
-const SelectableOddsCell = ({eventSelected, event, market, outcome, selected, opponent}) => {
+const SelectableOddsCell = ({eventSelected = () => {}, event, market, outcome, selected, opponent}) => {
+
     return (
         <SelectableOddsCellContainer selected={selected} opponent={opponent}
                                      onClick={() => eventSelected({event, market, outcome})}>
@@ -202,18 +203,31 @@ export const Event = (props) => {
 };
 
 
-export const SelectEvent = ({eventSelected}) => {
+export const SelectEvent = ({}) => {
     const events = useStoreState(state => state.wagers.headToHeadEvents);
     const [numSections, setNumSections] = useState(2);
-    const renderedEvents = events?.slice(0, numSections) ?? [];
+    const renderedEvents = events?.slice(0, numSections) || [];
     const fetchMoreData = () => setNumSections(numSections + 1)
+    const setEvent = useStoreActions(actions => actions.wagers.new.setDetails);
+    const history = useHistory();
+
+    const updateEvents = useStoreActions(actions => actions.wagers.loadEvents);
+    useEffect(() => {
+        updateEvents().catch(console.error);
+    }, [events]);
+
+
+    const eventSelected = (event) => {
+        setEvent(event);
+        history.push('/wagers/new/confirm')
+    }
 
     return (
         <React.Fragment>
             <InfiniteScroll
                 dataLength={renderedEvents.length}
                 next={fetchMoreData}
-                hasMore={renderedEvents.length !== events.length}
+                hasMore={renderedEvents?.length !== events?.length}
                 loader={<h4>Loading...</h4>}
                 endMessage={
                     <p style={{textAlign: "center"}}>

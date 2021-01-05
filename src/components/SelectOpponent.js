@@ -10,6 +10,7 @@ import 'instantsearch.css/themes/algolia.css';
 import Avatar from "react-avatar";
 import {useStoreState} from "easy-peasy";
 import {useFirestoreConnect} from "react-redux-firebase";
+import {AppCell} from "../pages/NewWagerPage";
 
 
 const searchClient = algoliasearch(
@@ -107,7 +108,7 @@ export const SelectOpponent = ({opponentSelected}) => {
 
 
     return (
-        <div>
+        <AppCell>
             <SearchContainer>
                 <SearchRow>
                     <h2>
@@ -127,6 +128,6 @@ export const SelectOpponent = ({opponentSelected}) => {
                     {filteredMembers?.map(member => <Hit key={member.uid} hit={member} opponentSelected={opponentSelected}/>)}
                 </HitsContainer>
             </SearchContainer>
-        </div>
+        </AppCell>
     )
 }

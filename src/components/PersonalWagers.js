@@ -1,7 +1,7 @@
 import {useStoreActions, useStoreState} from "easy-peasy";
 import {Event} from "./SelectEvent";
 import styled from 'styled-components';
-import {buttonCss, InlineLink} from "../styles";
+import {buttonCss, ButtonLink, InlineLink} from "../styles";
 import {useState, useEffect} from "react";
 import {useFirestoreConnect} from "react-redux-firebase";
 import {Link} from "react-router-dom";
@@ -33,7 +33,7 @@ const WagerAmountContainer = styled.div`
 
 const WagerAmount = ({risk, toWin}) => {
     if (toWin) {
-
+        return null;
     } else {
         return (
             <WagerAmountContainer>
@@ -53,7 +53,7 @@ const MemberAndAmountContainer = styled.div`
   justify-content: space-between;
 `
 
-const WagerDescriptionRow = ({eventDescription, pending, risk, toWin, wager}) => {
+export const WagerDescriptionRow = ({eventDescription, pending, risk, toWin, wager}) => {
     return (<WagerDescriptionRowContainer>
             <WagerDescriptionText>
                 {pending
@@ -183,6 +183,18 @@ const ConfirmWagerRow = ({onConfirm, wager}) => {
                 </WagerActionsGroup>
             </ConfirmWagerContainer>
         )
+    } else if (wager.proposedBy.uid === auth.uid || wager.proposedTo.uid === auth.uid) {
+        const linkOptions = {
+            pathname: '/wagers/manage',
+            state: wager
+        };
+
+        return (
+            <ButtonLink
+                to={linkOptions}>
+                Manage this wager
+            </ButtonLink>
+        )
     } else {
         return null;
     }
@@ -190,15 +202,16 @@ const ConfirmWagerRow = ({onConfirm, wager}) => {
 
 const membersFromWager = (wager) => {
     return {
-        [wager.details.selection.outcome]: wager.proposedBy,
-        [(wager.details.selection.outcome + 1) % 2]: wager.proposedTo
+        [wager.details.outcome]: wager.proposedBy,
+        [(wager.details.outcome + 1) % 2]: wager.proposedTo
     }
 }
 
 const Wager = (props) => {
+    console.log(props);
     const {wager} = props;
     if (wager.type === 'BOVADA') {
-        const selection = wager.details.selection;
+        const selection = wager.details;
         return <Event
             wagerMembers={membersFromWager(wager)}
             eventSelected={() => {
@@ -215,6 +228,8 @@ const Wager = (props) => {
             selectedMarket={selection.market}
             selectedOutcome={selection.outcome}
         />
+    } else {
+        return null;
     }
 }
 

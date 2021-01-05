@@ -12,18 +12,21 @@ export const buttonCss = css`
   padding: 0.5em 1.5em;
   margin: 1em;
   min-width: 100px;
-  
+
   transition: all 0.2s;
 
-  :hover{
+  :hover {
     cursor: pointer;
   }
-  
+
   :focus {
-    outline:none;
+    outline: none;
   }
 `
 
 export const InlineLink = styled(Link)`
-    text-decoration: underline;
+  text-decoration: underline;
+`
+
+export const ButtonLink = styled(Link)`
 `

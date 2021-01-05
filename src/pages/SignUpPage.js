@@ -1,9 +1,7 @@
 import "./HomePage.css";
 import React from "react";
-import {useFirebase} from "react-redux-firebase";
 import signUpImage from "../resources/undraw_Savings_re_eq4w.svg"
-import blob from "../resources/blob_white.svg"
-import styled, {css} from 'styled-components';
+import styled from 'styled-components';
 import {useHistory} from 'react-router-dom';
 
 const SignUpPageContainer = styled.div`
@@ -22,13 +20,6 @@ const SignUpPageContainer = styled.div`
 const CtaContainer = styled.div`
   display: flex;
   flex-direction: column;
-`
-
-const imageCss = css`
-  position: absolute;
-  width: 50%;
-  top: 10em;
-  right: 1em;
 `
 
 const SignUpPageImageContainer = styled.div`
@@ -58,7 +49,6 @@ export const SignUpButton = styled.button`
 `
 
 export const SignUpPage = () => {
-    const firebase = useFirebase()
     const history = useHistory();
 
     async function loginWithGoogle() {
