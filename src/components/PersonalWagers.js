@@ -1,5 +1,5 @@
 import {useStoreActions, useStoreState} from "easy-peasy";
-import {Event} from "./SelectEvent";
+import {Event, EventCell} from "./SelectEvent";
 import styled from 'styled-components';
 import {buttonCss, ButtonLink, InlineLink} from "../styles";
 import {useState, useEffect} from "react";
@@ -207,6 +207,14 @@ const membersFromWager = (wager) => {
     }
 }
 
+const CustomWagerContainer = styled.div`
+  background: linear-gradient(to bottom, #FFFFFF04, #FFFFFF09);
+  box-shadow: 3px 3px 25px #0000001C;
+  border-radius: 0.3em;
+  max-width: 800px;
+  margin: 1em auto;
+`
+
 const Wager = (props) => {
     console.log(props);
     const {wager} = props;
@@ -228,9 +236,23 @@ const Wager = (props) => {
             selectedMarket={selection.market}
             selectedOutcome={selection.outcome}
         />
-    } else {
-        return null;
+    } else if(wager.type === 'CUSTOM') {
+        return (
+            <CustomWagerContainer>
+                <WagerDescriptionRow
+                    wager={wager}
+                    pending={wager.status === 'pending'}
+                    eventDescription={"Custom Wager"}
+                    risk={wager.details.risk}/>
+                    <p>
+                        {wager.details.description}
+                    </p>
+                    <ConfirmWagerRow {...props}/>
+            </CustomWagerContainer>
+        )
     }
+
+    return null;
 }
 
 const PersonalWagersTitle = styled.div`

@@ -102,9 +102,9 @@ export const useSaveWager = () => {
             groupId: profile.groups[0],
             type,
             details: {
-                ...details,
                 risk,
-                toWin
+                toWin,
+                ...details,
             }
         }
 

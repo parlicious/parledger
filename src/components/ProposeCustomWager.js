@@ -66,6 +66,7 @@ const WagerDescriptionTextArea = styled.textarea`
   background: none;
   padding: 0.3em;
   border: 1px solid white;
+  height: 30vh;
 `
 
 const CustomWagerContainer = styled.div`
@@ -145,18 +146,21 @@ export const ProposeCustomWager = ({}) => {
         return <Redirect to={'/wagers/new'}/>
     }
 
-    const onSubmit = async (data) => save({
-        risk: data.risk,
-        toWin: data.toWin,
-        details: {description: data.wagerDescription},
-        opponent: opponent,
-        type: 'CUSTOM'
-    });
+    const onSubmit = async (data) => {
+        console.log(data);
+        await save({
+            risk: data.risk,
+            toWin: data.toWin,
+            details: {description: data.wagerDescription},
+            opponent: opponent,
+            type: 'CUSTOM'
+        });
+    }
 
 
     const getFormErrorMessage = (errors) => {
         const messages = {
-            wagerDescription: "Must provide a wager description",
+            wagerDescription: "Must provide a wager description or yours is too long",
             risk: "Must enter an amount to risk",
             toWin: "Must enter an amount to win",
         }
@@ -196,7 +200,7 @@ export const ProposeCustomWager = ({}) => {
                             {getFormErrorMessage(errors)}
                         </ErrorMessage>}
                         <WagerDescriptionTextArea
-                            register={register({required: true})}
+                            ref={register({required: true, maxLength: 1000})}
                             name='wagerDescription'/>
 
                     </WagerDescription>
