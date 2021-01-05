@@ -32,15 +32,11 @@ const WagerAmountContainer = styled.div`
 `
 
 const WagerAmount = ({risk, toWin}) => {
-    if (toWin) {
-        return null;
-    } else {
-        return (
-            <WagerAmountContainer>
-                ${risk}
-            </WagerAmountContainer>
-        );
-    }
+    return (
+        <WagerAmountContainer>
+            ${risk}
+        </WagerAmountContainer>
+    );
 }
 
 const WagerDescriptionIcon = styled.i`
@@ -52,6 +48,25 @@ const MemberAndAmountContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
 `
+
+const MemberAndAmount = ({wager, risk, toWin}) => {
+    const auth = useStoreState(state => state.firebase.auth);
+    const proposedBy = wager.proposedBy.uid === auth.uid ? "You" : wager.proposedBy.displayName;
+    const proposedTo = wager.proposedTo.uid === auth.uid ? "You" : wager.proposedTo.displayName;
+    console.log(risk, toWin);
+    if (risk === toWin) {
+        return <MemberAndAmountContainer>
+            <WagerMembers wager={wager}/>
+            <WagerAmount risk={risk} toWin={toWin}/>
+        </MemberAndAmountContainer>
+    } else {
+        return (
+            <WagerMembersContainer>
+                {proposedBy} risked ${risk} to win ${toWin} from {proposedTo}
+            </WagerMembersContainer>
+        )
+    }
+}
 
 export const WagerDescriptionRow = ({eventDescription, pending, risk, toWin, wager}) => {
     return (<WagerDescriptionRowContainer>
@@ -68,10 +83,7 @@ export const WagerDescriptionRow = ({eventDescription, pending, risk, toWin, wag
 
                 {eventDescription}
             </WagerDescriptionText>
-            <MemberAndAmountContainer>
-                <WagerMembers wager={wager}/>
-                <WagerAmount risk={risk} toWin={toWin}/>
-            </MemberAndAmountContainer>
+            <MemberAndAmount {...{toWin, risk, wager}}/>
         </WagerDescriptionRowContainer>
     );
 }
@@ -216,10 +228,9 @@ const CustomWagerContainer = styled.div`
 `
 
 const Wager = (props) => {
-    console.log(props);
     const {wager} = props;
     if (wager.type === 'BOVADA') {
-        const selection = wager.details;
+        const selection = wager.details.selection || wager.details;
         return <Event
             wagerMembers={membersFromWager(wager)}
             eventSelected={() => {
@@ -236,18 +247,20 @@ const Wager = (props) => {
             selectedMarket={selection.market}
             selectedOutcome={selection.outcome}
         />
-    } else if(wager.type === 'CUSTOM') {
+    } else if (wager.type === 'CUSTOM') {
         return (
             <CustomWagerContainer>
                 <WagerDescriptionRow
                     wager={wager}
                     pending={wager.status === 'pending'}
                     eventDescription={"Custom Wager"}
-                    risk={wager.details.risk}/>
-                    <p>
-                        {wager.details.description}
-                    </p>
-                    <ConfirmWagerRow {...props}/>
+                    risk={wager.details.risk}
+                    toWin={wager.details.toWin}
+                />
+                <p>
+                    {wager.details.description}
+                </p>
+                <ConfirmWagerRow {...props}/>
             </CustomWagerContainer>
         )
     }
