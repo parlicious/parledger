@@ -36,6 +36,7 @@
   "scripts": {
     "start": "env-cmd -f .env react-scripts start",
     "start:local": "env-cmd -f .env.local react-scripts start",
+    "start:prod": "env-cmd -f .env.prod react-scripts start",
     "build": "env-cmd -f .env.prod react-scripts build",
     "build:prod": "env-cmd -f ./.env.prod react-scripts build",
     "emulators": "firebase emulators:start --import ./local_data --export-on-exit",

@@ -1,0 +1,27 @@
+<mjml>
+  <mj-head>
+    <mj-attributes>
+    
+      <mj-all font-family="Avenir; Helvetica; sans-serif;" color="#2C5364" />
+    </mj-attributes>
+  </mj-head>
+  <mj-body>
+    <mj-section>
+      <mj-column>
+        <mj-text font-size="40px" font-weight="bold">
+          ledger.bet
+        </mj-text>
+        <mj-divider border-width="1px" border-style="solid" border-color="#2C5364" />
+      </mj-column>
+    </mj-section>
+    <mj-section>
+      <mj-column>
+        <mj-text font-size="20px">
+          You have a new wager proposed to you on <a href="https://ledger.bet">
+          ledger.bet
+          </a>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

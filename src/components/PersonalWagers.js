@@ -213,6 +213,7 @@ const ConfirmWagerRow = ({onConfirm, wager}) => {
 }
 
 const membersFromWager = (wager) => {
+    console.log(wager);
     return {
         [wager.details.outcome]: wager.proposedBy,
         [(wager.details.outcome + 1) % 2]: wager.proposedTo

@@ -181,7 +181,7 @@ const CustomAmountButton = ({saveWager}) => {
     )
 }
 
-const SubmittingImageContainer = styled.div`
+export const SubmittingImageContainer = styled.div`
   width: 30%;
   margin: auto;
   display: flex;

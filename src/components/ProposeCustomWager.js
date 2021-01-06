@@ -6,6 +6,9 @@ import {AppCell} from "../pages/NewWagerPage";
 import {useSaveWager} from "../stores/wagers";
 import {Redirect} from "react-router-dom";
 import {InlineLink} from "../styles";
+import {LoadingImage} from "./SplashScreen";
+import signUpImage from "../resources/undraw_Savings_re_eq4w.svg";
+import {SubmittingImageContainer} from "./ConfirmWagerProposal";
 
 const customAmountInputCss = css`
   color: white;
@@ -23,6 +26,7 @@ const CustomAmountInputField = styled.input`
 
   border-radius: 0 0.3em 0.3em 0;
   width: 100%;
+  height: 100%;
   flex-grow: 1;
 
   :focus {
@@ -136,9 +140,9 @@ export const ProposeCustomWager = ({}) => {
 
     const watchRisk = watch('risk');
 
-    if (!formState.dirtyFields.toWin) {
-        setValue('toWin', watchRisk);
-    }
+    // if (!formState.dirtyFields.toWin) {
+    //     setValue('toWin', watchRisk);
+    // }
 
     const {submitting, apiError, apiSuccess, save} = useSaveWager()
 
@@ -204,7 +208,11 @@ export const ProposeCustomWager = ({}) => {
                             name='wagerDescription'/>
 
                     </WagerDescription>
-                    {apiSuccess
+                    {submitting
+                        ? <SubmittingImageContainer>
+                            <LoadingImage src={signUpImage}/>
+                        </SubmittingImageContainer>
+                        : apiSuccess
                         ? <SubmitRow>
                             <SuccessMessage>
                                 {apiSuccess}

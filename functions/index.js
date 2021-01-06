@@ -50,7 +50,14 @@ const addUserToGroup = async (invitationCode, uid, allowDerivatives) => {
     console.log(userRef.exists, codeIsValid, matchingCode);
     if (userRef.exists && codeIsValid) {
         const user = userRef.data();
-        await group.ref.collection('users').doc(uid).set({displayName: user.displayName, avatarUrl: user.avatarUrl, uid, allowDerivatives, joined: Date.now(), group: groupId})
+        await group.ref.collection('users').doc(uid).set({
+            displayName: user.displayName,
+            avatarUrl: user.avatarUrl,
+            uid,
+            allowDerivatives,
+            joined: Date.now(),
+            group: groupId
+        })
         const groups = Array.from(new Set([groupId, ...user.groups || []]))
         await db.collection('users').doc(uid).set({...user, groups})
     }
@@ -266,7 +273,7 @@ async function getAndSaveEventsFromBovada() {
     const file = admin.storage().bucket().file('events.json');
 
     const result = await file.save(resultBuffer, {
-        metadata: { contentType: "Application/JSON" },
+        metadata: {contentType: "Application/JSON"},
         public: true,
         validation: 'md5'
     })
@@ -299,3 +306,22 @@ exports.manuallyUpdateBovadaEvents = functions.https.onRequest(async (req, res) 
     await getAndSaveEventsFromBovada()
     res.send('ok');
 })
+
+exports.sendWagerProposalEmail = functions.firestore.document('groups/{groupId}/wagers/{wagerId}')
+    .onWrite(async (change, context) => {
+        const wager = change.after.data();
+        const snapshot = await db.collection('users').doc(wager.proposedTo.uid).get()
+        const proposedToUser = snapshot.data();
+
+        const mail = {
+            to: proposedToUser.email,
+            template: {
+                name: 'new-wager',
+                data: {
+                    proposedBy: wager.proposedBy.displayName
+                }
+            }
+        }
+
+        await db.collection('mail').add(mail);
+    });

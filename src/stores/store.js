@@ -51,7 +51,7 @@ firebase.firestore() // <- needed if using firestore
 firebase.functions() // <- needed if using httpsCallable
 firebase.analytics();
 
-if (window.location.hostname === 'localhost') {
+if (window.location.hostname === 'localhost' && process.env.REACT_APP_FIREBASE_PROJECT !== 'prod') {
     console.log("testing locally -- hitting local functions and firestore emulators");
     firebase.functions().useEmulator('localhost', 5001);
     firebase.firestore().settings({
