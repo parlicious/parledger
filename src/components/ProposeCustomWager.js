@@ -9,6 +9,7 @@ import {InlineLink} from "../styles";
 import {LoadingImage} from "./SplashScreen";
 import signUpImage from "../resources/undraw_Savings_re_eq4w.svg";
 import {SubmittingImageContainer} from "./ConfirmWagerProposal";
+import {DatePicker} from "react-rainbow-components";
 
 const customAmountInputCss = css`
   color: white;
@@ -196,6 +197,14 @@ export const ProposeCustomWager = ({}) => {
                         {(errors.toWin && !errors.risk) && <ErrorMessage>
                             {getFormErrorMessage(errors)}
                         </ErrorMessage>}
+                    </WagerAmount>
+
+                    <WagerAmount>
+                        <DatePicker/>
+                    </WagerAmount>
+
+                    <WagerAmount>
+                        <DatePicker/>
                     </WagerAmount>
 
                     <WagerDescription>

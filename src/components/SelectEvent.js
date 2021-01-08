@@ -179,6 +179,8 @@ const OutcomesRow = ({event, wagerMembers, selectedOutcome, selectedMarket, even
 export const Event = (props) => {
     const {headerComponent, footerComponent, event} = props;
     const eventTime = new Date(event.startTime);
+
+    console.log(event);
     return (
         <EventCell key={event.id}>
             {headerComponent && <EventHeaderContainer>{headerComponent}</EventHeaderContainer>}
