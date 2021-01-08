@@ -132,6 +132,11 @@ const CustomAmountInputCurrency = styled.div`
   border-right: none;
 
   border-radius: 0.3em 0 0 0.3em;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 `
 
 const CustomAmountInputButton = styled.button`

@@ -46,6 +46,11 @@ const CustomAmountInputCurrency = styled.div`
   border-right: none;
 
   border-radius: 0.3em 0 0 0.3em;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 `
 
 const WagerAmount = styled.div`
