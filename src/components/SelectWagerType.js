@@ -12,7 +12,8 @@ const wagerTypeToDetailsRoute = {
 
 const WagerOptionsContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
 `

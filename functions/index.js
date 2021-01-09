@@ -80,93 +80,22 @@ exports.joinGroup = functions.https.onCall(async (data, context) => {
 });
 
 exports.createWager = functions.https.onCall(async (data, context) => {
-    const {groupId, proposedTo, details, type} = data;
+    const {groupId, proposedTo, details, type, isOpen} = data;
     const proposedBy = context.auth.uid;
     const usersSnapshot = await db.collection(`groups/${groupId}/users`).doc(proposedBy).get();
     if (!usersSnapshot.exists) {
         throw new functions.https.HttpsError('unauthenticated', 'You must be a member of the group to create wagers in it.')
     }
 
-    const proposedToSnapshot = await db.collection(`groups/${groupId}/users`).doc(proposedTo).get();
-    if (!proposedToSnapshot.exists) {
-        throw new functions.https.HttpsError('failed-precondition', 'The other party of the wager isn\'t in this group')
-    }
-
-    if (proposedToSnapshot.data().uid === context.auth.uid) {
-        throw new functions.https.HttpsError('failed-precondition', 'You can\'t create a wager with yourself')
-    }
-
-    const proposedToUserSnapshot = await db.collection('users').doc(proposedToSnapshot.data().uid).get();
-    if (!proposedToUserSnapshot.exists) {
-        throw new functions.https.HttpsError('failed-precondition', 'The other party of the wager isn\'t registered');
-    }
-
     const creatingUserSnapshot = await db.collection('users').doc(proposedBy).get();
     if (!creatingUserSnapshot.exists) {
         throw new functions.https.HttpsError('failed-precondition', 'The other party of the wager isn\'t registered');
     }
 
-    const wagerToSave = {
+    let wagerToSave = {
         id: uuidv4(),
         groupId: groupId,
         type,
-        proposedBy: {
-            uid: proposedBy,
-            displayName: creatingUserSnapshot.data().displayName
-        },
-        proposedTo: {
-            uid: proposedTo,
-            displayName: proposedToUserSnapshot.data().displayName,
-        },
-        status: 'pending',
-        details: details
-    }
-
-    const wagerRef = {
-        groupId: groupId,
-        ...wagerToSave
-    }
-
-    await db.collection('groups')
-        .doc(groupId)
-        .collection('wagers')
-        .doc(wagerToSave.id)
-        .set(wagerToSave);
-
-    const path = `wagers.${wagerToSave.id}`
-
-    await db.collection('users')
-        .doc(proposedBy)
-        .update({[path]: wagerRef})
-
-    await db.collection('users')
-        .doc(proposedTo)
-        .update({[path]: wagerRef})
-
-    await notifyGroupOfWager(wagerRef, 'proposed');
-})
-
-exports.createOpenWager = functions.https.onCall(async (data, context) => {
-    const {groupId, proposedBy, details} = data;
-    const usersSnapshot = await db.collection(`groups/${groupId}/users`).doc(proposedBy).get();
-    if (!usersSnapshot.exists) {
-        throw new functions.https.HttpsError('unauthenticated', 'You must be a member of the group to create wagers in it.')
-    }
-
-    const creatingUserSnapshot = await db.collection('users').doc(proposedBy).get();
-    if (!creatingUserSnapshot.exists) {
-        throw new functions.https.HttpsError('failed-precondition', 'The other party of the wager isn\'t registered');
-    }
-
-    const actorUserSnapshot = await db.collection('users').doc(details.actor).get();
-    if (!actorUserSnapshot.exists) {
-        throw new functions.https.HttpsError('failed-precondition', 'The actor of the wager isn\'t registered');
-    }
-
-
-    const wagerToSave = {
-        id: uuidv4(),
-        groupId: groupId,
         proposedBy: {
             uid: proposedBy,
             displayName: creatingUserSnapshot.data().displayName
@@ -175,6 +104,31 @@ exports.createOpenWager = functions.https.onCall(async (data, context) => {
         details: details
     }
 
+    if (!isOpen) {
+        const proposedToSnapshot = await db.collection(`groups/${groupId}/users`).doc(proposedTo).get();
+        if (!proposedToSnapshot.exists) {
+            throw new functions.https.HttpsError('failed-precondition', 'The other party of the wager isn\'t in this group')
+        }
+
+        if (proposedToSnapshot.data().uid === context.auth.uid) {
+            throw new functions.https.HttpsError('failed-precondition', 'You can\'t create a wager with yourself')
+        }
+
+        const proposedToUserSnapshot = await db.collection('users').doc(proposedToSnapshot.data().uid).get();
+        if (!proposedToUserSnapshot.exists) {
+            throw new functions.https.HttpsError('failed-precondition', 'The other party of the wager isn\'t registered');
+        }
+
+        wagerToSave = {
+            ...wagerToSave,
+            proposedTo: {
+                uid: proposedTo,
+                displayName: proposedToUserSnapshot.data().displayName,
+            },
+            status: 'pending'
+        }
+    }
+
     const wagerRef = {
         groupId: groupId,
         ...wagerToSave
@@ -192,7 +146,13 @@ exports.createOpenWager = functions.https.onCall(async (data, context) => {
         .doc(proposedBy)
         .update({[path]: wagerRef})
 
-    await notifyGroupOfWager(wagerRef, 'open');
+    if (!isOpen) {
+        await db.collection('users')
+            .doc(proposedTo)
+            .update({[path]: wagerRef})
+    }
+
+    await notifyGroupOfWager(wagerRef, 'proposed');
 })
 
 exports.confirmWager = functions.https.onCall(async (data, context) => {
@@ -310,18 +270,21 @@ exports.manuallyUpdateBovadaEvents = functions.https.onRequest(async (req, res) 
 exports.sendWagerProposalEmail = functions.firestore.document('groups/{groupId}/wagers/{wagerId}')
     .onWrite(async (change, context) => {
         const wager = change.after.data();
-        const snapshot = await db.collection('users').doc(wager.proposedTo.uid).get()
-        const proposedToUser = snapshot.data();
+        if (wager && wager.proposedTo && wager.proposedTo.uid) {
 
-        const mail = {
-            to: proposedToUser.email,
-            template: {
-                name: 'new-wager',
-                data: {
-                    proposedBy: wager.proposedBy.displayName
+            const snapshot = await db.collection('users').doc(wager.proposedTo.uid).get()
+            const proposedToUser = snapshot.data();
+
+            const mail = {
+                to: proposedToUser.email,
+                template: {
+                    name: 'new-wager',
+                    data: {
+                        proposedBy: wager.proposedBy.displayName
+                    }
                 }
             }
-        }
 
-        await db.collection('mail').add(mail);
+            await db.collection('mail').add(mail);
+        }
     });

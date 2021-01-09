@@ -15,6 +15,8 @@ const customAmountInputCss = css`
   font-size: 1.2em;
   background: none;
   padding: 0.3em;
+  height: 100%;
+  box-sizing: border-box;
 `
 
 const CustomAmountInputField = styled.input`
@@ -26,7 +28,6 @@ const CustomAmountInputField = styled.input`
 
   border-radius: 0 0.3em 0.3em 0;
   width: 100%;
-  height: 100%;
   flex-grow: 1;
 
   :focus {
@@ -46,7 +47,6 @@ const CustomAmountInputCurrency = styled.div`
   border-right: none;
 
   border-radius: 0.3em 0 0 0.3em;
-  height: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -63,7 +63,7 @@ const WagerAmount = styled.div`
 const WagerDescription = styled.div`
   grid-column-start: 1;
   grid-column-end: 3;
-
+  
   display: flex;
   flex-direction: column;
 `
@@ -218,24 +218,24 @@ export const ProposeCustomWager = ({}) => {
                             <LoadingImage src={signUpImage}/>
                         </SubmittingImageContainer>
                         : apiSuccess
-                        ? <SubmitRow>
-                            <SuccessMessage>
-                                {apiSuccess}
-                            </SuccessMessage>
-                            <InlineLink to={'/home'}>Go Home</InlineLink>
-                        </SubmitRow>
-                        : (apiError && !formState.isDirty)
                             ? <SubmitRow>
-                                <ErrorMessage>
-                                    {apiError}
-                                </ErrorMessage>
+                                <SuccessMessage>
+                                    {apiSuccess}
+                                </SuccessMessage>
+                                <InlineLink to={'/home'}>Go Home</InlineLink>
                             </SubmitRow>
+                            : (apiError && !formState.isDirty)
+                                ? <SubmitRow>
+                                    <ErrorMessage>
+                                        {apiError}
+                                    </ErrorMessage>
+                                </SubmitRow>
 
-                            : <SubmitRow>
-                                <SubmitBetButton type="submit">
-                                    Submit
-                                </SubmitBetButton>
-                            </SubmitRow>
+                                : <SubmitRow>
+                                    <SubmitBetButton type="submit">
+                                        Submit
+                                    </SubmitBetButton>
+                                </SubmitRow>
                     }
                 </CustomWagerContainer>
             </form>

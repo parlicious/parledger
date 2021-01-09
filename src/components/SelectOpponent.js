@@ -104,7 +104,12 @@ export const SelectOpponent = ({opponentSelected}) => {
     const auth = useStoreState(state => state.firebase.auth);
     useFirestoreConnect(profile.groups.map(group => ({collection: `groups/${group}/users`, storeAs: 'groupMembers'})));
     const members = useStoreState(state => state.firestore.data.groupMembers);
-    const filteredMembers = Object.values(members ?? {}).filter(it => it.uid !== auth.uid).filter(doFilter(searchQuery));
+    const openWagerOptions = {
+        displayName: <span> Allow anyone to accept&nbsp;it </span>,
+        avatarUrl: '/user.png',
+        uid: 'OPEN'
+    }
+    const filteredMembers = [...Object.values(members ?? {}).filter(it => it.uid !== auth.uid).filter(doFilter(searchQuery)), openWagerOptions]
 
 
     return (

@@ -83,8 +83,8 @@ const SelectableOddsCellContainer = styled(OddsCell)`
   flex-wrap: wrap-reverse;
   flex-direction: row-reverse;
   justify-content: space-between;
-  text-transform: capitalize;
-
+  text-align: end;
+  
   :hover {
     cursor: pointer;
     background: #FFFFFF13;
@@ -151,12 +151,12 @@ const SportSection = ({section, eventSelected}) => {
 const OutcomesRow = ({event, wagerMembers, selectedOutcome, selectedMarket, eventSelected, rowNum}) => {
     const auth = useStoreState(state => state.firebase.auth);
     if (!!wagerMembers) {
-        const selected = wagerMembers[rowNum].uid === auth.uid;
-        const opponent = wagerMembers[(rowNum + 1) % 2].uid === auth.uid;
+        const selected = wagerMembers[rowNum]?.uid === auth.uid;
+        const opponent = wagerMembers[(rowNum + 1) % 2]?.uid === auth.uid;
         return (
             <React.Fragment>
                 <SelectableOddsCellContainer selected={selected} opponent={opponent}>
-                    {wagerMembers[rowNum].displayName}
+                    {wagerMembers[rowNum]?.displayName ?? 'Anyone'}
                 </SelectableOddsCellContainer>
                 <SelectableOddsCell selected={selected} opponent={opponent} event={event} market={selectedMarket}
                                     outcome={rowNum}/>

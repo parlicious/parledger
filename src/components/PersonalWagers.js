@@ -52,8 +52,13 @@ const MemberAndAmountContainer = styled.div`
 const MemberAndAmount = ({wager, risk, toWin}) => {
     const auth = useStoreState(state => state.firebase.auth);
     const proposedBy = wager.proposedBy.uid === auth.uid ? "You" : wager.proposedBy.displayName;
-    const proposedTo = wager.proposedTo.uid === auth.uid ? "You" : wager.proposedTo.displayName;
-    console.log(risk, toWin);
+    const proposedTo = wager.proposedTo?.uid === auth.uid ? "You" : wager.proposedTo?.displayName;
+
+    if (wager.status === 'open') {
+        return <WagerMembersContainer>
+            {proposedBy} risked ${risk} to win ${toWin || risk} from anyone who would accept the bet
+        </WagerMembersContainer>
+    }
     if (risk === toWin) {
         return <MemberAndAmountContainer>
             <WagerMembers wager={wager}/>
@@ -137,7 +142,7 @@ const WagerMembersContainer = styled.span`
 const WagerMembers = ({wager}) => {
     const auth = useStoreState(state => state.firebase.auth);
     const proposedBy = wager.proposedBy.uid === auth.uid ? "You" : wager.proposedBy.displayName;
-    const proposedTo = wager.proposedTo.uid === auth.uid ? "You" : wager.proposedTo.displayName;
+    const proposedTo = wager.proposedTo?.uid === auth.uid ? "You" : wager.proposedTo?.displayName || 'Anyone';
 
     return (
         <WagerMembersContainer>
@@ -151,7 +156,6 @@ const ConfirmWagerRow = ({onConfirm, wager}) => {
     const [loading, setLoading] = useState(false);
 
     const confirm = (accept) => async () => {
-        console.log('acting')
         setLoading(true);
         try {
             await onConfirm(wager.id, wager.groupId, accept);
@@ -167,7 +171,7 @@ const ConfirmWagerRow = ({onConfirm, wager}) => {
                 Loading ...
             </ConfirmWagerContainer>
         )
-    } else if (wager.status === 'pending' && wager.proposedTo.uid === auth.uid) {
+    } else if (wager.status === 'pending' && wager.proposedTo?.uid === auth.uid) {
         return (
             <ConfirmWagerContainer>
                 <ConfirmWagerText>
@@ -183,11 +187,24 @@ const ConfirmWagerRow = ({onConfirm, wager}) => {
                 </WagerActionsGroup>
             </ConfirmWagerContainer>
         )
+    } else if (wager.status === 'open' && wager.proposedBy.uid !== auth.uid) {
+        return (
+            <ConfirmWagerContainer>
+                <ConfirmWagerText>
+                    <i className="fas fa-exclamation-circle"/> {wager.proposedBy.displayName} offered this bet to anyone.
+                </ConfirmWagerText>
+                <WagerActionsGroup>
+                    <ConfirmButton onClick={confirm(true)}>
+                        Accept it
+                    </ConfirmButton>
+                </WagerActionsGroup>
+            </ConfirmWagerContainer>
+        )
     } else if (wager.status === 'pending' && wager.proposedBy.uid === auth.uid) {
         return (
             <ConfirmWagerContainer>
                 <ConfirmWagerText> <i className="fas fa-exclamation-circle"/> You proposed this bet
-                    to {wager.proposedTo.displayName} </ConfirmWagerText>
+                    to {wager.proposedTo?.displayName} </ConfirmWagerText>
                 <WagerActionsGroup>
                     <RejectButton onClick={confirm(false)}>
                         Rescind it
@@ -195,25 +212,26 @@ const ConfirmWagerRow = ({onConfirm, wager}) => {
                 </WagerActionsGroup>
             </ConfirmWagerContainer>
         )
-    } else if (wager.proposedBy.uid === auth.uid || wager.proposedTo.uid === auth.uid) {
+    } else if (wager.proposedBy.uid === auth.uid || wager.proposedTo?.uid === auth.uid) {
         const linkOptions = {
             pathname: '/wagers/manage',
             state: wager
         };
 
-        return (
-            <ButtonLink
-                to={linkOptions}>
-                Manage this wager
-            </ButtonLink>
-        )
+        // return (
+        //     <ButtonLink
+        //         to={linkOptions}>
+        //         Manage this wager
+        //     </ButtonLink>
+        // )
+
+        return null;
     } else {
         return null;
     }
 }
 
 const membersFromWager = (wager) => {
-    console.log(wager);
     return {
         [wager.details.outcome]: wager.proposedBy,
         [(wager.details.outcome + 1) % 2]: wager.proposedTo
@@ -226,6 +244,10 @@ const CustomWagerContainer = styled.div`
   border-radius: 0.3em;
   max-width: 800px;
   margin: 1em auto;
+`
+
+const CustomWagerDetails = styled.div`
+  padding: 1em;
 `
 
 const Wager = (props) => {
@@ -258,9 +280,9 @@ const Wager = (props) => {
                     risk={wager.details.risk}
                     toWin={wager.details.toWin}
                 />
-                <p>
+                <CustomWagerDetails>
                     {wager.details.description}
-                </p>
+                </CustomWagerDetails>
                 <ConfirmWagerRow {...props}/>
             </CustomWagerContainer>
         )
@@ -290,7 +312,7 @@ export const PersonalWagers = ({}) => {
                 </h3>
             </PersonalWagersTitle>
             {wagers.length > 0
-                ? wagers.map(wager => <Wager onConfirm={confirmWager} wager={wager}/>)
+                ? wagers.map(wager => <Wager key={wager.id} onConfirm={confirmWager} wager={wager}/>)
                 : <PersonalWagersTitle>
                     You haven't made any wagers yet, maybe you should <InlineLink to={'/wagers/new'}>propose
                     one </InlineLink>
@@ -311,12 +333,18 @@ export const useGroupWagers = () => {
 }
 
 export const GroupWagers = ({}) => {
-    useFirestoreConnect([{collectionGroup: "wagers"}]);
+    const profile = useStoreState(state => state.firebase.profile)
+    useFirestoreConnect([{collection: `groups/${profile.groups[0]}/wagers`, storeAs: 'wagers'}]);
     const auth = useStoreState(state => state.firebase.auth)
     const rawWagers = useStoreState(state => state.firestore.data.wagers)
+    const confirmWagerAction = useStoreActions(actions => actions.wagers.respondToWager);
     const wagers = Object.values(rawWagers ?? {})
         .filter(wager => wager.status !== 'rejected')
-        .filter(wager => wager.proposedTo.uid !== auth.uid && wager.proposedBy.uid !== auth.uid)
+        .filter(wager => wager.proposedTo?.uid !== auth.uid && wager.proposedBy?.uid !== auth.uid)
+
+    const confirmWager = async (wagerId, groupId, acceptWager) => {
+        await confirmWagerAction({wagerId, groupId, accept: acceptWager})
+    };
 
     if (wagers.length > 0) {
         return (
@@ -326,7 +354,7 @@ export const GroupWagers = ({}) => {
                         Group Wagers
                     </h3>
                 </PersonalWagersTitle>
-                {wagers.map(wager => <Wager wager={wager}/>)}
+                {wagers.map(wager => <Wager key={wager.id} onConfirm={confirmWager} wager={wager}/>)}
             </div>
         )
     } else {

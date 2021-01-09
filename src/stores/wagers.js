@@ -63,9 +63,10 @@ export const wagersModel = {
     }),
     groupWagers: [],
     setGroupWagers: action((state, payload) => {
+        console.log(state);
         state.groupWagers = Object.values(payload ?? {})
             .filter(wager => wager.status !== 'rejected')
-            .filter(wager => wager.proposedTo.uid !== state.auth.uid && wager.proposedTo.uid !== state.auth.uid)
+            .filter(wager => wager.proposedBy?.uid !== state.auth.uid && wager.proposedTo?.uid !== state.auth.uid)
     }),
     loadGroupWagers: thunk(async (actions, payload, helpers) => {
         const state = helpers.getStoreState();
@@ -78,6 +79,7 @@ export const wagersModel = {
     }),
     respondToWager: thunk(async (actions, payload, helpers) => {
         const firebase = helpers.injections.getFirebase();
+        console.log(firebase);
         await firebase.functions().httpsCallable('confirmWager')(payload)
     }),
     activeWager: null,
@@ -98,7 +100,6 @@ export const useSaveWager = () => {
 
     const save = async ({risk, toWin, opponent, details, type}) => {
         const wager = {
-            proposedTo: opponent.uid,
             groupId: profile.groups[0],
             type,
             details: {
@@ -108,11 +109,13 @@ export const useSaveWager = () => {
             }
         }
 
-        console.log(wager);
-
         try {
             setSubmitting(true);
-            await createWager(wager);
+            if(opponent.uid === 'OPEN'){
+                await createWager({isOpen: true, ...wager});
+            } else {
+                await createWager({proposedTo: opponent.uid, ...wager});
+            }
             setApiSuccess("Wager was proposed!")
         } catch (error) {
             setApiError(error.message);

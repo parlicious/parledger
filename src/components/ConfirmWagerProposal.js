@@ -90,7 +90,7 @@ const CustomAmountForm = styled.form`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-
+  height: 2.5rem;
   --border-color: white;
 
   :focus-within {
@@ -102,8 +102,9 @@ const customAmountInputCss = css`
   color: white;
   font-size: 1.2em;
   background: none;
-
+  height: 100%;
   padding: 0.3em;
+  box-sizing: border-box;
 `
 
 const CustomAmountInput = styled.input`
@@ -145,7 +146,7 @@ const CustomAmountInputButton = styled.button`
   border-bottom: 1px solid var(--border-color);
   border-right: 1px solid var(--border-color);
   border-left: none;
-
+  padding: 0.3em;
   border-radius: 0 0.3em 0.3em 0;
 
   :hover {
