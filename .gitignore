@@ -25,3 +25,7 @@ yarn-error.log*
 .idea
 
 functions/.runtimeconfig.json
+.firebase
+.eslintcache
+firebase-debug.log
+firestore-debug.log

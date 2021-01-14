@@ -200,7 +200,7 @@ const ConfirmWagerRow = ({onConfirm, wager}) => {
                 </WagerActionsGroup>
             </ConfirmWagerContainer>
         )
-    } else if (wager.status === 'pending' && wager.proposedBy.uid === auth.uid) {
+    } else if (wager.proposedBy.uid === auth.uid && (wager.status === 'pending' || wager.status === 'open')) {
         return (
             <ConfirmWagerContainer>
                 <ConfirmWagerText> <i className="fas fa-exclamation-circle"/> You proposed this bet
