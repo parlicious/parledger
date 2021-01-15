@@ -40,12 +40,18 @@ const MarketDescription = styled.div`
 
 export const EventCell = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   background: linear-gradient(to bottom, #FFFFFF04, #FFFFFF09);
+  grid-template-columns: repeat(var(--num-columns), 1fr);
   box-shadow: 3px 3px 25px #0000001C;
   border-radius: 0.3em;
   max-width: 800px;
   margin: 1em auto;
+
+  --num-columns: ${props => props.condensed ? 4 : 5};
+
+  @media(max-width: 450px){
+    font-size: 0.8em;
+  }
 `
 
 export const TitleCell = styled(EventCell)`
@@ -56,15 +62,19 @@ export const TitleCell = styled(EventCell)`
 const TimeAndDateCell = styled.div`
   grid-column: 1;
   grid-row: span 2;
-
   padding: 1em;
+  background: linear-gradient(to bottom, #FFFFFF14, #FFFFFF19);
+`
+
+const TimeAndDateText = styled.div`
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  background: linear-gradient(to bottom, #FFFFFF14, #FFFFFF19);
+  align-content: center;
+  height: 100%;
+  width: 100%;
 `
 
 const OddsCell = styled.div`
@@ -72,6 +82,10 @@ const OddsCell = styled.div`
   justify-content: flex-end;
   align-items: center;
   padding: 0.5em;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
 `
 
 const SelectableOddsCellContainer = styled(OddsCell)`
@@ -84,7 +98,7 @@ const SelectableOddsCellContainer = styled(OddsCell)`
       return 'inherit'
     }
   }};
-  
+
   display: flex;
   flex-wrap: wrap-reverse;
   flex-direction: row-reverse;
@@ -113,8 +127,7 @@ const SelectableOddsCell = ({
 
 const SectionNameCell = styled.div`
   color: white;
-  grid-column-start: 1;
-  grid-column-end: 6;
+  grid-column: span calc(var(--num-columns) + 1);
 `
 
 export const TitleRow = ({name, event}) => {
@@ -139,13 +152,11 @@ export const TitleRow = ({name, event}) => {
 }
 
 const EventHeaderContainer = styled.div`
-  grid-column-start: 1;
-  grid-column-end: 6;
+  grid-column: span calc(var(--num-columns));
 `
 
 const NotesRow = styled.div`
-  grid-column-start: 1;
-  grid-column-end: 6;
+  grid-column: span calc(var(--num-columns));
 
   border-top: 1px solid white;
   font-size: smaller;
@@ -171,9 +182,6 @@ const OutcomesRow = ({event, wagerMembers, selectedOutcome, selectedMarket, even
                 <SelectableOddsCellContainer selected={selected} opponent={opponent}>
                     {wagerMembers[rowNum]?.displayName ?? 'Anyone'}
                 </SelectableOddsCellContainer>
-                <OddsCell>
-                    {event.displayGroups[0].markets[selectedMarket].description}
-                </OddsCell>
                 <SelectableOddsCell selected={selected} opponent={opponent} event={event} market={selectedMarket}
                                     outcome={rowNum}/>
             </React.Fragment>
@@ -198,12 +206,15 @@ const OutcomesRow = ({event, wagerMembers, selectedOutcome, selectedMarket, even
 export const Event = (props) => {
     const {headerComponent, footerComponent, event} = props;
     const eventTime = new Date(event.startTime);
+    console.log(props.wagerMembers)
     return (
-        <EventCell key={event.id}>
+        <EventCell key={event.id} condensed={!!props.wagerMembers}>
             {headerComponent && <EventHeaderContainer>{headerComponent}</EventHeaderContainer>}
             <TimeAndDateCell>
-                <div>{eventTime.toLocaleDateString()}</div>
-                <div>{eventTime.toLocaleTimeString()}</div>
+                <TimeAndDateText>
+                    <div>{eventTime.toLocaleDateString(undefined, {dateStyle: 'short'})}</div>
+                    <div>{eventTime.toLocaleTimeString(undefined, {timeStyle: 'short'})}</div>
+                </TimeAndDateText>
             </TimeAndDateCell>
             <OddsCell>
                 {event.competitors[1]?.name}

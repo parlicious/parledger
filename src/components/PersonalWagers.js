@@ -74,6 +74,8 @@ const MemberAndAmount = ({wager, risk, toWin}) => {
 }
 
 export const WagerDescriptionRow = ({eventDescription, pending, risk, toWin, wager}) => {
+    const amountToWin = toWin || wager.details.toWin;
+    const amountToRisk = risk || wager.details.risk;
     return (<WagerDescriptionRowContainer>
             <WagerDescriptionText>
                 {pending
@@ -88,7 +90,7 @@ export const WagerDescriptionRow = ({eventDescription, pending, risk, toWin, wag
 
                 {eventDescription}
             </WagerDescriptionText>
-            <MemberAndAmount {...{toWin, risk, wager}}/>
+            <MemberAndAmount {...{toWin: amountToWin, risk: amountToRisk, wager}}/>
         </WagerDescriptionRowContainer>
     );
 }
