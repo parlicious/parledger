@@ -64,6 +64,10 @@ const TimeAndDateCell = styled.div`
   grid-row: span 2;
   padding: 1em;
   background: linear-gradient(to bottom, #FFFFFF14, #FFFFFF19);
+  
+  @media(max-width: 450px){
+    padding: 0.3em;
+  }
 `
 
 const TimeAndDateText = styled.div`
