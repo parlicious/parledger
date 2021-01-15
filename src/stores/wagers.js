@@ -12,37 +12,49 @@ const eventsByCategory = (sections) => {
 const newWagerModel = {
     type: null,
     setType: action((state, payload) => {
-        state.type = payload;
+        return {...state, type: payload};
     }),
     opponent: null,
     setOpponent: action((state, payload) => {
-        state.opponent = payload;
-        return state;
+        return {...state, opponent: payload};
     }),
     details: null,
     setDetails: action((state, payload) => {
-        state.details = payload;
-        return state;
+        return {...state, details: payload};
     })
 }
 
 export const wagersModel = {
     eventsUpdated: null,
     updatingEvents: action((state, payload) => {
-        state.eventsUpdated = Date.now();
-        return state;
+        return {...state, eventsUpdated: Date.now()}
+    }),
+    selectedSport: null,
+    selectSport: action((state, payload) => {
+        return {...state, selectedSport: payload}
     }),
     events: null,
+    allEvents: null,
     saveEvents: action((state, payload) => {
-        state.events = payload;
-        return state;
+        return {
+            ...state,
+            events: payload,
+            allEvents: payload,
+        }
+    }),
+    filteredEvents: computed(state => {
+        if (!state?.selectedSport) {
+            return state.headToHeadEvents;
+        } else {
+            return state?.headToHeadEvents.filter(e => e.path[0].sportCode === state.selectedSport)
+        }
     }),
     headToHeadEvents: computed(state => {
         return state.events
             ?.map(it =>
                 ({
                     path: it.path,
-                    events: it.events.filter(event => event.displayGroups[0].markets?.every(market => market?.outcomes?.length === 2))
+                    events: it.events
                 }))
             ?.filter(it => it.events.length > 0)
     }),
@@ -64,9 +76,11 @@ export const wagersModel = {
     groupWagers: [],
     setGroupWagers: action((state, payload) => {
         console.log(state);
-        state.groupWagers = Object.values(payload ?? {})
+        const groupWagers = Object.values(payload ?? {})
             .filter(wager => wager.status !== 'rejected')
             .filter(wager => wager.proposedBy?.uid !== state.auth.uid && wager.proposedTo?.uid !== state.auth.uid)
+
+        return {...state, groupWagers}
     }),
     loadGroupWagers: thunk(async (actions, payload, helpers) => {
         const state = helpers.getStoreState();
@@ -84,8 +98,7 @@ export const wagersModel = {
     }),
     activeWager: null,
     setActiveWager: action((state, payload) => {
-        state.activeWager = payload;
-        return state;
+        return {...state, activeWager: payload}
     }),
     new: newWagerModel
 }
@@ -111,7 +124,7 @@ export const useSaveWager = () => {
 
         try {
             setSubmitting(true);
-            if(opponent.uid === 'OPEN'){
+            if (opponent.uid === 'OPEN') {
                 await createWager({isOpen: true, ...wager});
             } else {
                 await createWager({proposedTo: opponent.uid, ...wager});

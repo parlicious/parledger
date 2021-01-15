@@ -1,0 +1,749 @@
+@font-face {
+    font-family: icons-bovada;
+    src: url('sport-icons.woff') format("woff");
+    font-weight: 400;
+    font-style: normal
+}
+
+.bet-btn.price-decreased:before, .bet-btn.price-increased:before, .custom-checkbox input:checked + label:before, .icon, .icon-add:before, .icon-all:before, .icon-arrow-back:before, .icon-arrow-down:before, .icon-arrow-next:before, .icon-arrow-up:before, .icon-athletics:before, .icon-back:before, .icon-badminton:before, .icon-baseball:before, .icon-basketball:before, .icon-beach-soccer:before, .icon-beach-volleyball:before, .icon-betslip-empty:before, .icon-betslip:before, .icon-bitcoin-circle:before, .icon-blackjack:before, .icon-board-details:before, .icon-bonus:before, .icon-boxing:before, .icon-calendar:before, .icon-casino-default-category:before, .icon-casino:before, .icon-change-password:before, .icon-check-by-courier:before, .icon-checked:before, .icon-close2:before, .icon-close:before, .icon-conditions:before, .icon-contact:before, .icon-corner:before, .icon-cricket-bat:before, .icon-cricket:before, .icon-curling:before, .icon-cycling:before, .icon-darts:before, .icon-dbt:before, .icon-debit-card:before, .icon-default-sport:before, .icon-empty-games:before, .icon-enjoy-play:before, .icon-entertainment:before, .icon-envelope2:before, .icon-envelope:before, .icon-error:before, .icon-feedback:before, .icon-field-hockey:before, .icon-football:before, .icon-free-games:before, .icon-futsal:before, .icon-gaelic-games:before, .icon-gaming:before, .icon-general:before, .icon-gift:before, .icon-global:before, .icon-golf:before, .icon-handball:before, .icon-help-account-security:before, .icon-help-deposit-withdraw:before, .icon-help-financial:before, .icon-help-technical:before, .icon-hide-password:before, .icon-hide:before, .icon-horses-next-5-races:before, .icon-horses-track:before, .icon-horses:before, .icon-how-it-works:before, .icon-ice-hockey:before, .icon-increase:before, .icon-infinity:before, .icon-info2:before, .icon-info:before, .icon-installment-frequency:before, .icon-instant-transactions:before, .icon-launch:before, .icon-leaderboards:before, .icon-lightning:before, .icon-link:before, .icon-live-baccarat:before, .icon-live-blackjack:before, .icon-live-dealer:before, .icon-live-meet-dealers:before, .icon-live-roulette:before, .icon-live-super6:before, .icon-live:before, .icon-location:before, .icon-lock:before, .icon-map:before, .icon-maximise:before, .icon-menu:before, .icon-min-bet:before, .icon-minimise:before, .icon-mobile:before, .icon-motor-sports:before, .icon-my-games:before, .icon-netbanking:before, .icon-new-window:before, .icon-no-parlays:before, .icon-no-results:before, .icon-no-same-game-parlays:before, .icon-no-teasers:before, .icon-number-games:before, .icon-odds-selector:before, .icon-olympics:before, .icon-other-crypto:before, .icon-participate:before, .icon-partner:before, .icon-phone:before, .icon-piggy-bank:before, .icon-play:before, .icon-player-transfer:before, .icon-player:before, .icon-plus:before, .icon-poker-get-started:before, .icon-poker-how-to-play:before, .icon-poker-play-now:before, .icon-poker-play:before, .icon-poker-special-features:before, .icon-poker-sports:before, .icon-poker-tournaments:before, .icon-poker:before, .icon-politics:before, .icon-price-down:before, .icon-price-up:before, .icon-promos:before, .icon-prop-builder-arrow:before, .icon-rankings:before, .icon-refer-a-friend:before, .icon-rugby-league:before, .icon-rugby-seven:before, .icon-rugby-union:before, .icon-rugby:before, .icon-schedule:before, .icon-search-play:before, .icon-search:before, .icon-security:before, .icon-settings:before, .icon-show-password:before, .icon-single-goal:before, .icon-slots:before, .icon-sms-verify:before, .icon-snooker:before, .icon-soccer:before, .icon-specialty-games:before, .icon-split:before, .icon-sports:before, .icon-star:before, .icon-status-loose:before, .icon-status-no-action:before, .icon-status-win:before, .icon-success:before, .icon-support:before, .icon-swimming:before, .icon-switch:before, .icon-table-full:before, .icon-table-games:before, .icon-table-tennis:before, .icon-tennis:before, .icon-text-area-drag:before, .icon-ticket:before, .icon-timeframe:before, .icon-timer:before, .icon-transactions:before, .icon-trash:before, .icon-trophy:before, .icon-trusted-player:before, .icon-ufc-mma:before, .icon-user-menu-close:before, .icon-user-menu:before, .icon-user:before, .icon-video-poker:before, .icon-virtuals:before, .icon-volleyball:before, .icon-voucher:before, .icon-warning:before, .icon-winter-sports:before, .icon-wiretransfer:before, .icon-wrestling:before {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: icons-bovada;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    speak: none;
+    text-transform: none
+}
+
+.icon-arrow-back:before, .icon-back:before {
+    content: "\21"
+}
+
+.icon-close2:before, .icon-close:before {
+    content: "\2c"
+}
+
+.icon-change-password:before, .icon-security:before {
+    content: "\41"
+}
+
+.custom-checkbox input:checked + label:before, .icon-checked:before, .icon-success:before {
+    content: "\2b"
+}
+
+.icon-dbt:before, .icon-wiretransfer:before {
+    content: "\60"
+}
+
+.icon-envelope2:before, .icon-envelope:before {
+    content: "\b1"
+}
+
+.icon-info2:before, .icon-info:before {
+    content: "\3e"
+}
+
+.icon-live-dealer:before, .icon-live-meet-dealers:before {
+    content: "\126"
+}
+
+.icon-casino:before, .icon-slots:before {
+    content: "\43"
+}
+
+.icon-football:before, .icon-sports:before {
+    content: "\142"
+}
+
+.icon-add:before {
+    content: "\115"
+}
+
+.icon-all:before {
+    content: "\100"
+}
+
+.icon-arrow-down:before {
+    content: "\22"
+}
+
+.icon-arrow-next:before {
+    content: "\23"
+}
+
+.icon-arrow-up:before {
+    content: "\24"
+}
+
+.icon-athletics:before {
+    content: "\101"
+}
+
+.icon-badminton:before {
+    content: "\102"
+}
+
+.icon-baseball:before {
+    content: "\103"
+}
+
+.icon-basketball:before {
+    content: "\104"
+}
+
+.icon-beach-soccer:before {
+    content: "\105"
+}
+
+.icon-beach-volleyball:before {
+    content: "\106"
+}
+
+.icon-betslip-empty:before {
+    content: "\107"
+}
+
+.icon-betslip:before {
+    content: "\108"
+}
+
+.icon-bitcoin-circle:before {
+    content: "\131"
+}
+
+.icon-blackjack:before {
+    content: "\177"
+}
+
+.icon-board-details:before {
+    content: "\bd"
+}
+
+.icon-bonus:before {
+    content: "\28"
+}
+
+.icon-boxing:before {
+    content: "\29"
+}
+
+.icon-bubble:before, .icon-loading:after, .icon-loading:before {
+    left: 0;
+    position: absolute;
+    top: 0;
+    background: #c00;
+    border-radius: 50%;
+    content: "";
+    height: 20px;
+    width: 20px
+}
+
+.icon-calendar:before {
+    content: "\157"
+}
+
+.icon-casino-default-category:before {
+    content: "\cd"
+}
+
+.icon-check-by-courier:before {
+    content: "\cc"
+}
+
+.icon-conditions:before {
+    content: "\7e"
+}
+
+.icon-contact:before {
+    content: "\2d"
+}
+
+.icon-corner:before {
+    content: "\161"
+}
+
+.icon-cricket:before {
+    content: "\109"
+}
+
+.icon-curling:before {
+    content: "\10e"
+}
+
+.icon-cycling:before {
+    content: "\111"
+}
+
+.icon-darts:before {
+    content: "\112"
+}
+
+.icon-debit-card:before {
+    content: "\dc"
+}
+
+.icon-default-sport:before {
+    content: "\7b"
+}
+
+.icon-empty-games:before {
+    content: "\ff"
+}
+
+.icon-enjoy-play:before {
+    content: "\df"
+}
+
+.icon-entertainment:before {
+    content: "\113"
+}
+
+.icon-error:before {
+    content: "\32"
+}
+
+.icon-feedback:before {
+    content: "\116"
+}
+
+.icon-field-hockey:before {
+    content: "\117"
+}
+
+.icon-futsal:before {
+    content: "\118"
+}
+
+.icon-free-games:before {
+    content: "\e908"
+}
+
+.icon-gaelic-games:before {
+    content: "\119"
+}
+
+.icon-gaming:before {
+    content: "\114"
+}
+
+.icon-general:before {
+    content: "\61"
+}
+
+.icon-gift:before {
+    content: "\bb"
+}
+
+.icon-global:before {
+    content: "\124"
+}
+
+.icon-golf:before {
+    content: "\120"
+}
+
+.icon-handball:before {
+    content: "\121"
+}
+
+.icon-help-account-security:before {
+    content: "\37"
+}
+
+.icon-help-deposit-withdraw:before {
+    content: "\129"
+}
+
+.icon-help-financial:before {
+    content: "\4b"
+}
+
+.icon-help-technical:before {
+    content: "\4c"
+}
+
+.icon-hide-password:before {
+    content: "\35"
+}
+
+.icon-hide:before {
+    content: "\68"
+}
+
+.icon-horses-next-5-races:before {
+    content: "\170"
+}
+
+.icon-horses-track:before {
+    content: "\171"
+}
+
+.icon-horses:before {
+    content: "\79"
+}
+
+.icon-how-it-works:before {
+    content: "\7a"
+}
+
+.icon-ice-hockey:before {
+    content: "\122"
+}
+
+.icon-increase:before {
+    content: "\123"
+}
+
+.icon-infinity:before {
+    content: "\196"
+}
+
+.icon-installment-frequency:before {
+    content: "\e904"
+}
+
+.icon-instant-transactions:before {
+    content: "\5b"
+}
+
+.icon-launch:before {
+    content: "\fd"
+}
+
+.icon-leaderboards:before {
+    content: "\175"
+}
+
+.icon-lightning:before {
+    content: "\7d"
+}
+
+.icon-link:before {
+    content: "\fc"
+}
+
+.icon-live-baccarat:before {
+    content: "\176"
+}
+
+.icon-live-blackjack:before {
+    content: "\178"
+}
+
+.icon-live-roulette:before {
+    content: "\179"
+}
+
+.icon-live-super6:before {
+    content: "\180"
+}
+
+.icon-live:before {
+    content: "\125"
+}
+
+.icon-loading {
+    display: inline-block;
+    height: 24px;
+    position: relative;
+    width: 48px
+}
+
+.icon-loading:after, .icon-loading:before {
+    animation: move-right 1.05s ease-in-out infinite;
+    height: 24px;
+    left: inherit;
+    width: 24px
+}
+
+.icon-loading:before {
+    background: #364250;
+    left: -2.4px
+}
+
+.icon-loading:after {
+    animation-name: move-left;
+    background: #c00;
+    right: -2.4px
+}
+
+@keyframes move-right {
+    0% {
+        z-index: 1
+    }
+    50% {
+        transform: translateX(28.8px)
+    }
+}
+
+@keyframes move-left {
+    50% {
+        transform: translateX(-28.8px)
+    }
+}
+
+.icon-location:before {
+    content: "\74"
+}
+
+.icon-lock:before {
+    content: "\70"
+}
+
+.icon-map:before {
+    content: "\181"
+}
+
+.icon-maximise:before {
+    content: "\4f"
+}
+
+.icon-menu:before {
+    content: "\3d"
+}
+
+.icon-min-bet:before {
+    content: "\a1"
+}
+
+.icon-minimise:before {
+    content: "\6f"
+}
+
+.icon-mobile:before {
+    content: "\6c"
+}
+
+.icon-motor-sports:before {
+    content: "\127"
+}
+
+.icon-my-games:before {
+    content: "\182"
+}
+
+.icon-netbanking:before {
+    content: "\199"
+}
+
+.icon-new-window:before {
+    content: "\6e"
+}
+
+.icon-no-parlays:before {
+    content: "\154"
+}
+
+.icon-no-results:before {
+    content: "\3b"
+}
+
+.icon-no-same-game-parlays:before {
+    content: "\155"
+}
+
+.icon-no-teasers:before {
+    content: "\156"
+}
+
+.icon-number-games:before {
+    content: "\128"
+}
+
+.icon-odds-selector:before {
+    content: "\e900"
+}
+
+.icon-olympics:before {
+    content: "\153"
+}
+
+.icon-other-crypto:before {
+    content: "\e901"
+}
+
+.icon-participate:before {
+    content: "\be"
+}
+
+.icon-partner:before {
+    content: "\133"
+}
+
+.icon-phone:before {
+    content: "\146"
+}
+
+.icon-piggy-bank:before {
+    content: "\dd"
+}
+
+.icon-play:before {
+    content: "\3c"
+}
+
+.icon-player:before {
+    content: "\ef"
+}
+
+.icon-plus:before {
+    content: "\73"
+}
+
+.icon-poker-get-started:before {
+    content: "\183"
+}
+
+.icon-poker-how-to-play:before {
+    content: "\184"
+}
+
+.icon-poker-play:before {
+    content: "\185"
+}
+
+.icon-poker-play-now:before {
+    content: "\e907"
+}
+
+.icon-poker-special-features:before {
+    content: "\186"
+}
+
+.icon-poker-sports:before {
+    content: "\130"
+}
+
+.icon-poker-tournaments:before {
+    content: "\187"
+}
+
+.icon-poker:before {
+    content: "\6b"
+}
+
+.icon-politics:before {
+    content: "\12f"
+}
+
+.bet-btn.price-decreased:before, .icon-price-down:before {
+    content: "\188"
+}
+
+.bet-btn.price-increased:before, .icon-price-up:before {
+    content: "\189"
+}
+
+.icon-promos:before {
+    content: "\134"
+}
+
+.icon-rankings:before {
+    content: "\7f"
+}
+
+.icon-refer-a-friend:before {
+    content: "\52"
+}
+
+.icon-rugby:before {
+    content: "\141"
+}
+
+.icon-rugby-league:before {
+    content: "\136"
+}
+
+.icon-rugby-seven:before {
+    content: "\135"
+}
+
+.icon-rugby-union:before {
+    content: "\137"
+}
+
+.icon-schedule:before {
+    content: "\bf"
+}
+
+.icon-search-play:before {
+    content: "\3f"
+}
+
+.icon-search:before {
+    content: "\40"
+}
+
+.icon-settings:before {
+    content: "\138"
+}
+
+.icon-show-password:before {
+    content: "\42"
+}
+
+.icon-snooker:before {
+    content: "\139"
+}
+
+.icon-soccer:before {
+    content: "\140"
+}
+
+.icon-specialty-games:before {
+    content: "\56"
+}
+
+.icon-split:before {
+    content: "\e905"
+}
+
+.icon-star:before {
+    content: "\53"
+}
+
+.icon-status-loose:before {
+    content: "\160"
+}
+
+.icon-status-no-action:before {
+    content: "\159"
+}
+
+.icon-status-win:before {
+    content: "\158"
+}
+
+.icon-support:before {
+    content: "\132"
+}
+
+.icon-swimming:before {
+    content: "\143"
+}
+
+.icon-switch:before {
+    content: "\57"
+}
+
+.icon-table-full:before {
+    content: "\197"
+}
+
+.icon-table-games:before {
+    content: "\45"
+}
+
+.icon-table-tennis:before {
+    content: "\7c"
+}
+
+.icon-tennis:before {
+    content: "\144"
+}
+
+.icon-text-area-drag:before {
+    content: "\145"
+}
+
+.icon-ticket:before {
+    content: "\44"
+}
+
+.icon-timeframe:before {
+    content: "\e903"
+}
+
+.icon-timer:before {
+    content: "\51"
+}
+
+.icon-transactions:before {
+    content: "\46"
+}
+
+.icon-trash:before {
+    content: "\47"
+}
+
+.icon-trophy:before {
+    content: "\6a"
+}
+
+.icon-trusted-player:before {
+    content: "\147"
+}
+
+.icon-ufc-mma:before {
+    content: "\148"
+}
+
+.icon-user-menu-close:before {
+    content: "\190"
+}
+
+.icon-user-menu:before {
+    content: "\191"
+}
+
+.icon-user:before {
+    content: "\48"
+}
+
+.icon-video-poker:before {
+    content: "\62"
+}
+
+.icon-virtuals:before {
+    content: "\149"
+}
+
+.icon-volleyball:before {
+    content: "\150"
+}
+
+.icon-warning:before {
+    content: "\49"
+}
+
+.icon-winter-sports:before {
+    content: "\151"
+}
+
+.icon-wrestling:before {
+    content: "\152"
+}
+
+.icon-voucher:before {
+    content: "\e902"
+}
+
+.icon-sms-verify:before {
+    content: "\e906"
+}
+
+.icon-stream:before {
+    content: "\e909"
+}
+
+.icon-keyboard-backspace:before {
+    content: "\e90a"
+}
+
+.icon-player-transfer:before {
+    content: "\e90b"
+}
+
+.icon-cricket-bat:before {
+    content: "\e90c"
+}
+
+.icon-prop-builder-arrow:before {
+    content: "\e90d"
+}
+
+.icon-single-goal:before {
+    content: "\e90e"
+}
+

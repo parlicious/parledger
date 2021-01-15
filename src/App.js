@@ -1,4 +1,5 @@
 import './App.css';
+import './resources/icons.css'
 import {isLoaded, ReactReduxFirebaseProvider} from "react-redux-firebase";
 import {reactReduxFirebaseProps, store} from "./stores/store";
 import {StoreProvider, useStoreState} from "easy-peasy";

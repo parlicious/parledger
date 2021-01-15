@@ -15,7 +15,6 @@ const customAmountInputCss = css`
   font-size: 1.2em;
   background: none;
   padding: 0.3em;
-  height: 100%;
   box-sizing: border-box;
 `
 
@@ -139,7 +138,7 @@ const CustomAmountInput = (props) => {
     )
 }
 
-export const ProposeCustomWager = ({}) => {
+export const ProposeCustomWager = ({details}) => {
     const opponent = useStoreState(state => state.wagers.new.opponent);
     const {handleSubmit, setValue, control, errors, register, watch, formState} = useForm();
 
@@ -160,9 +159,9 @@ export const ProposeCustomWager = ({}) => {
         await save({
             risk: data.risk,
             toWin: data.toWin,
-            details: {description: data.wagerDescription},
+            details: details || {description: data.wagerDescription},
             opponent: opponent,
-            type: 'CUSTOM'
+            type: details ? 'BOVADA': 'CUSTOM'
         });
     }
 
@@ -203,7 +202,7 @@ export const ProposeCustomWager = ({}) => {
                         </ErrorMessage>}
                     </WagerAmount>
 
-                    <WagerDescription>
+                    {!details && <WagerDescription>
                         Description
                         {errors.wagerDescription && <ErrorMessage>
                             {getFormErrorMessage(errors)}
@@ -213,6 +212,7 @@ export const ProposeCustomWager = ({}) => {
                             name='wagerDescription'/>
 
                     </WagerDescription>
+                    }
                     {submitting
                         ? <SubmittingImageContainer>
                             <LoadingImage src={signUpImage}/>
