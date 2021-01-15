@@ -2,6 +2,7 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 const {v4: uuidv4} = require('uuid');
 const axios = require('axios');
+const cors = require('cors');
 
 admin.initializeApp({
     storageBucket: functions.config().storage.bucket

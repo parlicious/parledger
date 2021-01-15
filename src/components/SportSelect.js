@@ -21,14 +21,15 @@ const SportsOptionsContainer = styled.div`
 const sportCodesToIcons = [
     {code: "FOOT", name: 'Football', icon: 'football'},
     {code: "BASK", name: 'Basketball', icon: 'basketball'},
-    {code: "GOLF", name: 'Golf', icon: 'golf'},
-    {code: "BOXI", name: 'Boxing', icon: 'boxing'},
-    {code: "TENN", name: 'Tennis', icon: 'tennis'},
+    // {code: "GOLF", name: 'Golf', icon: 'golf'},
+    // {code: "BOXI", name: 'Boxing', icon: 'boxing'},
+    // {code: "TENN", name: 'Tennis', icon: 'tennis'},
     {code: "SOCC", name: 'Soccer', icon: 'soccer'},
     {code: "HCKY", name: 'Hockey', icon: 'ice-hockey'},
     {code: "RUGU", name: 'Rugby Union', icon: 'rugby-union'},
-    {code: "POLI", name: 'Politics', icon: 'politics'},
-    {code: "CRIC", name: 'Cricket', icon: 'cricket'},
+    // {code: "POLI", name: 'Politics', icon: 'politics'},
+    // {code: "CRIC", name: 'Cricket', icon: 'cricket'},
+    {code: null, name: 'All', icon: 'all'},
 ]
 
 const SportButtonContainer = styled.div`
@@ -57,8 +58,8 @@ const SportButton = ({sport, onSelected}) => {
         onSelected();
     }
     return (
-        <SportButtonContainer>
-            <SportIcon onClick={onClick} className={`icon-${sport.icon}`}/>
+        <SportButtonContainer onClick={onClick} >
+            <SportIcon className={`icon-${sport.icon}`}/>
             <SportName>{sport.name}</SportName>
         </SportButtonContainer>
     )

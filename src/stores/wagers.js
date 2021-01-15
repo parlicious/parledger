@@ -54,7 +54,7 @@ export const wagersModel = {
             ?.map(it =>
                 ({
                     path: it.path,
-                    events: it.events.filter(event => event.displayGroups[0].markets?.every(market => market?.outcomes?.length === 2))
+                    events: it.events
                 }))
             ?.filter(it => it.events.length > 0)
     }),
@@ -69,6 +69,7 @@ export const wagersModel = {
             const downloadUrl = await eventsRef.getDownloadURL();
             const result = await fetch(downloadUrl)
             const events = await result.json();
+            window.events = events;
             actions.saveEvents(events);
         }
     }),

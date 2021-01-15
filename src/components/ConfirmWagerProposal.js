@@ -8,6 +8,7 @@ import {LoadingImage, SplashScreen} from "./SplashScreen";
 import signUpImage from "../resources/undraw_Savings_re_eq4w.svg";
 import {useSaveWager} from "../stores/wagers";
 import {Redirect} from 'react-router-dom';
+import {ProposeCustomWager} from "./ProposeCustomWager";
 
 
 const OutcomeDescription = ({outcome}) => {
@@ -228,28 +229,7 @@ export const ConfirmWagerProposal = () => {
                 selectedMarket={selection.market}
                 selectedOutcome={selection.outcome}
             />
-            {submitting
-                ? <SubmittingImageContainer>
-                    <LoadingImage src={signUpImage}/>
-                </SubmittingImageContainer>
-                : apiSuccess
-                    ? <div>
-                        <SuccessMessage>{apiSuccess}</SuccessMessage>
-                        <InlineLink to={'/home'}>Go Home</InlineLink>
-                    </div>
-                    : <div>
-                        How much to bet?
-                        <BetAmountRow>
-                            {[10, 20, 50, 100].map(it => <BetAmountButton
-                                onClick={() => saveWager(it)}>${it}</BetAmountButton>)}
-                            <CustomAmountButton
-                                saveWager={saveWager}
-                            />
-                        </BetAmountRow>
-                    </div>}
-            {apiError && <ErrorMessage>
-                {apiError}
-            </ErrorMessage>}
+            <ProposeCustomWager details={selection}/>
         </div>
     )
 }

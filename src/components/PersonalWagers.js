@@ -67,7 +67,7 @@ const MemberAndAmount = ({wager, risk, toWin}) => {
     } else {
         return (
             <WagerMembersContainer>
-                {proposedBy} risked ${risk} to win ${toWin} from {proposedTo}
+                {proposedBy} risked ${risk} to win ${toWin || risk} from {proposedTo}
             </WagerMembersContainer>
         )
     }

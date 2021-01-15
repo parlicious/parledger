@@ -19,9 +19,13 @@ export const Outcome = ({outcome}) => {
     if (outcome) {
         return (
             <OutcomeContainer>
-                {outcome.price.handicap && <OddsContainer>
-                    {['O', 'U'].includes(outcome.type) && outcome.type}&nbsp;{outcome.price.handicap + ' '}
-                </OddsContainer>}
+                {outcome.price.handicap
+                    ? <OddsContainer>
+                        {['O', 'U'].includes(outcome.type) && outcome.type}&nbsp;{outcome.price.handicap + ' '}
+                    </OddsContainer>
+                    : <OddsContainer>
+                        {outcome.price.american}
+                    </OddsContainer>}
             </OutcomeContainer>
         )
     } else {
@@ -36,7 +40,7 @@ const MarketDescription = styled.div`
 
 export const EventCell = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   background: linear-gradient(to bottom, #FFFFFF04, #FFFFFF09);
   box-shadow: 3px 3px 25px #0000001C;
   border-radius: 0.3em;
@@ -80,19 +84,24 @@ const SelectableOddsCellContainer = styled(OddsCell)`
       return 'inherit'
     }
   }};
+  
   display: flex;
   flex-wrap: wrap-reverse;
   flex-direction: row-reverse;
   justify-content: space-between;
   text-align: end;
-  
+  column-span: 2;
+
   :hover {
     cursor: pointer;
     background: #FFFFFF13;
   }
 `
 
-const SelectableOddsCell = ({eventSelected = () => {}, event, market, outcome, selected, opponent}) => {
+const SelectableOddsCell = ({
+                                eventSelected = () => {
+                                }, event, market, outcome, selected, opponent
+                            }) => {
 
     return (
         <SelectableOddsCellContainer selected={selected} opponent={opponent}
@@ -105,10 +114,10 @@ const SelectableOddsCell = ({eventSelected = () => {}, event, market, outcome, s
 const SectionNameCell = styled.div`
   color: white;
   grid-column-start: 1;
-  grid-column-end: 5;
+  grid-column-end: 6;
 `
 
-export const TitleRow = ({name}) => {
+export const TitleRow = ({name, event}) => {
     return (
         <TitleCell>
             <SectionNameCell>
@@ -117,10 +126,13 @@ export const TitleRow = ({name}) => {
             <div/>
             <div/>
             <OddsCell>
-                Spread
+                {event?.displayGroups[0]?.markets[0]?.description}
             </OddsCell>
             <OddsCell>
-                Total
+                {event?.displayGroups[0]?.markets[1]?.description}
+            </OddsCell>
+            <OddsCell>
+                {event?.displayGroups[0]?.markets[2]?.description}
             </OddsCell>
         </TitleCell>
     )
@@ -128,12 +140,12 @@ export const TitleRow = ({name}) => {
 
 const EventHeaderContainer = styled.div`
   grid-column-start: 1;
-  grid-column-end: 5;
+  grid-column-end: 6;
 `
 
 const NotesRow = styled.div`
   grid-column-start: 1;
-  grid-column-end: 5;
+  grid-column-end: 6;
 
   border-top: 1px solid white;
   font-size: smaller;
@@ -143,7 +155,7 @@ const NotesRow = styled.div`
 const SportSection = ({section, eventSelected}) => {
     return (
         <div>
-            <TitleRow name={section.path[0].description}/>
+            <TitleRow name={section.path[0].description} event={section.events[0]}/>
             {section.events.map(it => <Event eventSelected={eventSelected} event={it}/>)}
         </div>
     )
@@ -159,6 +171,9 @@ const OutcomesRow = ({event, wagerMembers, selectedOutcome, selectedMarket, even
                 <SelectableOddsCellContainer selected={selected} opponent={opponent}>
                     {wagerMembers[rowNum]?.displayName ?? 'Anyone'}
                 </SelectableOddsCellContainer>
+                <OddsCell>
+                    {event.displayGroups[0].markets[selectedMarket].description}
+                </OddsCell>
                 <SelectableOddsCell selected={selected} opponent={opponent} event={event} market={selectedMarket}
                                     outcome={rowNum}/>
             </React.Fragment>
@@ -169,6 +184,9 @@ const OutcomesRow = ({event, wagerMembers, selectedOutcome, selectedMarket, even
                 <SelectableOddsCell
                     eventSelected={eventSelected}
                     event={event} market={0} outcome={rowNum}/>
+                <SelectableOddsCell
+                    eventSelected={eventSelected}
+                    event={event} market={1} outcome={rowNum}/>
                 <SelectableOddsCell
                     eventSelected={eventSelected}
                     event={event} market={2} outcome={rowNum}/>
