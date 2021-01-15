@@ -3,6 +3,7 @@ import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 import InfiniteScroll from "react-infinite-scroll-component";
 import {useHistory} from 'react-router-dom';
+import {SportSelect} from "./SportSelect";
 
 const OutcomeContainer = styled.div`
   display: flex;
@@ -204,7 +205,7 @@ export const Event = (props) => {
 
 
 export const SelectEvent = ({}) => {
-    const events = useStoreState(state => state.wagers.headToHeadEvents);
+    const events = useStoreState(state => state.wagers.filteredEvents);
     const [numSections, setNumSections] = useState(2);
     const renderedEvents = events?.slice(0, numSections) || [];
     const fetchMoreData = () => setNumSections(numSections + 1)
@@ -224,6 +225,7 @@ export const SelectEvent = ({}) => {
 
     return (
         <React.Fragment>
+            <SportSelect/>
             <InfiniteScroll
                 dataLength={renderedEvents.length}
                 next={fetchMoreData}

@@ -67,7 +67,7 @@ export const store = createStore({
     firebase: reducer(firebaseReducer),
     wagers: wagersModel,
     users: usersModel,
-}, {injections: {getFirestore, getFirebase}});
+}, {injections: {getFirestore, getFirebase}, disableImmer: true});
 
 export const reactReduxFirebaseProps = {
     firebase,
