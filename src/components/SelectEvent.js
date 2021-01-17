@@ -116,8 +116,9 @@ const SelectableOddsCellContainer = styled(OddsCell)`
   }
 `
 
-const SelectableOddsCell = ({eventSelected = () => {}, event, market, competitorId, selected, opponent}) => {
-    const outcome = event?.displayGroups[0]?.markets[market]?.outcomes?.find((outcome) => outcome.competitorId === competitorId);
+const SelectableOddsCell = ({eventSelected = () => {}, event, market, competitorId, selected, opponent, rowNum}) => {
+    const outcome = competitorId ? event?.displayGroups[0]?.markets[market]?.outcomes?.find((outcome) => outcome.competitorId === competitorId)
+        : event?.displayGroups[0]?.markets[market]?.outcomes[rowNum];
     return (
         <SelectableOddsCellContainer selected={selected} opponent={opponent}
                                      onClick={() => eventSelected({event, market, outcome})}>
@@ -173,7 +174,7 @@ const SportSection = ({section, eventSelected}) => {
     )
 }
 
-const OutcomesRow = ({event, wagerMembers, selectedOutcome, selectedMarket, eventSelected, competitorId}) => {
+const OutcomesRow = ({event, wagerMembers, selectedOutcome, selectedMarket, eventSelected, competitorId, rowNum}) => {
     const auth = useStoreState(state => state.firebase.auth);
     if (!!wagerMembers) {
         const selected = wagerMembers[rowNum]?.uid === auth.uid;
@@ -184,7 +185,7 @@ const OutcomesRow = ({event, wagerMembers, selectedOutcome, selectedMarket, even
                     {wagerMembers[rowNum]?.displayName ?? 'Anyone'}
                 </SelectableOddsCellContainer>
                 <SelectableOddsCell selected={selected} opponent={opponent} event={event} market={selectedMarket}
-                                    competitorId={competitorId}/>
+                                    rowNum={rowNum}/>
             </React.Fragment>
         )
     } else {
@@ -218,7 +219,7 @@ const Head2HeadEvent = (props) => {
                 </TimeAndDateText>
             </TimeAndDateCell>
             <OddsCell>
-                {event.competitors[0].name}
+                {event.competitors[0].name }
             </OddsCell>
             <OutcomesRow {...props} competitorId={event.competitors[0].id}/>
             <OddsCell>
