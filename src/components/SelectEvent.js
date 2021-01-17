@@ -211,6 +211,9 @@ export const Event = (props) => {
     const {headerComponent, footerComponent, event} = props;
     const eventTime = new Date(event.startTime);
     console.log(props.wagerMembers)
+    const [ first, second ] = event?.awayTeamFirst ? 
+        [ {competitor: 1, rowNum: 0}, { competitor: 0, rowNum: 1}] :
+        [ {competitor: 0, rowNum: 0}, { competitor: 1, rowNum: 1}];
     return (
         <EventCell key={event.id} condensed={!!props.wagerMembers}>
             {headerComponent && <EventHeaderContainer>{headerComponent}</EventHeaderContainer>}
@@ -221,13 +224,13 @@ export const Event = (props) => {
                 </TimeAndDateText>
             </TimeAndDateCell>
             <OddsCell>
-                {event.competitors[1]?.name}
+                {event.competitors[first.competitor]?.name}
             </OddsCell>
-            <OutcomesRow {...props} rowNum={0}/>
+            <OutcomesRow {...props} rowNum={first.rowNum}/>
             <OddsCell>
-                {event.competitors[0]?.name}
+                {event.competitors[second.competitor]?.name}
             </OddsCell>
-            <OutcomesRow {...props} rowNum={1}/>
+            <OutcomesRow {...props} rowNum={second.rowNum}/>
             {event.notes && <NotesRow>
                 {event.notes}
             </NotesRow>}
