@@ -116,15 +116,12 @@ const SelectableOddsCellContainer = styled(OddsCell)`
   }
 `
 
-const SelectableOddsCell = ({
-                                eventSelected = () => {
-                                }, event, market, outcome, selected, opponent
-                            }) => {
-
+const SelectableOddsCell = ({eventSelected = () => {}, event, market, competitorId, selected, opponent}) => {
+    const outcome = event?.displayGroups[0]?.markets[market]?.outcomes?.find((outcome) => outcome.competitorId === competitorId);
     return (
         <SelectableOddsCellContainer selected={selected} opponent={opponent}
                                      onClick={() => eventSelected({event, market, outcome})}>
-            <Outcome outcome={event?.displayGroups[0]?.markets[market]?.outcomes[outcome]}/>
+            <Outcome outcome={outcome}/>
         </SelectableOddsCellContainer>
     )
 }
@@ -176,7 +173,7 @@ const SportSection = ({section, eventSelected}) => {
     )
 }
 
-const OutcomesRow = ({event, wagerMembers, selectedOutcome, selectedMarket, eventSelected, rowNum}) => {
+const OutcomesRow = ({event, wagerMembers, selectedOutcome, selectedMarket, eventSelected, competitorId}) => {
     const auth = useStoreState(state => state.firebase.auth);
     if (!!wagerMembers) {
         const selected = wagerMembers[rowNum]?.uid === auth.uid;
@@ -187,7 +184,7 @@ const OutcomesRow = ({event, wagerMembers, selectedOutcome, selectedMarket, even
                     {wagerMembers[rowNum]?.displayName ?? 'Anyone'}
                 </SelectableOddsCellContainer>
                 <SelectableOddsCell selected={selected} opponent={opponent} event={event} market={selectedMarket}
-                                    outcome={rowNum}/>
+                                    competitorId={competitorId}/>
             </React.Fragment>
         )
     } else {
@@ -195,19 +192,19 @@ const OutcomesRow = ({event, wagerMembers, selectedOutcome, selectedMarket, even
             <React.Fragment>
                 <SelectableOddsCell
                     eventSelected={eventSelected}
-                    event={event} market={0} outcome={rowNum}/>
+                    event={event} market={0} competitorId={competitorId}/>
                 <SelectableOddsCell
                     eventSelected={eventSelected}
-                    event={event} market={1} outcome={rowNum}/>
+                    event={event} market={1} competitorId={competitorId}/>
                 <SelectableOddsCell
                     eventSelected={eventSelected}
-                    event={event} market={2} outcome={rowNum}/>
+                    event={event} market={2} competitorId={competitorId}/>
             </React.Fragment>
         )
     }
 }
 
-export const Event = (props) => {
+const Head2HeadEvent = (props) => {
     const {headerComponent, footerComponent, event} = props;
     const eventTime = new Date(event.startTime);
     console.log(props.wagerMembers)
@@ -221,19 +218,23 @@ export const Event = (props) => {
                 </TimeAndDateText>
             </TimeAndDateCell>
             <OddsCell>
-                {event.competitors[1]?.name}
+                {event.competitors[0].name}
             </OddsCell>
-            <OutcomesRow {...props} rowNum={0}/>
+            <OutcomesRow {...props} competitorId={event.competitors[0].id}/>
             <OddsCell>
-                {event.competitors[0]?.name}
+                {event.competitors[1].name}
             </OddsCell>
-            <OutcomesRow {...props} rowNum={1}/>
+            <OutcomesRow {...props} competitorId={event.competitors[1].id}/>
             {event.notes && <NotesRow>
                 {event.notes}
             </NotesRow>}
             {footerComponent && <EventHeaderContainer> {footerComponent} </EventHeaderContainer>}
         </EventCell>
     )
+}
+
+export const Event = (props) => {
+    return props?.event?.competitors?.length === 2 ? <Head2HeadEvent {...props} /> : ''
 };
 
 
