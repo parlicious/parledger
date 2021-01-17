@@ -27,6 +27,7 @@ const sportCodesToIcons = [
     {code: "SOCC", name: 'Soccer', icon: 'soccer'},
     {code: "HCKY", name: 'Hockey', icon: 'ice-hockey'},
     {code: "RUGU", name: 'Rugby Union', icon: 'rugby-union'},
+    {code: "ESPT", name: 'E-Sports', icon: 'gaming'},
     // {code: "POLI", name: 'Politics', icon: 'politics'},
     // {code: "CRIC", name: 'Cricket', icon: 'cricket'},
     {code: null, name: 'All', icon: 'all'},
