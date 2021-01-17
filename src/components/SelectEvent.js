@@ -168,9 +168,12 @@ const NotesRow = styled.div`
 `
 
 const SportSection = ({section, eventSelected}) => {
+    const comp = section.path.find(p => p.type === 'COMPETITION')?.description;
+    const descriptionPrefix = comp ? comp + ' - ' : '';
+    const fullDescription = descriptionPrefix + section.path[0].description;
     return (
         <div>
-            <TitleRow name={section.path[0].description} event={section.events[0]}/>
+            <TitleRow name={fullDescription} event={section.events[0]}/>
             {section.events.map(it => <Event eventSelected={eventSelected} event={it}/>)}
         </div>
     )
