@@ -79,7 +79,7 @@ export const AppContainer = (props) => {
                 }
             </LoggedInMenu>
         </AppHeader>
-        <AppBody>
+        <AppBody ref={props.bodyRef}>
             {props.children}
         </AppBody>
     </React.Fragment>)

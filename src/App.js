@@ -1,5 +1,6 @@
 import './App.css';
 import './resources/icons.css'
+import {useRef} from "react";
 import {isLoaded, ReactReduxFirebaseProvider} from "react-redux-firebase";
 import {reactReduxFirebaseProps, store} from "./stores/store";
 import {StoreProvider, useStoreState} from "easy-peasy";
@@ -30,6 +31,7 @@ function AuthIsLoaded({children}) {
 }
 
 const App = () => {
+    const bodyRef = useRef();
     return (
         <Provider store={store}>
             <StoreProvider store={store}>
@@ -67,7 +69,7 @@ const App = () => {
                                         <SelectWagerType/>
                                     </PrivateRoute>
                                     <PrivateRoute exact path='/wagers/new/sports'>
-                                        <SelectEvent/>
+                                        <SelectEvent scrollableTarget={bodyRef.current}/>
                                     </PrivateRoute>
                                     <PrivateRoute exact path='/wagers/new/custom'>
                                         <ProposeCustomWager/>
