@@ -30,7 +30,7 @@ function matchMarkets(originalMarkets, expectedMarkets) {
 
 function normalizeMarkets(section) {
     const eventMarkets = section.events
-        .map(e => e.displayGroups.markets);
+        .map(e => e.displayGroups[0].markets);
 
     if(eventMarkets.length < 1) return section;
 
