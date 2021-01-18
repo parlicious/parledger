@@ -15,13 +15,14 @@ const OddsContainer = styled.div`
   font-family: Monaco, SFMono-Regular, monospace;
 `
 
-export const Outcome = ({outcome}) => {
+export const Outcome = ({outcome, forcePrice}) => {
+    const price = forcePrice ? `(${outcome.price.american})` : ' ';
     if (outcome) {
         return (
             <OutcomeContainer>
                 {outcome.price.handicap
                     ? <OddsContainer>
-                        {['O', 'U'].includes(outcome.type) && outcome.type}&nbsp;{outcome.price.handicap + ' '}
+                        {['O', 'U'].includes(outcome.type) && outcome.type}&nbsp;{outcome.price.handicap + price}
                     </OddsContainer>
                     : <OddsContainer>
                         {outcome.price.american}
@@ -115,16 +116,29 @@ const SelectableOddsCellContainer = styled(OddsCell)`
     background: #FFFFFF13;
   }
 `
+function topOutcomesNotClose(outcomes, numberToCheck) {
+    const decimalPrices = outcomes?.slice(0, numberToCheck)
+        ?.map(outcome => outcome?.price?.decimal ?? '0')
+        ?.map(n => Number(n));
 
+    if(!decimalPrices || !decimalPrices.length) return false;
+    
+    const mean = decimalPrices.reduce((a,b) => a+b) / decimalPrices.length;
+
+    const diffs = decimalPrices.map(price => Math.abs(price - mean));
+
+    return diffs.every(diff => diff > .06);
+}
 const SelectableOddsCell = ({
                                 eventSelected = () => {
                                 }, event, market, outcome, selected, opponent
                             }) => {
-
+    
+    const outcomes = event?.displayGroups[0]?.markets[market]?.outcomes;
     return (
         <SelectableOddsCellContainer selected={selected} opponent={opponent}
                                      onClick={() => eventSelected({event, market, outcome})}>
-            <Outcome outcome={event?.displayGroups[0]?.markets[market]?.outcomes[outcome]}/>
+            <Outcome outcome={outcomes?.[outcome]} forcePrice={topOutcomesNotClose(outcomes, 2)}/>
         </SelectableOddsCellContainer>
     )
 }
@@ -168,9 +182,12 @@ const NotesRow = styled.div`
 `
 
 const SportSection = ({section, eventSelected}) => {
+    const comp = section.path.find(p => p.type === 'COMPETITION')?.description;
+    const descriptionPrefix = comp ? comp + ' - ' : '';
+    const fullDescription = descriptionPrefix + section.path[0].description;
     return (
         <div>
-            <TitleRow name={section.path[0].description} event={section.events[0]}/>
+            <TitleRow name={fullDescription} event={section.events[0]}/>
             {section.events.map(it => <Event eventSelected={eventSelected} event={it}/>)}
         </div>
     )

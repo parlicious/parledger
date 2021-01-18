@@ -2,7 +2,9 @@ import "./HomePage.css";
 import React from "react";
 import signUpImage from "../resources/undraw_Savings_re_eq4w.svg"
 import styled from 'styled-components';
-import {useHistory} from 'react-router-dom';
+import {useHistory, Redirect} from 'react-router-dom';
+import {useStoreState} from "easy-peasy";
+import {isLoaded} from "react-redux-firebase";
 
 const SignUpPageContainer = styled.div`
   display: grid;
@@ -50,9 +52,14 @@ export const SignUpButton = styled.button`
 
 export const SignUpPage = () => {
     const history = useHistory();
+    const auth = useStoreState(state => state.firebase.auth)
 
     async function loginWithGoogle() {
         history.push('/signup')
+    }
+
+    if(isLoaded(auth)){
+        return <Redirect to={'/home'}/>
     }
 
     return (
