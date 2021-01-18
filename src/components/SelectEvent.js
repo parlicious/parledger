@@ -137,7 +137,7 @@ const SelectableOddsCell = ({
     const outcomes = event?.displayGroups?.[0]?.markets?.[market]?.outcomes;
     return (
         <SelectableOddsCellContainer selected={selected} opponent={opponent}
-                                     onClick={() => eventSelected({event, market, outcome})}>
+                                     onClick={() => outcomes?.[outcome] && eventSelected({event, market, outcome})}>
             <Outcome outcome={outcomes?.[outcome]} forcePrice={topOutcomesNotClose(outcomes, 2)}/>
         </SelectableOddsCellContainer>
     )
