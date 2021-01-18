@@ -38,8 +38,6 @@ function normalizeMarkets(section) {
         .reduce((a,b) => Math.max(a,b));
     
     const expectedMarkets = eventMarkets.find(markets => markets.length === maxMarkets);
-    
-    section.expectedMarkets = expectedMarkets;
 
     const normalizedEvents = section.events.map(event => ({
         ...event,
@@ -49,7 +47,7 @@ function normalizeMarkets(section) {
             markets : matchMarkets(event.displayGroups[0].markets, expectedMarkets)
         }]
     }));
-    return { ...section, events: normalizedEvents };
+    return { ...section, expectedMarkets, events: normalizedEvents };
 }
 
 export const wagersModel = {
@@ -82,7 +80,8 @@ export const wagersModel = {
             ?.map(it =>
                 ({
                     path: it.path,
-                    events: it.events
+                    events: it.events,
+                    expectedMarkets: it.expectedMarkets
                 }))
             ?.filter(it => it.events.length > 0)
     }),
