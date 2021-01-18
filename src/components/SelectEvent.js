@@ -259,7 +259,7 @@ export const Event = (props) => {
 
 export const SelectEvent = ({}) => {
     const events = useStoreState(state => state.wagers.filteredEvents);
-    const [numSections, setNumSections] = useState(Math.min(10, events?.length ?? 0));
+    const [numSections, setNumSections] = useState(10);
     const renderedEvents = events?.slice(0, numSections) || [];
     const opponent = useStoreState(state => state.wagers.new.opponent);
     const fetchMoreData = () => setNumSections(numSections + 1)
