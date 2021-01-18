@@ -257,7 +257,7 @@ export const Event = (props) => {
 };
 
 
-export const SelectEvent = ({scrollableTarget}) => {
+export const SelectEvent = ({}) => {
     const events = useStoreState(state => state.wagers.filteredEvents);
     const [numSections, setNumSections] = useState(2);
     const renderedEvents = events?.slice(0, numSections) || [];
@@ -289,7 +289,6 @@ export const SelectEvent = ({scrollableTarget}) => {
                 next={fetchMoreData}
                 hasMore={renderedEvents?.length !== events?.length}
                 loader={<h4>Loading...</h4>}
-                scrollableTarget={scrollableTarget}
                 endMessage={
                     <p style={{textAlign: "center"}}>
                         <b>Huh, that's it.</b>
