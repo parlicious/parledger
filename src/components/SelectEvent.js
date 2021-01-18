@@ -259,7 +259,7 @@ export const Event = (props) => {
 
 export const SelectEvent = ({}) => {
     const events = useStoreState(state => state.wagers.filteredEvents);
-    const [numSections, setNumSections] = useState(2);
+    const [numSections, setNumSections] = useState(Math.min(10, events.length));
     const renderedEvents = events?.slice(0, numSections) || [];
     const opponent = useStoreState(state => state.wagers.new.opponent);
     const fetchMoreData = () => setNumSections(numSections + 1)
@@ -289,7 +289,6 @@ export const SelectEvent = ({}) => {
                 next={fetchMoreData}
                 hasMore={renderedEvents?.length !== events?.length}
                 loader={<h4>Loading...</h4>}
-                scrollThreshold="800px"
                 endMessage={
                     <p style={{textAlign: "center"}}>
                         <b>Huh, that's it.</b>
