@@ -289,6 +289,7 @@ export const SelectEvent = ({}) => {
                 next={fetchMoreData}
                 hasMore={renderedEvents?.length !== events?.length}
                 loader={<h4>Loading...</h4>}
+                scrollThreshold="800px"
                 endMessage={
                     <p style={{textAlign: "center"}}>
                         <b>Huh, that's it.</b>
