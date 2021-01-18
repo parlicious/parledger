@@ -68,6 +68,9 @@ export const AppContainer = (props) => {
                         Log In
                     </AppHeaderLink>
                     : <React.Fragment>
+                        <AppHeaderLink to="/home">
+                            <i className="fas fa-home"/>
+                        </AppHeaderLink>
                         <AppHeaderLink to="/wagers/new">
                             Make a Wager
                         </AppHeaderLink>

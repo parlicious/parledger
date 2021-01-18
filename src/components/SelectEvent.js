@@ -2,7 +2,7 @@ import {useStoreActions, useStoreState} from "easy-peasy";
 import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 import InfiniteScroll from "react-infinite-scroll-component";
-import {useHistory} from 'react-router-dom';
+import {Redirect, useHistory} from 'react-router-dom';
 import {SportSelect} from "./SportSelect";
 
 const OutcomeContainer = styled.div`
@@ -134,10 +134,10 @@ const SelectableOddsCell = ({
                                 }, event, market, outcome, selected, opponent
                             }) => {
     
-    const outcomes = event?.displayGroups[0]?.markets[market]?.outcomes;
+    const outcomes = event?.displayGroups?.[0]?.markets?.[market]?.outcomes;
     return (
         <SelectableOddsCellContainer selected={selected} opponent={opponent}
-                                     onClick={() => eventSelected({event, market, outcome})}>
+                                     onClick={() => outcomes?.[outcome] && eventSelected({event, market, outcome})}>
             <Outcome outcome={outcomes?.[outcome]} forcePrice={topOutcomesNotClose(outcomes, 2)}/>
         </SelectableOddsCellContainer>
     )
@@ -148,7 +148,7 @@ const SectionNameCell = styled.div`
   grid-column: span calc(var(--num-columns) + 1);
 `
 
-export const TitleRow = ({name, event}) => {
+export const TitleRow = ({name, expectedMarkets}) => {
     return (
         <TitleCell>
             <SectionNameCell>
@@ -157,13 +157,13 @@ export const TitleRow = ({name, event}) => {
             <div/>
             <div/>
             <OddsCell>
-                {event?.displayGroups[0]?.markets[0]?.description}
+                {expectedMarkets?.[0]?.description}
             </OddsCell>
             <OddsCell>
-                {event?.displayGroups[0]?.markets[1]?.description}
+                {expectedMarkets?.[1]?.description}
             </OddsCell>
             <OddsCell>
-                {event?.displayGroups[0]?.markets[2]?.description}
+                {expectedMarkets?.[2]?.description}
             </OddsCell>
         </TitleCell>
     )
@@ -187,7 +187,7 @@ const SportSection = ({section, eventSelected}) => {
     const fullDescription = descriptionPrefix + section.path[0].description;
     return (
         <div>
-            <TitleRow name={fullDescription} event={section.events[0]}/>
+            <TitleRow name={fullDescription} expectedMarkets={section.expectedMarkets}/>
             {section.events.map(it => <Event eventSelected={eventSelected} event={it}/>)}
         </div>
     )
@@ -261,6 +261,7 @@ export const SelectEvent = ({}) => {
     const events = useStoreState(state => state.wagers.filteredEvents);
     const [numSections, setNumSections] = useState(2);
     const renderedEvents = events?.slice(0, numSections) || [];
+    const opponent = useStoreState(state => state.wagers.new.opponent);
     const fetchMoreData = () => setNumSections(numSections + 1)
     const setEvent = useStoreActions(actions => actions.wagers.new.setDetails);
     const history = useHistory();
@@ -274,6 +275,10 @@ export const SelectEvent = ({}) => {
     const eventSelected = (event) => {
         setEvent(event);
         history.push('/wagers/new/confirm')
+    }
+
+    if (opponent === null) {
+        return <Redirect to={'/wagers/new'}/>
     }
 
     return (
