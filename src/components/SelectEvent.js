@@ -117,14 +117,17 @@ const SelectableOddsCellContainer = styled(OddsCell)`
   }
 `
 function topOutcomesNotClose(outcomes, numberToCheck) {
-    const decimalPrices = outcomes.slice(0, numberToCheck)
-        .map(outcome => outcome?.price?.decimal ?? '0')
-        .map(n => Number(n));
+    const decimalPrices = outcomes?.slice(0, numberToCheck)
+        ?.map(outcome => outcome?.price?.decimal ?? '0')
+        ?.map(n => Number(n));
+        
+    if(!decimalPrices) return false;
+    
     const mean = decimalPrices.reduce((a,b) => a+b) / decimalPrices.length;
 
     const diffs = decimalPrices.map(price => Math.abs(price - mean));
 
-    return diffs.every(diff => diff < .06);
+    return diffs.every(diff => diff > .06);
 }
 const SelectableOddsCell = ({
                                 eventSelected = () => {
