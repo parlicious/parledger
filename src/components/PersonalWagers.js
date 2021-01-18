@@ -220,12 +220,12 @@ const ConfirmWagerRow = ({onConfirm, wager}) => {
             state: wager
         };
 
-        // return (
-        //     <ButtonLink
-        //         to={linkOptions}>
-        //         Manage this wager
-        //     </ButtonLink>
-        // )
+        return (
+            <ButtonLink
+                to={linkOptions}>
+                Manage this wager
+            </ButtonLink>
+        )
 
         return null;
     } else {
