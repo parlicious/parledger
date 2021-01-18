@@ -4,7 +4,7 @@ import signUpImage from "../resources/undraw_Savings_re_eq4w.svg"
 import styled from 'styled-components';
 import {useHistory, Redirect} from 'react-router-dom';
 import {useStoreState} from "easy-peasy";
-import {isLoaded} from "react-redux-firebase";
+import {isEmpty, isLoaded} from "react-redux-firebase";
 
 const SignUpPageContainer = styled.div`
   display: grid;
@@ -58,9 +58,9 @@ export const SignUpPage = () => {
         history.push('/signup')
     }
 
-    // if(isLoaded(auth)){
-    //     return <Redirect to={'/home'}/>
-    // }
+    if(isLoaded(auth) && !isEmpty(auth)){
+        return <Redirect to={'/home'}/>
+    }
 
     return (
         <SignUpPageContainer>

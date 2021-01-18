@@ -2,7 +2,7 @@ import {useStoreActions, useStoreState} from "easy-peasy";
 import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 import InfiniteScroll from "react-infinite-scroll-component";
-import {useHistory} from 'react-router-dom';
+import {Redirect, useHistory} from 'react-router-dom';
 import {SportSelect} from "./SportSelect";
 
 const OutcomeContainer = styled.div`
@@ -261,6 +261,7 @@ export const SelectEvent = ({}) => {
     const events = useStoreState(state => state.wagers.filteredEvents);
     const [numSections, setNumSections] = useState(2);
     const renderedEvents = events?.slice(0, numSections) || [];
+    const opponent = useStoreState(state => state.wagers.new.opponent);
     const fetchMoreData = () => setNumSections(numSections + 1)
     const setEvent = useStoreActions(actions => actions.wagers.new.setDetails);
     const history = useHistory();
@@ -274,6 +275,10 @@ export const SelectEvent = ({}) => {
     const eventSelected = (event) => {
         setEvent(event);
         history.push('/wagers/new/confirm')
+    }
+
+    if (opponent === null) {
+        return <Redirect to={'/wagers/new'}/>
     }
 
     return (
