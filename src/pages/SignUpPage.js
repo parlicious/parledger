@@ -58,9 +58,9 @@ export const SignUpPage = () => {
         history.push('/signup')
     }
 
-    if(isLoaded(auth)){
-        return <Redirect to={'/home'}/>
-    }
+    // if(isLoaded(auth)){
+    //     return <Redirect to={'/home'}/>
+    // }
 
     return (
         <SignUpPageContainer>
