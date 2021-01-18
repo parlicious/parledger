@@ -24,6 +24,33 @@ const newWagerModel = {
     })
 }
 
+function matchMarkets(originalMarkets, expectedMarkets) {
+    return expectedMarkets.map(expectedMarket => originalMarkets.find(market => market.key === expectedMarket.key));
+}
+
+function normalizeMarkets(section) {
+    const eventMarkets = section.events
+        .map(e => e.displayGroups.markets);
+
+    if(eventMarkets.length < 1) return;
+
+    const maxMarkets = eventMarkets.map(markets => markets.length)
+        .reduce((a,b) => Math.max(a,b));
+    
+    const expectedMarkets = eventMarkets.find(markets => markets.length === maxMarkets);
+    
+    section.expectedMarkets = expectedMarkets;
+
+    section.events = section.events.map(event => ({
+        ...event,
+        displayGroups : [{
+            ...event.displayGroups[0],
+            originalMarkets : event.displayGroups[0].markets,
+            markets : matchMarkets(event.displayGroups[0].markets, expectedMarkets)
+        }]
+    }));
+}
+
 export const wagersModel = {
     eventsUpdated: null,
     updatingEvents: action((state, payload) => {
@@ -68,7 +95,8 @@ export const wagersModel = {
             const eventsRef = storage.ref('events.json');
             const downloadUrl = await eventsRef.getDownloadURL();
             const result = await fetch(downloadUrl)
-            const events = await result.json();
+            const events = (await result.json())
+                .map(normalizeMarkets);
             window.events = events;
             actions.saveEvents(events);
         }

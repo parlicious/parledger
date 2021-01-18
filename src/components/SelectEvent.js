@@ -134,7 +134,7 @@ const SelectableOddsCell = ({
                                 }, event, market, outcome, selected, opponent
                             }) => {
     
-    const outcomes = event?.displayGroups[0]?.markets[market]?.outcomes;
+    const outcomes = event?.displayGroups?.[0]?.markets?.[market]?.outcomes;
     return (
         <SelectableOddsCellContainer selected={selected} opponent={opponent}
                                      onClick={() => eventSelected({event, market, outcome})}>
@@ -148,7 +148,7 @@ const SectionNameCell = styled.div`
   grid-column: span calc(var(--num-columns) + 1);
 `
 
-export const TitleRow = ({name, event}) => {
+export const TitleRow = ({name, expectedMarkets}) => {
     return (
         <TitleCell>
             <SectionNameCell>
@@ -157,13 +157,13 @@ export const TitleRow = ({name, event}) => {
             <div/>
             <div/>
             <OddsCell>
-                {event?.displayGroups[0]?.markets[0]?.description}
+                {expectedMarkets?.[0]?.description}
             </OddsCell>
             <OddsCell>
-                {event?.displayGroups[0]?.markets[1]?.description}
+                {expectedMarkets?.[1]?.description}
             </OddsCell>
             <OddsCell>
-                {event?.displayGroups[0]?.markets[2]?.description}
+                {expectedMarkets?.[2]?.description}
             </OddsCell>
         </TitleCell>
     )
@@ -187,7 +187,7 @@ const SportSection = ({section, eventSelected}) => {
     const fullDescription = descriptionPrefix + section.path[0].description;
     return (
         <div>
-            <TitleRow name={fullDescription} event={section.events[0]}/>
+            <TitleRow name={fullDescription} expectedMarkets={section.expectedMarkets}/>
             {section.events.map(it => <Event eventSelected={eventSelected} event={it}/>)}
         </div>
     )
