@@ -120,8 +120,8 @@ function topOutcomesNotClose(outcomes, numberToCheck) {
     const decimalPrices = outcomes?.slice(0, numberToCheck)
         ?.map(outcome => outcome?.price?.decimal ?? '0')
         ?.map(n => Number(n));
-        
-    if(!decimalPrices) return false;
+
+    if(!decimalPrices || !decimalPrices.length) return false;
     
     const mean = decimalPrices.reduce((a,b) => a+b) / decimalPrices.length;
 
