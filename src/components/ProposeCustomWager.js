@@ -181,7 +181,7 @@ export const ProposeCustomWager = ({details}) => {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <CustomWagerContainer>
                     <WagerAmount>
-                        Risk
+                        You Risk
                         <CustomAmountInput
                             register={register({required: true})}
                             name='risk'
@@ -192,7 +192,7 @@ export const ProposeCustomWager = ({details}) => {
                     </WagerAmount>
 
                     <WagerAmount>
-                        To Win
+                        {opponent.displayName} Risks
                         <CustomAmountInput
                             register={register({required: true, defaultValue: watchRisk})}
                             name='toWin'
