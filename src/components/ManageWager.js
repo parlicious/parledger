@@ -142,7 +142,7 @@ export const ManageWager = ({}) => {
         <AppCell>
             <Wager wager={activeWager}/>
             <h3> Manage your bet</h3>
-            <p> {statusDescription[activeWager.status]}</p>
+            <p> Status: {statusDescription[activeWager.status]}</p>
 
 
             {!selectedAction
@@ -152,7 +152,9 @@ export const ManageWager = ({}) => {
                             {it.title}
                         </NormalButton>)}
                     </BetActionsContainer>
-                    <small> Actions will need to be confirmed by the other member(s) of the bet </small>
+                    {actions.length > 0
+                        ? <small> Actions will need to be confirmed by the other member(s) of the bet </small>
+                        : <span> You can't do anything with this bet</span>}
                 </React.Fragment>
                 : submitting
                     ? <div>Loading</div>
