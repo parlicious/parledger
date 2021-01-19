@@ -62,12 +62,12 @@ function addImpliedOddsToEvents(maxOutcomes) { // use undefined for all outcomes
     return (event) => {
         const markets = event.displayGroups[0].markets
             .map(market => {
-                if(!market || !market.outcomes) return market;
+                if(!market || !market.outcomes || !market.outcomes.length) return market;
                 const outcomesWithImpliedOdds = market.outcomes.map(calculateImpliedOdds);
-                const adjustmentConstent = 1 / outcomesWithImpliedOdds
+                const adjustmentConstent = 100 / outcomesWithImpliedOdds
                     .slice(0, maxOutcomes)
                     .map(o => o.impliedOdds)
-                    .reduce((a,b) => a + b) * 100;
+                    .reduce((a,b) => a + b);
                 const outcomes = outcomesWithImpliedOdds
                     .map((outcome, index) => index < maxOutcomes 
                         ? { ...outcome, adjustedOdds: (outcome.impliedOdds * adjustmentConstent).toFixed(1) + '%'}
