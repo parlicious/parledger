@@ -50,6 +50,42 @@ function normalizeMarkets(section) {
     return { ...section, expectedMarkets, events: normalizedEvents };
 }
 
+function calculateImpliedOdds(outcome) {
+    const decimal = Number(outcome.price.decimal);
+    return {
+        ...outcome,
+        impliedOdds : 1 / decimal
+    };
+}
+
+function addImpliedOddsToEvents(maxOutcomes) { // use undefined for all outcomes 
+    return (event) => {
+        const markets = event.displayGroups[0].markets
+            .map(market => {
+                if(!market || !market.outcomes || !market.outcomes.length) return market;
+                const outcomesWithImpliedOdds = market.outcomes.map(calculateImpliedOdds);
+                const adjustmentConstent = 100 / outcomesWithImpliedOdds
+                    .slice(0, maxOutcomes)
+                    .map(o => o.impliedOdds)
+                    .reduce((a,b) => a + b);
+                const outcomes = outcomesWithImpliedOdds
+                    .map((outcome, index) => index < maxOutcomes 
+                        ? { ...outcome, adjustedOdds: (outcome.impliedOdds * adjustmentConstent).toFixed(0) + '%'}
+                        : outcome
+                    );
+                return { ...market, outcomes };
+            });
+        
+        return {
+            ...event,
+            displayGroups : [{
+                ...event.displayGroups[0],
+                markets
+            }]
+        };
+    }
+}
+
 export const wagersModel = {
     eventsUpdated: null,
     updatingEvents: action((state, payload) => {
@@ -80,7 +116,7 @@ export const wagersModel = {
             ?.map(it =>
                 ({
                     path: it.path,
-                    events: it.events,
+                    events: it.events.map(addImpliedOddsToEvents(2)),
                     expectedMarkets: it.expectedMarkets
                 }))
             ?.filter(it => it.events.length > 0)
