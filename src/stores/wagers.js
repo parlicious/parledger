@@ -108,7 +108,7 @@ export const wagersModel = {
         if (!state?.selectedSport) {
             return state.headToHeadEvents;
         } else {
-            return state?.headToHeadEvents.filter(e => e.path[0].sportCode === state.selectedSport)
+            return state?.headToHeadEvents?.filter(e => e.path[0].sportCode === state.selectedSport)
         }
     }),
     headToHeadEvents: computed(state => {
