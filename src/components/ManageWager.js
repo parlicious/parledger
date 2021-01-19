@@ -1,11 +1,13 @@
 import {useStoreActions, useStoreState} from "easy-peasy";
-import {Event, TitleRow} from "./SelectEvent";
-import React, {useEffect} from "react";
+import {Event} from "./SelectEvent";
+import React, {useEffect, useState} from "react";
 import {AppCell} from "../pages/NewWagerPage";
 import {useLocation} from 'react-router-dom';
-import {WagerDescriptionRow} from "./PersonalWagers";
+import {Wager, WagerDescriptionRow} from "./PersonalWagers";
 import styled from 'styled-components';
-import {buttonCss, ButtonLink, InlineLink} from "../styles";
+import {buttonCss} from "../styles";
+import {useManageWager} from "../stores/wagers";
+import {ErrorMessage} from "../pages/JoinGroupPage";
 
 const BetActionsContainer = styled.div`
   display: grid;
@@ -16,56 +18,149 @@ const BetActionsContainer = styled.div`
 
 const NormalButton = styled.button`
   ${buttonCss};
-  color: #0f2027;
-  
+  font-size: 1em;
+
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+
   :hover {
-    color: #0f2027aa;
+    color: #ffffffaa;
   }
 `
 
+export const statusDescription = {
+    'pending': 'the bet is pending acceptance',
+    'rejected': 'the wager was rejected',
+    'cancelled': 'the wager was cancelled',
+    'booked': 'everyone accepted the bet, but it\'s not been resolved yet',
+    'resolutionProposed': 'a winner of the bet has been proposed, but not accepted',
+    'resolved': 'the a winner for the bet has been accepted, but they\'ve not confirmed payment',
+    'paid': 'the winner of the bet has been paid',
+    'cancellationProposed': 'someone requested to cancel the bet'
+}
+
+const betActions = {
+    'CANCEL': {
+        type: 'CANCEL',
+        actionableStates: ['all'],
+        disallowedStates: ['paid'],
+        title: 'Request to cancel',
+        confirm: 'Are you sure you want to cancel?'
+    },
+    'CONFIRM_CANCEL': {
+        type: 'CONFIRM_CANCEL',
+        actionableStates: ['cancellationProposed'],
+        disallowedStates: [],
+        title: 'Request to cancel',
+        confirm: 'Are you sure you want to cancel?'
+    },
+    'WIN': {
+        type: 'WIN',
+        actionableStates: ['booked'],
+        disallowedStates: [],
+        betInPast: true,
+        title: 'I won the bet',
+        confirm: 'Request to close the bet with you as the winner?'
+    },
+    'LOSS': {
+        type: 'LOSS',
+        actionableStates: ['booked'],
+        disallowedStates: [],
+        betInPast: true,
+        title: 'I lost the bet',
+        confirm: 'Request to close the bet with you as the loser?'
+    },
+    'PUSH': {
+        type: 'PUSH',
+        actionableStates: ['booked'],
+        disallowedStates: [],
+        betInPast: true,
+        title: 'No one won the bet',
+        confirm: 'Request to close the bet as a push (no one wins) ?'
+    },
+    'CONFIRM_WINNER': {
+        type: 'CONFIRM_WINNER',
+        resolutionNotProposedByMe: true,
+        actionableStates: ['resolutionProposed'],
+        disallowedStates: [],
+        title: 'Confirm the winner',
+    },
+    'PAID': {
+        type: 'PAID',
+        winnerOnly: true,
+        actionableStates: ['resolved'],
+        disallowedStates: [],
+        title: 'I was paid for winning this bet',
+        confirm: 'Confirm you were paid for this bet?'
+    }
+}
+
+const ConfirmBetActionContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`
+
 export const ManageWager = ({}) => {
-    const profile = useStoreState(state => state.firebase.profile);
+    const auth = useStoreState(state => state.firebase.auth);
     const savedWager = useStoreState(state => state.wagers.activeWager);
     const setActiveWager = useStoreActions(actions => actions.wagers.setActiveWager);
     let location = useLocation();
     const activeWager = location.state || savedWager;
+    const [selectedAction, setSelectedAction] = useState(null);
+
+    const status = activeWager.status;
+    const isWinner = activeWager.winner?.uid === auth.uid;
+
+    const actions = Object.values(betActions)
+        .filter(it => it.actionableStates.includes(status) || it.actionableStates.includes('all'))
+        .filter(it => !it.disallowedStates.includes(status))
+        .filter(it => it.winnerOnly ? isWinner : true)
+        .filter(it => it.resolutionNotProposedByMe ? activeWager.resolutionProposedBy.uid !== auth.uid : true)
+
+    const {submitting, apiError, apiSuccess, save} = useManageWager();
 
     useEffect(() => {
         setActiveWager(activeWager);
     }, [activeWager])
 
-    if (activeWager?.type === 'BOVADA') {
-        const event = activeWager.details.event;
-        return (
-            <AppCell>
-                <h3> Manage your {activeWager.details.event.description} bet</h3>
-                <Event
-                    headerComponent={
-                        <WagerDescriptionRow
-                            wager={activeWager}
-                            pending={activeWager.status === 'pending'}
-                            eventDescription={activeWager.details.event.description}
-                            risk={activeWager.details.risk}/>
-                    }
-                    wagerMembers={{1: activeWager.proposedTo, 0: activeWager.proposedBy}}
-                    selectedMarket={activeWager.details.market}
-                    selectedOutcome={activeWager.details.outcome}
-                    event={event}/>
-
-                <BetActionsContainer>
-                    <NormalButton>Request to Cancel</NormalButton>
-                    {Date.now() > activeWager.details.event.startTime &&
-                    <React.Fragment>
-                        <NormalButton>I won this bet</NormalButton>
-                        <NormalButton>I lost this bet</NormalButton>
-                        <NormalButton>This bet was a push</NormalButton>
-                    </React.Fragment>
-                    }
-                </BetActionsContainer>
-            </AppCell>
-        )
-    }
+    const event = activeWager.details.event;
+    return (
+        <AppCell>
+            <Wager wager={activeWager}/>
+            <h3> Manage your bet</h3>
+            <p> {statusDescription[activeWager.status]}</p>
 
 
-    return null;
+            {!selectedAction
+                ? <React.Fragment>
+                    <BetActionsContainer>
+                        {actions.map(it => <NormalButton onClick={() => setSelectedAction(it)}>
+                            {it.title}
+                        </NormalButton>)}
+                    </BetActionsContainer>
+                    <small> Actions will need to be confirmed by the other member(s) of the bet </small>
+                </React.Fragment>
+                : submitting
+                    ? <div>Loading</div>
+                    : apiSuccess
+                        ? <p>{apiSuccess}</p>
+                        : apiError
+                            ? <ErrorMessage> {apiError}</ErrorMessage>
+                            : <ConfirmBetActionContainer>
+                                {selectedAction.type === 'CONFIRM_WINNER'
+                                    ? <div>Confirm that {activeWager.winner?.displayName} won the bet?</div>
+                                    : selectedAction?.confirm ?? 'Are you sure?'}
+                                <NormalButton
+                                    onClick={() => save({
+                                        wager: activeWager,
+                                        action: selectedAction
+                                    })}> Yes </NormalButton>
+                            </ConfirmBetActionContainer>
+            }
+        </AppCell>
+    )
+
 }

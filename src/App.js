@@ -75,7 +75,7 @@ const App = () => {
                                     <PrivateRoute exact path='/wagers/new/confirm'>
                                         <ConfirmWagerProposal/>
                                     </PrivateRoute>
-                                    <PrivateRoute exact path='/wagers/manage'>
+                                    <PrivateRoute exact path='/wagers/manage/:wagerId'>
                                         <ManageWager/>
                                     </PrivateRoute>
                                 </AuthIsLoaded>

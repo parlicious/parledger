@@ -5,6 +5,7 @@ import {buttonCss, ButtonLink, InlineLink} from "../styles";
 import {useState, useEffect} from "react";
 import {useFirestoreConnect} from "react-redux-firebase";
 import {Link} from "react-router-dom";
+import {statusDescription} from "./ManageWager";
 
 const WagerDescriptionRowContainer = styled.div`
   display: flex;
@@ -193,7 +194,8 @@ const ConfirmWagerRow = ({onConfirm, wager}) => {
         return (
             <ConfirmWagerContainer>
                 <ConfirmWagerText>
-                    <i className="fas fa-exclamation-circle"/> {wager.proposedBy.displayName} offered this bet to anyone.
+                    <i className="fas fa-exclamation-circle"/> {wager.proposedBy.displayName} offered this bet to
+                    anyone.
                 </ConfirmWagerText>
                 <WagerActionsGroup>
                     <ConfirmButton onClick={confirm(true)}>
@@ -216,15 +218,18 @@ const ConfirmWagerRow = ({onConfirm, wager}) => {
         )
     } else if (wager.proposedBy.uid === auth.uid || wager.proposedTo?.uid === auth.uid) {
         const linkOptions = {
-            pathname: '/wagers/manage',
+            pathname: `/wagers/manage/${wager.id}`,
             state: wager
         };
 
         return (
-            <ButtonLink
-                to={linkOptions}>
-                Manage this wager
-            </ButtonLink>
+            <ManageWagerLinkContainer>
+                <WagerStatus>{statusDescription[wager.status]}</WagerStatus>
+                <InlineLink
+                    to={linkOptions}>
+                    Manage
+                </InlineLink>
+            </ManageWagerLinkContainer>
         )
 
         return null;
@@ -232,6 +237,20 @@ const ConfirmWagerRow = ({onConfirm, wager}) => {
         return null;
     }
 }
+
+const WagerStatus = styled.div`
+    max-width: 70%;
+`
+
+const ManageWagerLinkContainer = styled.div`
+  padding: 0.4em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8em;
+  
+`
 
 const membersFromWager = (wager) => {
     return {
@@ -252,7 +271,7 @@ const CustomWagerDetails = styled.div`
   padding: 1em;
 `
 
-const Wager = (props) => {
+export const Wager = (props) => {
     const {wager} = props;
     if (wager.type === 'BOVADA') {
         const selection = wager.details.selection || wager.details;
