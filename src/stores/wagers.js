@@ -155,6 +155,10 @@ export const wagersModel = {
         const firebase = helpers.injections.getFirebase()
         await firebase.functions().httpsCallable('createWager')(payload);
     }),
+    manageWager: thunk(async (actions, payload, helpers) => {
+        const firebase = helpers.injections.getFirebase()
+        await firebase.functions().httpsCallable('manageWager')(payload);
+    }),
     respondToWager: thunk(async (actions, payload, helpers) => {
         const firebase = helpers.injections.getFirebase();
         console.log(firebase);
@@ -194,6 +198,28 @@ export const useSaveWager = () => {
                 await createWager({proposedTo: opponent.uid, ...wager});
             }
             setApiSuccess("Wager was proposed!")
+        } catch (error) {
+            setApiError(error.message);
+        }
+
+        setSubmitting(false);
+    }
+
+    return {submitting, apiError, apiSuccess, save};
+}
+
+export const useManageWager = () => {
+    const profile = useStoreState(state => state.firebase.profile);
+    const [submitting, setSubmitting] = useState(false);
+    const [apiSuccess, setApiSuccess] = useState(null);
+    const [apiError, setApiError] = useState(null);
+    const manageWager = useStoreActions(actions => actions.wagers.manageWager);
+
+    const save = async ({wager, action}) => {
+        try {
+            setSubmitting(true);
+            await manageWager({groupId: wager.groupId, wagerId: wager.id, action})
+            setApiSuccess("Wager was updated!")
         } catch (error) {
             setApiError(error.message);
         }
