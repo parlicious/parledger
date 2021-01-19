@@ -15,17 +15,23 @@ const OddsContainer = styled.div`
   font-family: Monaco, SFMono-Regular, monospace;
 `
 
+const AdjustedOdds = styled.span`
+  font-size: 0.8em;
+  color: #aaaaaa;
+`
+
 export const Outcome = ({outcome, forcePrice}) => {
-    const price = forcePrice ? ` (${outcome.adjustedOdds ?? outcome.price.american})` : ' ';
+    const price = forcePrice ? <AdjustedOdds> {outcome.adjustedOdds ?? outcome.price.american} </AdjustedOdds> : ' ';
     if (outcome) {
         return (
             <OutcomeContainer>
                 {outcome.price.handicap
                     ? <OddsContainer>
-                        {['O', 'U'].includes(outcome.type) && outcome.type}&nbsp;{outcome.price.handicap + price}
+                        {['O', 'U'].includes(outcome.type) && outcome.type}&nbsp;{outcome.price.handicap} {price}
                     </OddsContainer>
                     : <OddsContainer>
-                        {outcome.price.american} {outcome.adjustedOdds ? `(${outcome.adjustedOdds})` : ''}
+                        {outcome.price.american} {outcome.adjustedOdds ?
+                        <AdjustedOdds> {outcome.adjustedOdds} </AdjustedOdds> : ''}
                     </OddsContainer>}
             </OutcomeContainer>
         )
@@ -50,7 +56,7 @@ export const EventCell = styled.div`
 
   --num-columns: ${props => props.condensed ? 4 : 5};
 
-  @media(max-width: 450px){
+  @media (max-width: 450px) {
     font-size: 0.8em;
   }
 `
@@ -65,8 +71,8 @@ const TimeAndDateCell = styled.div`
   grid-row: span 2;
   padding: 1em;
   background: linear-gradient(to bottom, #FFFFFF14, #FFFFFF19);
-  
-  @media(max-width: 450px){
+
+  @media (max-width: 450px) {
     padding: 0.3em;
   }
 `
@@ -116,24 +122,26 @@ const SelectableOddsCellContainer = styled(OddsCell)`
     background: #FFFFFF13;
   }
 `
+
 function topOutcomesNotClose(outcomes, numberToCheck) {
     const decimalPrices = outcomes?.slice(0, numberToCheck)
         ?.map(outcome => outcome?.price?.decimal ?? '0')
         ?.map(n => Number(n));
 
-    if(!decimalPrices || !decimalPrices.length) return false;
-    
-    const mean = decimalPrices.reduce((a,b) => a+b) / decimalPrices.length;
+    if (!decimalPrices || !decimalPrices.length) return false;
+
+    const mean = decimalPrices.reduce((a, b) => a + b) / decimalPrices.length;
 
     const diffs = decimalPrices.map(price => Math.abs(price - mean));
 
     return diffs.every(diff => diff > .06);
 }
+
 const SelectableOddsCell = ({
                                 eventSelected = () => {
                                 }, event, market, outcome, selected, opponent
                             }) => {
-    
+
     const outcomes = event?.displayGroups?.[0]?.markets?.[market]?.outcomes;
     return (
         <SelectableOddsCellContainer selected={selected} opponent={opponent}
@@ -228,9 +236,9 @@ export const Event = (props) => {
     const {headerComponent, footerComponent, event} = props;
     const eventTime = new Date(event.startTime);
     console.log(props.wagerMembers)
-    const [ first, second ] = event?.awayTeamFirst ? 
-        [ {competitor: 1, rowNum: 0}, { competitor: 0, rowNum: 1}] :
-        [ {competitor: 0, rowNum: 0}, { competitor: 1, rowNum: 1}];
+    const [first, second] = event?.awayTeamFirst ?
+        [{competitor: 1, rowNum: 0}, {competitor: 0, rowNum: 1}] :
+        [{competitor: 0, rowNum: 0}, {competitor: 1, rowNum: 1}];
     return (
         <EventCell key={event.id} condensed={!!props.wagerMembers}>
             {headerComponent && <EventHeaderContainer>{headerComponent}</EventHeaderContainer>}
