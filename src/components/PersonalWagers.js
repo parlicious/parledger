@@ -202,9 +202,9 @@ const ConfirmWagerRow = ({onConfirm, wager}) => {
                     {statusIcons[wager.status]} {statusDescription[wager.status]}
                 </ConfirmWagerText>
                 <WagerActionsGroup>
-                    <ButtonLink to={linkOptions}>
+                    {wager.status !== 'paid' && <ButtonLink to={linkOptions}>
                         Manage
-                    </ButtonLink>
+                    </ButtonLink>}
                 </WagerActionsGroup>
             </ConfirmWagerContainer>
         )

@@ -248,11 +248,11 @@ exports.manageWager = functions.https.onCall(async (data, context) => {
             throw new functions.https.HttpsError('failed-precondition', 'A wager must have a winner before you pay it out');
         }
 
-        if(wager.winner.uid !== context.auth.uid){
-            throw new functions.https.HttpsError('failed-precondition', 'Only the winner can confirmed a wager was paid')
+        if(wager.resolutionProposedBy.uid === context.auth.uid){
+            fail('You were the one to propose a resolution');
         }
 
-        if(wager.status !== 'resolved'){
+        if(wager.status !== 'resolutionProposed'){
             fail('Wager must be resolved before paying out');
         }
 
@@ -277,12 +277,12 @@ exports.manageWager = functions.https.onCall(async (data, context) => {
         }
 
         if(wager.resolutionProposedBy.uid === context.auth.uid){
-            fail('You can\'t confirm a winner you proposed');
+            fail('You can\'t confirm something you proposed');
         }
 
         newWager = {
             ...wager,
-            status: 'resolved'
+            status: 'paid'
         }
     } else if(action.type === 'PUSH'){
         newWager = {

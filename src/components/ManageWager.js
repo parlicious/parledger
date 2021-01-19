@@ -71,16 +71,16 @@ const betActions = {
         actionableStates: ['booked'],
         disallowedStates: [],
         betInPast: true,
-        title: 'I won the bet',
-        confirm: 'Request to close the bet with you as the winner?'
+        title: 'I won the bet and have been paid',
+        confirm: 'Confirm you have been paid for winning the bet?',
     },
     'LOSS': {
         type: 'LOSS',
         actionableStates: ['booked'],
         disallowedStates: [],
         betInPast: true,
-        title: 'I lost the bet',
-        confirm: 'Request to close the bet with you as the loser?'
+        title: 'I lost the bet and paid out',
+        confirm: 'Confirm you lost the bet and paid the winner?'
     },
     'PUSH': {
         type: 'PUSH',
@@ -90,20 +90,13 @@ const betActions = {
         title: 'No one won the bet',
         confirm: 'Request to close the bet as a push (no one wins) ?'
     },
-    'CONFIRM_WINNER': {
-        type: 'CONFIRM_WINNER',
-        resolutionNotProposedByMe: true,
-        actionableStates: ['resolutionProposed'],
-        disallowedStates: [],
-        title: 'Confirm the winner',
-    },
     'PAID': {
         type: 'PAID',
-        winnerOnly: true,
-        actionableStates: ['resolved'],
+        actionableStates: ['resolutionProposed'],
         disallowedStates: [],
-        title: 'I was paid for winning this bet',
-        confirm: 'Confirm you were paid for this bet?'
+        title: 'The bet has been paid out',
+        resolutionNotProposedByMe: true,
+        confirm: 'Confirm the bet was paid'
     }
 }
 
@@ -128,7 +121,6 @@ export const ManageWager = ({}) => {
     const actions = Object.values(betActions)
         .filter(it => it.actionableStates.includes(status) || it.actionableStates.includes('all'))
         .filter(it => !it.disallowedStates.includes(status))
-        .filter(it => it.winnerOnly ? isWinner : true)
         .filter(it => it.resolutionNotProposedByMe ? activeWager.resolutionProposedBy.uid !== auth.uid : true)
 
     const {submitting, apiError, apiSuccess, save} = useManageWager();
