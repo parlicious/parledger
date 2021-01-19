@@ -1,10 +1,11 @@
 import {useStoreActions, useStoreState} from "easy-peasy";
 import {Event, EventCell} from "./SelectEvent";
 import styled from 'styled-components';
-import {buttonCss, ButtonLink, InlineLink} from "../styles";
+import {buttonCss, ButtonLink, ConfirmButton, InlineLink, RejectButton} from "../styles";
 import {useState, useEffect} from "react";
 import {useFirestoreConnect} from "react-redux-firebase";
 import {Link} from "react-router-dom";
+import {statusDescription, statusIcons} from "./ManageWager";
 
 const WagerDescriptionRowContainer = styled.div`
   display: flex;
@@ -78,16 +79,6 @@ export const WagerDescriptionRow = ({eventDescription, pending, risk, toWin, wag
     const amountToRisk = risk || wager.details.risk;
     return (<WagerDescriptionRowContainer>
             <WagerDescriptionText>
-                {pending
-                    ? <span>
-                    <WagerDescriptionIcon title="This wager is pending" className="fas fa-user-clock"/>
-                        {'  '}
-                </span>
-                    : <span>
-                        <WagerDescriptionIcon title="This wager was confirmed" className="fas fa-check-circle"/>
-                        {'  '}
-                    </span>}
-
                 {eventDescription}
             </WagerDescriptionText>
             <MemberAndAmount {...{toWin: amountToWin, risk: amountToRisk, wager}}/>
@@ -96,27 +87,11 @@ export const WagerDescriptionRow = ({eventDescription, pending, risk, toWin, wag
 }
 
 
-const ConfirmButton = styled.button`
-  ${buttonCss};
-  background: #3cc921;
-
-  :hover {
-    background: #3cc921cF;
-  }
-`
-
-const RejectButton = styled.button`
-  ${buttonCss};
-  background: #FF4040;
-
-  :hover {
-    background: #FF4040cF;
-    cursor: pointer;
-  }
-`
-
 const WagerActionsGroup = styled.div`
-  text-align: end;
+  font-size: 0.8em;
+  button {
+    font-size: 0.8em;  
+  }
 `
 
 const ConfirmWagerContainer = styled.div`
@@ -181,10 +156,10 @@ const ConfirmWagerRow = ({onConfirm, wager}) => {
                 </ConfirmWagerText>
                 <WagerActionsGroup>
                     <ConfirmButton onClick={confirm(true)}>
-                        Confirm it
+                        Confirm
                     </ConfirmButton>
                     <RejectButton onClick={confirm(false)}>
-                        Reject it
+                        Reject
                     </RejectButton>
                 </WagerActionsGroup>
             </ConfirmWagerContainer>
@@ -193,7 +168,8 @@ const ConfirmWagerRow = ({onConfirm, wager}) => {
         return (
             <ConfirmWagerContainer>
                 <ConfirmWagerText>
-                    <i className="fas fa-exclamation-circle"/> {wager.proposedBy.displayName} offered this bet to anyone.
+                    <i className="fas fa-exclamation-circle"/> {wager.proposedBy.displayName} offered this bet to
+                    anyone.
                 </ConfirmWagerText>
                 <WagerActionsGroup>
                     <ConfirmButton onClick={confirm(true)}>
@@ -216,22 +192,42 @@ const ConfirmWagerRow = ({onConfirm, wager}) => {
         )
     } else if (wager.proposedBy.uid === auth.uid || wager.proposedTo?.uid === auth.uid) {
         const linkOptions = {
-            pathname: '/wagers/manage',
+            pathname: `/wagers/manage/${wager.id}`,
             state: wager
         };
 
-        // return (
-        //     <ButtonLink
-        //         to={linkOptions}>
-        //         Manage this wager
-        //     </ButtonLink>
-        // )
+        return (
+            <ConfirmWagerContainer>
+                <ConfirmWagerText>
+                    {statusIcons[wager.status]} {statusDescription[wager.status]}
+                </ConfirmWagerText>
+                <WagerActionsGroup>
+                    <ButtonLink to={linkOptions}>
+                        Manage
+                    </ButtonLink>
+                </WagerActionsGroup>
+            </ConfirmWagerContainer>
+        )
 
         return null;
     } else {
         return null;
     }
 }
+
+const WagerStatus = styled.div`
+    max-width: 70%;
+`
+
+const ManageWagerLinkContainer = styled.div`
+  padding: 0.4em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8em;
+  
+`
 
 const membersFromWager = (wager) => {
     return {
@@ -252,7 +248,7 @@ const CustomWagerDetails = styled.div`
   padding: 1em;
 `
 
-const Wager = (props) => {
+export const Wager = (props) => {
     const {wager} = props;
     if (wager.type === 'BOVADA') {
         const selection = wager.details.selection || wager.details;

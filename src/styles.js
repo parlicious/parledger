@@ -29,4 +29,30 @@ export const InlineLink = styled(Link)`
 `
 
 export const ButtonLink = styled(Link)`
+  ${buttonCss};
+  background: #0f2027;
+
+  :hover {
+    background: #0f2027cF;
+  }
+`
+
+
+export const ConfirmButton = styled.button`
+  ${buttonCss};
+  background: #3cc921;
+
+  :hover {
+    background: #3cc921cF;
+  }
+`
+
+export const RejectButton = styled.button`
+  ${buttonCss};
+  background: #FF4040;
+
+  :hover {
+    background: #FF4040cF;
+    cursor: pointer;
+  }
 `
