@@ -338,6 +338,7 @@ export const GroupWagers = ({}) => {
     const confirmWagerAction = useStoreActions(actions => actions.wagers.respondToWager);
     const wagers = Object.values(rawWagers ?? {})
         .filter(wager => wager.status !== 'rejected')
+        .filter(wager => wager.status !== 'open')
         .filter(wager => wager.proposedTo?.uid !== auth.uid && wager.proposedBy?.uid !== auth.uid)
 
     const confirmWager = async (wagerId, groupId, acceptWager) => {
@@ -357,5 +358,40 @@ export const GroupWagers = ({}) => {
         )
     } else {
         return null;
+    }
+}
+
+export const OpenWagers = ({}) => {
+    const profile = useStoreState(state => state.firebase.profile)
+    useFirestoreConnect([{collection: `groups/${profile.groups[0]}/wagers`, storeAs: 'wagers'}]);
+    const auth = useStoreState(state => state.firebase.auth)
+    const rawWagers = useStoreState(state => state.firestore.data.wagers)
+    const confirmWagerAction = useStoreActions(actions => actions.wagers.respondToWager);
+    const wagers = Object.values(rawWagers ?? {})
+        .filter(wager => wager.status === 'open')
+
+    const confirmWager = async (wagerId, groupId, acceptWager) => {
+        await confirmWagerAction({wagerId, groupId, accept: acceptWager})
+    };
+
+    if (wagers.length > 0) {
+        return (
+            <div>
+                <PersonalWagersTitle>
+                    <h3>
+                        Marketplace
+                    </h3>
+                </PersonalWagersTitle>
+                {wagers.map(wager => <Wager key={wager.id} onConfirm={confirmWager} wager={wager}/>)}
+            </div>
+        )
+    } else {
+        return (
+            <div>
+                <p>
+                    No one has proposed an open wager yet, <InlineLink to={'/wagers/new'}> maybe you should?</InlineLink>
+                </p>
+            </div>
+        )
     }
 }

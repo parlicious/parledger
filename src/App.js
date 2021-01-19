@@ -19,6 +19,7 @@ import {SelectEvent} from "./components/SelectEvent";
 import {ConfirmWagerProposal} from "./components/ConfirmWagerProposal";
 import {SelectWagerType} from "./components/SelectWagerType";
 import {ProposeCustomWager} from "./components/ProposeCustomWager";
+import {Marketplace} from "./components/Marketplace";
 
 function AuthIsLoaded({children}) {
     const auth = useStoreState(state => state.firebase.auth)
@@ -59,6 +60,9 @@ const App = () => {
                                     </PrivateRoute>
                                     <PrivateRoute path='/me'>
                                         <UserInfoPage/>
+                                    </PrivateRoute>
+                                    <PrivateRoute exact path='/wagers/market'>
+                                        <Marketplace/>
                                     </PrivateRoute>
                                     <PrivateRoute exact path='/wagers/new'>
                                         <NewWagerPage/>

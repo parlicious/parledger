@@ -71,6 +71,9 @@ export const AppContainer = (props) => {
                         <AppHeaderLink to="/home">
                             <i className="fas fa-home"/>
                         </AppHeaderLink>
+                        <AppHeaderLink to="/wagers/market">
+                            Marketplace
+                        </AppHeaderLink>
                         <AppHeaderLink to="/wagers/new">
                             Make a Wager
                         </AppHeaderLink>
