@@ -219,6 +219,117 @@ exports.confirmWager = functions.https.onCall(async (data, context) => {
     await notifyGroupOfWager(wager, action);
 });
 
+const fail = (message) => {
+    throw new functions.https.HttpsError('failed-precondition', message)
+}
+
+exports.manageWager = functions.https.onCall(async (data, context) => {
+    console.log(`AUDIT: action by ${context.auth.uid}`);
+    const {groupId, wagerId, action} = data;
+
+    const doc = await db.collection('groups').doc(groupId)
+        .collection('wagers').doc(wagerId).get();
+
+    if (!doc.exists) {
+        throw new functions.https.HttpsError('failed-precondition', 'This wager doesn\'t exist');
+    }
+    const wager = doc.data();
+
+    if(wager.proposedTo.uid !== context.auth.uid && wager.proposedBy.uid !== context.auth.uid){
+        throw new functions.https.HttpsError('unauthenticated', 'You have to be in the wager to update it');
+    }
+
+    let newWager = {...wager};
+
+    const [user, opponent] = wager.proposedBy.uid === context.auth.uid ? [wager.proposedBy, wager.proposedTo] : [wager.proposedTo, wager.proposedBy];
+
+    if(action.type === 'PAID'){
+        if(!wager.winner){
+            throw new functions.https.HttpsError('failed-precondition', 'A wager must have a winner before you pay it out');
+        }
+
+        if(wager.winner.uid !== context.auth.uid){
+            throw new functions.https.HttpsError('failed-precondition', 'Only the winner can confirmed a wager was paid')
+        }
+
+        if(wager.status !== 'resolved'){
+            fail('Wager must be resolved before paying out');
+        }
+
+        newWager = {
+            ...wager,
+            status: 'paid'
+        }
+    } else if(['WIN', 'LOSS'].includes(action.type)) {
+        if(wager.status !== 'booked'){
+            fail('Invalid state to propose a winner');
+        }
+
+        newWager = {
+            ...wager,
+            status: 'resolutionProposed',
+            resolutionProposedBy: user,
+            winner: action.type === 'WIN' ? user : opponent
+        }
+    } else if(action.type === 'CONFIRM_WINNER'){
+        if(wager.status !== 'resolutionProposed'){
+            fail('Invalid state to confirm a winner');
+        }
+
+        if(wager.resolutionProposedBy.uid === context.auth.uid){
+            fail('You can\'t confirm a winner you proposed');
+        }
+
+        newWager = {
+            ...wager,
+            status: 'resolved'
+        }
+    } else if(action.type === 'PUSH'){
+        newWager = {
+            ...wager,
+            winner: null,
+            status: 'resolutionProposed'
+        }
+    } else if(action.type === 'CANCEL'){
+        newWager = {
+            ...wager,
+            cancellationProposedBy: user,
+            status: 'cancellationProposed'
+        }
+    } else if(action.type === 'CONFIRM_CANCEL'){
+        if(wager.status !== 'cancellationProposed'){
+            fail('Invalid state to cancel a wager');
+        }
+
+        if(wager.resolutionProposedBy.uid === context.auth.uid){
+            fail('You were the one to propose a cancellation');
+        }
+
+        newWager = {
+            ...wager,
+            status: 'rejected'
+        }
+    }
+
+
+    await db.collection('groups')
+        .doc(data.groupId)
+        .collection('wagers')
+        .doc(data.wagerId)
+        .set(newWager);
+
+
+    const path = `wagers.${data.wagerId}`
+
+    await db.collection('users')
+        .doc(wager.proposedTo.uid)
+        .update({[path]: newWager})
+
+    await db.collection('users')
+        .doc(wager.proposedBy.uid)
+        .update({[path]: newWager})
+});
+
 async function notifyGroupOfWager(wager, action) {
     console.log(wager, action);
 }
@@ -273,19 +384,21 @@ exports.sendWagerProposalEmail = functions.firestore.document('groups/{groupId}/
         const wager = change.after.data();
         if (wager && wager.proposedTo && wager.proposedTo.uid) {
 
-            const snapshot = await db.collection('users').doc(wager.proposedTo.uid).get()
-            const proposedToUser = snapshot.data();
+            if (wager.status === 'pending') {
+                const snapshot = await db.collection('users').doc(wager.proposedTo.uid).get()
+                const proposedToUser = snapshot.data();
 
-            const mail = {
-                to: proposedToUser.email,
-                template: {
-                    name: 'new-wager',
-                    data: {
-                        proposedBy: wager.proposedBy.displayName
+                const mail = {
+                    to: proposedToUser.email,
+                    template: {
+                        name: 'new-wager',
+                        data: {
+                            proposedBy: wager.proposedBy.displayName
+                        }
                     }
                 }
-            }
 
-            await db.collection('mail').add(mail);
+                await db.collection('mail').add(mail);
+            }
         }
     });

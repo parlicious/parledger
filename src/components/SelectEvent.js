@@ -16,7 +16,7 @@ const OddsContainer = styled.div`
 `
 
 export const Outcome = ({outcome, forcePrice}) => {
-    const price = forcePrice ? `(${outcome.price.american})` : ' ';
+    const price = forcePrice ? ` (${outcome.adjustedOdds ?? outcome.price.american})` : ' ';
     if (outcome) {
         return (
             <OutcomeContainer>
@@ -25,7 +25,7 @@ export const Outcome = ({outcome, forcePrice}) => {
                         {['O', 'U'].includes(outcome.type) && outcome.type}&nbsp;{outcome.price.handicap + price}
                     </OddsContainer>
                     : <OddsContainer>
-                        {outcome.price.american}
+                        {outcome.price.american} {outcome.adjustedOdds ? `(${outcome.adjustedOdds})` : ''}
                     </OddsContainer>}
             </OutcomeContainer>
         )
@@ -259,7 +259,7 @@ export const Event = (props) => {
 
 export const SelectEvent = ({}) => {
     const events = useStoreState(state => state.wagers.filteredEvents);
-    const [numSections, setNumSections] = useState(2);
+    const [numSections, setNumSections] = useState(10);
     const renderedEvents = events?.slice(0, numSections) || [];
     const opponent = useStoreState(state => state.wagers.new.opponent);
     const fetchMoreData = () => setNumSections(numSections + 1)

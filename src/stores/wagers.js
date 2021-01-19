@@ -50,6 +50,42 @@ function normalizeMarkets(section) {
     return { ...section, expectedMarkets, events: normalizedEvents };
 }
 
+function calculateImpliedOdds(outcome) {
+    const decimal = Number(outcome.price.decimal);
+    return {
+        ...outcome,
+        impliedOdds : 1 / decimal
+    };
+}
+
+function addImpliedOddsToEvents(maxOutcomes) { // use undefined for all outcomes 
+    return (event) => {
+        const markets = event.displayGroups[0].markets
+            .map(market => {
+                if(!market || !market.outcomes || !market.outcomes.length) return market;
+                const outcomesWithImpliedOdds = market.outcomes.map(calculateImpliedOdds);
+                const adjustmentConstent = 100 / outcomesWithImpliedOdds
+                    .slice(0, maxOutcomes)
+                    .map(o => o.impliedOdds)
+                    .reduce((a,b) => a + b);
+                const outcomes = outcomesWithImpliedOdds
+                    .map((outcome, index) => index < maxOutcomes 
+                        ? { ...outcome, adjustedOdds: (outcome.impliedOdds * adjustmentConstent).toFixed(0) + '%'}
+                        : outcome
+                    );
+                return { ...market, outcomes };
+            });
+        
+        return {
+            ...event,
+            displayGroups : [{
+                ...event.displayGroups[0],
+                markets
+            }]
+        };
+    }
+}
+
 export const wagersModel = {
     eventsUpdated: null,
     updatingEvents: action((state, payload) => {
@@ -80,7 +116,7 @@ export const wagersModel = {
             ?.map(it =>
                 ({
                     path: it.path,
-                    events: it.events,
+                    events: it.events.map(addImpliedOddsToEvents(2)),
                     expectedMarkets: it.expectedMarkets
                 }))
             ?.filter(it => it.events.length > 0)
@@ -118,6 +154,10 @@ export const wagersModel = {
     createWager: thunk(async (actions, payload, helpers) => {
         const firebase = helpers.injections.getFirebase()
         await firebase.functions().httpsCallable('createWager')(payload);
+    }),
+    manageWager: thunk(async (actions, payload, helpers) => {
+        const firebase = helpers.injections.getFirebase()
+        await firebase.functions().httpsCallable('manageWager')(payload);
     }),
     respondToWager: thunk(async (actions, payload, helpers) => {
         const firebase = helpers.injections.getFirebase();
@@ -158,6 +198,28 @@ export const useSaveWager = () => {
                 await createWager({proposedTo: opponent.uid, ...wager});
             }
             setApiSuccess("Wager was proposed!")
+        } catch (error) {
+            setApiError(error.message);
+        }
+
+        setSubmitting(false);
+    }
+
+    return {submitting, apiError, apiSuccess, save};
+}
+
+export const useManageWager = () => {
+    const profile = useStoreState(state => state.firebase.profile);
+    const [submitting, setSubmitting] = useState(false);
+    const [apiSuccess, setApiSuccess] = useState(null);
+    const [apiError, setApiError] = useState(null);
+    const manageWager = useStoreActions(actions => actions.wagers.manageWager);
+
+    const save = async ({wager, action}) => {
+        try {
+            setSubmitting(true);
+            await manageWager({groupId: wager.groupId, wagerId: wager.id, action})
+            setApiSuccess("Wager was updated!")
         } catch (error) {
             setApiError(error.message);
         }
