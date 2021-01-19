@@ -16,7 +16,7 @@ const OddsContainer = styled.div`
 `
 
 export const Outcome = ({outcome, forcePrice}) => {
-    const price = forcePrice ? `(${outcome.price.american})` : ' ';
+    const price = forcePrice ? `(${outcome.adjustedOdds ?? outcome.price.american})` : ' ';
     if (outcome) {
         return (
             <OutcomeContainer>
@@ -25,7 +25,7 @@ export const Outcome = ({outcome, forcePrice}) => {
                         {['O', 'U'].includes(outcome.type) && outcome.type}&nbsp;{outcome.price.handicap + price}
                     </OddsContainer>
                     : <OddsContainer>
-                        {outcome.price.american}
+                        {outcome.price.american} {outcome.adjustedOdds ? `(${outcome.adjustedOdds})` : ''}
                     </OddsContainer>}
             </OutcomeContainer>
         )
