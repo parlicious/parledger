@@ -57,7 +57,7 @@ const MemberAndAmount = ({wager, risk, toWin}) => {
 
     if (wager.status === 'open') {
         return <WagerMembersContainer>
-            {proposedBy} risked ${risk} to win ${toWin || risk} from anyone who would accept the bet
+            {proposedBy} risked ${risk} where anyone can risk ${toWin || risk}
         </WagerMembersContainer>
     }
     if (risk === toWin) {
@@ -68,7 +68,7 @@ const MemberAndAmount = ({wager, risk, toWin}) => {
     } else {
         return (
             <WagerMembersContainer>
-                {proposedBy} risked ${risk} to win ${toWin || risk} from {proposedTo}
+                {proposedBy} risked ${risk} and {proposedTo} risked ${toWin || risk}
             </WagerMembersContainer>
         )
     }
