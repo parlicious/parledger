@@ -2,16 +2,16 @@ import React, {useState, useEffect} from "react";
 import {useStoreState} from "easy-peasy";
 import {isEmpty, useFirebase} from "react-redux-firebase";
 import {Link, useHistory, useLocation} from 'react-router-dom';
-import styled, {css} from 'styled-components';
+import styled, {css, keyframes} from 'styled-components';
 import {useBreakpoint} from "../hooks";
 
 const AppHeader = styled.div`
   padding: 0.5em;
   min-height: 3em;
   display: flex;
-  flex-direction: ${props => props.condensed ? 'column': 'row'};
+  flex-direction: ${props => props.condensed ? 'column' : 'row'};
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   background: linear-gradient(to bottom, #FFFFFF00, #FFFFFF09);
   border-bottom: 1px solid #FFFFFF2F;
 `
@@ -19,14 +19,26 @@ const AppHeader = styled.div`
 const condensedCss = css`
   display: flex;
   flex-direction: column;
+`
 
+const grow = keyframes`
+  from {
+    margin-top: -100%;
+    color: #FFFFFF00;
+  }
+
+  to {
+    margin-top: 0;
+    color: #FFFFFFFF;
+  }
 `
 
 const ExpandedMenu = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
-  text-align: end;
+  justify-content: end;
+  align-content: end;
+  text-align: right;
 `
 
 const CondensedHeaderRow = styled.div`
@@ -34,7 +46,7 @@ const CondensedHeaderRow = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  
+
   width: 100%;
 `
 
@@ -78,7 +90,7 @@ const ExpandMenu = styled.div`
 export const AppContainer = (props) => {
     const auth = useStoreState(state => state.firebase.auth);
     const profile = useStoreState(state => state.firebase.profile);
-    const { pathname } = useLocation();
+    const {pathname} = useLocation();
     const firebase = useFirebase();
     const history = useHistory();
     const width = useBreakpoint();

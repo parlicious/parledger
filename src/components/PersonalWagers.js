@@ -388,7 +388,7 @@ export const OpenWagers = ({}) => {
         return (
             <div>
                 <p>
-                    No one has proposed an open wager yet, <InlineLink to={'/wagers/new'}> maybe you should?</InlineLink>
+                    No one has proposed an open wager, <InlineLink to={'/wagers/new'}> maybe you should?</InlineLink>
                 </p>
             </div>
         )
