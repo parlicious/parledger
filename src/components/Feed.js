@@ -41,7 +41,7 @@ const WagersForSport = (props) => {
     const wagersByCompetition = groupByPath(wagers, 'details.event.competitionId')
     return (
         <WagerBySportContainer>
-            <h2> {sportsCodesToNames[sport]} </h2>
+            <h2> {sportsCodesToNames[sport] ?? 'Custom'} </h2>
             {Object.keys(wagersByCompetition)
                 .map(it => <WagersForCompetition competitionId={it}
                                                  wagers={wagersByCompetition[it]}/>)}
