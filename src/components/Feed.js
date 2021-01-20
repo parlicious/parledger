@@ -6,7 +6,6 @@ import {AppCell} from "../pages/NewWagerPage";
 export const Feed = () => {
     return (
         <AppCell>
-            <PersonalWagers/>
             <GroupWagers/>
         </AppCell>
     )

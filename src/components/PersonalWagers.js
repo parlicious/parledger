@@ -339,7 +339,6 @@ export const GroupWagers = ({}) => {
     const wagers = Object.values(rawWagers ?? {})
         .filter(wager => wager.status !== 'rejected')
         .filter(wager => wager.status !== 'open')
-        .filter(wager => wager.proposedTo?.uid !== auth.uid && wager.proposedBy?.uid !== auth.uid)
 
     const confirmWager = async (wagerId, groupId, acceptWager) => {
         await confirmWagerAction({wagerId, groupId, accept: acceptWager})
