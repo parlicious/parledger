@@ -95,6 +95,9 @@ exports.createWager = functions.https.onCall(async (data, context) => {
 
     let wagerToSave = {
         id: uuidv4(),
+        createdAt: admin.firestore.Timestamp.now(),
+        lastUpdateBy: context.auth.uid,
+        lastUpdatedAt: admin.firestore.Timestamp.now(),
         groupId: groupId,
         type,
         proposedBy: {
@@ -196,7 +199,9 @@ exports.confirmWager = functions.https.onCall(async (data, context) => {
     const newWager = {
         ...wager,
         status: accept ? 'booked' : 'rejected',
-        groupId: groupId
+        groupId: groupId,
+        lastUpdateBy: context.auth.uid,
+        lastUpdatedAt: admin.firestore.Timestamp.now()
     }
 
     await db.collection('groups')
@@ -309,6 +314,12 @@ exports.manageWager = functions.https.onCall(async (data, context) => {
             ...wager,
             status: 'rejected'
         }
+    }
+
+    newWager = {
+        ...newWager,
+        lastUpdateBy: context.auth.uid,
+        lastUpdatedAt: admin.firestore.Timestamp.now()
     }
 
 

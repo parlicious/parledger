@@ -143,6 +143,7 @@ const SearchBar = () => {
     const [localSearchString, setLocalSearchString] = useState('');
     const setGlobalSearchString = useStoreActions(actions => actions.wagers.setSearchString);
     const [{debouncedSet}, setDebouncedSet] = useState({});
+    const selectSport = useStoreActions(actions => actions.wagers.selectSport);
 
     useEffect(() => {
         if (setGlobalSearchString) {
@@ -155,10 +156,15 @@ const SearchBar = () => {
         debouncedSet && debouncedSet(localSearchString);
     }, [debouncedSet, localSearchString]);
 
+    const inputChanged = (e) => {
+        selectSport(null);
+        setLocalSearchString(e.target.value);
+    }
+
     return (
         <SearchEventsContainer>
             <EventSearchInput value={localSearchString} placeholder="Search Events"
-                             onChange={(e) => setLocalSearchString(e.target.value)}/>
+                             onChange={inputChanged}/>
         </SearchEventsContainer>
     )
 }
