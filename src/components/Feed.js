@@ -38,7 +38,6 @@ const WagersForCompetition = (props) => {
         const getName = async () => {
             const res = await fetch(`https://services.bovada.lv/services/sports/event/v2/nav/A/description/${link}`);
             const body = await res.json();
-            console.log(body);
             setName([...body?.parents?.slice(1) ?? [], body.current].map(it => it?.description).join(' - '))
         }
 

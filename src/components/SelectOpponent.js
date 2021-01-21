@@ -77,7 +77,7 @@ const SearchRow = styled.div`
   flex-direction: column;
 `
 
-const StyledSearchBox = styled.input`
+export const StyledSearchBox = styled.input`
   font-size: 1.17em;
   padding: 0.3em;
   box-shadow: 3px 3px 25px #0000001C;
