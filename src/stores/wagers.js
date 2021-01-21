@@ -1,5 +1,15 @@
-import {action, computed, thunk, useStoreActions, useStoreState} from "easy-peasy"
+import {action, computed, thunk, useStoreActions, useStoreState, actionOn} from "easy-peasy"
 import {useState} from 'react';
+import Fuse from 'fuse.js'
+
+const fuseOptions = {
+    keys : [ 
+        "path.description",
+        "events.description"
+    ],
+    ignoreLocation: true,
+    threshold: 0.6,
+};
 
 const eventsByCategory = (sections) => {
     sections?.flatMap(section => {
@@ -88,6 +98,9 @@ function addImpliedOddsToEvents(maxOutcomes) { // use undefined for all outcomes
 
 export const wagersModel = {
     eventsUpdated: null,
+    fuse: null,
+    searchString: null,
+    setSearchString: action((state, searchString) => ({ ...state, searchString })),
     updatingEvents: action((state, payload) => {
         return {...state, eventsUpdated: Date.now()}
     }),
@@ -105,6 +118,9 @@ export const wagersModel = {
         }
     }),
     filteredEvents: computed(state => {
+        if(!state?.searchString) {
+            return fuse.search(searchString);
+        }
         if (!state?.selectedSport) {
             return state.headToHeadEvents;
         } else {
@@ -117,10 +133,18 @@ export const wagersModel = {
                 ({
                     path: it.path,
                     events: it.events.map(addImpliedOddsToEvents(2)),
-                    expectedMarkets: it.expectedMarkets
+                    expectedMarkets: it.expectedMarkets,
+
                 }))
             ?.filter(it => it.events.length > 0)
     }),
+    createFuse: actionOn( 
+        actions => actions.saveEvents,
+        state => {
+            const fuse = new Fuse(state.headToHeadEvents, fuseOptions);
+            return { ...state, fuse };
+        }
+    ),
     headToHeadEventsByCategory: computed(state => eventsByCategory(state.events)),
     loadEvents: thunk(async (actions, payload, helpers) => {
         const updatedAt = helpers.getStoreState().wagers?.eventsUpdated

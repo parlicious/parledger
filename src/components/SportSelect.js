@@ -79,13 +79,17 @@ const ShowSelect = styled.div`
 
 const SportSelectContainer = styled.div`
 `
-
+// TODO: Hamilton's problem
+const SearchBar = styled.input`
+`;
 
 export const SportSelect = ({}) => {
     const width = useBreakpoint();
     const [selecting, setSelecting] = useState(false);
     const shouldShow = width > 450 || selecting;
-
+    const searchString = useStoreState(state => state.wagers.searchString);
+    const setSearchString = useStoreActions(actions => actions.wagers.setSearchString);
+    const searchChange = (e) => setSearchString(e.target.value);
     const toggleSelecting = () => setSelecting(!selecting)
     return (
         <SportSelectContainer>
@@ -96,6 +100,7 @@ export const SportSelect = ({}) => {
                 : <ShowSelect onClick={toggleSelecting}>
                     Select a sport
                 </ShowSelect>}
+          <SearchBar value={searchString} placeholder="Search Events" onChange={searchChange} />
         </SportSelectContainer>
     )
 }
