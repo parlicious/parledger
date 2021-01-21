@@ -1,4 +1,4 @@
-import {action, computed, thunk, useStoreActions, useStoreState, unstable_effectOn} from "easy-peasy"
+import {action, computed, thunk, useStoreActions, useStoreState, actionOn} from "easy-peasy"
 import {useState} from 'react';
 import Fuse from 'fuse.js'
 
@@ -99,7 +99,6 @@ function addImpliedOddsToEvents(maxOutcomes) { // use undefined for all outcomes
 export const wagersModel = {
     eventsUpdated: null,
     fuse: null,
-    setFuse: action((state, fuse) => ({ ...state, fuse })),
     searchString: null,
     setSearchString: action((state, searchString) => ({ ...state, searchString })),
     updatingEvents: action((state, payload) => {
@@ -123,33 +122,19 @@ export const wagersModel = {
             return state.fuse.search(state.searchString);
         }
         if (!state?.selectedSport) {
-            return state.headToHeadEvents;
+            return state.events;
         } else {
-            return state?.headToHeadEvents?.filter(e => e.path[0].sportCode === state.selectedSport)
+            return state?.events?.filter(e => e.path[0].sportCode === state.selectedSport)
         }
     }),
-    headToHeadEvents: computed(state => {
-        return state.events
-            ?.map(it =>
-                ({
-                    path: it.path,
-                    events: it.events.map(addImpliedOddsToEvents(2)),
-                    expectedMarkets: it.expectedMarkets,
-
-                }))
-            ?.filter(it => it.events.length > 0)
-    }),
-    createFuse: unstable_effectOn( 
-        [state => state.headToHeadEvents],
-        (actions, change) => {
-            const [headToHeadEvents] = change.current;
-            if(headToHeadEvents) {
-                const fuse = new Fuse(headToHeadEvents, fuseOptions);
-                actions.setFuse(fuse);
-            }
+    createFuse: actionOn( 
+        actions => actions.saveEvents,
+        state => {
+            const fuse = state.events && new Fuse(state.events, fuseOptions);
+            return { ...state, fuse };
         }
     ),
-    headToHeadEventsByCategory: computed(state => eventsByCategory(state.events)),
+    eventsByCategory: computed(state => eventsByCategory(state.events)),
     loadEvents: thunk(async (actions, payload, helpers) => {
         const updatedAt = helpers.getStoreState().wagers?.eventsUpdated
         if (!updatedAt || (Date.now() - updatedAt > 5000)) {
@@ -160,7 +145,15 @@ export const wagersModel = {
             const downloadUrl = await eventsRef.getDownloadURL();
             const result = await fetch(downloadUrl)
             const events = (await result.json())
-                .map(normalizeMarkets);
+                .map(normalizeMarkets)
+                .map(it =>
+                    ({
+                        path: it.path,
+                        events: it.events.map(addImpliedOddsToEvents(2)),
+                        expectedMarkets: it.expectedMarkets,
+    
+                    }))
+                .filter(it => it.events.length > 0);
             window.events = events;
             actions.saveEvents(events);
         }
