@@ -126,6 +126,8 @@ const ShowSelect = styled.div`
 `
 
 const SportSelectContainer = styled.div`
+  max-width: 800px;
+  margin: auto;
 `
 
 const EventSearchInput = styled(StyledSearchBox)`
