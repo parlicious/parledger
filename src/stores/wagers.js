@@ -1,5 +1,15 @@
-import {action, computed, thunk, useStoreActions, useStoreState} from "easy-peasy"
+import {action, computed, thunk, useStoreActions, useStoreState, actionOn} from "easy-peasy"
 import {useState} from 'react';
+import Fuse from 'fuse.js'
+
+const fuseOptions = {
+    keys : [ 
+        "path.description",
+        "events.description"
+    ],
+    ignoreLocation: true,
+    threshold: 0.3,
+};
 
 const eventsByCategory = (sections) => {
     sections?.flatMap(section => {
@@ -88,6 +98,9 @@ function addImpliedOddsToEvents(maxOutcomes) { // use undefined for all outcomes
 
 export const wagersModel = {
     eventsUpdated: null,
+    fuse: null,
+    searchString: null,
+    setSearchString: action((state, searchString) => ({ ...state, searchString })),
     updatingEvents: action((state, payload) => {
         return {...state, eventsUpdated: Date.now()}
     }),
@@ -105,23 +118,25 @@ export const wagersModel = {
         }
     }),
     filteredEvents: computed(state => {
+        if(state?.searchString && state?.fuse) {
+            return state.fuse
+                .search(state.searchString)
+                .map(result => result.item);
+        }
         if (!state?.selectedSport) {
-            return state.headToHeadEvents;
+            return state.events;
         } else {
-            return state?.headToHeadEvents?.filter(e => e.path[0].sportCode === state.selectedSport)
+            return state?.events?.filter(e => e.path[0].sportCode === state.selectedSport)
         }
     }),
-    headToHeadEvents: computed(state => {
-        return state.events
-            ?.map(it =>
-                ({
-                    path: it.path,
-                    events: it.events.map(addImpliedOddsToEvents(2)),
-                    expectedMarkets: it.expectedMarkets
-                }))
-            ?.filter(it => it.events.length > 0)
-    }),
-    headToHeadEventsByCategory: computed(state => eventsByCategory(state.events)),
+    createFuse: actionOn( 
+        actions => actions.saveEvents,
+        state => {
+            const fuse = state.events && new Fuse(state.events, fuseOptions);
+            return { ...state, fuse };
+        }
+    ),
+    eventsByCategory: computed(state => eventsByCategory(state.events)),
     loadEvents: thunk(async (actions, payload, helpers) => {
         const updatedAt = helpers.getStoreState().wagers?.eventsUpdated
         if (!updatedAt || (Date.now() - updatedAt > 5000)) {
@@ -132,7 +147,15 @@ export const wagersModel = {
             const downloadUrl = await eventsRef.getDownloadURL();
             const result = await fetch(downloadUrl)
             const events = (await result.json())
-                .map(normalizeMarkets);
+                .map(normalizeMarkets)
+                .map(it =>
+                    ({
+                        path: it.path,
+                        events: it.events.map(addImpliedOddsToEvents(2)),
+                        expectedMarkets: it.expectedMarkets,
+    
+                    }))
+                .filter(it => it.events.length > 0);
             window.events = events;
             actions.saveEvents(events);
         }

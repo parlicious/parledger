@@ -1,6 +1,7 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import styled from "styled-components";
-import {useStoreActions} from "easy-peasy";
+import {useStoreActions, useStoreState} from "easy-peasy";
+import { debounce } from 'lodash'
 import {useBreakpoint} from "../hooks";
 
 const SportIcon = styled.i`
@@ -125,13 +126,34 @@ const ShowSelect = styled.div`
 
 const SportSelectContainer = styled.div`
 `
+// TODO: Hamilton's problem
+const SearchInput = styled.input`
+`;
 
+const SearchBar = () => {
+  const [localSearchString, setLocalSearchString] = useState('');
+  const setGlobalSearchString = useStoreActions(actions => actions.wagers.setSearchString);
+  const [{debouncedSet}, setDebouncedSet] = useState({});
+  
+  useEffect(() => {
+    if(setGlobalSearchString) {
+      const setter = debounce(setGlobalSearchString, 200)
+      setDebouncedSet({debouncedSet: setter});
+    }
+  }, [setGlobalSearchString]);
+
+  useEffect(() => {
+    debouncedSet && debouncedSet(localSearchString);
+  }, [debouncedSet, localSearchString]);
+
+  return <SearchInput value={localSearchString} placeholder="Search Events" onChange={(e) => setLocalSearchString(e.target.value)} />
+}
 
 export const SportSelect = ({}) => {
     const width = useBreakpoint();
     const [selecting, setSelecting] = useState(false);
     const shouldShow = width > 450 || selecting;
-
+    
     const toggleSelecting = () => setSelecting(!selecting)
     return (
         <SportSelectContainer>
@@ -142,6 +164,7 @@ export const SportSelect = ({}) => {
                 : <ShowSelect onClick={toggleSelecting}>
                     Select a sport
                 </ShowSelect>}
+          <SearchBar />
         </SportSelectContainer>
     )
 }
