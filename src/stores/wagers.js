@@ -118,8 +118,8 @@ export const wagersModel = {
         }
     }),
     filteredEvents: computed(state => {
-        if(!state?.searchString) {
-            return fuse.search(searchString);
+        if(state?.searchString && state?.fuse) {
+            return state.fuse.search(state.searchString);
         }
         if (!state?.selectedSport) {
             return state.headToHeadEvents;
