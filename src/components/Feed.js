@@ -5,6 +5,7 @@ import {AppCell} from "../pages/NewWagerPage";
 import {HeadToHeadWager} from "./HeadToHeadWager";
 import styled from 'styled-components';
 import {sportsCodesToNames} from "./SportSelect";
+import {useEffect, useState} from "react";
 
 const WagerBySportContainer = styled.div`
 
@@ -15,23 +16,38 @@ const WagersByCompetitionContainer = styled.div`
 `
 
 const pluckDeep = (obj, key) => key.split('.').reduce((accum, key) => accum && accum[key], obj)
-const groupByPath = (collection, path) => collection.reduce(
-    (result, item) => ({
+const groupByPath = (collection, path, transform = a => a) => collection.reduce(
+    (result, item) => {
+        const key = transform(pluckDeep(item, path))
+        return {
         ...result,
-        [pluckDeep(item, path)]: [
-            ...(result[pluckDeep(item, path)] || []),
+            [key]: [
+            ...(result[key] || []),
             item,
         ],
-    }),
+        }
+    },
     {},
 );
 
 const WagersForCompetition = (props) => {
-    const {competitionId, wagers} = props;
+    const {link, wagers} = props;
+    const [name, setName] = useState('');
+
+    useEffect(() => {
+        const getName = async () => {
+            const res = await fetch(`https://services.bovada.lv/services/sports/event/v2/nav/A/description/${link}`);
+            const body = await res.json();
+            console.log(body);
+            setName([...body?.parents?.slice(1) ?? [], body.current].map(it => it?.description).join(' - '))
+        }
+
+        getName();
+    }, [link]);
 
     return (
         <WagersByCompetitionContainer>
-            <p> {wagers[0].details?.event?.description} </p>
+            <p> {name} </p>
             {wagers.map(it => <Wager key={it.id} wager={it}/>)}
         </WagersByCompetitionContainer>
     )
@@ -39,12 +55,12 @@ const WagersForCompetition = (props) => {
 
 const WagersForSport = (props) => {
     const {sport, wagers} = props;
-    const wagersByCompetition = groupByPath(wagers, 'details.event.competitionId')
+    const wagersByCompetition = groupByPath(wagers, 'details.event.link', x => x?.substring(0, x?.lastIndexOf('/')))
     return (
         <WagerBySportContainer>
             <h2> {sportsCodesToNames[sport] ?? 'Custom'} </h2>
             {Object.keys(wagersByCompetition)
-                .map(it => <WagersForCompetition competitionId={it}
+                .map(it => <WagersForCompetition link={it}
                                                  wagers={wagersByCompetition[it]}/>)}
         </WagerBySportContainer>
     )
@@ -61,6 +77,16 @@ export const Feed = () => {
         .filter(wager => wager.status !== 'open')
 
     window.wagers = wagers;
+
+    useEffect(() => {
+        const a = async () => {
+            const res = await fetch("https://services.bovada.lv/services/sports/event/v2/nav/A/description//basketball/nba");
+            const body = await res.json();
+            console.log(body);
+        }
+
+        a();
+    })
 
     const wagersBySport = groupByPath(wagers, 'details.event.sport');
 
