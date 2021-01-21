@@ -99,7 +99,7 @@ const SearchBar = () => {
     debouncedSet && debouncedSet(localSearchString);
   }, [debouncedSet, localSearchString]);
 
-  return <SearchInput value={localSearchString} placeholder="Search Events" onChange={setLocalSearchString} />
+  return <SearchInput value={localSearchString} placeholder="Search Events" onChange={(e) => setLocalSearchString(e.target.value)} />
 }
 
 export const SportSelect = ({}) => {
