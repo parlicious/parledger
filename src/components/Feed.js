@@ -31,6 +31,7 @@ const WagersForCompetition = (props) => {
 
     return (
         <WagersByCompetitionContainer>
+            <p> {wagers[0].details?.event?.description} </p>
             {wagers.map(it => <Wager key={it.id} wager={it}/>)}
         </WagersByCompetitionContainer>
     )
