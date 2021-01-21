@@ -139,11 +139,19 @@ const SearchEventsContainer = styled.div`
   justify-content: center;
 `
 
-const SearchBar = () => {
+const SearchBar = (props) => {
     const [localSearchString, setLocalSearchString] = useState('');
     const setGlobalSearchString = useStoreActions(actions => actions.wagers.setSearchString);
     const [{debouncedSet}, setDebouncedSet] = useState({});
     const selectSport = useStoreActions(actions => actions.wagers.selectSport);
+    const selectedSport = useStoreState(state => state.wagers.selectedSport);
+
+
+    useEffect(() => {
+        if(selectedSport){
+            setLocalSearchString('');
+        }
+    }, [selectedSport])
 
     useEffect(() => {
         if (setGlobalSearchString) {

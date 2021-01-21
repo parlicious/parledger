@@ -106,7 +106,7 @@ export const wagersModel = {
     }),
     selectedSport: null,
     selectSport: action((state, payload) => {
-        return {...state, selectedSport: payload}
+        return {...state, selectedSport: payload, searchString: null}
     }),
     events: null,
     allEvents: null,
