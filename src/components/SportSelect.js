@@ -87,11 +87,12 @@ const SearchInput = styled.input`
 const SearchBar = () => {
   const [localSearchString, setLocalSearchString] = useState('');
   const setGlobalSearchString = useStoreActions(actions => actions.wagers.setSearchString);
-  const [debouncedSet, setDebouncedSet] = useState(() => {});
+  const [{debouncedSet}, setDebouncedSet] = useState({});
   
   useEffect(() => {
     if(setGlobalSearchString) {
-      setDebouncedSet(debounce(setGlobalSearchString, 200));
+      const setter = debounce(setGlobalSearchString, 200)
+      setDebouncedSet({debouncedSet: setter});
     }
   }, [setGlobalSearchString]);
 
