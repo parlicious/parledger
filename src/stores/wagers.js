@@ -1,4 +1,4 @@
-import {action, computed, thunk, useStoreActions, useStoreState, actionOn} from "easy-peasy"
+import {action, computed, thunk, useStoreActions, useStoreState, unstable_effectOn} from "easy-peasy"
 import {useState} from 'react';
 import Fuse from 'fuse.js'
 
@@ -99,6 +99,7 @@ function addImpliedOddsToEvents(maxOutcomes) { // use undefined for all outcomes
 export const wagersModel = {
     eventsUpdated: null,
     fuse: null,
+    setFuse: action((state, fuse) => ({ ...state, fuse })),
     searchString: null,
     setSearchString: action((state, searchString) => ({ ...state, searchString })),
     updatingEvents: action((state, payload) => {
@@ -138,11 +139,14 @@ export const wagersModel = {
                 }))
             ?.filter(it => it.events.length > 0)
     }),
-    createFuse: actionOn( 
-        actions => actions.saveEvents,
-        state => {
-            const fuse = new Fuse(state.headToHeadEvents, fuseOptions);
-            return { ...state, fuse };
+    createFuse: unstable_effectOn( 
+        [state => state.headToHeadEvents],
+        (actions, change) => {
+            const [headToHeadEvents] = change.current;
+            if(headToHeadEvents) {
+                const fuse = new Fuse(headToHeadEvents, fuseOptions);
+                actions.setFuse(fuse);
+            }
         }
     ),
     headToHeadEventsByCategory: computed(state => eventsByCategory(state.events)),
