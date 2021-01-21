@@ -305,9 +305,9 @@ export const PersonalWagers = ({}) => {
     return (
         <div>
             <PersonalWagersTitle>
-                <h3>
+                <h2>
                     Your Wagers
-                </h3>
+                </h2>
             </PersonalWagersTitle>
             {wagers.length > 0
                 ? wagers.map(wager => <Wager key={wager.id} onConfirm={confirmWager} wager={wager}/>)

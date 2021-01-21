@@ -12,7 +12,7 @@ const WagerBySportContainer = styled.div`
 `
 
 const WagersByCompetitionContainer = styled.div`
-    
+
 `
 
 const pluckDeep = (obj, key) => key.split('.').reduce((accum, key) => accum && accum[key], obj)
@@ -20,11 +20,11 @@ const groupByPath = (collection, path, transform = a => a) => collection.reduce(
     (result, item) => {
         const key = transform(pluckDeep(item, path))
         return {
-        ...result,
+            ...result,
             [key]: [
-            ...(result[key] || []),
-            item,
-        ],
+                ...(result[key] || []),
+                item,
+            ],
         }
     },
     {},
@@ -57,13 +57,32 @@ const WagersForSport = (props) => {
     const wagersByCompetition = groupByPath(wagers, 'details.event.link', x => x?.substring(0, x?.lastIndexOf('/')))
     return (
         <WagerBySportContainer>
-            <h2> {sportsCodesToNames[sport] ?? 'Custom'} </h2>
+            <h3> {sportsCodesToNames[sport] ?? 'Custom'} </h3>
             {Object.keys(wagersByCompetition)
                 .map(it => <WagersForCompetition link={it}
                                                  wagers={wagersByCompetition[it]}/>)}
         </WagerBySportContainer>
     )
 }
+
+
+const FeedContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  
+  @media(max-width: 850px){
+    flex-direction: column-reverse;
+  }
+`
+
+const PersonalContainer = styled.div`
+  flex-basis: 450px;
+  padding: 1em;
+`
+
+const GroupContainer = styled.div`
+  padding: 1em;
+`
 
 
 export const Feed = () => {
@@ -90,8 +109,18 @@ export const Feed = () => {
     const wagersBySport = groupByPath(wagers, 'details.event.sport');
 
     return (
-        <AppCell>
-            {Object.keys(wagersBySport).map(it => <WagersForSport sport={it} wagers={wagersBySport[it]}/>)}
-        </AppCell>
+        <FeedContainer>
+            <PersonalContainer>
+                <AppCell>
+                    <PersonalWagers/>
+                </AppCell>
+            </PersonalContainer>
+            <GroupContainer>
+                <AppCell>
+                    <h2> Group Wagers </h2>
+                    {Object.keys(wagersBySport).map(it => <WagersForSport sport={it} wagers={wagersBySport[it]}/>)}
+                </AppCell>
+            </GroupContainer>
+        </FeedContainer>
     )
 }
