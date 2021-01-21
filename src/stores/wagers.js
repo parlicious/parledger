@@ -8,7 +8,7 @@ const fuseOptions = {
         "events.description"
     ],
     ignoreLocation: true,
-    threshold: 0.6,
+    threshold: 0.3,
 };
 
 const eventsByCategory = (sections) => {
@@ -119,7 +119,9 @@ export const wagersModel = {
     }),
     filteredEvents: computed(state => {
         if(state?.searchString && state?.fuse) {
-            return state.fuse.search(state.searchString);
+            return state.fuse
+                .search(state.searchString)
+                .map(result => result.item);
         }
         if (!state?.selectedSport) {
             return state.events;
