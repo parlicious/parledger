@@ -335,11 +335,11 @@ export const GroupWagers = ({}) => {
     useFirestoreConnect([{collection: `groups/${profile.groups[0]}/wagers`, storeAs: 'wagers'}]);
     const auth = useStoreState(state => state.firebase.auth)
     const rawWagers = useStoreState(state => state.firestore.data.wagers)
-    const confirmWagerAction = useStoreActions(actions => actions.wagers.respondToWager);
     const wagers = Object.values(rawWagers ?? {})
         .filter(wager => wager.status !== 'rejected')
         .filter(wager => wager.status !== 'open')
 
+    const confirmWagerAction = useStoreActions(actions => actions.wagers.respondToWager);
     const confirmWager = async (wagerId, groupId, acceptWager) => {
         await confirmWagerAction({wagerId, groupId, accept: acceptWager})
     };

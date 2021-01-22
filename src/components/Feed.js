@@ -31,7 +31,7 @@ const groupByPath = (collection, path, transform = a => a) => collection.reduce(
 );
 
 const WagersForCompetition = (props) => {
-    const {link, wagers} = props;
+    const {link, wagers, confirmWager} = props;
     const [name, setName] = useState('');
 
     useEffect(() => {
@@ -47,19 +47,19 @@ const WagersForCompetition = (props) => {
     return (
         <WagersByCompetitionContainer>
             <p> {name} </p>
-            {wagers.map(it => <Wager key={it.id} wager={it}/>)}
+            {wagers.map(it => <Wager onConfirm={confirmWager} key={it.id} wager={it}/>)}
         </WagersByCompetitionContainer>
     )
 }
 
 const WagersForSport = (props) => {
-    const {sport, wagers} = props;
+    const {sport, wagers, confirmWager} = props;
     const wagersByCompetition = groupByPath(wagers, 'details.event.link', x => x?.substring(0, x?.lastIndexOf('/')))
     return (
         <WagerBySportContainer>
             <h3> {sportsCodesToNames[sport] ?? 'Custom'} </h3>
             {Object.keys(wagersByCompetition)
-                .map(it => <WagersForCompetition link={it}
+                .map(it => <WagersForCompetition confirmWager={confirmWager} link={it}
                                                  wagers={wagersByCompetition[it]}/>)}
         </WagerBySportContainer>
     )
@@ -90,6 +90,11 @@ export const Feed = () => {
     useFirestoreConnect([{collection: `groups/${profile.groups[0]}/wagers`, storeAs: 'wagers'}]);
     const rawWagers = useStoreState(state => state.firestore.data.wagers)
 
+    const confirmWagerAction = useStoreActions(actions => actions.wagers.respondToWager);
+    const confirmWager = async (wagerId, groupId, acceptWager) => {
+        await confirmWagerAction({wagerId, groupId, accept: acceptWager})
+    };
+
     const wagers = Object.values(rawWagers ?? {})
         .filter(wager => wager.status !== 'rejected')
         .filter(wager => wager.status !== 'open')
@@ -118,7 +123,7 @@ export const Feed = () => {
             <GroupContainer>
                 <AppCell>
                     <h2> Group Wagers </h2>
-                    {Object.keys(wagersBySport).map(it => <WagersForSport sport={it} wagers={wagersBySport[it]}/>)}
+                    {Object.keys(wagersBySport).map(it => <WagersForSport confirmWager={confirmWager} sport={it} wagers={wagersBySport[it]}/>)}
                 </AppCell>
             </GroupContainer>
         </FeedContainer>
