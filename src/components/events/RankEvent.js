@@ -1,10 +1,4 @@
-import {
-    AdjustedOdds,
-    EventContainer,
-    GridBasedEventCell, OddsContainer,
-    TimeAndDateCell,
-    TimeAndDateText
-} from "./commonEventComponents";
+import {AdjustedOdds, GridBasedEventCell, TimeAndDateCell, TimeAndDateText} from "./commonEventComponents";
 import React from 'react';
 import styled from 'styled-components';
 
@@ -60,9 +54,9 @@ const RankOddsItem = styled.div`
 `
 
 const RankOutcome = (props) => {
-    const {outcome} = props;
+    const {outcome, onSelect} = props;
     return (
-        <RankOutcomeContainer>
+        <RankOutcomeContainer onClick={() => onSelect(outcome)}>
             {outcome.description}
             <RankOdds>
                 <RankOddsItem>{outcome.price.american}</RankOddsItem>
@@ -75,13 +69,17 @@ const RankOutcome = (props) => {
 }
 
 export const RankEvent = (props) => {
-    const {headerComponent, footerComponent, event, displayGroup = 0} = props;
+    const {onSelect, event, displayGroup = 0, market = 0} = props;
     const eventTime = new Date(event.startTime);
-    const [first, second] = event?.awayTeamFirst ?
-        [{competitor: 1, rowNum: 0}, {competitor: 0, rowNum: 1}] :
-        [{competitor: 0, rowNum: 0}, {competitor: 1, rowNum: 1}];
+    const outcomes = event.displayGroups[displayGroup].markets[market]?.outcomes
+        || event.displayGroups[displayGroup].originalMarkets[market]?.outcomes;
 
-    const outcomes = event.displayGroups[0].originalMarkets[0]?.outcomes || event.displayGroups[0].markets[0]?.outcomes;
+    const eventSelected = (outcome) => onSelect({
+        event,
+        market: 0,
+        outcome,
+        displayGroup
+    });
 
     return (
         <GridBasedEventCell key={event.id}>
@@ -98,11 +96,11 @@ export const RankEvent = (props) => {
                 </RankEventTitle>
                 {outcomes?.length === 2
                     ? <RankEventTwoOptions>
-                        <RankOutcome outcome={outcomes[0]}/>
-                        <RankOutcome outcome={outcomes[1]}/>
+                        <RankOutcome onSelect={eventSelected} outcome={outcomes[0]}/>
+                        <RankOutcome onSelect={eventSelected} outcome={outcomes[1]}/>
                     </RankEventTwoOptions>
                     : <RankEventManyOptions>
-                        {outcomes.map(it => <RankOutcome outcome={it}/>)}
+                        {outcomes.map(it => <RankOutcome onSelect={eventSelected} outcome={it}/>)}
                     </RankEventManyOptions>}
             </RankEventContainer>
         </GridBasedEventCell>

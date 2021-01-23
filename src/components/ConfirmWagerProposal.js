@@ -7,7 +7,7 @@ import {Redirect} from 'react-router-dom';
 import {ProposeCustomWager} from "./ProposeCustomWager";
 import {TitleRow} from "./events/commonEventComponents";
 import {GameEvent} from "./events/GameEvent";
-import {ProposedEvent} from "./events/ProposedEvent";
+import {ProposedEvent} from "./wagers/ProposedEvent";
 
 
 const OutcomeDescription = ({outcome}) => {

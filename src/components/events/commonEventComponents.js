@@ -6,7 +6,7 @@ export const EventContainer = styled.div`
   border-radius: 0.3em;
   max-width: 800px;
   margin: 1em auto;
-  
+
   @media (max-width: 450px) {
     font-size: 0.8em;
   }
@@ -64,13 +64,13 @@ export const MarketDescription = styled.div`
 export const SelectableOddsCellContainer = styled(OddsCell)`
   color: ${props => {
     if (props.selected) {
-        return '#00C781';
+      return '#00C781';
     } else if (props.opponent) {
-        return '#FF4040';
+      return '#FF4040';
     } else {
-        return 'inherit'
+      return 'inherit'
     }
-}};
+  }};
 
   display: flex;
   flex-wrap: wrap-reverse;

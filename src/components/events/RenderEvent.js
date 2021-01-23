@@ -7,6 +7,6 @@ export const RenderEvent = (props) => {
     if(event.type === 'GAMEEVENT'){
         return <GameEvent eventSelected={onSelect} event={event}/>
     } else if(event.type === 'RANKEVENT') {
-        return <RankEvent eventSelected={onSelect} event={event}/>
+        return <RankEvent onSelect={onSelect} event={event}/>
     }
 }

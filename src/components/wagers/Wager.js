@@ -26,6 +26,7 @@ export const membersFromWager = (wager) => {
 export const Wager = (props) => {
     const {wager} = props;
     if (wager.type === 'BOVADA') {
+        console.log(wager);
         return <BovadaWager {...props}/>
     } else if (wager.type === 'CUSTOM') {
         return <CustomWager {...props}/>

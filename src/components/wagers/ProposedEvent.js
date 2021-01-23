@@ -6,10 +6,10 @@ import {
     SelectableOddsCellContainer,
     TimeAndDateCell,
     TimeAndDateText
-} from "./commonEventComponents";
+} from "../events/commonEventComponents";
 import React from 'react';
 import {useStoreState} from "easy-peasy";
-import {Outcome} from "./Outcome";
+import {Outcome} from "../events/Outcome";
 
 const OutcomesRow = (props) => {
     const {event, members, displayGroup = 0, market, outcome, rowNum} = props;
@@ -17,13 +17,15 @@ const OutcomesRow = (props) => {
 
     const selected = members[rowNum]?.uid === auth.uid;
     const opponent = members[(rowNum + 1) % 2]?.uid === auth.uid;
+    const outcomes = event.displayGroups[displayGroup].markets[market]?.outcomes ?? event.displayGroups[displayGroup].originalMarkets[market]?.outcomes;
+
     return (
         <React.Fragment>
             <SelectableOddsCellContainer selected={selected} opponent={opponent}>
                 {members[rowNum]?.displayName ?? 'Anyone'}
             </SelectableOddsCellContainer>
             <SelectableOddsCellContainer>
-                <Outcome outcomes={event.displayGroups[displayGroup].markets[market].outcomes} outcome={outcome}/>
+                <Outcome outcomes={outcomes} outcome={outcome}/>
             </SelectableOddsCellContainer>
         </React.Fragment>
     )
