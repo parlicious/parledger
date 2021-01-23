@@ -1,18 +1,16 @@
-import {Event, Outcome, TitleRow} from "./SelectEvent";
 import React, {useState} from "react";
 import {useForm} from "react-hook-form";
 import styled, {css} from "styled-components";
-import {useStoreActions, useStoreState} from "easy-peasy";
-import {InlineLink, shadow} from "../styles";
-import {LoadingImage, SplashScreen} from "./SplashScreen";
-import signUpImage from "../resources/undraw_Savings_re_eq4w.svg";
+import {useStoreState} from "easy-peasy";
 import {useSaveWager} from "../stores/wagers";
 import {Redirect} from 'react-router-dom';
 import {ProposeCustomWager} from "./ProposeCustomWager";
+import {TitleRow} from "./events/commonEventComponents";
+import {GameEvent} from "./events/GameEvent";
+import {ProposedEvent} from "./events/ProposedEvent";
 
 
 const OutcomeDescription = ({outcome}) => {
-    console.log(outcome);
     if (outcome) {
         return (
             <span>
@@ -221,13 +219,12 @@ export const ConfirmWagerProposal = () => {
                 Confirm your proposed bet with {opponent.displayName}
             </div>
             <TitleRow name={selection.event.description}/>
-            <Event
-                wagerMembers={membersFromWager(selection, profile, opponent)}
-                eventSelected={() => {
-                }}
+            <ProposedEvent
+                members={membersFromWager(selection, profile, opponent)}
+                displayGroup={selection.displayGroup || 0}
                 event={selection.event}
-                selectedMarket={selection.market}
-                selectedOutcome={selection.outcome}
+                market={selection.market}
+                outcome={selection.outcome}
             />
             <ProposeCustomWager details={selection}/>
         </div>

@@ -1,13 +1,12 @@
 import {useStoreActions, useStoreState} from "easy-peasy";
-import {Event} from "./SelectEvent";
 import React, {useEffect, useState} from "react";
 import {AppCell} from "../pages/NewWagerPage";
 import {useLocation} from 'react-router-dom';
-import {Wager, WagerDescriptionRow} from "./PersonalWagers";
 import styled from 'styled-components';
 import {buttonCss} from "../styles";
 import {useManageWager} from "../stores/wagers";
 import {ErrorMessage} from "../pages/JoinGroupPage";
+import {Wager} from "./wagers/Wager";
 
 const BetActionsContainer = styled.div`
   display: grid;
@@ -129,7 +128,6 @@ export const ManageWager = ({}) => {
         setActiveWager(activeWager);
     }, [activeWager])
 
-    const event = activeWager.details.event;
     return (
         <AppCell>
             <Wager wager={activeWager}/>

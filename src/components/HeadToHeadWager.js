@@ -1,20 +1,34 @@
 import {useState} from "react";
+import {useStoreState} from "easy-peasy";
+import {UserAvatar} from "./UserAvatar";
+import {Wager} from "./wagers/Wager";
+
+const CondensedBovadaWager = (props) => {
+    const {wager} = props;
+    const usersByUid = useStoreState(state => state.users.avatarUrlsByUid);
+
+    return (
+        <div>
+        <div>
+            <UserAvatar user={usersByUid[wager.proposedBy.uid]}/>
+            vs.
+            <UserAvatar user={usersByUid[wager.proposedTo.uid]}/>
+        </div>
+            {wager.details.description || wager.details}
+        </div>
+    )
+}
 
 export const HeadToHeadWager = (props) => {
     const {wager} = props;
 
-    const [expanded, setExpanded] = useState(false);
+    const [expanded, setExpanded] = useState(true);
+
     if (expanded) {
         return (
-            <pre>
-            {JSON.stringify(wager, null, 2)}
-        </pre>
+            <Wager wager={wager}/>
         )
     } else {
-        return null;
+        return <CondensedBovadaWager {...props}/>
     }
-}
-
-const CondensedBovadaWager = (props) => {
-    const {wager} = props;
 }

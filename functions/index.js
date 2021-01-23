@@ -347,7 +347,7 @@ async function notifyGroupOfWager(wager, action) {
 
 
 async function getAndSaveEventsFromBovada() {
-    const eventsUrl = 'https://www.bovada.lv/services/sports/event/coupon/events/A/description?marketFilterId=def&preMatchOnly=true&lang=en';
+    const eventsUrl = 'https://www.bovada.lv/services/sports/event/coupon/events/A/description?lang=en';
     const axiosResult = await axios.get(eventsUrl, {
         responseType: 'arraybuffer'
     })
@@ -381,11 +381,16 @@ exports.isValidInvitation = functions.https.onCall(async (data, context) => {
     return matchingCode && matchingCode.expires > Date.now()
 })
 
-exports.getEventsFromBovada = functions.pubsub.schedule("every 1 hours").onRun(async (context) => {
+const runtimeOpts = {
+    timeoutSeconds: 300,
+    memory: '1GB'
+}
+
+exports.getEventsFromBovada = functions.runWith(runtimeOpts).pubsub.schedule("every 1 hours").onRun(async (context) => {
     await getAndSaveEventsFromBovada()
 });
 
-exports.manuallyUpdateBovadaEvents = functions.https.onRequest(async (req, res) => {
+exports.manuallyUpdateBovadaEvents = functions.runWith(runtimeOpts).https.onRequest(async (req, res) => {
     await getAndSaveEventsFromBovada()
     res.send('ok');
 })

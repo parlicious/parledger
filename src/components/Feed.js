@@ -47,7 +47,7 @@ const WagersForCompetition = (props) => {
     return (
         <WagersByCompetitionContainer>
             <p> {name} </p>
-            {wagers.map(it => <Wager onConfirm={confirmWager} key={it.id} wager={it}/>)}
+            {wagers.map(it => <HeadToHeadWager onConfirm={confirmWager} key={it.id} wager={it}/>)}
         </WagersByCompetitionContainer>
     )
 }
@@ -88,6 +88,7 @@ const GroupContainer = styled.div`
 export const Feed = () => {
     const profile = useStoreState(state => state.firebase.profile)
     useFirestoreConnect([{collection: `groups/${profile.groups[0]}/wagers`, storeAs: 'wagers'}]);
+    useFirestoreConnect(profile.groups.map(group => ({collection: `groups/${group}/users`, storeAs: 'groupMembers'})));
     const rawWagers = useStoreState(state => state.firestore.data.wagers)
 
     const confirmWagerAction = useStoreActions(actions => actions.wagers.respondToWager);
@@ -115,11 +116,11 @@ export const Feed = () => {
 
     return (
         <FeedContainer>
-            <PersonalContainer>
-                <AppCell>
-                    <PersonalWagers/>
-                </AppCell>
-            </PersonalContainer>
+            {/*<PersonalContainer>*/}
+            {/*    <AppCell>*/}
+            {/*        <PersonalWagers/>*/}
+            {/*    </AppCell>*/}
+            {/*</PersonalContainer>*/}
             <GroupContainer>
                 <AppCell>
                     <h2> Group Wagers </h2>

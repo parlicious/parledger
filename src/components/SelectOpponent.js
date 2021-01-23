@@ -11,6 +11,7 @@ import Avatar from "react-avatar";
 import {useStoreState} from "easy-peasy";
 import {useFirestoreConnect} from "react-redux-firebase";
 import {AppCell} from "../pages/NewWagerPage";
+import {UserAvatar} from "./UserAvatar";
 
 
 const searchClient = algoliasearch(
@@ -54,10 +55,8 @@ const HitContainerSpan = styled.span`
 const Hit = ({hit, opponentSelected}) => {
     return (
         <HitContainer onClick={() => opponentSelected(hit)}>
-            <HitContainerSpan>{hit.avatarUrl
-                ? <Avatar size={40} round={true} src={hit.avatarUrl}/>
-                : <Avatar size={40} round={true} name={hit.displayName}/>
-            }
+            <HitContainerSpan>
+                <UserAvatar user={hit}/>
             </HitContainerSpan>
             <HitContainerSpan>
                 {hit.displayName}
