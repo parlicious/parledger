@@ -1,22 +1,24 @@
 import styled from "styled-components";
 
-export const EventCell = styled.div`
-  display: grid;
+export const EventContainer = styled.div`
   background: linear-gradient(to bottom, #FFFFFF04, #FFFFFF09);
-  grid-template-columns: repeat(var(--num-columns), 1fr);
   box-shadow: 3px 3px 25px #0000001C;
   border-radius: 0.3em;
   max-width: 800px;
   margin: 1em auto;
-
-  --num-columns: ${props => props.condensed ? 4 : 5};
-
+  
   @media (max-width: 450px) {
     font-size: 0.8em;
   }
 `
 
-export const TitleCell = styled(EventCell)`
+export const GridBasedEventCell = styled(EventContainer)`
+  display: grid;
+  grid-template-columns: repeat(var(--num-columns), 1fr);
+  --num-columns: ${props => props.condensed ? 4 : 5};
+`
+
+export const TitleCell = styled(EventContainer)`
   background: transparent;
   box-shadow: none;
 `

@@ -4,7 +4,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import {Redirect, useHistory} from 'react-router-dom';
 import {SportSelect} from "./SportSelect";
 import {TitleRow} from "./events/commonEventComponents";
-import {GameEvent} from "./events/GameEvent";
+import {RenderEvent} from "./events/RenderEvent";
 
 const SportSection = ({section, eventSelected}) => {
     const comp = section.path.find(p => p.type === 'COMPETITION')?.description;
@@ -13,7 +13,7 @@ const SportSection = ({section, eventSelected}) => {
     return (
         <div>
             <TitleRow name={fullDescription} expectedMarkets={section.expectedMarkets}/>
-            {section.events.map(it => <GameEvent eventSelected={eventSelected} event={it}/>)}
+            {section.events.map(it => <RenderEvent onSelect={eventSelected} event={it}/>)}
         </div>
     )
 }

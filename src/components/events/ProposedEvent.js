@@ -1,8 +1,9 @@
 import {
-    EventCell,
     EventHeaderContainer,
+    GridBasedEventCell,
     NotesRow,
-    OddsCell, SelectableOddsCellContainer,
+    OddsCell,
+    SelectableOddsCellContainer,
     TimeAndDateCell,
     TimeAndDateText
 } from "./commonEventComponents";
@@ -29,14 +30,14 @@ const OutcomesRow = (props) => {
 }
 
 export const ProposedEvent = (props) => {
-    const {members, event, market, outcome, displayGroup, header, footer} = props
+    const {members, event, header, footer} = props
     const eventTime = new Date(event.startTime);
     const [first, second] = event?.awayTeamFirst ?
         [{competitor: 1, rowNum: 0}, {competitor: 0, rowNum: 1}] :
         [{competitor: 0, rowNum: 0}, {competitor: 1, rowNum: 1}];
 
     return (
-        <EventCell key={event.id} condensed={members}>
+        <GridBasedEventCell key={event.id} condensed={members}>
             {header && <EventHeaderContainer>{header}</EventHeaderContainer>}
             <TimeAndDateCell>
                 <TimeAndDateText>
@@ -56,6 +57,6 @@ export const ProposedEvent = (props) => {
                 {event.notes}
             </NotesRow>}
             {footer && <EventHeaderContainer> {footer} </EventHeaderContainer>}
-        </EventCell>
+        </GridBasedEventCell>
     )
 }

@@ -1,11 +1,12 @@
-import {Event} from "../SelectEvent";
+import {RankEvent} from "./RankEvent";
+import {GameEvent} from "./GameEvent";
 
 export const RenderEvent = (props) => {
     const {onSelect, event} = props;
 
     if(event.type === 'GAMEEVENT'){
-        return <Event eventSelected={onSelect} event={event}/>
-    } else {
-        return <div> {event.type} </div>
+        return <GameEvent eventSelected={onSelect} event={event}/>
+    } else if(event.type === 'RANKEVENT') {
+        return <RankEvent eventSelected={onSelect} event={event}/>
     }
 }

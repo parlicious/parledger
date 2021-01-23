@@ -75,14 +75,10 @@ function addImpliedOddsToEvents(maxOutcomes) { // use undefined for all outcomes
                 if(!market || !market.outcomes || !market.outcomes.length) return market;
                 const outcomesWithImpliedOdds = market.outcomes.map(calculateImpliedOdds);
                 const adjustmentConstent = 100 / outcomesWithImpliedOdds
-                    .slice(0, maxOutcomes)
                     .map(o => o.impliedOdds)
                     .reduce((a,b) => a + b);
                 const outcomes = outcomesWithImpliedOdds
-                    .map((outcome, index) => index < maxOutcomes 
-                        ? { ...outcome, adjustedOdds: (outcome.impliedOdds * adjustmentConstent).toFixed(0) + '%'}
-                        : outcome
-                    );
+                    .map((outcome, index) => ({ ...outcome, adjustedOdds: (outcome.impliedOdds * adjustmentConstent).toFixed(0) + '%'}));
                 return { ...market, outcomes };
             });
         
@@ -104,7 +100,7 @@ export const wagersModel = {
     updatingEvents: action((state, payload) => {
         return {...state, eventsUpdated: Date.now()}
     }),
-    selectedSport: null,
+    selectedSport: 'FOOT',
     selectSport: action((state, payload) => {
         return {...state, selectedSport: payload, searchString: null}
     }),

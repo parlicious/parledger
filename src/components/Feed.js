@@ -116,11 +116,11 @@ export const Feed = () => {
 
     return (
         <FeedContainer>
-            {/*<PersonalContainer>*/}
-            {/*    <AppCell>*/}
-            {/*        <PersonalWagers/>*/}
-            {/*    </AppCell>*/}
-            {/*</PersonalContainer>*/}
+            <PersonalContainer>
+                <AppCell>
+                    <PersonalWagers/>
+                </AppCell>
+            </PersonalContainer>
             <GroupContainer>
                 <AppCell>
                     <h2> Group Wagers </h2>
