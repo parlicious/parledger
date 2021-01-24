@@ -158,7 +158,8 @@ function handleWagerAction(wager, actionType, user, opponent) {
             return handleCancel(wager, user);
         case ActionTypes.CONFIRM_CANCEL:
             return handleConfirmCancel(wager, user);
-
+        default:
+            fail(`Unknown ActionType ${actionType}`);
     }
 }
 
