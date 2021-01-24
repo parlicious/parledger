@@ -14,11 +14,11 @@ export const EventContainer = styled.div`
 
 export const GridBasedEventCell = styled(EventContainer)`
   display: grid;
-  grid-template-columns: repeat(var(--num-columns), 1fr);
+  grid-template-columns: repeat(calc(var(--num-columns) - 1), minmax(15%, 1fr)) auto;
   --num-columns: ${props => props.condensed ? 4 : 5};
 `
 
-export const TitleCell = styled(EventContainer)`
+export const TitleCell = styled(GridBasedEventCell)`
   background: transparent;
   box-shadow: none;
 `
@@ -131,6 +131,8 @@ export const OutcomeContainer = styled.div`
 `
 
 export const OddsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
   font-family: Monaco, SFMono-Regular, monospace;
 `
 

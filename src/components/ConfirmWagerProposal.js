@@ -2,12 +2,13 @@ import React, {useState} from "react";
 import {useForm} from "react-hook-form";
 import styled, {css} from "styled-components";
 import {useStoreState} from "easy-peasy";
-import {useSaveWager} from "../stores/wagers";
+import {generateWagerFromSelection, useSaveWager} from "../stores/wagers";
 import {Redirect} from 'react-router-dom';
 import {ProposeCustomWager} from "./ProposeCustomWager";
 import {TitleRow} from "./events/commonEventComponents";
 import {GameEvent} from "./events/GameEvent";
 import {ProposedEvent} from "./wagers/ProposedEvent";
+import {BovadaWager} from "./wagers/BovadaWager";
 
 
 const OutcomeDescription = ({outcome}) => {
@@ -199,15 +200,14 @@ export const ConfirmWagerProposal = () => {
     const opponent = useStoreState(state => state.wagers.new.opponent);
     const profile = useStoreState(state => state.firebase.profile);
 
-
-    const {submitting, apiError, apiSuccess, save} = useSaveWager()
-    const saveWager = async (betAmount) => save({
-        risk: betAmount,
-        toWin: betAmount,
-        details: selection,
-        opponent: opponent,
-        type: 'BOVADA'
-    });
+    const potentialWager = generateWagerFromSelection(
+        {risk: null,
+            toWin: null,
+            self: profile,
+            opponent,
+            details: selection,
+            type: 'BOVADA'
+        })
 
     if (opponent === null) {
         return <Redirect to={'/wagers/new'}/>
@@ -219,13 +219,7 @@ export const ConfirmWagerProposal = () => {
                 Confirm your proposed bet with {opponent.displayName}
             </div>
             <TitleRow name={selection.event.description}/>
-            <ProposedEvent
-                members={membersFromWager(selection, profile, opponent)}
-                displayGroup={selection.displayGroup || 0}
-                event={selection.event}
-                market={selection.market}
-                outcome={selection.outcome}
-            />
+            <BovadaWager wager={potentialWager}/>
             <ProposeCustomWager details={selection}/>
         </div>
     )

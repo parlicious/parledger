@@ -53,7 +53,7 @@ const RankOddsItem = styled.div`
   padding: 0 0.3em;
 `
 
-const RankOutcome = (props) => {
+export const RankOutcome = (props) => {
     const {outcome, onSelect} = props;
     return (
         <RankOutcomeContainer onClick={() => onSelect(outcome)}>

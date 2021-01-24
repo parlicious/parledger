@@ -1,4 +1,4 @@
-import {action, computed, thunk, useStoreActions, useStoreState, actionOn} from "easy-peasy"
+import {action, actionOn, computed, thunk, useStoreActions, useStoreState} from "easy-peasy"
 import {useState} from 'react';
 import Fuse from 'fuse.js'
 
@@ -100,7 +100,7 @@ export const wagersModel = {
     updatingEvents: action((state, payload) => {
         return {...state, eventsUpdated: Date.now()}
     }),
-    selectedSport: 'FOOT',
+    selectedSport: null,
     selectSport: action((state, payload) => {
         return {...state, selectedSport: payload, searchString: null}
     }),
@@ -190,6 +190,18 @@ export const wagersModel = {
     new: newWagerModel
 }
 
+export const generateWagerFromSelection = ({risk, toWin, self, opponent, details, type}) => {
+    return {
+        type,
+        proposedBy: self,
+        proposedTo: opponent,
+        details: {
+            risk,
+            toWin,
+            ...details,
+        }
+    };
+}
 
 export const useSaveWager = () => {
     const profile = useStoreState(state => state.firebase.profile);

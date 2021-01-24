@@ -100,33 +100,14 @@ export const Feed = () => {
         .filter(wager => wager.status !== 'rejected')
         .filter(wager => wager.status !== 'open')
 
-    window.wagers = wagers;
-
-    useEffect(() => {
-        const a = async () => {
-            const res = await fetch("https://services.bovada.lv/services/sports/event/v2/nav/A/description//basketball/nba");
-            const body = await res.json();
-            console.log(body);
-        }
-
-        a();
-    })
-
     const wagersBySport = groupByPath(wagers, 'details.event.sport');
 
     return (
         <FeedContainer>
-            <PersonalContainer>
-                <AppCell>
-                    <PersonalWagers/>
-                </AppCell>
-            </PersonalContainer>
-            <GroupContainer>
                 <AppCell>
                     <h2> Group Wagers </h2>
                     {Object.keys(wagersBySport).map(it => <WagersForSport confirmWager={confirmWager} sport={it} wagers={wagersBySport[it]}/>)}
                 </AppCell>
-            </GroupContainer>
         </FeedContainer>
     )
 }
