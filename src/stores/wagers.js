@@ -1,4 +1,4 @@
-import {action, computed, thunk, useStoreActions, useStoreState, actionOn} from "easy-peasy"
+import {action, actionOn, computed, thunk, useStoreActions, useStoreState} from "easy-peasy"
 import {useState} from 'react';
 import Fuse from 'fuse.js'
 
@@ -75,14 +75,10 @@ function addImpliedOddsToEvents(maxOutcomes) { // use undefined for all outcomes
                 if(!market || !market.outcomes || !market.outcomes.length) return market;
                 const outcomesWithImpliedOdds = market.outcomes.map(calculateImpliedOdds);
                 const adjustmentConstent = 100 / outcomesWithImpliedOdds
-                    .slice(0, maxOutcomes)
                     .map(o => o.impliedOdds)
                     .reduce((a,b) => a + b);
                 const outcomes = outcomesWithImpliedOdds
-                    .map((outcome, index) => index < maxOutcomes 
-                        ? { ...outcome, adjustedOdds: (outcome.impliedOdds * adjustmentConstent).toFixed(0) + '%'}
-                        : outcome
-                    );
+                    .map((outcome, index) => ({ ...outcome, adjustedOdds: (outcome.impliedOdds * adjustmentConstent).toFixed(0) + '%'}));
                 return { ...market, outcomes };
             });
         
@@ -194,6 +190,18 @@ export const wagersModel = {
     new: newWagerModel
 }
 
+export const generateWagerFromSelection = ({risk, toWin, self, opponent, details, type}) => {
+    return {
+        type,
+        proposedBy: self,
+        proposedTo: opponent,
+        details: {
+            risk,
+            toWin,
+            ...details,
+        }
+    };
+}
 
 export const useSaveWager = () => {
     const profile = useStoreState(state => state.firebase.profile);

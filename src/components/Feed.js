@@ -47,7 +47,7 @@ const WagersForCompetition = (props) => {
     return (
         <WagersByCompetitionContainer>
             <p> {name} </p>
-            {wagers.map(it => <Wager onConfirm={confirmWager} key={it.id} wager={it}/>)}
+            {wagers.map(it => <HeadToHeadWager onConfirm={confirmWager} key={it.id} wager={it}/>)}
         </WagersByCompetitionContainer>
     )
 }
@@ -88,6 +88,7 @@ const GroupContainer = styled.div`
 export const Feed = () => {
     const profile = useStoreState(state => state.firebase.profile)
     useFirestoreConnect([{collection: `groups/${profile.groups[0]}/wagers`, storeAs: 'wagers'}]);
+    useFirestoreConnect(profile.groups.map(group => ({collection: `groups/${group}/users`, storeAs: 'groupMembers'})));
     const rawWagers = useStoreState(state => state.firestore.data.wagers)
 
     const confirmWagerAction = useStoreActions(actions => actions.wagers.respondToWager);
@@ -99,33 +100,14 @@ export const Feed = () => {
         .filter(wager => wager.status !== 'rejected')
         .filter(wager => wager.status !== 'open')
 
-    window.wagers = wagers;
-
-    useEffect(() => {
-        const a = async () => {
-            const res = await fetch("https://services.bovada.lv/services/sports/event/v2/nav/A/description//basketball/nba");
-            const body = await res.json();
-            console.log(body);
-        }
-
-        a();
-    })
-
     const wagersBySport = groupByPath(wagers, 'details.event.sport');
 
     return (
         <FeedContainer>
-            <PersonalContainer>
-                <AppCell>
-                    <PersonalWagers/>
-                </AppCell>
-            </PersonalContainer>
-            <GroupContainer>
                 <AppCell>
                     <h2> Group Wagers </h2>
                     {Object.keys(wagersBySport).map(it => <WagersForSport confirmWager={confirmWager} sport={it} wagers={wagersBySport[it]}/>)}
                 </AppCell>
-            </GroupContainer>
         </FeedContainer>
     )
 }
