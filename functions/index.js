@@ -347,7 +347,7 @@ async function notifyGroupOfWager(wager, action) {
 
 
 async function getAndSaveEventsFromBovada() {
-    const eventsUrl = 'https://www.bovada.lv/services/sports/event/coupon/events/A/description?lang=en';
+    const eventsUrl = 'https://www.bovada.lv/services/sports/event/coupon/events/A/description/?preMatchOnly=true&lang=en';
     const axiosResult = await axios.get(eventsUrl, {
         responseType: 'arraybuffer'
     })

@@ -10,10 +10,19 @@ const SportSection = ({section, eventSelected}) => {
     const comp = section.path.find(p => p.type === 'COMPETITION')?.description;
     const descriptionPrefix = comp ? comp + ' - ' : '';
     const fullDescription = descriptionPrefix + section.path[0].description;
+
+    const eventsType = section.events[0].type;
+    const [market, setMarket] = useState(0);
+
     return (
         <div>
-            <TitleRow name={fullDescription} expectedMarkets={section.expectedMarkets}/>
-            {section.events.map(it => <RenderEvent onSelect={eventSelected} event={it}/>)}
+            {eventsType === 'GAMEEVENT'
+                ? <TitleRow name={fullDescription} expectedMarkets={section.expectedMarkets}/>
+                : <div>
+                    <h4> {fullDescription}</h4>
+                </div>
+            }
+            {section.events.map(it => <RenderEvent market={market} onSelect={eventSelected} event={it}/>)}
         </div>
     )
 }
