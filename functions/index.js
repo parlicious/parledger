@@ -89,7 +89,7 @@ exports.createWager = functions.https.onCall(async (data, context) => {
         throw new functions.https.HttpsError('unauthenticated', 'You must be a member of the group to create wagers in it.')
     }
 
-    const creatingUserSnapshot = await db.collection('users').doc(proposedBy).get();
+    const creatingUserSnapshot = await db.collection('users').doc(proposedTo).get();
     if (!creatingUserSnapshot.exists) {
         throw new functions.https.HttpsError('failed-precondition', 'The other party of the wager isn\'t registered');
     }
@@ -343,7 +343,7 @@ exports.manageWager = functions.https.onCall(async (data, context) => {
 });
 
 async function notifyGroupOfWager(wager, action) {
-    console.log(wager, action);
+    // console.log(wager, action);
 }
 
 
