@@ -158,6 +158,8 @@ exports.createWager = functions.https.onCall(async (data, context) => {
     }
 
     await notifyGroupOfWager(wagerRef, 'proposed');
+
+    return wagerToSave.id;
 })
 
 exports.confirmWager = functions.https.onCall(async (data, context) => {

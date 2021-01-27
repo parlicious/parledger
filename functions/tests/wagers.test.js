@@ -6,6 +6,7 @@ const test = require('firebase-functions-test')({
 }, process.env.SERVICE_ACCOUNT_CREDS);
 const myFunctions = require('../index');
 const createWager = test.wrap(myFunctions.createWager);
+const confirmWager = test.wrap(myFunctions.confirmWager);
 const joinGroup = test.wrap(myFunctions.joinGroup);
 
 
@@ -183,38 +184,160 @@ describe('Functions', () => {
                 })
             })
 
-            it('can create a wager', async () => {
-                await expect(createWager(createRequest, context))
-                    .resolves
-                    .toBeUndefined();
+            describe('Head To Head', () => {
+
+                it('can create a wager', async () => {
+                    await expect(createWager(createRequest, context))
+                        .resolves
+                        .toBeDefined();
+                })
+
+                it(`wager is created in the group collection`, async () => {
+                    createRequest.details.id = faker.random.uuid();
+                    await createWager(createRequest, context);
+
+                    const groupWagers = await getAllInCollection(`groups/${groupId}/wagers`);
+                    expect(groupWagers.find(it => it.details.id === createRequest.details.id)).toBeDefined();
+                })
+
+                it(`wager is created in the proposing user's array`, async () => {
+                    createRequest.details.id = faker.random.uuid();
+                    await createWager(createRequest, context);
+
+                    const proposingUser = await getDoc('users', context.auth.uid);
+                    expect(Object.values(proposingUser.wagers).find(it => it.details.id === createRequest.details.id)).toBeDefined();
+
+                    const proposedToUser = await getDoc('users', createRequest.proposedTo);
+                    expect(Object.values(proposedToUser.wagers).find(it => it.details.id === createRequest.details.id)).toBeDefined();
+                })
+
+
+                it(`wager has a pending status when created`, async () => {
+                    await createWager(createRequest, context);
+                    const createdWager = await getCreatedWager(createRequest);
+
+                    expect(createdWager.status).toBe("pending");
+                })
             })
 
-            it(`wager is created in the group collection`, async () => {
-                createRequest.details.id = faker.random.uuid();
-                await createWager(createRequest, context);
+            describe('Open', () => {
+                it('can create an open wager', async () => {
+                    createRequest.isOpen = true;
+                    await expect(createWager(createRequest, context)).resolves.toBeDefined();
+                })
 
-                const groupWagers = await getAllInCollection(`groups/${groupId}/wagers`);
-                expect(groupWagers.find(it => it.details.id === createRequest.details.id)).toBeDefined();
+                it('open wager has an open status', async () => {
+                    createRequest.isOpen = true;
+                    await createWager(createRequest, context);
+                    const createdWager = await getCreatedWager(createRequest);
+                    expect(createdWager.status).toBe('open');
+                })
+            })
+        })
+        describe('Confirm', () => {
+
+            let createRequest;
+            let confirmRequest;
+            let context;
+
+            beforeEach(() => {
+                createRequest = {
+                    groupId: groupId,
+                    proposedTo: testUser2.uid,
+                    details: {},
+                    type: 'CUSTOM',
+                    isOpen: false
+                };
+
+                context = {
+                    auth: {
+                        uid: testUser1.uid
+                    }
+                }
+
+                confirmRequest = {
+                    groupId: createRequest.groupId,
+                    accept: true
+                }
             })
 
-            it(`wager is created in the proposing user's array`, async () => {
-                createRequest.details.id = faker.random.uuid();
-                await createWager(createRequest, context);
 
-                const proposingUser = await getDoc('users', context.auth.uid);
-                expect(Object.values(proposingUser.wagers).find(it => it.details.id === createRequest.details.id)).toBeDefined();
+            describe('Errors', () => {
+                it('wager must exist to confirm it', async () => {
+                    await expect(confirmWager({...confirmRequest, wagerId: faker.random.uuid()}, context))
+                        .rejects.toThrow('This wager doesn\'t exist');
+                })
+            })
 
-                const proposedToUser = await getDoc('users', createRequest.proposedTo);
-                expect(Object.values(proposedToUser.wagers).find(it => it.details.id === createRequest.details.id)).toBeDefined();
+            describe('Head to Head', () => {
+                it(`the user the wager was proposed to can confirm the wager`, async () => {
+                    const id = await createWager(createRequest, context);
+
+                    context.auth.uid = createRequest.proposedTo;
+                    await expect(confirmWager({...confirmRequest, wagerId: id}, context)).resolves.toBeUndefined();
+                })
+
+                it(`anyone but the user proposed to can not confirm the wager`, async () => {
+                    const id = await createWager(createRequest, context);
+                    await expect(confirmWager({...confirmRequest, wagerId: id}, context))
+                        .rejects.toThrow(`This user may not accept the wager`)
+                })
+
+                it(`accepted wagers have a booked status`, async () => {
+                    const id = await createWager(createRequest, context);
+
+                    context.auth.uid = createRequest.proposedTo;
+                    await confirmWager({...confirmRequest, wagerId: id}, context)
+
+                    const wager = await getDoc(`groups/${groupId}/wagers`, id);
+
+                    expect(wager.status).toBe('booked');
+                })
+
+                it(`rejected wagers have a rejected status`, async () => {
+                    const id = await createWager(createRequest, context);
+
+                    context.auth.uid = createRequest.proposedTo;
+                    confirmRequest.accept = false;
+                    await confirmWager({...confirmRequest, wagerId: id}, context)
+
+                    const wager = await getDoc(`groups/${groupId}/wagers`, id);
+
+                    expect(wager.status).toBe('rejected');
+                })
             })
 
 
-            it(`wager has a pending status when created`, async () => {
-                await createWager(createRequest, context);
-                const createdWager = await getCreatedWager(createRequest);
+            describe('Open', () => {
+                it(`anyone can confirm the wager`, async () => {
+                    createRequest.isOpen = true;
+                    const id = await createWager(createRequest, context);
 
-                expect(createdWager.status).toBe("pending");
+                    context.auth.uid = testUser3.uid;
+                    await expect(confirmWager({...confirmRequest, wagerId: id}, context)).resolves.toBeUndefined();
+                })
+
+                it(`creating user can rescind the wager`, async () => {
+                    createRequest.isOpen = true;
+                    const id = await createWager(createRequest, context);
+
+                    confirmRequest.accept = false;
+                    await expect(confirmWager({...confirmRequest, wagerId: id}, context)).resolves.toBeUndefined();
+                })
+
+                it(`rescinded wagers have a rejected status`, async () => {
+                    createRequest.isOpen = true;
+                    const id = await createWager(createRequest, context);
+
+                    confirmRequest.accept = false;
+                    await confirmWager({...confirmRequest, wagerId: id}, context)
+
+                    const wager = await getDoc(`groups/${groupId}/wagers`, id);
+
+                    expect(wager.status).toBe('rejected');
+                })
             })
+
         })
     })
 })
