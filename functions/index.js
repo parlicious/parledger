@@ -70,20 +70,21 @@ exports.createGroup = functions.https.onCall(async (data, context) => {
 });
 
 exports.joinGroup = functions.https.onCall(async (data, context) => {
-    const groupId = data.joinCode; // TODO: change this to be group id + auth hash and check it
+    const joinCode = data.joinCode; // TODO: change this to be group id + auth hash and check it
+    const groupId = joinCode.split('-')[0]
     const usersSnapshot = await db.collection(`groups/${groupId}/users`).doc(data.uid).get();
-
     if (usersSnapshot.exists) {
         throw new functions.https.HttpsError('already-exists', 'You\'re already in this group');
     }
 
-    await addUserToGroup(groupId, data.uid, data.allowDerivatives)
+    await addUserToGroup(joinCode, data.uid, data.allowDerivatives || false)
 });
 
 exports.createWager = functions.https.onCall(async (data, context) => {
     const {groupId, proposedTo, details, type, isOpen} = data;
     const proposedBy = context.auth.uid;
-    const usersSnapshot = await db.collection(`groups/${groupId}/users`).doc(proposedBy).get();
+    const myPath = `groups/${groupId}/users`;
+    const usersSnapshot = await db.collection(myPath).doc(proposedBy).get();
     if (!usersSnapshot.exists) {
         throw new functions.https.HttpsError('unauthenticated', 'You must be a member of the group to create wagers in it.')
     }
