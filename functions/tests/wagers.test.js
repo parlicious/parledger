@@ -1,9 +1,11 @@
 require('dotenv').config({path: '../.env'});
+
 const firebase_tools = require("firebase-tools");
 const test = require('firebase-functions-test')({
-    storageBucket: process.env.REACT_APP_STORAGEBUCKET,
-    projectId: process.env.REACT_APP_PROJECTID,
+    storageBucket: "ledgerdotbet-dev.appspot.com",
+    projectId: "ledgerdotbet-dev",
 }, process.env.FIREBASE_SERVICE_ACCOUNT_DEV);
+
 const myFunctions = require('../index');
 const createWager = test.wrap(myFunctions.createWager);
 const confirmWager = test.wrap(myFunctions.confirmWager);
