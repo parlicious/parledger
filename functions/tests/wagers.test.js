@@ -1,5 +1,3 @@
-require('dotenv').config({path: '../.env'});
-
 const firebase_tools = require("firebase-tools");
 const test = require('firebase-functions-test')({
     storageBucket: "ledgerdotbet-dev.appspot.com",
@@ -378,7 +376,7 @@ describe('Functions', () => {
                     accept: true
                 })
 
-                manageRequest = (id, action= null) => ({
+                manageRequest = (id, action = null) => ({
                     wagerId: id,
                     groupId: createRequest.groupId,
                     action: {
@@ -477,13 +475,13 @@ describe('Functions', () => {
 
 
                 it(`can't confirm a winner if one hasn't been proposed`, async () => {
-                    const managePromise =  manageWager(manageRequest(wagerId, 'CONFIRM_WINNER'), context);
+                    const managePromise = manageWager(manageRequest(wagerId, 'CONFIRM_WINNER'), context);
                     await expect(managePromise).rejects.toThrow('Invalid state to confirm a winner');
                 })
 
                 it(`the person who proposed a winner can't confirm the winner`, async () => {
                     await manageWager(manageRequest(wagerId, 'WIN'), context);
-                    const managePromise =  manageWager(manageRequest(wagerId, 'CONFIRM_WINNER'), context);
+                    const managePromise = manageWager(manageRequest(wagerId, 'CONFIRM_WINNER'), context);
                     await expect(managePromise).rejects.toThrow('You can\'t confirm something you proposed');
                 })
 
