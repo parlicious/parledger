@@ -12,7 +12,7 @@ jobs:
       - run: echo '$CREDS' > service_acct && npm ci && npm run test:ci
         working-directory: functions
         env:
-          CREDS: ${{secrets.FIREBASE_SERVICE_ACCOUNT_DEV}}
+          CREDS: ${{secrets.DEV_SERVICE_ACCT_JSON}}
           SERVICE_ACCOUNT_LOCATION: service_acct
           CI: false
   build_and_preview:
