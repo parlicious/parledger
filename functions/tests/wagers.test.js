@@ -7,6 +7,7 @@ const test = require('firebase-functions-test')({
 const myFunctions = require('../index');
 const createWager = test.wrap(myFunctions.createWager);
 const confirmWager = test.wrap(myFunctions.confirmWager);
+const manageWager = test.wrap(myFunctions.manageWager);
 const joinGroup = test.wrap(myFunctions.joinGroup);
 
 
@@ -338,6 +339,161 @@ describe('Functions', () => {
                 })
             })
 
+        })
+        describe('Manage', () => {
+            let createRequest;
+            let confirmRequest;
+            let manageRequest;
+            let context;
+
+            beforeEach(() => {
+                createRequest = {
+                    groupId: groupId,
+                    proposedTo: testUser2.uid,
+                    details: {},
+                    type: 'CUSTOM',
+                    isOpen: false
+                };
+
+                context = {
+                    auth: {
+                        uid: testUser1.uid
+                    }
+                }
+
+                confirmRequest = (id) => ({
+                    wagerId: id,
+                    groupId: createRequest.groupId,
+                    accept: true
+                })
+
+                manageRequest = (id, action= null) => ({
+                    wagerId: id,
+                    groupId: createRequest.groupId,
+                    action: {
+                        type: action
+                    }
+                })
+            })
+
+            // Create and Confirm
+            const createManageableWager = async () => {
+                const id = await createWager(createRequest, context);
+                context.auth.uid = createRequest.proposedTo;
+                await confirmWager(confirmRequest(id), context);
+
+                return id;
+            };
+
+            const setStatus = async (wagerId, status) => {
+                await db.collection('groups')
+                    .doc(groupId)
+                    .collection('wagers')
+                    .doc(wagerId)
+                    .update({status});
+            }
+
+            const getStatus = async (wagerId) => {
+                const doc = await db.collection('groups')
+                    .doc(groupId)
+                    .collection('wagers')
+                    .doc(wagerId)
+                    .get();
+
+                return doc.data().status;
+            }
+
+            describe('Errors', () => {
+                it(`Can't manage a wager that doesn't exist`, async () => {
+                    const managePromise = manageWager(manageRequest(faker.random.uuid()), context);
+                    await expect(managePromise).rejects.toThrow("This wager doesn't exist");
+                })
+
+                it(`Can't manage a wager that you're not a part of`, async () => {
+                    const wagerId = await createManageableWager();
+                    context.auth.uid = faker.random.uuid();
+                    const managePromise = manageWager(manageRequest(wagerId), context);
+                    await expect(managePromise).rejects.toThrow("You have to be in the wager to update it");
+                })
+            })
+
+            describe('Propose Winner / Loser / Push / Cancel', () => {
+                let wagerId;
+
+                beforeEach(async () => {
+                    wagerId = await createManageableWager();
+                })
+
+                it('must have status: booked to propose a winner/loser', async () => {
+                    await setStatus(wagerId, 'pending');
+                    const managePromise = manageWager(manageRequest(wagerId, 'WIN'), context);
+
+                    await expect(managePromise).rejects.toThrow('Invalid state to propose a winner');
+                })
+
+                it('proposing a winner / loser results in a resolutionProposed status', async () => {
+                    const managePromise = manageWager(manageRequest(wagerId, Math.random() > 0.5 ? 'WIN' : 'LOSS'), context);
+                    await expect(managePromise).resolves.toBeUndefined();
+
+                    const status = await getStatus(wagerId);
+                    expect(status).toBe('resolutionProposed');
+                })
+
+                it('proposing a push results in a resolutionProposed status', async () => {
+                    const managePromise = manageWager(manageRequest(wagerId, 'PUSH'), context);
+                    await expect(managePromise).resolves.toBeUndefined();
+
+                    const status = await getStatus(wagerId);
+                    expect(status).toBe('resolutionProposed');
+                })
+
+                it('proposing a cancel results in a cancellationProposed status', async () => {
+                    const managePromise = manageWager(manageRequest(wagerId, 'CANCEL'), context);
+                    await expect(managePromise).resolves.toBeUndefined();
+
+                    const status = await getStatus(wagerId);
+                    expect(status).toBe('cancellationProposed');
+                })
+            })
+
+            describe('Confirm Winner', () => {
+                let wagerId;
+
+                beforeEach(async () => {
+                    wagerId = await createManageableWager();
+                })
+
+
+                it(`can't confirm a winner if one hasn't been proposed`, async () => {
+                    const managePromise =  manageWager(manageRequest(wagerId, 'CONFIRM_WINNER'), context);
+                    await expect(managePromise).rejects.toThrow('Invalid state to confirm a winner');
+                })
+
+                it(`the person who proposed a winner can't confirm the winner`, async () => {
+                    await manageWager(manageRequest(wagerId, 'WIN'), context);
+                    const managePromise =  manageWager(manageRequest(wagerId, 'CONFIRM_WINNER'), context);
+                    await expect(managePromise).rejects.toThrow('You can\'t confirm something you proposed');
+                })
+
+                it('confirming a winner results in a paid status', async () => {
+                    await manageWager(manageRequest(wagerId, 'WIN'), context);
+                    context.auth.uid = testUser1.uid;
+                    await manageWager(manageRequest(wagerId, 'CONFIRM_WINNER'), context);
+
+                    const status = await getStatus(wagerId)
+                    expect(status).toBe('paid');
+                })
+
+                it('confirming cancellation results in a cancelled status', async () => {
+                    await manageWager(manageRequest(wagerId, 'CANCEL'), context);
+                    context.auth.uid = testUser1.uid;
+                    await manageWager(manageRequest(wagerId, 'CONFIRM_CANCEL'), context);
+
+                    const status = await getStatus(wagerId)
+                    expect(status).toBe('rejected');
+                })
+
+            });
         })
     })
 })

@@ -309,7 +309,7 @@ exports.manageWager = functions.https.onCall(async (data, context) => {
             fail('Invalid state to cancel a wager');
         }
 
-        if(wager.resolutionProposedBy.uid === context.auth.uid){
+        if(wager.cancellationProposedBy.uid === context.auth.uid){
             fail('You were the one to propose a cancellation');
         }
 
