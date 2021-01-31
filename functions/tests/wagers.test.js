@@ -2,7 +2,7 @@ const firebase_tools = require("firebase-tools");
 const test = require('firebase-functions-test')({
     storageBucket: "ledgerdotbet-dev.appspot.com",
     projectId: "ledgerdotbet-dev",
-}, process.env.FIREBASE_SERVICE_ACCOUNT_DEV);
+}, process.env.SERVICE_ACCOUNT_LOCATION);
 
 const myFunctions = require('../index');
 const createWager = test.wrap(myFunctions.createWager);
