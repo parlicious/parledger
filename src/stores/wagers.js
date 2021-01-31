@@ -78,7 +78,7 @@ function addImpliedOddsToEvents(maxOutcomes) { // use undefined for all outcomes
                     .map(o => o.impliedOdds)
                     .reduce((a,b) => a + b);
                 const outcomes = outcomesWithImpliedOdds
-                    .map((outcome, index) => ({ ...outcome, adjustedOdds: (outcome.impliedOdds * adjustmentConstent).toFixed(0) + '%'}));
+                    .map((outcome, index) => ({ ...outcome, adjustedOdds: (outcome.impliedOdds * adjustmentConstent).toPrecision(2) + '%'}));
                 return { ...market, outcomes };
             });
         

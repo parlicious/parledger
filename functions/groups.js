@@ -1,3 +1,6 @@
+const functions = require('firebase-functions');
+const admin = require('firebase-admin');
+
 const db = admin.firestore();
 
 const isValidInvitation = async (data) => {
@@ -51,7 +54,7 @@ const getGroup = async (groupId) => {
     return doc
 }
 
-const addUserToGroup = async (invitationCode, uid, allowDerivatives) => {
+const addUserToGroup = async (invitationCode, uid) => {
     const groupId = invitationCode.split('-')[0]
     const group = await getGroup(groupId);
     const matchingCode = group.data().codes.find(c => c.value === invitationCode);
@@ -66,7 +69,6 @@ const addUserToGroup = async (invitationCode, uid, allowDerivatives) => {
             displayName: user.displayName,
             avatarUrl: user.avatarUrl,
             uid,
-            allowDerivatives,
             joined: Date.now(),
             group: groupId
         })
@@ -81,14 +83,14 @@ async function createGroup (data, context) {
 }
 
 async function joinGroup(data, context) {
-    const groupId = data.joinCode; // TODO: change this to be group id + auth hash and check it
+    const groupId = data.joinCode.split('-')[0] // TODO: change this to be group id + auth hash and check it
     const usersSnapshot = await db.collection(`groups/${groupId}/users`).doc(data.uid).get();
 
     if (usersSnapshot.exists) {
         throw new functions.https.HttpsError('already-exists', 'You\'re already in this group');
     }
 
-    await addUserToGroup(groupId, data.uid, data.allowDerivatives)
+    await addUserToGroup(data.joinCode, data.uid, data.allowDerivatives)
 }
 
 module.exports = {

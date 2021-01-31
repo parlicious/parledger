@@ -11,6 +11,8 @@ jobs:
       - run: npm ci && npm run build
         env:
           CI: false
+      - uses: actions/checkout@v2
+      - run: cd functions && npm run test
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'

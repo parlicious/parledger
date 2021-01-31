@@ -1,3 +1,7 @@
+const functions = require('firebase-functions');
+const admin = require('firebase-admin');
+
+
 const {v4: uuidv4} = require('uuid');
 const {notifyGroupOfWager} = require('./groups');
 
@@ -62,7 +66,7 @@ async function lookupWager(groupId, wagerId) {
 
 function wagerIncludesUser(wager, uid) {
     return wager.proposedTo.uid === uid 
-        || wager.proposedBy.uid === context.auth.uid;
+        || wager.proposedBy.uid === uid;
 }
 
 function handlePaidAction(wager, user) {
@@ -95,7 +99,7 @@ function handleProposeResolution(wager, actionType, user, opponent) {
         [ActionTypes.PUSH]: null,
     };
 
-    newWager = {
+    return {
         ...wager,
         status: Statuses.PROPOSED,
         resolutionProposedBy: user,
@@ -134,7 +138,7 @@ function handleConfirmCancel(wager, user) {
         fail('Invalid state to cancel a wager');
     }
 
-    if(wager.resolutionProposedBy.uid === user.uid){
+    if(wager.cancellationProposedBy.uid === user.uid){
         fail('You were the one to propose a cancellation');
     }
 
@@ -171,7 +175,7 @@ async function writeWager(newWager, groupId, wagerId, user1Uid, user2Uid) {
         .set(newWager);
 
 
-    const path = `wagers.${data.wagerId}`
+    const path = `wagers.${wagerId}`
 
     const writeToUser1 = db.collection('users')
         .doc(user1Uid)
@@ -257,7 +261,7 @@ async function createWager(data, context) {
         throw new functions.https.HttpsError('unauthenticated', 'You must be a member of the group to create wagers in it.')
     }
 
-    const creatingUserSnapshot = await db.collection('users').doc(proposedBy).get();
+    const creatingUserSnapshot = await db.collection('users').doc(proposedTo).get();
     if (!creatingUserSnapshot.exists) {
         throw new functions.https.HttpsError('failed-precondition', 'The other party of the wager isn\'t registered');
     }
@@ -310,6 +314,8 @@ async function createWager(data, context) {
     await writeWager(wagerToSave, groupId, wagerToSave.id, proposedBy, proposedTo);
 
     await notifyGroupOfWager(wagerRef, 'proposed');
+
+    return wagerToSave.id;
 }
 
 module.exports = {

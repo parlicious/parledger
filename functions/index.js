@@ -1,12 +1,14 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
-const { onWagerWrite, manageWager, confirmWager, createWager } = require('./wagers');
-const { getAndSaveEventsFromBovada } = require('./bovada');
-const { isValidInvitation, joinGroup, createGroup } = require('./groups');
 
 admin.initializeApp({
     storageBucket: functions.config().storage.bucket
 });
+
+
+const { onWagerWrite, manageWager, confirmWager, createWager } = require('./wagers');
+const { getAndSaveEventsFromBovada } = require('./bovada');
+const { isValidInvitation, joinGroup, createGroup } = require('./groups');
 
 exports.createGroup = functions.https.onCall(createGroup);
 
