@@ -8,7 +8,7 @@ jobs:
     name: Test Cloud Functions
     runs-on: ubuntu-latest
     steps:
-      - run: echo "$FIREBASE_SERVICE_ACCOUNT_DEV" > service_acct
+      - run: echo "$FIREBASE_SERVICE_ACCOUNT_DEV"
         working-directory: functions
       - uses: actions/checkout@v2
       - run: npm ci && npm run test:ci
