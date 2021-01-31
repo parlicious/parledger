@@ -4,15 +4,23 @@
 name: Deploy to Firebase Hosting on PR
 'on': pull_request
 jobs:
+  test_functions:
+    name: Test Cloud Functions
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: cd functions
+      - run: npm ci && npm run test:ci
+        env:
+          CI: false
   build_and_preview:
+    name: Build and Deploy Preview
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - run: npm ci && npm run build
         env:
           CI: false
-      - uses: actions/checkout@v2
-      - run: cd functions && npm run test:ci
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
