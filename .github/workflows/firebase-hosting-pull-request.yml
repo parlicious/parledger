@@ -8,7 +8,7 @@ jobs:
     name: Test Cloud Functions
     runs-on: ubuntu-latest
     steps:
-      - run: echo $CREDS >> service_acct
+      - run: echo '$CREDS' > service_acct
         working-directory: functions
         env:
           CREDS: '${{secrets.FIREBASE_SERVICE_ACCOUNT_DEV}}'
