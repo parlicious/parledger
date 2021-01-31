@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: npm ci && npm run test:ci
-        working-directory: ./functions
+        working-directory: functions
         env:
           CI: false
   build_and_preview:
