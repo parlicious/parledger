@@ -70,25 +70,26 @@ exports.createGroup = functions.https.onCall(async (data, context) => {
 });
 
 exports.joinGroup = functions.https.onCall(async (data, context) => {
-    const groupId = data.joinCode; // TODO: change this to be group id + auth hash and check it
+    const joinCode = data.joinCode; // TODO: change this to be group id + auth hash and check it
+    const groupId = joinCode.split('-')[0]
     const usersSnapshot = await db.collection(`groups/${groupId}/users`).doc(data.uid).get();
-
     if (usersSnapshot.exists) {
         throw new functions.https.HttpsError('already-exists', 'You\'re already in this group');
     }
 
-    await addUserToGroup(groupId, data.uid, data.allowDerivatives)
+    await addUserToGroup(joinCode, data.uid, data.allowDerivatives || false)
 });
 
 exports.createWager = functions.https.onCall(async (data, context) => {
     const {groupId, proposedTo, details, type, isOpen} = data;
     const proposedBy = context.auth.uid;
-    const usersSnapshot = await db.collection(`groups/${groupId}/users`).doc(proposedBy).get();
+    const myPath = `groups/${groupId}/users`;
+    const usersSnapshot = await db.collection(myPath).doc(proposedBy).get();
     if (!usersSnapshot.exists) {
         throw new functions.https.HttpsError('unauthenticated', 'You must be a member of the group to create wagers in it.')
     }
 
-    const creatingUserSnapshot = await db.collection('users').doc(proposedBy).get();
+    const creatingUserSnapshot = await db.collection('users').doc(proposedTo).get();
     if (!creatingUserSnapshot.exists) {
         throw new functions.https.HttpsError('failed-precondition', 'The other party of the wager isn\'t registered');
     }
@@ -157,6 +158,8 @@ exports.createWager = functions.https.onCall(async (data, context) => {
     }
 
     await notifyGroupOfWager(wagerRef, 'proposed');
+
+    return wagerToSave.id;
 })
 
 exports.confirmWager = functions.https.onCall(async (data, context) => {
@@ -306,7 +309,7 @@ exports.manageWager = functions.https.onCall(async (data, context) => {
             fail('Invalid state to cancel a wager');
         }
 
-        if(wager.resolutionProposedBy.uid === context.auth.uid){
+        if(wager.cancellationProposedBy.uid === context.auth.uid){
             fail('You were the one to propose a cancellation');
         }
 
@@ -342,7 +345,7 @@ exports.manageWager = functions.https.onCall(async (data, context) => {
 });
 
 async function notifyGroupOfWager(wager, action) {
-    console.log(wager, action);
+    // console.log(wager, action);
 }
 
 
