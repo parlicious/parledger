@@ -4,7 +4,19 @@
 name: Deploy to Firebase Hosting on PR
 'on': pull_request
 jobs:
+  test_functions:
+    name: Test Cloud Functions
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: echo $CREDS > service_acct && npm ci && npm run test:ci
+        working-directory: functions
+        env:
+          CREDS: ${{secrets.DEV_SERVICE_ACCT_JSON}}
+          SERVICE_ACCOUNT_LOCATION: './service_acct'
+          CI: false
   build_and_preview:
+    name: Build and Deploy Preview
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

@@ -1,9 +1,9 @@
-require('dotenv').config({path: '../.env'});
 const firebase_tools = require("firebase-tools");
 const test = require('firebase-functions-test')({
-    storageBucket: process.env.REACT_APP_STORAGEBUCKET,
-    projectId: process.env.REACT_APP_PROJECTID,
-}, process.env.SERVICE_ACCOUNT_CREDS);
+    storageBucket: "ledgerdotbet-dev.appspot.com",
+    projectId: "ledgerdotbet-dev",
+}, process.env.SERVICE_ACCOUNT_LOCATION);
+
 const myFunctions = require('../index');
 const createWager = test.wrap(myFunctions.createWager);
 const confirmWager = test.wrap(myFunctions.confirmWager);
@@ -30,6 +30,16 @@ const getAllInCollection = async (path) => {
     snapshot.forEach(doc => documents.push(doc.data()));
 
     return documents;
+}
+
+const getWager = async (wagerId, groupId) => {
+    const doc = await db.collection('groups')
+        .doc(groupId)
+        .collection('wagers')
+        .doc(wagerId)
+        .get();
+
+    return doc.data()
 }
 
 const getCreatedWager = async (wager) => {
@@ -214,8 +224,8 @@ describe('Functions', () => {
 
 
                 it(`wager has a pending status when created`, async () => {
-                    await createWager(createRequest, context);
-                    const createdWager = await getCreatedWager(createRequest);
+                    const id = await createWager(createRequest, context);
+                    const createdWager = await getWager(id, groupId)
 
                     expect(createdWager.status).toBe("pending");
                 })
@@ -228,9 +238,8 @@ describe('Functions', () => {
                 })
 
                 it('open wager has an open status', async () => {
-                    createRequest.isOpen = true;
-                    await createWager(createRequest, context);
-                    const createdWager = await getCreatedWager(createRequest);
+                    const id = await createWager({...createRequest, isOpen: true}, context);
+                    const createdWager = await getWager(id, groupId)
                     expect(createdWager.status).toBe('open');
                 })
             })
@@ -367,7 +376,7 @@ describe('Functions', () => {
                     accept: true
                 })
 
-                manageRequest = (id, action= null) => ({
+                manageRequest = (id, action = null) => ({
                     wagerId: id,
                     groupId: createRequest.groupId,
                     action: {
@@ -400,6 +409,7 @@ describe('Functions', () => {
                     .doc(wagerId)
                     .get();
 
+                console.log(doc.data());
                 return doc.data().status;
             }
 
@@ -465,13 +475,13 @@ describe('Functions', () => {
 
 
                 it(`can't confirm a winner if one hasn't been proposed`, async () => {
-                    const managePromise =  manageWager(manageRequest(wagerId, 'CONFIRM_WINNER'), context);
+                    const managePromise = manageWager(manageRequest(wagerId, 'CONFIRM_WINNER'), context);
                     await expect(managePromise).rejects.toThrow('Invalid state to confirm a winner');
                 })
 
                 it(`the person who proposed a winner can't confirm the winner`, async () => {
                     await manageWager(manageRequest(wagerId, 'WIN'), context);
-                    const managePromise =  manageWager(manageRequest(wagerId, 'CONFIRM_WINNER'), context);
+                    const managePromise = manageWager(manageRequest(wagerId, 'CONFIRM_WINNER'), context);
                     await expect(managePromise).rejects.toThrow('You can\'t confirm something you proposed');
                 })
 
