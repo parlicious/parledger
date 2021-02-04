@@ -78,7 +78,30 @@ exported by the emulator or manually create one.
 
 ## Testing
 
-lol
+There are integration tests for the cloud functions, that
+directly hit a dev account in firestore. 
+
+
+## Types of Wagers
+
+
+### Head to Head
+
+All head to head wagers have a risk and toWin amount which represents the amount of risked by the proposedBy user 
+and the
+
+- Custom
+  - Custom wagers are pretty simple just a description of the bet
+- Bovada
+  - a user selects an event from bovada which has all the description / date / odds / etc
+    
+
+
+### Pools
+
+Pools are the generic term for multiway bets with members selecting some number of outcomes. Pools can be pretty flexible,
+and for now they're mostly one-off type events.
+
 
 
 

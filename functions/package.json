@@ -11,7 +11,7 @@
     "test:ci": "jest"
   },
   "engines": {
-    "node": "12"
+    "node": "14"
   },
   "main": "index.js",
   "dependencies": {

@@ -113,6 +113,9 @@ export const AppContainer = (props) => {
                 <AppHeaderLink to="/home">
                     Home
                 </AppHeaderLink>
+                <AppHeaderLink to="/pools">
+                    Pools
+                </AppHeaderLink>
                 <AppHeaderLink to="/wagers/market">
                     Marketplace
                 </AppHeaderLink>
