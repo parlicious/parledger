@@ -8,24 +8,25 @@ const {notifyGroupOfWager} = require('./groups');
 const db = admin.firestore();
 
 const ActionTypes = {
-    WIN   : 'WIN',
-    LOSS  : 'LOSS',
-    PUSH  : 'PUSH',
-    PAID  : 'PAID',
+    WIN: 'WIN',
+    LOSS: 'LOSS',
+    PUSH: 'PUSH',
+    PAID: 'PAID',
     CANCEL: 'CANCEL',
-    CONFIRM_CANCEL : 'CONFIRM_CANCEL',
-    CONFIRM_WINNER : 'CONFIRM_WINNER',
+    CONFIRM_CANCEL: 'CONFIRM_CANCEL',
+    CONFIRM_WINNER: 'CONFIRM_WINNER',
 };
 
 const Statuses = {
-    PAID    : 'paid',
-    OPEN    : 'open',
-    BOOKED  : 'booked',
-    PENDING : 'pending',
+    PAID: 'paid',
+    OPEN: 'open',
+    BOOKED: 'booked',
+    PENDING: 'pending',
     PROPOSED: 'resolutionProposed',
     REJECTED: 'rejected',
-    CANCEL_PROPOSED : 'cancellationProposed',
+    CANCEL_PROPOSED: 'cancellationProposed',
 }
+
 
 const fail = (message) => {
     throw new functions.https.HttpsError('failed-precondition', message)
@@ -65,20 +66,20 @@ async function lookupWager(groupId, wagerId) {
 }
 
 function wagerIncludesUser(wager, uid) {
-    return wager.proposedTo.uid === uid 
+    return wager.proposedTo.uid === uid
         || wager.proposedBy.uid === uid;
 }
 
 function handlePaidAction(wager, user) {
-    if(!wager.winner){
+    if (!wager.winner) {
         fail('A wager must have a winner before you pay it out');
     }
 
-    if(wager.resolutionProposedBy.uid === user.uid){
+    if (wager.resolutionProposedBy.uid === user.uid) {
         fail('You were the one to propose a resolution');
     }
 
-    if(wager.status !== Statuses.PROPOSED){
+    if (wager.status !== Statuses.PROPOSED) {
         fail('Wager must be resolved before paying out');
     }
 
@@ -89,12 +90,12 @@ function handlePaidAction(wager, user) {
 }
 
 function handleProposeResolution(wager, actionType, user, opponent) {
-    if(wager.status !== Statuses.BOOKED){
+    if (wager.status !== Statuses.BOOKED) {
         fail('Invalid state to propose a winner');
     }
 
     const winnerByActionType = {
-        [ActionTypes.WIN] : user,
+        [ActionTypes.WIN]: user,
         [ActionTypes.LOSS]: opponent,
         [ActionTypes.PUSH]: null,
     };
@@ -108,11 +109,11 @@ function handleProposeResolution(wager, actionType, user, opponent) {
 }
 
 function handleConfirmWinner(wager, user) {
-    if(wager.status !== Statuses.PROPOSED){
+    if (wager.status !== Statuses.PROPOSED) {
         fail('Invalid state to confirm a winner');
     }
 
-    if(wager.resolutionProposedBy.uid === user.uid){
+    if (wager.resolutionProposedBy.uid === user.uid) {
         fail('You can\'t confirm something you proposed');
     }
 
@@ -123,7 +124,7 @@ function handleConfirmWinner(wager, user) {
 }
 
 function handleCancel(wager, user) {
-    if(wager.status === Statuses.PAID || wager.status === Statuses.REJECTED) {
+    if (wager.status === Statuses.PAID || wager.status === Statuses.REJECTED) {
         fail('Cannot cancel a completed wager');
     }
     return {
@@ -134,11 +135,11 @@ function handleCancel(wager, user) {
 }
 
 function handleConfirmCancel(wager, user) {
-    if(wager.status !== Statuses.CANCEL_PROPOSED){
+    if (wager.status !== Statuses.CANCEL_PROPOSED) {
         fail('Invalid state to cancel a wager');
     }
 
-    if(wager.cancellationProposedBy.uid === user.uid){
+    if (wager.cancellationProposedBy.uid === user.uid) {
         fail('You were the one to propose a cancellation');
     }
 
@@ -149,7 +150,7 @@ function handleConfirmCancel(wager, user) {
 }
 
 function handleWagerAction(wager, actionType, user, opponent) {
-    switch(actionType) {
+    switch (actionType) {
         case ActionTypes.PAID:
             return handlePaidAction(wager, user);
         case ActionTypes.WIN:
@@ -194,7 +195,7 @@ async function manageWager(data, context) {
 
     const wager = await lookupWager(groupId, wagerId);
 
-    if(!wagerIncludesUser(wager, context.auth.uid)){
+    if (!wagerIncludesUser(wager, context.auth.uid)) {
         throw new functions.https.HttpsError('unauthenticated', 'You have to be in the wager to update it');
     }
 
@@ -325,4 +326,5 @@ module.exports = {
     manageWager,
     confirmWager,
     createWager,
+    fail
 }
