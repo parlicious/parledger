@@ -110,6 +110,7 @@ export const SquaresPool = (props) =>
         .reduce((acc, [a, b]) => ({[b]: a, ...acc}), {})
 
     useEffect(() => {
+        console.log(pool, profile);
         setSelections(pool.members[profile.uid]?.selections ?? [])
     }, [pool])
 
