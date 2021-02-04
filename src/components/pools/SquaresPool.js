@@ -101,17 +101,16 @@ margin-left: 1em;
 export const SquaresPool = (props) =>
 {
     const {pool} = props;
-    const profile = useStoreState(state => state.firebase.profile);
+    const auth = useStoreState(state => state.firebase.auth);
     const submitPoolEntry = useStoreActions(actions => actions.pools.submitPoolEntry);
     const [selections, setSelections] = useState([]);
     const groupSelections = Object.values(pool.members)
-        .filter(it => it.info.uid !== profile.uid)
+        .filter(it => it.info.uid !== auth.uid)
         .flatMap(it => it.selections.map(selection => [it.info.displayName, selection]))
         .reduce((acc, [a, b]) => ({[b]: a, ...acc}), {})
 
     useEffect(() => {
-        console.log(pool, profile);
-        setSelections(pool.members[profile.uid]?.selections ?? [])
+        setSelections(pool.members[auth.uid]?.selections ?? [])
     }, [pool])
 
     const onSquareSelected = (square) => {
