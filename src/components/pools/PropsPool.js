@@ -14,7 +14,10 @@ const PropsSelectionProgressContainer = styled.div`
   color: #0f2027;
 
   padding: 0.4em;
-
+  max-width: 800px;
+  
+  margin: 0 auto;
+  
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -51,6 +54,9 @@ const PoolDescriptionContainer = styled.div`
   background: white;
   color: #0f2027;
 
+  max-width: 800px;
+
+  margin: 0 auto;
   padding: 0.4em;
 `
 

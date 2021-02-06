@@ -17,6 +17,8 @@ export const PoolsPage = (props) => {
 
     const pool = pools[poolId];
 
+    console.log(pools, pool);
+
     if(pool.optionsType === 'squares'){
         return <SquaresPool pool={pool}/>
     } else if(pool.optionsType === 'bovada'){

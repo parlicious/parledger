@@ -101,7 +101,7 @@ async function submitPoolEntry(data, context) {
 async function manuallyCreateSuperBowlProps() {
     const pool = {
         acceptingPicksUntil: admin.firestore.Timestamp.now(),
-        groupId: "viotULiV8KiwuCX0GYMA",
+        groupId: "CPBNJGExlWuZmzLc613T",
         id: "",
         members: {},
         name: "Super Bowl Prop Sheet",
