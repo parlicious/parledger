@@ -128,6 +128,8 @@ export const OutcomeContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  
+  background: ${props => props.propSelected ? 'white' : 'inherit'};
 `
 
 export const OddsContainer = styled.div`

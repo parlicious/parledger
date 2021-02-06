@@ -1,4 +1,5 @@
 import {AdjustedOdds, OddsContainer, OutcomeContainer} from "./commonEventComponents";
+import {useStoreState} from 'easy-peasy';
 
 function topOutcomesNotClose(outcomes, numberToCheck) {
     const decimalPrices = outcomes?.slice(0, numberToCheck)
@@ -19,9 +20,12 @@ export const Outcome = (props) => {
     const outcome = outcomes?.[props.outcome];
     const forcePrice = topOutcomesNotClose(outcomes, 2);
     const price = forcePrice ? <AdjustedOdds> {outcome.adjustedOdds ?? outcome.price.american} </AdjustedOdds> : ' ';
+    const selectedProps = useStoreState(state => state.pools.selectedProps);
+    const propSelected = Object.values(selectedProps).includes(outcome.id);
+
     if (outcome) {
         return (
-            <OutcomeContainer>
+            <OutcomeContainer propSelected={propSelected}>
                 {outcome.price.handicap
                     ? <OddsContainer>
                         {['O', 'U'].includes(outcome.type) && outcome.type}&nbsp;{outcome.price.handicap} {price}

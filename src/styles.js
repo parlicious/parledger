@@ -16,7 +16,7 @@ export const buttonCss = css`
   transition: all 0.2s;
 
   :hover {
-    cursor: pointer;
+    cursor: ${props => props.disabled ? 'not-allowed': 'pointer'};
   }
 
   :focus {
@@ -32,15 +32,29 @@ export const ButtonLink = styled(Link)`
   ${buttonCss};
   background: #0f2027;
 
+  background: ${props => props.disabled ? '#0f2027cf' : '#0f2027'};
+
   :hover {
     background: #0f2027cF;
   }
 `
 
+export const PrimaryButton = styled.button`
+  ${buttonCss};
+  background: #0f2027;
+
+  background: ${props => props.disabled ? '#0f202799' : '#0f2027'};
+
+  :hover {
+    background: #0f2027cF;
+  }
+`
 
 export const ConfirmButton = styled.button`
   ${buttonCss};
   background: #3cc921;
+
+  background: ${props => props.disabled ? '#3cc921cf' : '#3cc921'};
 
   :hover {
     background: #3cc921cF;
@@ -50,6 +64,8 @@ export const ConfirmButton = styled.button`
 export const RejectButton = styled.button`
   ${buttonCss};
   background: #FF4040;
+
+  background: ${props => props.disabled ? '#FF4040cf' : '#FF4040'};
 
   :hover {
     background: #FF4040cF;

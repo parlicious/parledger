@@ -1,5 +1,6 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
+const axios = require('axios');
 
 const {fail} = require('./wagers');
 const db = admin.firestore();
@@ -97,7 +98,31 @@ async function submitPoolEntry(data, context) {
     }
 }
 
+async function manuallyCreateSuperBowlProps() {
+    const pool = {
+        acceptingPicksUntil: admin.firestore.Timestamp.now(),
+        groupId: "viotULiV8KiwuCX0GYMA",
+        id: "",
+        members: {},
+        name: "Super Bowl Prop Sheet",
+        optionsType: "bovada",
+        selectionType: SelectionTypes.OPEN,
+        selections: {},
+        type: PoolTypes.PICKEM,
+    }
+
+    const eventsUrl = 'https://www.bovada.lv/services/sports/event/coupon/events/A/description/football/super-bowl-specials?marketFilterId=rank&preMatchOnly=true&lang=en';
+    const axiosResult = await axios.get(eventsUrl)
+    const section = axiosResult.data[0];
+
+    await db.collection('groups')
+        .doc(pool.groupId)
+        .collection('pools')
+        .add({...pool, options: section});
+}
+
 
 module.exports = {
-    submitPoolEntry
+    submitPoolEntry,
+    manuallyCreateSuperBowlProps
 }

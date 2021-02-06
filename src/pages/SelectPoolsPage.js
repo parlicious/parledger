@@ -1,4 +1,4 @@
-import {InlineLink} from '../styles';
+import {ButtonLink, InlineLink} from '../styles';
 import {useFirestoreConnect} from 'react-redux-firebase';
 import {useStoreState} from 'easy-peasy';
 import styled from 'styled-components';
@@ -11,6 +11,11 @@ const PoolOptionsContainer = styled.div`
   align-items: center;
 `
 
+const PoolsLink = styled(ButtonLink)`
+  font-size: 2em;
+  font-weight: bold;
+`
+
 export const SelectPoolsPage = (props) => {
     const profile = useStoreState(state => state.firebase.profile)
     useFirestoreConnect([{collection: `groups/${profile.groups[0]}/pools`, storeAs: 'pools'}]);
@@ -18,7 +23,7 @@ export const SelectPoolsPage = (props) => {
 
     return (
         <PoolOptionsContainer>
-            {Object.values(pools).map(it => <InlineLink to={`/pools/${it.id}`}> {it.name} </InlineLink>)}
+            {Object.values(pools).map(it => <PoolsLink to={`/pools/${it.id}`}> {it.name} </PoolsLink>)}
         </PoolOptionsContainer>
     )
 }

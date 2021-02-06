@@ -5,6 +5,7 @@ import {useStoreActions, useStoreState} from 'easy-peasy';
 import {useState, useEffect} from 'react';
 import {ConfirmButton} from '../../styles';
 import {SignUpButton} from '../../pages/SignUpPage';
+import {UserAvatar} from '../UserAvatar';
 
 const PoolDescription = styled.div`
 
@@ -17,7 +18,8 @@ const SquaresContainer = styled.div`
 const SquareGrid = styled.div`
   margin: auto;
   display: grid;
-  grid-template-columns: repeat(11, 1fr);
+  grid-template-columns: repeat(11, minmax(1fr, 4vw));
+  width: 100%;
 `
 
 const SquareCellContainer = styled.div`
@@ -28,9 +30,6 @@ const SquareCellContainer = styled.div`
   justify-content: center;
   align-items: center;
   align-content: center;
-
-  max-width: calc(800px / 13);
-  width: 4vw;
 
   :hover {
     cursor: pointer;
@@ -64,9 +63,9 @@ const SquareCell = (props) => {
     return (
         <SquareCellContainer selected={selected} onClick={onClick}>
             {selected
-                ? <Avatar round size={'4vw'} name={profile.displayName}/>
+                ? <UserAvatar size={25} user={profile}/>
                 : groupSelections[num]
-                    ? <Avatar round size={'4vw'} name={groupSelections[num]}/>
+                    ? <UserAvatar round size={25} user={groupSelections[num]}/>
                     : '$5'}
         </SquareCellContainer>
     )
@@ -84,6 +83,7 @@ const GridContainerColumn = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100%;
 `
 
 const TeamName = styled.div`
@@ -157,7 +157,7 @@ export const SquaresPool = (props) => {
     const [selections, setSelections] = useState([]);
     const groupSelections = Object.values(pool.members)
         .filter(it => it.info.uid !== auth.uid)
-        .flatMap(it => it.selections.map(selection => [it.info.displayName, selection]))
+        .flatMap(it => it.selections.map(selection => [it.info, selection]))
         .reduce((acc, [a, b]) => ({[b]: a, ...acc}), {})
 
     useEffect(() => {
@@ -169,12 +169,12 @@ export const SquaresPool = (props) => {
             setSelections(selections.filter(it => it !== square));
         } else if (selections.length < pool.maxSelections) {
             const newSelections = [...selections, square];
+            setSelections(newSelections);
             try {
                 await submitPoolEntry({poolId: pool.id, groupId: pool.groupId, selections: newSelections});
             } catch (e) {
                 console.error(e);
             }
-            setSelections(newSelections);
         }
     }
 

@@ -68,7 +68,7 @@ function calculateImpliedOdds(outcome) {
     };
 }
 
-function addImpliedOddsToEvents(maxOutcomes) { // use undefined for all outcomes 
+export function addImpliedOddsToEvents(maxOutcomes) { // use undefined for all outcomes
     return (event) => {
         const markets = event.displayGroups[0].markets
             .map(market => {

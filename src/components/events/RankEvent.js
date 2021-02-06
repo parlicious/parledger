@@ -1,6 +1,7 @@
 import {AdjustedOdds, GridBasedEventCell, TimeAndDateCell, TimeAndDateText} from "./commonEventComponents";
 import React from 'react';
 import styled from 'styled-components';
+import {useStoreState} from 'easy-peasy';
 
 
 const RankEventContainer = styled.div`
@@ -34,10 +35,13 @@ const RankOutcomeContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem;
-
+  
+  background: ${props => props.propSelected ? 'white' : 'inherit'};
+  color: ${props => props.propSelected ? '#0f2027' : 'inherit'};
+  
   :hover {
     cursor: pointer;
-    background: #FFFFFF13;
+    background: ${props => props.propSelected ? '#FFFFFFCC' : '#FFFFFF13'};
   }
 `
 
@@ -55,8 +59,12 @@ const RankOddsItem = styled.div`
 
 export const RankOutcome = (props) => {
     const {outcome, onSelect} = props;
+
+    const selectedProps = useStoreState(state => state.pools.selectedProps);
+    const propSelected = Object.values(selectedProps).includes(outcome.id);
+
     return (
-        <RankOutcomeContainer onClick={() => onSelect(outcome)}>
+        <RankOutcomeContainer propSelected={propSelected} onClick={() => onSelect(outcome)}>
             {outcome.description}
             <RankOdds>
                 <RankOddsItem>{outcome.price.american}</RankOddsItem>
