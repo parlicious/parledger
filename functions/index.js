@@ -34,12 +34,12 @@ const runtimeOpts = {
     memory: '1GB'
 }
 
-exports.getEventsFromBovada = functions.runWith(runtimeOpts).pubsub.schedule("every 1 hours").onRun(getAndSaveEventsFromBovada);
+// exports.getEventsFromBovada = functions.runWith(runtimeOpts).pubsub.schedule("every 1 hours").onRun(getAndSaveEventsFromBovada);
 
-exports.manuallyUpdateBovadaEvents = functions.runWith(runtimeOpts).https.onRequest(async (req, res) => {
-    await getAndSaveEventsFromBovada()
-    res.send('ok');
-})
+// exports.manuallyUpdateBovadaEvents = functions.runWith(runtimeOpts).https.onRequest(async (req, res) => {
+//     await getAndSaveEventsFromBovada()
+//     res.send('ok');
+// })
 
 exports.sendWagerProposalEmail = functions.firestore.document('groups/{groupId}/wagers/{wagerId}')
     .onWrite(onWagerWrite);
