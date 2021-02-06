@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import {SignUpButton} from '../../pages/SignUpPage';
 import {ConfirmButton, PrimaryButton} from '../../styles';
 import {addImpliedOddsToEvents} from '../../stores/wagers';
+import {UserAvatar} from '../UserAvatar';
 
 const PropsSelectionProgressContainer = styled.div`
   position: sticky;
@@ -15,9 +16,9 @@ const PropsSelectionProgressContainer = styled.div`
 
   padding: 0.4em;
   max-width: 800px;
-  
+
   margin: 0 auto;
-  
+
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -60,6 +61,58 @@ const PoolDescriptionContainer = styled.div`
   padding: 0.4em;
 `
 
+const PoolMembersContainer = styled.div`
+  background: white;
+  color: #0f2027;
+
+  max-width: 800px;
+
+  margin: 0 auto;
+  padding: 0.4em;
+`;
+
+const PoolMembersGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+`
+
+const PoolMembers = (props) => {
+    const {pool} = props;
+    const section = {path: pool.options.path, events: pool.options.events.map(addImpliedOddsToEvents(5))}
+
+    return (
+        <PoolMembersContainer>
+            <PoolMembersGrid>
+                <h4> Member </h4>
+                <h4> Possible Remaining </h4>
+                <h4> Actual </h4>
+                {Object.values(pool.members).map(member =>
+                    <React.Fragment>
+                        <div>
+                            <UserAvatar user={member.info}/>
+                            <span> {member.info.displayName} </span>
+                        </div>
+                        <span> {calculatePossiblePoints(member.selections, section.events)}</span>
+                    </React.Fragment>
+                )}
+            </PoolMembersGrid>
+        </PoolMembersContainer>
+    )
+}
+
+const calculatePossiblePoints = (propsSelected, events) => {
+    console.log(propsSelected, events);
+    const raw = Object.keys(propsSelected).map(k => {
+            const event = events.find(it => it.id === k);
+            const outcome = event.displayGroups[0].markets[0].outcomes.find(it => it.id === propsSelected[k]);
+
+            return 1 - outcome.impliedOdds
+        }
+    ).reduce((a, b) => a + b, 0)
+
+    return Math.floor(raw * 100);
+}
+
 export const PropsPool = (props) => {
     const {pool} = props;
     const auth = useStoreState(state => state.firebase.auth);
@@ -78,15 +131,8 @@ export const PropsPool = (props) => {
     const [possiblePoints, setPossiblePoints] = useState(0);
 
     useEffect(() => {
-        const points = Object.keys(propsSelected).map(k => {
-            const event = section.events.find(it => it.id === k);
-            const outcome = event.displayGroups[0].markets[0].outcomes.find(it => it.id === propsSelected[k]);
-
-            return 1 - outcome.impliedOdds
-        }).reduce((a, b) => a + b, 0);
-
-        setPossiblePoints(Math.floor(points * 100));
-
+        const points = calculatePossiblePoints(propsSelected, section.events);
+        setPossiblePoints(points);
     }, [propsSelected])
     useEffect(() => {
         loadSelectedProps(pool.members[auth.uid]?.selections ?? {})
@@ -129,6 +175,7 @@ export const PropsPool = (props) => {
                 that
                 event not occurring (e.g. an event with a 1% chance nets you 99 points). Most points wins. $20 to enter.
             </PoolDescriptionContainer>
+            <PoolMembers pool={pool}/>
             {section && <SportSection showTitle={false} eventSelected={propEventSelected} section={section}/>}
         </div>
     )
