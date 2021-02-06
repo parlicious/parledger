@@ -141,8 +141,10 @@ export const PropsPool = (props) => {
         const points = calculatePossiblePoints(propsSelected, section.events);
         setPossiblePoints(points);
     }, [propsSelected])
+
     useEffect(() => {
-        loadSelectedProps(pool.members[auth.uid]?.selections ?? {})
+        const fromDatabase = pool.members[auth.uid]?.selections ?? {};
+        loadSelectedProps({...fromDatabase, ...propsSelected})
     }, [pool])
 
     const onSave = async () => {
