@@ -93,6 +93,7 @@ const PoolMembers = (props) => {
                             <span> {member.info.displayName} </span>
                         </div>
                         <span> {calculatePossiblePoints(member.selections, section.events)}</span>
+                        <span> 0 </span>
                     </React.Fragment>
                 )}
             </PoolMembersGrid>
@@ -111,6 +112,11 @@ const calculatePossiblePoints = (propsSelected, events) => {
     ).reduce((a, b) => a + b, 0)
 
     return Math.floor(raw * 100);
+}
+
+// TODO
+const calculateActualPoints = (propsSelected, events) => {
+    return 0;
 }
 
 export const PropsPool = (props) => {
