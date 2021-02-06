@@ -74,6 +74,7 @@ const PoolMembersContainer = styled.div`
 const PoolMembersGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-gap: 0.2em;
 `
 
 const PoolMembers = (props) => {
