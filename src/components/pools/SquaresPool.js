@@ -211,13 +211,15 @@ export const SquaresPool = (props) => {
                 <p>
                     You can pick up to 10 squares. When the game starts each column and row will randomly be assigned
                     a number 0-9. The final number of each teams score at the end of that quarter determines the winner.
-                    payouts for each quarter are:
+                    In the event a winning square is not selected, that quarter's winnings are proportionally distributed
+                    amongst the other winners. (e.g. via the same proportions as below).
                 </p>
                 <p>
+                    Payouts for each quarter are:
                     <span> Q1: 15%</span>
                     <span> Q2: 30%</span>
                     <span> Q3: 15%</span>
-                    <span> Q1: 40%</span>
+                    <span> Q4: 40%</span>
                 </p>
             </SquaresInfo>
         </AppCell>
