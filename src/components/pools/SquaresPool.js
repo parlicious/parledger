@@ -42,6 +42,10 @@ const SquareCellContainer = styled.div`
   margin: 0.2em;
 `
 
+const PickCell = styled(SquareCellContainer)`
+  background: ${({num, highlightedRow, highlightedCol}) => shouldSquareOfNumBeHighlighted(num, highlightedRow, highlightedCol) ? '#FFFFFF13' : 'inherit'};
+`
+
 const NumberCell = styled(SquareCellContainer)`
   grid-column: ${props => props.x};
   grid-row: ${props => props.y};
@@ -63,7 +67,11 @@ const SquareCell = (props) => {
     }
 
     return (
-        <SquareCellContainer selected={selected} onClick={onClick}>
+        <PickCell selected={selected}
+                  onClick={onClick}
+                  num={props.num}
+                  highlightedRow={props.row}
+                  highlightedCol={props.col}>
             {selected
                 ? <UserAvatar
                     size={width > 600 ? 30 : 15}
@@ -72,7 +80,7 @@ const SquareCell = (props) => {
                 : groupSelections[num]
                     ? <UserAvatar round size={25} user={groupSelections[num]}/>
                     : '$5'}
-        </SquareCellContainer>
+        </PickCell>
     )
 }
 
@@ -101,8 +109,19 @@ const HorizontalTeamName = styled(TeamName)`
   text-orientation: upright;
 `
 
+const shouldSquareOfNumBeHighlighted = (num, row, col) => {
+    if(col !== null  && num % 10 === col){
+        return true;
+    }
+
+    return row !== null && Math.floor(num / 10) === row;
+
+}
+
 const Squares = (props) => {
     const {selections, groupSelections, onSquareSelected, pool} = props;
+    const [row, setRow] = useState(null);
+    const [col, setCol] = useState(null);
 
     return (
         <GridContainerRow>
@@ -111,9 +130,18 @@ const Squares = (props) => {
                 <TeamName> Bucs </TeamName>
                 <SquareGrid>
                     <NumberCell x={1} y={1}/>
-                    {[...Array(10).keys()].map(it => <NumberCell x={1} y={it + 2}> {pool.rowLabels?.[it] || '?'} </NumberCell>)}
-                    {[...Array(10).keys()].map(it => <NumberCell x={it + 2} y={1}> {pool.colLabels?.[it] || '?'}  </NumberCell>)}
-                    {[...Array(100).keys()].map(it => <SquareCell onSelected={onSquareSelected} num={it}
+                    {[...Array(10).keys()].map(it => <NumberCell
+                        onMouseEnter={() => setRow(it)}
+                        onMouseLeave={() => setRow(null)}
+                        x={1} y={it + 2}> {pool.rowLabels?.[it] || '?'} </NumberCell>)}
+                    {[...Array(10).keys()].map(it => <NumberCell
+                        onMouseEnter={() => setCol(it)}
+                        onMouseLeave={() => setCol(null)}
+                        x={it + 2} y={1}> {pool.colLabels?.[it] || '?'}  </NumberCell>)}
+                    {[...Array(100).keys()].map(it => <SquareCell onSelected={onSquareSelected}
+                                                                  num={it}
+                                                                  row={row}
+                                                                  col={col}
                                                                   groupSelections={groupSelections}
                                                                   selections={selections}/>)}
                 </SquareGrid>
