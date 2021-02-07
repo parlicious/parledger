@@ -7,7 +7,6 @@ import {TitleRow} from "./events/commonEventComponents";
 import {RenderEvent} from "./events/RenderEvent";
 
 export const SportSection = ({section, eventSelected, showTitle = true}) => {
-    console.log(section);
     const comp = section.path.find(p => p.type === 'COMPETITION')?.description;
     const descriptionPrefix = comp ? comp + ' - ' : '';
     const fullDescription = descriptionPrefix + section.path[0].description;

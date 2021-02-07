@@ -61,7 +61,7 @@ export const RankOutcome = (props) => {
     const {outcome, onSelect} = props;
 
     const selectedProps = useStoreState(state => state.pools.selectedProps);
-    const propSelected = Object.values(selectedProps).includes(outcome.id);
+    const propSelected = Object.values(selectedProps).includes(outcome?.id);
 
     return (
         <RankOutcomeContainer propSelected={propSelected} onClick={() => onSelect(outcome)}>

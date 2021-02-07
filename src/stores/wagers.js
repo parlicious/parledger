@@ -137,12 +137,10 @@ export const wagersModel = {
         const updatedAt = helpers.getStoreState().wagers?.eventsUpdated
         if (!updatedAt || (Date.now() - updatedAt > 5000)) {
             await actions.updatingEvents();
-            const firebase = helpers.injections.getFirebase();
-            const storage = firebase.storage();
-            const eventsRef = storage.ref('events.json');
-            const downloadUrl = await eventsRef.getDownloadURL();
-            const result = await fetch(downloadUrl)
-            const events = (await result.json())
+            const result = await fetch("https://www.bovada.lv/services/sports/event/coupon/events/A/description?lang=en")
+            const json = await result.json();
+            console.log(json);
+            const events = (json)
                 .map(normalizeMarkets)
                 .map(it =>
                     ({

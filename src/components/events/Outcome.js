@@ -21,7 +21,7 @@ export const Outcome = (props) => {
     const forcePrice = topOutcomesNotClose(outcomes, 2);
     const price = forcePrice ? <AdjustedOdds> {outcome.adjustedOdds ?? outcome.price.american} </AdjustedOdds> : ' ';
     const selectedProps = useStoreState(state => state.pools.selectedProps);
-    const propSelected = Object.values(selectedProps).includes(outcome.id);
+    const propSelected = Object.values(selectedProps).includes(outcome?.id);
 
     if (outcome) {
         return (
