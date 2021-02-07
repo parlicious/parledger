@@ -1,6 +1,6 @@
 import {Route, Redirect} from 'react-router-dom';
 import {isLoaded, isEmpty} from "react-redux-firebase"
-import {useStoreState} from 'easy-peasy';
+import {useStoreActions, useStoreState} from 'easy-peasy';
 import React from 'react';
 
 export function PrivateRoute({children, ...rest}) {

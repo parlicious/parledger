@@ -1,4 +1,4 @@
-import {useFirestoreConnect} from "react-redux-firebase";
+import {isEmpty, isLoaded, useFirestoreConnect} from "react-redux-firebase";
 import {useStoreActions, useStoreState} from "easy-peasy";
 import {GroupWagers, PersonalWagers, useGroupWagers, Wager} from "./PersonalWagers";
 import {AppCell} from "../pages/NewWagerPage";
@@ -91,6 +91,13 @@ export const Feed = () => {
     useFirestoreConnect([{collection: `groups/${activeGroup}/wagers`, storeAs: 'wagers'}]);
     useFirestoreConnect({collection: `groups/${activeGroup}/users`, storeAs: 'groupMembers'});
     const rawWagers = useStoreState(state => state.firestore.data.wagers)
+    const initGroup = useStoreActions(actions => actions.users.loadActiveGroup);
+
+    useEffect(() => {
+        if(isLoaded(profile) && !isEmpty(profile)){
+            initGroup();
+        }
+    }, [profile])
 
     const confirmWagerAction = useStoreActions(actions => actions.wagers.respondToWager);
     const confirmWager = async (wagerId, groupId, acceptWager) => {

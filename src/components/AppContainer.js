@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
-import {useStoreState} from "easy-peasy";
-import {isEmpty, useFirebase} from "react-redux-firebase";
+import {useStoreActions, useStoreState} from "easy-peasy";
+import {isEmpty, isLoaded, useFirebase} from "react-redux-firebase";
 import {Link, useHistory, useLocation} from 'react-router-dom';
 import styled, {css, keyframes} from 'styled-components';
 import {useBreakpoint} from "../hooks";
@@ -90,6 +90,7 @@ const ExpandMenu = styled.div`
 export const AppContainer = (props) => {
     const auth = useStoreState(state => state.firebase.auth);
     const profile = useStoreState(state => state.firebase.profile);
+    const initGroup = useStoreActions(actions => actions.users.loadActiveGroup);
     const {pathname} = useLocation();
     const firebase = useFirebase();
     const history = useHistory();

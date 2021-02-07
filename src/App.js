@@ -28,7 +28,6 @@ import {SelectGroupPage} from './pages/SelectGroupPage';
 function AuthIsLoaded({children}) {
     const auth = useStoreState(state => state.firebase.auth)
     const profile = useStoreState(state => state.firebase.profile)
-    const initGroup = useStoreActions(actions => actions.users.loadActiveGroup);
     const isRehydrated = useStoreRehydrated();
 
     // if(true) return <SplashScreen/>
@@ -36,7 +35,6 @@ function AuthIsLoaded({children}) {
     if (!isLoaded(profile)) return <SplashScreen/>
     if (!isLoaded(auth)) return <SplashScreen/>
 
-    initGroup();
     return children
 }
 
