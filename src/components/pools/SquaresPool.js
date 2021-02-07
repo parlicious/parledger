@@ -6,6 +6,7 @@ import {useState, useEffect} from 'react';
 import {ConfirmButton} from '../../styles';
 import {SignUpButton} from '../../pages/SignUpPage';
 import {UserAvatar} from '../UserAvatar';
+import {useBreakpoint} from '../../hooks';
 
 const PoolDescription = styled.div`
 
@@ -52,6 +53,7 @@ const SquareCell = (props) => {
     const y = Math.floor(props.num / 10);
     const profile = useStoreState(state => state.firebase.profile);
     const selected = selections.includes(num);
+    const width = useBreakpoint();
 
     const onClick = () => {
 
@@ -63,7 +65,10 @@ const SquareCell = (props) => {
     return (
         <SquareCellContainer selected={selected} onClick={onClick}>
             {selected
-                ? <UserAvatar size={25} user={profile}/>
+                ? <UserAvatar
+                    size={width > 600 ? 30 : 15}
+                    textSizeRatio={width > 600 ? 3 : 1.5}
+                    user={profile}/>
                 : groupSelections[num]
                     ? <UserAvatar round size={25} user={groupSelections[num]}/>
                     : '$5'}
