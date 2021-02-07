@@ -70,6 +70,7 @@ const SquareCell = (props) => {
         <PickCell selected={selected}
                   onClick={onClick}
                   num={props.num}
+                  onMouseEnter={() => console.log(props.num)}
                   highlightedRow={props.row}
                   highlightedCol={props.col}>
             {selected
@@ -139,7 +140,6 @@ const Squares = (props) => {
                         onMouseLeave={() => setCol(null)}
                         x={it + 2} y={1}> {pool.colLabels?.[it] || '?'}  </NumberCell>)}
                     {[...Array(100).keys()].map(it => <SquareCell onSelected={onSquareSelected}
-                                                                  onMouseEnter={() => console.log(it)}
                                                                   num={it}
                                                                   row={row}
                                                                   col={col}
