@@ -182,9 +182,11 @@ async function writeWager(newWager, groupId, wagerId, user1Uid, user2Uid) {
         .doc(user1Uid)
         .update({[path]: newWager});
 
-    const writeToUser2 = db.collection('users')
+    const writeToUser2 = user2Uid
+        ? db.collection('users')
         .doc(user2Uid)
-        .update({[path]: newWager});
+        .update({[path]: newWager})
+        : Promise.resolve();
 
     return Promise.all([writeToGroups, writeToUser1, writeToUser2]);
 }
@@ -262,7 +264,7 @@ async function createWager(data, context) {
         throw new functions.https.HttpsError('unauthenticated', 'You must be a member of the group to create wagers in it.')
     }
 
-    const creatingUserSnapshot = await db.collection('users').doc(proposedTo).get();
+    const creatingUserSnapshot = await db.collection('users').doc(proposedBy).get();
     if (!creatingUserSnapshot.exists) {
         throw new functions.https.HttpsError('failed-precondition', 'The other party of the wager isn\'t registered');
     }
