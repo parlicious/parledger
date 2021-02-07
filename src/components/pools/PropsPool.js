@@ -73,8 +73,17 @@ const PoolMembersContainer = styled.div`
 
 const PoolMembersGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 0.2em;
+  grid-template-columns: 1fr 1fr 1fr;
+`
+
+const ScoreboardHeader = styled.h4`
+  border-bottom: 2px solid #0f2027;
+  font-weight: bold;
+  text-align: end;
+`
+
+const ScoreboardCell = styled.div`
+  text-align: end;
 `
 
 const PoolMembers = (props) => {
@@ -84,17 +93,16 @@ const PoolMembers = (props) => {
     return (
         <PoolMembersContainer>
             <PoolMembersGrid>
-                <h4> Member </h4>
-                <h4> Possible Remaining </h4>
-                <h4> Actual </h4>
+                <ScoreboardHeader> Name </ScoreboardHeader>
+                <ScoreboardHeader> Possible </ScoreboardHeader>
+                <ScoreboardHeader> Actual </ScoreboardHeader>
                 {Object.values(pool.members).map(member =>
                     <React.Fragment>
-                        <div>
-                            <UserAvatar user={member.info}/>
-                            <span> {member.info.displayName} </span>
-                        </div>
-                        <span> {calculatePossiblePoints(member.selections, section.events)}</span>
-                        <span> 0 </span>
+                        <ScoreboardCell>
+                            {member.info.displayName}
+                        </ScoreboardCell>
+                        <ScoreboardCell> {calculatePossiblePoints(member.selections, section.events)}</ScoreboardCell>
+                        <ScoreboardCell> 0 </ScoreboardCell>
                     </React.Fragment>
                 )}
             </PoolMembersGrid>
