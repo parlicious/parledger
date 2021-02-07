@@ -102,7 +102,7 @@ const HorizontalTeamName = styled(TeamName)`
 `
 
 const Squares = (props) => {
-    const {selections, groupSelections, onSquareSelected} = props;
+    const {selections, groupSelections, onSquareSelected, pool} = props;
 
     return (
         <GridContainerRow>
@@ -111,8 +111,8 @@ const Squares = (props) => {
                 <TeamName> Bucs </TeamName>
                 <SquareGrid>
                     <NumberCell x={1} y={1}/>
-                    {[...Array(10).keys()].map(it => <NumberCell x={1} y={it + 2}> ? </NumberCell>)}
-                    {[...Array(10).keys()].map(it => <NumberCell x={it + 2} y={1}> ? </NumberCell>)}
+                    {[...Array(10).keys()].map(it => <NumberCell x={1} y={it + 2}> {pool.rowLabels?.[it] || '?'} </NumberCell>)}
+                    {[...Array(10).keys()].map(it => <NumberCell x={it + 2} y={1}> {pool.colLabels?.[it] || '?'}  </NumberCell>)}
                     {[...Array(100).keys()].map(it => <SquareCell onSelected={onSquareSelected} num={it}
                                                                   groupSelections={groupSelections}
                                                                   selections={selections}/>)}
@@ -206,7 +206,7 @@ export const SquaresPool = (props) => {
                     </SelectedActions>
                 </SelectedInfo>
             </SquaresHeader>
-            <Squares {...{onSquareSelected, selections, groupSelections}}/>
+            <Squares {...{onSquareSelected, selections, groupSelections, pool}}/>
             <SquaresInfo>
                 <p>
                     You can pick up to 10 squares. When the game starts each column and row will randomly be assigned
