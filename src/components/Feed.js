@@ -87,8 +87,9 @@ const GroupContainer = styled.div`
 
 export const Feed = () => {
     const profile = useStoreState(state => state.firebase.profile)
-    useFirestoreConnect([{collection: `groups/${profile.groups[0]}/wagers`, storeAs: 'wagers'}]);
-    useFirestoreConnect(profile.groups.map(group => ({collection: `groups/${group}/users`, storeAs: 'groupMembers'})));
+    const activeGroup = useStoreState(state => state.users.activeGroup);
+    useFirestoreConnect([{collection: `groups/${activeGroup}/wagers`, storeAs: 'wagers'}]);
+    useFirestoreConnect({collection: `groups/${activeGroup}/users`, storeAs: 'groupMembers'});
     const rawWagers = useStoreState(state => state.firestore.data.wagers)
 
     const confirmWagerAction = useStoreActions(actions => actions.wagers.respondToWager);

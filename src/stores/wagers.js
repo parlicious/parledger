@@ -203,6 +203,7 @@ export const generateWagerFromSelection = ({risk, toWin, self, opponent, details
 
 export const useSaveWager = () => {
     const profile = useStoreState(state => state.firebase.profile);
+    const activeGroup = useStoreState(state => state.users.activeGroup);
     const [submitting, setSubmitting] = useState(false);
     const [apiSuccess, setApiSuccess] = useState(null);
     const [apiError, setApiError] = useState(null);
@@ -210,7 +211,7 @@ export const useSaveWager = () => {
 
     const save = async ({risk, toWin, opponent, details, type}) => {
         const wager = {
-            groupId: profile.groups[0],
+            groupId: activeGroup,
             type,
             details: {
                 risk,

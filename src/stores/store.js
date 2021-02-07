@@ -1,4 +1,4 @@
-import {computed, createStore, reducer} from 'easy-peasy'
+import {computed, createStore, persist, reducer} from 'easy-peasy'
 import firebase from 'firebase/app';
 import 'firebase/auth'
 import 'firebase/firestore'
@@ -67,7 +67,7 @@ export const store = createStore({
     firestore: reducer(firestoreReducer),
     firebase: reducer(firebaseReducer),
     wagers: wagersModel,
-    users: usersModel,
+    users: persist(usersModel),
     pools: poolsModel,
 }, {injections: {getFirestore, getFirebase}, disableImmer: true});
 

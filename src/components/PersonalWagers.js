@@ -48,7 +48,8 @@ export const useGroupWagers = () => {
 
 export const GroupWagers = ({}) => {
     const profile = useStoreState(state => state.firebase.profile)
-    useFirestoreConnect([{collection: `groups/${profile.groups[0]}/wagers`, storeAs: 'wagers'}]);
+    const activeGroup = useStoreState(state => state.users.activeGroup);
+    useFirestoreConnect([{collection: `groups/${activeGroup}/wagers`, storeAs: 'wagers'}]);
     const auth = useStoreState(state => state.firebase.auth)
     const rawWagers = useStoreState(state => state.firestore.data.wagers)
     const wagers = Object.values(rawWagers ?? {})
@@ -78,7 +79,8 @@ export const GroupWagers = ({}) => {
 
 export const OpenWagers = ({}) => {
     const profile = useStoreState(state => state.firebase.profile)
-    useFirestoreConnect([{collection: `groups/${profile.groups[0]}/wagers`, storeAs: 'wagers'}]);
+    const activeGroup = useStoreState(state => state.users.activeGroup);
+    useFirestoreConnect([{collection: `groups/${activeGroup}/wagers`, storeAs: 'wagers'}]);
     const auth = useStoreState(state => state.firebase.auth)
     const rawWagers = useStoreState(state => state.firestore.data.wagers)
     const confirmWagerAction = useStoreActions(actions => actions.wagers.respondToWager);

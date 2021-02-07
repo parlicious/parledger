@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import {useStoreActions, useStoreState} from "easy-peasy";
 import {Link, useParams} from "react-router-dom"
-import {isEmpty, useFirebase} from "react-redux-firebase";
+import {isEmpty, isLoaded, useFirebase} from "react-redux-firebase";
 import {InlineLink} from "../styles";
 import {SignUpButton, SignUpPage} from "./SignUpPage";
 import {EventCell} from "../components/SelectEvent";
@@ -69,7 +69,7 @@ export const JoinGroupPage = ({...props}) => {
         setSubmiting(false);
     }
 
-    if (isEmpty(auth)) {
+    if (isLoaded(auth) && isEmpty(auth)) {
         return <SignUpPage/>
     } else {
 

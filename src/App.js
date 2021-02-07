@@ -2,7 +2,7 @@ import './App.css';
 import './resources/icons.css'
 import {isLoaded, ReactReduxFirebaseProvider} from "react-redux-firebase";
 import {reactReduxFirebaseProps, store} from "./stores/store";
-import {StoreProvider, useStoreState} from "easy-peasy";
+import {StoreProvider, useStoreActions, useStoreRehydrated, useStoreState} from "easy-peasy";
 import {Provider} from "react-redux";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import {SignUpPage} from "./pages/SignUpPage";
@@ -23,13 +23,20 @@ import {Marketplace} from "./components/Marketplace";
 import {Me} from "./components/Me";
 import {SelectPoolsPage} from './pages/SelectPoolsPage';
 import {PoolsPage} from './components/pools/PoolsPage';
+import {SelectGroupPage} from './pages/SelectGroupPage';
 
 function AuthIsLoaded({children}) {
     const auth = useStoreState(state => state.firebase.auth)
     const profile = useStoreState(state => state.firebase.profile)
+    const initGroup = useStoreActions(actions => actions.users.loadActiveGroup);
+    const isRehydrated = useStoreRehydrated();
+
     // if(true) return <SplashScreen/>
+    if(!isRehydrated) return <SplashScreen/>
     if (!isLoaded(profile)) return <SplashScreen/>
     if (!isLoaded(auth)) return <SplashScreen/>
+
+    initGroup();
     return children
 }
 
@@ -58,6 +65,9 @@ const App = () => {
                                     <JoinGroupPage/>
                                 </Route>
                                 <AuthIsLoaded>
+                                    <Route exact path='/groups'>
+                                        <SelectGroupPage/>
+                                    </Route>
                                     <PrivateRoute exact path='/home'>
                                         <HomePage/>
                                     </PrivateRoute>

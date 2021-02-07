@@ -18,7 +18,8 @@ const PoolsLink = styled(ButtonLink)`
 
 export const SelectPoolsPage = (props) => {
     const profile = useStoreState(state => state.firebase.profile)
-    useFirestoreConnect([{collection: `groups/${profile.groups[0]}/pools`, storeAs: 'pools'}]);
+    const activeGroup = useStoreState(state => state.users.activeGroup);
+    useFirestoreConnect([{collection: `groups/${activeGroup}/pools`, storeAs: 'pools'}]);
     const pools = useStoreState(state => state.firestore.data.pools) ?? {};
 
     return (
