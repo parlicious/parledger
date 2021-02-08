@@ -158,7 +158,8 @@ export const PropsPool = (props) => {
     const onSave = async () => {
         try {
             setSaving(true);
-            await submitPoolEntry({poolId: pool.id, groupId: pool.groupId, selections: propsSelected});
+            // await submitPoolEntry({poolId: pool.id, groupId: pool.groupId, selections: propsSelected});
+            console.log({poolId: pool.id, groupId: pool.groupId, selections: propsSelected});
         } catch (e) {
             console.error(e);
         }
