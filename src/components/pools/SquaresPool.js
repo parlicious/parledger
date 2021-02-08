@@ -70,7 +70,8 @@ const SquareCell = (props) => {
         <PickCell selected={selected}
                   onClick={onClick}
                   num={props.num}
-                  onMouseEnter={() => console.log(props.num)}
+                  onMouseEnter={props.onMouseEnter}
+                  onMouseLeave={props.onMouseLeave}
                   highlightedRow={props.row}
                   highlightedCol={props.col}>
             {selected
@@ -124,6 +125,16 @@ const Squares = (props) => {
     const [row, setRow] = useState(null);
     const [col, setCol] = useState(null);
 
+    const mouseEnterCell = (num) => () => {
+        setRow(Math.floor(num / 10));
+        setCol(num % 10)
+    }
+
+    const mouseLeaveCell = () => {
+        setRow(null);
+        setCol(null);
+    }
+
     return (
         <GridContainerRow>
             <HorizontalTeamName> Cheifs</HorizontalTeamName>
@@ -140,6 +151,8 @@ const Squares = (props) => {
                         onMouseLeave={() => setCol(null)}
                         x={it + 2} y={1}> {pool.colLabels?.[it] || '?'}  </NumberCell>)}
                     {[...Array(100).keys()].map(it => <SquareCell onSelected={onSquareSelected}
+                                                                  onMouseEnter={mouseEnterCell(it)}
+                                                                  onMouseLeave={mouseLeaveCell}
                                                                   num={it}
                                                                   row={row}
                                                                   col={col}
