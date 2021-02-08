@@ -7,7 +7,7 @@ import {ConfirmButton, PrimaryButton} from '../../styles';
 import {addImpliedOddsToEvents} from '../../stores/wagers';
 import {UserAvatar} from '../UserAvatar';
 
-const results = {
+export const winningResults = {
     "8036708": "737276821",
     "8036729": "737277010",
     "8036734": "737277560",
@@ -217,8 +217,8 @@ export const PropsPool = (props) => {
 
     useEffect(() => {
         const fromDatabase = pool.members[auth.uid]?.selections ?? {};
-        // loadSelectedProps({...fromDatabase, ...propsSelected})
-        loadSelectedProps(results);
+        loadSelectedProps({...fromDatabase, ...propsSelected})
+        // loadSelectedProps(results);
     }, [pool])
 
     const onSave = async () => {

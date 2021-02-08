@@ -2,6 +2,7 @@ import {AdjustedOdds, GridBasedEventCell, TimeAndDateCell, TimeAndDateText} from
 import React from 'react';
 import styled from 'styled-components';
 import {useStoreState} from 'easy-peasy';
+import {winningResults} from '../pools/PropsPool';
 
 
 const RankEventContainer = styled.div`
@@ -36,7 +37,7 @@ const RankOutcomeContainer = styled.div`
   align-items: center;
   padding: 0.5rem;
   
-  background: ${props => props.propSelected ? 'white' : 'inherit'};
+  background: ${props => getBackgroundColor(props.propSelected, props.propCorrect)};
   color: ${props => props.propSelected ? '#0f2027' : 'inherit'};
   
   :hover {
@@ -44,6 +45,16 @@ const RankOutcomeContainer = styled.div`
     background: ${props => props.propSelected ? '#FFFFFFCC' : '#FFFFFF13'};
   }
 `
+
+const getBackgroundColor = (selected, correct) => {
+    if(correct){
+        return '#3cc921'
+    } else if(selected) {
+        return '#FF4040'
+    } else {
+        return 'inherit'
+    }
+}
 
 const RankOdds = styled.div`
   font-family: Monaco, SFMono-Regular, monospace;
@@ -62,9 +73,10 @@ export const RankOutcome = (props) => {
 
     const selectedProps = useStoreState(state => state.pools.selectedProps);
     const propSelected = Object.values(selectedProps).includes(outcome?.id);
+    const propCorrect = Object.values(winningResults).includes(outcome?.id);
 
     return (
-        <RankOutcomeContainer propSelected={propSelected} onClick={() => onSelect(outcome)}>
+        <RankOutcomeContainer propSelected={propSelected} propCorrect={propCorrect} onClick={() => onSelect(outcome)}>
             {outcome.description}
             <RankOdds>
                 <RankOddsItem>{outcome.price.american}</RankOddsItem>
