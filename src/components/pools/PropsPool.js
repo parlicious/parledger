@@ -260,7 +260,7 @@ export const PropsPool = (props) => {
                 event not occurring (e.g. an event with a 1% chance nets you 99 points). Most points wins. $20 to enter.
             </PoolDescriptionContainer>
             <PoolMembers pool={pool}/>
-            {section && <SportSection showTitle={false} eventSelected={propEventSelected} section={section}/>}
+            {section && <SportSection showTitle={false} eventSelected={() => {}} section={section}/>}
         </div>
     )
 }
