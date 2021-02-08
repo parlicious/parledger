@@ -217,7 +217,8 @@ export const PropsPool = (props) => {
 
     useEffect(() => {
         const fromDatabase = pool.members[auth.uid]?.selections ?? {};
-        loadSelectedProps({...fromDatabase, ...propsSelected})
+        // loadSelectedProps({...fromDatabase, ...propsSelected})
+        loadSelectedProps(results);
     }, [pool])
 
     const onSave = async () => {
