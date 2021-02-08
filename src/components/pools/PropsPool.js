@@ -154,7 +154,7 @@ const PoolMembers = (props) => {
                             {member.info.displayName}
                         </ScoreboardCell>
                         <ScoreboardCell> {calculatePossiblePoints(member.selections, section.events)} </ScoreboardCell>
-                        <ScoreboardCell> {calculatePossiblePoints(member.selections, section.events)} </ScoreboardCell>
+                        <ScoreboardCell> {calculateActualPoints(member.selections, section.events)} </ScoreboardCell>
                     </React.Fragment>
                 )}
             </PoolMembersGrid>
