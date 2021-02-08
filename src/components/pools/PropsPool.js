@@ -182,7 +182,7 @@ const calculateActualPoints = (propsSelected, events) => {
             const event = events.find(it => it.id === k);
             const outcome = event.displayGroups[0].markets[0].outcomes.find(it => it.id === propsSelected[k]);
 
-            if(results[k] === propsSelected[k]){
+            if(winningResults[k] === propsSelected[k]){
                 return 1 - outcome.impliedOdds
             } else {
                 return 0;
