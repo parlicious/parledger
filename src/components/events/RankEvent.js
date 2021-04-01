@@ -50,7 +50,7 @@ const getBackgroundColor = (selected, correct) => {
     if(correct){
         return '#3cc921'
     } else if(selected) {
-        return '#FF4040'
+        return '#FFFFFF'
     } else {
         return 'inherit'
     }

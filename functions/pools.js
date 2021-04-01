@@ -101,12 +101,12 @@ async function submitPoolEntry(data, context) {
 async function manuallyCreateSuperBowlProps() {
     const pool = {
         acceptingPicksUntil: admin.firestore.Timestamp.now(),
-        groupId: "CPBNJGExlWuZmzLc613T",
+        groupId: "viotULiV8KiwuCX0GYMA",
         id: "",
         members: {},
-        name: "Super Bowl Prop Sheet",
-        optionsType: "bovada",
-        selectionType: SelectionTypes.OPEN,
+        name: "Super Bowl Squares",
+        optionsType: "squares",
+        selectionType: SelectionTypes.EXCLUSIVE,
         selections: {},
         type: PoolTypes.PICKEM,
     }
@@ -115,14 +115,48 @@ async function manuallyCreateSuperBowlProps() {
     const axiosResult = await axios.get(eventsUrl)
     const section = axiosResult.data[0];
 
-    await db.collection('groups')
+    const doc = await db.collection('groups')
         .doc(pool.groupId)
         .collection('pools')
         .add({...pool, options: section});
+
+    await doc.update({id: doc.id});
+}
+
+async function manuallyCreateRugbyPool() {
+    const pool = {
+        acceptingPicksUntil: admin.firestore.Timestamp.now(),
+        groupId: "CPBNJGExlWuZmzLc613T",
+        id: "",
+        members: {},
+        name: "🏉 European Champions Cup",
+        optionsType: "bovada",
+        selectionType: SelectionTypes.OPEN,
+        selections: {},
+        type: PoolTypes.PICKEM,
+    }
+
+    const challengeUrl = 'https://www.bovada.lv/services/sports/event/coupon/events/A/description/rugby-union/european-challenge-cup?marketFilterId=def&preMatchOnly=true&lang=en';
+    const championUrl = 'https://www.bovada.lv/services/sports/event/coupon/events/A/description/rugby-union/european-champions-cup?marketFilterId=def&preMatchOnly=true&lang=en';
+    const challengeResult = await axios.get(challengeUrl)
+    const championResult = await axios.get(championUrl)
+    const challengeSection = challengeResult.data[0];
+    const championSection = championResult.data[0];
+
+    const doc = await db.collection('groups')
+        .doc(pool.groupId)
+        .collection('pools')
+        .add({...pool, options: {
+            path: challengeSection.path,
+                events: [ ...championSection.events, ...challengeSection.events]
+            }});
+
+    await doc.update({id: doc.id});
 }
 
 
 module.exports = {
     submitPoolEntry,
-    manuallyCreateSuperBowlProps
+    manuallyCreateSuperBowlProps,
+    manuallyCreateRugbyPool
 }

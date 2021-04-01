@@ -9,7 +9,7 @@ admin.initializeApp({
 const { onWagerWrite, manageWager, confirmWager, createWager } = require('./wagers');
 const { getAndSaveEventsFromBovada } = require('./bovada');
 const { isValidInvitation, joinGroup, createGroup } = require('./groups');
-const { submitPoolEntry, manuallyCreateSuperBowlProps } = require('./pools');
+const { submitPoolEntry, manuallyCreateSuperBowlProps, manuallyCreateRugbyPool } = require('./pools');
 
 exports.createGroup = functions.https.onCall(createGroup);
 
@@ -24,6 +24,11 @@ exports.manageWager = functions.https.onCall(manageWager);
 exports.submitPoolEntry = functions.https.onCall(submitPoolEntry)
 exports.manuallyCreateSuperBowlProps = functions.https.onRequest(async (req, resp) => {
     await manuallyCreateSuperBowlProps();
+    resp.send('ok');
+})
+
+exports.manuallyCreateRugbyPool = functions.https.onRequest(async (req, resp) => {
+    await manuallyCreateRugbyPool();
     resp.send('ok');
 })
 

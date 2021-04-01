@@ -115,7 +115,7 @@ export const AppContainer = (props) => {
                     Home
                 </AppHeaderLink>
                 <AppHeaderLink to="/pools">
-                    Super Bowl
+                    Pools
                 </AppHeaderLink>
                 <AppHeaderLink to="/groups">
                     Groups

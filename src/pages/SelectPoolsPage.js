@@ -24,7 +24,7 @@ export const SelectPoolsPage = (props) => {
 
     return (
         <PoolOptionsContainer>
-            {Object.values(pools).map(it => <PoolsLink to={`/pools/${it.id}`}> {it.name} </PoolsLink>)}
+            {Object.values(pools).filter(it => it.active).map(it => <PoolsLink to={`/pools/${it.id}`}> {it.name} </PoolsLink>)}
         </PoolOptionsContainer>
     )
 }

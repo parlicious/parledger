@@ -20,10 +20,18 @@ export const poolsModel = {
      */
     propEventSelected: action((state, payload) => {
         const {event, market, outcome, displayGroup} = payload;
-        const newSelectedProps = {...state.selectedProps, [event.id]: outcome.id}
-        return {
-            ...state,
-            selectedProps: newSelectedProps
+        if (event.type === 'RANKEVENT') {
+            const newSelectedProps = {...state.selectedProps, [event.id]: outcome.id}
+            return {
+                ...state,
+                selectedProps: newSelectedProps
+            }
+        } else if(event.type === 'GAMEEVENT'){
+            const newSelectedProps = {...state.selectedProps, [event.id]: event.displayGroups[0].markets[market].outcomes[outcome].id}
+            return {
+                ...state,
+                selectedProps: newSelectedProps
+            }
         }
     }),
     clearPropsSelected: action((state, payload) => {

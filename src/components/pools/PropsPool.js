@@ -153,8 +153,8 @@ const PoolMembers = (props) => {
                         <ScoreboardCell>
                             {member.info.displayName}
                         </ScoreboardCell>
-                        <ScoreboardCell> {calculatePossiblePoints(member.selections, section.events)} </ScoreboardCell>
-                        <ScoreboardCell> {calculateActualPoints(member.selections, section.events)} </ScoreboardCell>
+                        <ScoreboardCell> {calculatePossiblePoints(member.selections, section.events, pool.market || 0)} </ScoreboardCell>
+                        <ScoreboardCell> {calculateActualPoints(member.selections, section.events, pool.market || 0)} </ScoreboardCell>
                     </React.Fragment>
                 )}
             </PoolMembersGrid>
@@ -162,13 +162,15 @@ const PoolMembers = (props) => {
     )
 }
 
-const calculatePossiblePoints = (propsSelected, events) => {
-    console.log(propsSelected, events);
+const calculatePossiblePoints = (propsSelected, events, market) => {
+    // console.log(propsSelected, events);
     const raw = Object.keys(propsSelected).map(k => {
             const event = events.find(it => it.id === k);
-            const outcome = event.displayGroups[0].markets[0].outcomes.find(it => it.id === propsSelected[k]);
+            const outcome = event.displayGroups[0].markets[market].outcomes.find(it => it.id === propsSelected[k]);
 
-            return 1 - outcome.impliedOdds
+            if(outcome){
+                return 1 - outcome.impliedOdds
+            }
         }
     ).reduce((a, b) => a + b, 0)
 
@@ -176,11 +178,11 @@ const calculatePossiblePoints = (propsSelected, events) => {
 }
 
 // TODO
-const calculateActualPoints = (propsSelected, events) => {
-    console.log(propsSelected, events);
+const calculateActualPoints = (propsSelected, events, market) => {
+    // console.log(propsSelected, events);
     const raw = Object.keys(propsSelected).map(k => {
             const event = events.find(it => it.id === k);
-            const outcome = event.displayGroups[0].markets[0].outcomes.find(it => it.id === propsSelected[k]);
+            const outcome = event.displayGroups[0].markets[market].outcomes.find(it => it.id === propsSelected[k]);
 
             if(winningResults[k] === propsSelected[k]){
                 return 1 - outcome.impliedOdds
@@ -197,7 +199,8 @@ export const PropsPool = (props) => {
     const {pool} = props;
     const auth = useStoreState(state => state.firebase.auth);
     const submitPoolEntry = useStoreActions(actions => actions.pools.submitPoolEntry);
-    const section = {path: pool.options.path, events: pool.options.events.map(addImpliedOddsToEvents(5))}
+    const events = pool.options.events.map(addImpliedOddsToEvents(5)).map(it => ({...it, type: 'RANKEVENT'}))
+    const section = {path: pool.options.path, events: events}
     const propEventSelected = useStoreActions(actions => actions.pools.propEventSelected);
     const randomizeProps = useStoreActions(actions => actions.pools.randomizePropsSelected);
     const clearPropsSelected = useStoreActions(actions => actions.pools.clearPropsSelected);
@@ -211,7 +214,7 @@ export const PropsPool = (props) => {
     const [possiblePoints, setPossiblePoints] = useState(0);
 
     useEffect(() => {
-        const points = calculatePossiblePoints(propsSelected, section.events);
+        const points = calculatePossiblePoints(propsSelected, section.events, pool.market || 0);
         setPossiblePoints(points);
     }, [propsSelected])
 
@@ -224,8 +227,8 @@ export const PropsPool = (props) => {
     const onSave = async () => {
         try {
             setSaving(true);
-            // await submitPoolEntry({poolId: pool.id, groupId: pool.groupId, selections: propsSelected});
-            console.log({poolId: pool.id, groupId: pool.groupId, selections: propsSelected});
+            await submitPoolEntry({poolId: pool.id, groupId: pool.groupId, selections: propsSelected});
+            // console.log({poolId: pool.id, groupId: pool.groupId, selections: propsSelected});
         } catch (e) {
             console.error(e);
         }
@@ -238,7 +241,7 @@ export const PropsPool = (props) => {
             <PropsSelectionProgressContainer>
                 <PoolTitleContainer>
                     <div>
-                        <h2> Super Bowl Props </h2>
+                        <h2> {pool.name} </h2>
                     </div>
                     <div>
                         Selected {selected} of {possible} ({possiblePoints} points possible)
@@ -260,7 +263,7 @@ export const PropsPool = (props) => {
                 event not occurring (e.g. an event with a 1% chance nets you 99 points). Most points wins. $20 to enter.
             </PoolDescriptionContainer>
             <PoolMembers pool={pool}/>
-            {section && <SportSection showTitle={false} eventSelected={() => {}} section={section}/>}
+            {section && <SportSection market={1} showTitle={false} eventSelected={propEventSelected} section={section}/>}
         </div>
     )
 }

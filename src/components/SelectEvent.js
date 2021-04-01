@@ -6,14 +6,14 @@ import {SportSelect} from "./SportSelect";
 import {TitleRow} from "./events/commonEventComponents";
 import {RenderEvent} from "./events/RenderEvent";
 
-export const SportSection = ({section, eventSelected, showTitle = true}) => {
+export const SportSection = ({section, eventSelected, showTitle = true, market = 0}) => {
     const comp = section.path.find(p => p.type === 'COMPETITION')?.description;
     const descriptionPrefix = comp ? comp + ' - ' : '';
     const fullDescription = descriptionPrefix + section.path[0].description;
     return (
         <div>
             {showTitle && <TitleRow name={fullDescription} expectedMarkets={section.expectedMarkets}/>}
-            {section.events.map(it => <RenderEvent onSelect={eventSelected} event={it}/>)}
+            {section.events.map(it => <RenderEvent market={market} onSelect={eventSelected} event={it}/>)}
         </div>
     )
 }
