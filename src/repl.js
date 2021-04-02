@@ -2,7 +2,7 @@
 const repl = require("repl");
 var admin = require("firebase-admin");
 
-var serviceAccount = require("/Users/donnie/Downloads/ledgerdotbet-dev-firebase-adminsdk-7w35x-d62b671977.json")
+var serviceAccount = require("/Users/donnie/Downloads/parledger-app-6a528680b352.json")
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)

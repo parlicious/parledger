@@ -114,7 +114,7 @@ export const RankEvent = (props) => {
                 <RankEventTitle>
                     {event.description}
                 </RankEventTitle>
-                {outcomes?.length === 2
+                {outcomes?.length === 2 || (outcomes?.length === 3 && outcomes[2].description === 'Draw')
                     ? <RankEventTwoOptions>
                         <RankOutcome onSelect={eventSelected} outcome={outcomes[0]}/>
                         <RankOutcome onSelect={eventSelected} outcome={outcomes[1]}/>

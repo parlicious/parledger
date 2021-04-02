@@ -44,7 +44,7 @@
     "emulators": "env-cmd -f .env firebase emulators:start --import ./local_data --export-on-exit",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "repl": "node src/repl.js"
+    "repl": "node --experimental-repl-await src/repl.js"
   },
   "eslintConfig": {
     "extends": [

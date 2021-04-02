@@ -142,6 +142,10 @@ const PoolMembers = (props) => {
     const {pool} = props;
     const section = {path: pool.options.path, events: pool.options.events.map(addImpliedOddsToEvents(5))}
 
+    const sortedMembers = Object.values(pool.members).sort((a, b) => {
+
+    })
+
     return (
         <PoolMembersContainer>
             <PoolMembersGrid>
@@ -163,12 +167,13 @@ const PoolMembers = (props) => {
 }
 
 const calculatePossiblePoints = (propsSelected, events, market) => {
-    // console.log(propsSelected, events);
+    console.log(propsSelected, events);
     const raw = Object.keys(propsSelected).map(k => {
-            const event = events.find(it => it.id === k);
+            const event = events.find(it => it.id == k);
             const outcome = event.displayGroups[0].markets[market].outcomes.find(it => it.id === propsSelected[k]);
 
             if(outcome){
+                console.log(outcome.impliedOdds);
                 return 1 - outcome.impliedOdds
             }
         }
@@ -183,8 +188,8 @@ const calculateActualPoints = (propsSelected, events, market) => {
     const raw = Object.keys(propsSelected).map(k => {
             const event = events.find(it => it.id === k);
             const outcome = event.displayGroups[0].markets[market].outcomes.find(it => it.id === propsSelected[k]);
-
             if(winningResults[k] === propsSelected[k]){
+                console.log(outcome.impliedOdds);
                 return 1 - outcome.impliedOdds
             } else {
                 return 0;
@@ -199,7 +204,9 @@ export const PropsPool = (props) => {
     const {pool} = props;
     const auth = useStoreState(state => state.firebase.auth);
     const submitPoolEntry = useStoreActions(actions => actions.pools.submitPoolEntry);
-    const events = pool.options.events.map(addImpliedOddsToEvents(5)).map(it => ({...it, type: 'RANKEVENT'}))
+    const events = pool.options.events
+        .map(addImpliedOddsToEvents(5))
+        .map(it => ({...it, type: 'RANKEVENT'}))
     const section = {path: pool.options.path, events: events}
     const propEventSelected = useStoreActions(actions => actions.pools.propEventSelected);
     const randomizeProps = useStoreActions(actions => actions.pools.randomizePropsSelected);
