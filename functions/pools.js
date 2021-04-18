@@ -80,6 +80,7 @@ async function handlePickemEntry(pool, selections, context) {
  *  - type: PoolTypes
  */
 async function submitPoolEntry(data, context) {
+    console.log(data, context);
     console.log(`AUDIT: action by ${context.auth.uid}`);
     console.log('called with:', data);
     const {poolId, groupId, selections} = data;

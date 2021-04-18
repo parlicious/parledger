@@ -78,11 +78,13 @@ const addUserToGroup = async (invitationCode, uid) => {
 }
 
 async function createGroup (data, context) {
+    console.log(data, context);
     const groupId = await createGroupInFirestore(data.uid, data.groupId, data.session);
     await addUserToGroup(groupId, data.uid, true)
 }
 
 async function joinGroup(data, context) {
+    console.log(data, context);
     const groupId = data.joinCode.split('-')[0] // TODO: change this to be group id + auth hash and check it
     const usersSnapshot = await db.collection(`groups/${groupId}/users`).doc(data.uid).get();
 

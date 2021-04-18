@@ -33,6 +33,7 @@ const fail = (message) => {
 }
 
 const onWagerWrite = async (change) => {
+    console.log(change);
     const wager = change.after.data();
     if (wager && wager.proposedTo && wager.proposedTo.uid) {
 
@@ -192,6 +193,7 @@ async function writeWager(newWager, groupId, wagerId, user1Uid, user2Uid) {
 }
 
 async function manageWager(data, context) {
+    console.log(data, context);
     console.log(`AUDIT: action by ${context.auth.uid}`);
     const {groupId, wagerId, action} = data;
 
@@ -215,6 +217,7 @@ async function manageWager(data, context) {
 };
 
 async function confirmWager(data, context) {
+    console.log(data, context);
     console.log(`AUDIT: action by ${context.auth.uid}`);
     const {groupId, wagerId, accept} = data;
 
@@ -257,8 +260,10 @@ async function confirmWager(data, context) {
 }
 
 async function createWager(data, context) {
+    console.log(data, context);
     const {groupId, proposedTo, details, type, isOpen} = data;
     const proposedBy = context.auth.uid;
+    console.log(`CREATING WAGER: authed with ${context.auth}`);
     const usersSnapshot = await db.collection(`groups/${groupId}/users`).doc(proposedBy).get();
     if (!usersSnapshot.exists) {
         throw new functions.https.HttpsError('unauthenticated', 'You must be a member of the group to create wagers in it.')

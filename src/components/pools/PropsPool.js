@@ -143,7 +143,7 @@ const PoolMembers = (props) => {
     const section = {path: pool.options.path, events: pool.options.events.map(addImpliedOddsToEvents(5))}
 
     const sortedMembers = Object.values(pool.members).sort((a, b) => {
-
+        return calculateActualPoints(b.selections, section.events, pool.market || 0, pool.results) - calculateActualPoints(a.selections, section.events, pool.market || 0, pool.results)
     })
 
     return (
@@ -152,13 +152,13 @@ const PoolMembers = (props) => {
                 <ScoreboardHeader> Name </ScoreboardHeader>
                 <ScoreboardHeader> Possible </ScoreboardHeader>
                 <ScoreboardHeader> Actual </ScoreboardHeader>
-                {Object.values(pool.members).map(member =>
+                {sortedMembers.map(member =>
                     <React.Fragment>
                         <ScoreboardCell>
                             {member.info.displayName}
                         </ScoreboardCell>
-                        <ScoreboardCell> {calculatePossiblePoints(member.selections, section.events, pool.market || 0)} </ScoreboardCell>
-                        <ScoreboardCell> {calculateActualPoints(member.selections, section.events, pool.market || 0)} </ScoreboardCell>
+                        <ScoreboardCell> {calculatePossiblePoints(member.selections, section.events, pool.market || 0, pool.results)} </ScoreboardCell>
+                        <ScoreboardCell> {calculateActualPoints(member.selections, section.events, pool.market || 0, pool.results)} </ScoreboardCell>
                     </React.Fragment>
                 )}
             </PoolMembersGrid>
@@ -166,15 +166,23 @@ const PoolMembers = (props) => {
     )
 }
 
-const calculatePossiblePoints = (propsSelected, events, market) => {
-    console.log(propsSelected, events);
+const calculatePossiblePoints = (propsSelected, events, market, results = {}) => {
     const raw = Object.keys(propsSelected).map(k => {
             const event = events.find(it => it.id == k);
             const outcome = event.displayGroups[0].markets[market].outcomes.find(it => it.id === propsSelected[k]);
 
             if(outcome){
-                console.log(outcome.impliedOdds);
-                return 1 - outcome.impliedOdds
+                if(event.id in results){
+                    if(outcome.id === results[event.id]){
+                        return 1 - outcome.impliedOdds
+                    } else {
+                        return 0;
+                    }
+                } else {
+                    return 1 - outcome.impliedOdds
+                }
+            } else {
+                return 0;
             }
         }
     ).reduce((a, b) => a + b, 0)
@@ -182,14 +190,11 @@ const calculatePossiblePoints = (propsSelected, events, market) => {
     return Math.floor(raw * 100);
 }
 
-// TODO
-const calculateActualPoints = (propsSelected, events, market) => {
-    // console.log(propsSelected, events);
+const calculateActualPoints = (propsSelected, events, market, results = {}) => {
     const raw = Object.keys(propsSelected).map(k => {
             const event = events.find(it => it.id === k);
             const outcome = event.displayGroups[0].markets[market].outcomes.find(it => it.id === propsSelected[k]);
-            if(winningResults[k] === propsSelected[k]){
-                console.log(outcome.impliedOdds);
+            if(results[k] === propsSelected[k]){
                 return 1 - outcome.impliedOdds
             } else {
                 return 0;
@@ -221,7 +226,7 @@ export const PropsPool = (props) => {
     const [possiblePoints, setPossiblePoints] = useState(0);
 
     useEffect(() => {
-        const points = calculatePossiblePoints(propsSelected, section.events, pool.market || 0);
+        const points = calculatePossiblePoints(propsSelected, section.events, pool.market || 0, pool.results);
         setPossiblePoints(points);
     }, [propsSelected])
 
@@ -270,7 +275,7 @@ export const PropsPool = (props) => {
                 event not occurring (e.g. an event with a 1% chance nets you 99 points). Most points wins. $20 to enter.
             </PoolDescriptionContainer>
             <PoolMembers pool={pool}/>
-            {section && <SportSection market={1} showTitle={false} eventSelected={propEventSelected} section={section}/>}
+            {section && <SportSection market={1} showTitle={false} results={pool.results} eventSelected={propEventSelected} section={section}/>}
         </div>
     )
 }
