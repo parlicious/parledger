@@ -2,11 +2,19 @@ import {Route, Redirect} from 'react-router-dom';
 import {isLoaded, isEmpty} from "react-redux-firebase"
 import {useStoreActions, useStoreState} from 'easy-peasy';
 import React from 'react';
+import LogRocket from 'logrocket';
 
 export function PrivateRoute({children, ...rest}) {
     const auth = useStoreState(state => state.firebase.auth)
     const profile = useStoreState(state => state.firebase.profile);
     const userHasJoined = profile?.groups?.length > 0;
+
+    if (isLoaded(auth) && !isEmpty(auth) && userHasJoined) {
+        LogRocket.identify(auth.uid, {
+            name: profile.displayName,
+            email: profile.email,
+        });
+    }
 
     return (
         !isLoaded(profile)
