@@ -47,10 +47,13 @@ const RankOutcomeContainer = styled.div`
 `
 
 const getBackgroundColor = (selected, correct) => {
+    console.log(correct, selected);
     if(correct){
         return '#3cc921'
-    } else if(selected) {
+    } else if(selected && correct === null) {
         return '#FFFFFF'
+    } else if(selected){
+        return '#FF4040'
     } else {
         return 'inherit'
     }
@@ -69,14 +72,13 @@ const RankOddsItem = styled.div`
 `
 
 export const RankOutcome = (props) => {
-    const {outcome, onSelect} = props;
+    const {outcome, onSelect, correct} = props;
 
     const selectedProps = useStoreState(state => state.pools.selectedProps);
     const propSelected = Object.values(selectedProps).includes(outcome?.id);
-    const propCorrect = Object.values(winningResults).includes(outcome?.id);
 
     return (
-        <RankOutcomeContainer propSelected={propSelected} propCorrect={propCorrect} onClick={() => onSelect(outcome)}>
+        <RankOutcomeContainer propSelected={propSelected} propCorrect={correct} onClick={() => onSelect(outcome)}>
             {outcome.description}
             <RankOdds>
                 <RankOddsItem>{outcome.price.american}</RankOddsItem>
@@ -88,18 +90,31 @@ export const RankOutcome = (props) => {
     )
 }
 
+const wasOutcomeCorrect = (eventResult, outcomeId) => {
+    if(!eventResult){
+        return null;
+    } else if(outcomeId === eventResult){
+        return true;
+    } else {
+        return false;
+    }
+}
+
 export const RankEvent = (props) => {
-    const {onSelect, event, displayGroup = 0, market = 0} = props;
+    const {onSelect, event, displayGroup = 0, market = 0, eventResult} = props;
     const eventTime = new Date(event.startTime);
     const outcomes = event.displayGroups[displayGroup].markets[market]?.outcomes
         || event.displayGroups[displayGroup].originalMarkets[market]?.outcomes;
 
-    const eventSelected = (outcome) => onSelect({
-        event,
-        market: 0,
-        outcome,
-        displayGroup
-    });
+    const eventSelected = (outcome) => {
+        console.log(`for event: ${event.id} selected ${outcome.id}`);
+        onSelect({
+            event,
+            market: 0,
+            outcome,
+            displayGroup
+        });
+    }
 
     return (
         <GridBasedEventCell key={event.id}>
@@ -116,11 +131,11 @@ export const RankEvent = (props) => {
                 </RankEventTitle>
                 {outcomes?.length === 2 || (outcomes?.length === 3 && outcomes[2].description === 'Draw')
                     ? <RankEventTwoOptions>
-                        <RankOutcome onSelect={eventSelected} outcome={outcomes[0]}/>
-                        <RankOutcome onSelect={eventSelected} outcome={outcomes[1]}/>
+                        <RankOutcome correct={wasOutcomeCorrect(eventResult, outcomes[0].id)} onSelect={eventSelected} outcome={outcomes[0]}/>
+                        <RankOutcome correct={wasOutcomeCorrect(eventResult, outcomes[1].id)} onSelect={eventSelected} outcome={outcomes[1]}/>
                     </RankEventTwoOptions>
                     : <RankEventManyOptions>
-                        {outcomes.map(it => <RankOutcome onSelect={eventSelected} outcome={it}/>)}
+                        {outcomes.map(it => <RankOutcome correct={wasOutcomeCorrect(eventResult, it.id)} onSelect={eventSelected} outcome={it}/>)}
                     </RankEventManyOptions>}
             </RankEventContainer>
         </GridBasedEventCell>

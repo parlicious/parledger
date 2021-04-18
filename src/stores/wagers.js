@@ -96,6 +96,8 @@ export const wagersModel = {
     eventsUpdated: null,
     fuse: null,
     searchString: null,
+    eventsToGet: 5,
+    increaseEventsToGet: action((state) => ({...state, eventsToGet: state.eventsToGet + 5})),
     setSearchString: action((state, searchString) => ({ ...state, searchString })),
     updatingEvents: action((state, payload) => {
         return {...state, eventsUpdated: Date.now()}
@@ -133,11 +135,16 @@ export const wagersModel = {
         }
     ),
     eventsByCategory: computed(state => eventsByCategory(state.events)),
+    loadMoreEvents: thunk(async (actions, payload, helpers) => {
+        await actions.increaseEventsToGet();
+        await actions.loadEvents();
+    }),
     loadEvents: thunk(async (actions, payload, helpers) => {
         const updatedAt = helpers.getStoreState().wagers?.eventsUpdated
+        const eventsToGet = helpers.getStoreState().wagers?.eventsToGet;
         if (!updatedAt || (Date.now() - updatedAt > 5000)) {
             await actions.updatingEvents();
-            const result = await fetch("https://www.bovada.lv/services/sports/event/coupon/events/A/description?lang=en")
+            const result = await fetch(`https://www.bovada.lv/services/sports/event/coupon/events/A/description?lang=en&eventsLimitByPath=${eventsToGet}`)
             const json = await result.json();
             console.log(json);
             const events = (json)
