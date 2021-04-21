@@ -4,9 +4,6 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import LogRocket from 'logrocket';
-LogRocket.init('0umj27/parledger');
-
 ReactDOM.render(
   <React.StrictMode>
     <App />
