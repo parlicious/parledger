@@ -26,7 +26,7 @@ export const HeadToHeadWager = (props) => {
 
     if (expanded) {
         return (
-            <Wager wager={wager}/>
+            <Wager {...props}/>
         )
     } else {
         return <CondensedBovadaWager {...props}/>

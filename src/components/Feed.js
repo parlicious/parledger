@@ -31,6 +31,7 @@ const groupByPath = (collection, path, transform = a => a) => collection.reduce(
 );
 
 const WagersForCompetition = (props) => {
+    console.log(props);
     const {link, wagers, confirmWager} = props;
     const [name, setName] = useState('');
 

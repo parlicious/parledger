@@ -14,6 +14,9 @@ export const PersonalWagers = ({}) => {
     const profile = useStoreState(state => state.firebase.profile);
     const confirmWagerAction = useStoreActions(actions => actions.wagers.respondToWager);
     const wagers = Object.values(profile?.wagers ?? {}).filter(wager => wager.status !== 'rejected');
+
+    console.log(wagers);
+
     const confirmWager = async (wagerId, groupId, acceptWager) => {
         await confirmWagerAction({wagerId, groupId, accept: acceptWager})
     };
@@ -38,7 +41,7 @@ export const PersonalWagers = ({}) => {
 
 export const useGroupWagers = () => {
     const profile = useStoreState(state => state.firebase.profile);
-    useFirestoreConnect(profile?.groups?.map(g => ({collection: `groups/${g}/wagers`, storeAs: 'wagers'})));
+    useFirestoreConnect(profile?.groups?.map(g => ({collection: `groups/${g}/wagers`, storeAs: 'wagers', orderBy: ['lastUpdatedAt', 'desc']})));
     const loadGroupWagers = useStoreActions(actions => actions.wagers.loadGroupWagers);
     useEffect(() => {
         loadGroupWagers()?.catch(console.error);
@@ -49,7 +52,7 @@ export const useGroupWagers = () => {
 export const GroupWagers = ({}) => {
     const profile = useStoreState(state => state.firebase.profile)
     const activeGroup = useStoreState(state => state.users.activeGroup);
-    useFirestoreConnect([{collection: `groups/${activeGroup}/wagers`, storeAs: 'wagers'}]);
+    useFirestoreConnect([{collection: `groups/${activeGroup}/wagers`, storeAs: 'wagers', orderBy: ['lastUpdatedAt', 'desc']}]);
     const auth = useStoreState(state => state.firebase.auth)
     const rawWagers = useStoreState(state => state.firestore.data.wagers)
     const wagers = Object.values(rawWagers ?? {})
@@ -80,7 +83,7 @@ export const GroupWagers = ({}) => {
 export const OpenWagers = ({}) => {
     const profile = useStoreState(state => state.firebase.profile)
     const activeGroup = useStoreState(state => state.users.activeGroup);
-    useFirestoreConnect([{collection: `groups/${activeGroup}/wagers`, storeAs: 'wagers'}]);
+    useFirestoreConnect([{collection: `groups/${activeGroup}/wagers`, storeAs: 'wagers', orderBy: ['lastUpdatedAt', 'desc']}]);
     const auth = useStoreState(state => state.firebase.auth)
     const rawWagers = useStoreState(state => state.firestore.data.wagers)
     const confirmWagerAction = useStoreActions(actions => actions.wagers.respondToWager);
