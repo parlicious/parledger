@@ -18,8 +18,8 @@ const ConfirmWagerContainer = styled.div`
   align-items: center;
 
   border-radius: 0 0 0.3em 0.3em;
-  background: white;
-  color: #0F2027;
+  border-top: 1px solid ${props => props.theme.interfaceColor};
+  color: ${props => props.theme.textColor};
 `
 
 const ConfirmWagerText = styled.span`

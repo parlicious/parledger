@@ -23,7 +23,7 @@ const JoinCodeInput = styled.input`
   
   width: 80%;
   min-height: 40px;
-  background: white;
+  background: ${props => props.theme.interfaceColor};
   margin-top: 0.5em;
   border-radius: 0.3em;
 `

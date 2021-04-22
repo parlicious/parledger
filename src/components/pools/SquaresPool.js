@@ -37,7 +37,7 @@ const SquareCellContainer = styled.div`
     background-color: #FFFFFF13;
   }
 
-  ${props => props.selected ? 'border: 1px solid white' : ''};
+  ${props => props.selected ? 'border: 1px solid ${props => props.theme.interfaceColor}' : ''};
   border-radius: 0.3em;
   margin: 0.2em;
 `

@@ -5,6 +5,7 @@ import 'firebase/firestore'
 import 'firebase/functions'
 import 'firebase/analytics'
 import 'firebase/storage'
+import LogRocket from 'logrocket';
 import {firebaseReducer, getFirebase} from 'react-redux-firebase'
 import {createFirestoreInstance, firestoreReducer, getFirestore} from 'redux-firestore'
 import {wagersModel} from "./wagers";
@@ -59,6 +60,9 @@ if (window.location.hostname === 'localhost' && process.env.REACT_APP_FIREBASE_P
         host: 'localhost:8080',
         ssl: false
     });
+} else {
+    // only log sessions in Prod
+    LogRocket.init('0umj27/parledger');
 }
 
 

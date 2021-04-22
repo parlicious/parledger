@@ -6,6 +6,7 @@ admin.initializeApp({
 });
 
 
+const { manuallyUpdateUserStats } = require('./aggregations')
 const { onWagerWrite, manageWager, confirmWager, createWager } = require('./wagers');
 const { getAndSaveEventsFromBovada } = require('./bovada');
 const { isValidInvitation, joinGroup, createGroup } = require('./groups');
@@ -29,6 +30,11 @@ exports.manuallyCreateSuperBowlProps = functions.https.onRequest(async (req, res
 
 exports.manuallyCreateRugbyPool = functions.https.onRequest(async (req, resp) => {
     await manuallyCreateRugbyPool();
+    resp.send('ok');
+})
+
+exports.manuallyUpdateUserStats = functions.https.onRequest(async (req, resp) => {
+    await manuallyUpdateUserStats();
     resp.send('ok');
 })
 

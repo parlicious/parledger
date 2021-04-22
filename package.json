@@ -15,7 +15,7 @@
     "firebaseui": "^4.7.1",
     "fuse.js": "^6.4.6",
     "instantsearch.css": "^7.4.5",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "logrocket": "^1.0.15",
     "lunr": "^2.3.9",
     "polished": "^4.0.5",

@@ -20,8 +20,8 @@ const NormalButton = styled.button`
   font-size: 1em;
 
   background: transparent;
-  color: white;
-  border: 1px solid white;
+  color: ${props => props.theme.interfaceColor};
+  border: 1px solid ${props => props.theme.interfaceColor};
 
   :hover {
     color: #ffffffaa;

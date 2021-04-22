@@ -63,7 +63,7 @@ const PropsSelectionProgressContainer = styled.div`
   position: sticky;
 
   top: 0;
-  background: white;
+  background: ${props => props.theme.interfaceColor};
   color: #0f2027;
 
   padding: 0.4em;
@@ -104,7 +104,7 @@ const PoolTitleContainer = styled.div`
 `
 
 const PoolDescriptionContainer = styled.div`
-  background: white;
+  background: ${props => props.theme.interfaceColor};
   color: #0f2027;
 
   max-width: 800px;
@@ -114,7 +114,7 @@ const PoolDescriptionContainer = styled.div`
 `
 
 const PoolMembersContainer = styled.div`
-  background: white;
+  background: ${props => props.theme.interfaceColor};
   color: #0f2027;
 
   max-width: 800px;

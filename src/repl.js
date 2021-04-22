@@ -25,5 +25,8 @@ replServer.context.withUser = (query) =>
     query.where("userId", "==", replServer.context.userId)
 
 replServer.context.getCollection = (q) => {
-    q.forEach(x => console.log(x.data()));
+    let arr = []
+    q.forEach(it => arr.push({id: it.id, ...it.data()}));
+
+    return arr;
 }
