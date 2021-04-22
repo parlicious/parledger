@@ -51,8 +51,8 @@ const WagerDescriptionRowContainer = styled.div`
 
   font-size: 1em;
   border-radius: 0.3em 0.3em 0 0;
-  background: white;
-  color: #0F2027;
+  border-bottom: 1px solid ${props => props.theme.interfaceColor};
+  color: ${props => props.theme.textColor};
 
   @media (max-width: 600px) {
     flex-direction: column;

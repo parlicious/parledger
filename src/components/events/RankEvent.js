@@ -16,7 +16,7 @@ const RankEventTitle = styled.div`
   font-weight: bold;
   padding: 0.6em;
   text-align: right;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid ${props => props.theme.interfaceColor};
 `
 
 const RankEventManyOptions = styled.div`

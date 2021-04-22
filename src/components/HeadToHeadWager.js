@@ -20,14 +20,9 @@ const CondensedBovadaWager = (props) => {
 }
 
 export const HeadToHeadWager = (props) => {
-    const {wager} = props;
-
     const [expanded, setExpanded] = useState(true);
-
     if (expanded) {
-        return (
-            <Wager {...props}/>
-        )
+        return <Wager {...props}/>
     } else {
         return <CondensedBovadaWager {...props}/>
     }

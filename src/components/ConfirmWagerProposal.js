@@ -43,10 +43,10 @@ const EventDescription = ({event, market, outcome}) => {
 
 const BetAmountButton = styled.button`
   border-radius: 0.3em;
-  color: white;
+  color: ${props => props.theme.interfaceColor};
   font-size: 1.2em;
   padding: 0.3em;
-  border: 1px solid white;
+  border: 1px solid ${props => props.theme.interfaceColor};
   background: none;
 
   width: 100px;
@@ -91,7 +91,7 @@ const CustomAmountForm = styled.form`
   justify-content: center;
   align-items: center;
   height: 2.5rem;
-  --border-color: white;
+  --border-color: ${props => props.theme.interfaceColor};
 
   :focus-within {
     --border-color: #afafaf;
@@ -99,7 +99,7 @@ const CustomAmountForm = styled.form`
 `
 
 const customAmountInputCss = css`
-  color: white;
+  color: ${props => props.theme.interfaceColor};
   font-size: 1.2em;
   background: none;
   height: 100%;

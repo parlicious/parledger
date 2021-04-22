@@ -57,7 +57,7 @@ export const OddsCell = styled.div`
 `
 
 export const MarketDescription = styled.div`
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid ${props => props.theme.interfaceColor};
   margin-bottom: 1em;
 `
 
@@ -86,7 +86,7 @@ export const SelectableOddsCellContainer = styled(OddsCell)`
 `
 
 export const SectionNameCell = styled.div`
-  color: white;
+  color: ${props => props.theme.interfaceColor};
   grid-column: span calc(var(--num-columns) + 1);
 `
 
@@ -97,7 +97,7 @@ export const EventHeaderContainer = styled.div`
 export const NotesRow = styled.div`
   grid-column: span calc(var(--num-columns));
 
-  border-top: 1px solid white;
+  border-top: 1px solid ${props => props.theme.interfaceColor};
   font-size: smaller;
   padding: 0.5em;
 `
@@ -129,7 +129,7 @@ export const OutcomeContainer = styled.div`
   flex-direction: row;
   justify-content: flex-end;
   
-  background: ${props => props.propSelected ? 'white' : 'inherit'};
+  background: ${props => props.propSelected ? '${props => props.theme.interfaceColor}' : 'inherit'};
 `
 
 export const OddsContainer = styled.div`

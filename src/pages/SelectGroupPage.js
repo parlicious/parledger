@@ -8,7 +8,7 @@ import {useEffect, useState} from 'react';
 
 const GroupInfoContainer = styled.div`
   border-radius: 0.3em;
-  background: white;
+  background: ${props => props.theme.interfaceColor};
   margin: 0.5em;
   color: #0f2027;
   padding: 0.5em;

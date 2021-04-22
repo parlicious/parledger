@@ -36,10 +36,10 @@ const SignUpPageImage = styled.img`
 
 export const SignUpButton = styled.button`
   border-radius: 0.3em;
-  color: white;
+  color: ${props => props.theme.interfaceColor};
   font-size: 1.2em;
   padding: 0.3em;
-  border: 1px solid white;
+  border: 1px solid ${props => props.theme.interfaceColor};
   background: none;
   
   max-width: 200px;

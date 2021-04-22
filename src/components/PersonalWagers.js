@@ -13,7 +13,9 @@ const PersonalWagersTitle = styled.div`
 export const PersonalWagers = ({}) => {
     const profile = useStoreState(state => state.firebase.profile);
     const confirmWagerAction = useStoreActions(actions => actions.wagers.respondToWager);
-    const wagers = Object.values(profile?.wagers ?? {}).filter(wager => wager.status !== 'rejected');
+    const wagers = Object.values(profile?.wagers ?? {})
+        .filter(wager => wager.status !== 'rejected')
+        .sort((a, b) => b.lastUpdatedAt.toDate() - a.lastUpdatedAt.toDate());
 
     console.log(wagers);
 

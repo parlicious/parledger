@@ -11,9 +11,8 @@ const AppHeader = styled.div`
   display: flex;
   flex-direction: ${props => props.condensed ? 'column' : 'row'};
   justify-content: space-between;
-  align-items: flex-end;
-  background: linear-gradient(to bottom, #FFFFFF00, #FFFFFF09);
-  border-bottom: 1px solid #FFFFFF2F;
+  align-items: center;
+  border-bottom: 2px solid ${props => props.theme.interfaceColor};
 `
 
 const condensedCss = css`
@@ -55,7 +54,6 @@ const LoggedInMenu = styled.div`
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-
   ${props => props.condensed ? condensedCss : ''};
 `
 const headerLinkStyles = css`
@@ -63,7 +61,7 @@ const headerLinkStyles = css`
   padding-bottom: 0.1em;
 
   :hover {
-    border-bottom: 0.1em white solid;
+    border-bottom: 0.1em ${props => props.theme.interfaceColor} solid;
   }
 `
 const AppHeaderLink = styled(Link)`
@@ -96,7 +94,7 @@ export const AppContainer = (props) => {
     const history = useHistory();
     const width = useBreakpoint();
     const [menuOpened, setMenuOpened] = useState(false);
-    const condensed = width < 450;
+    const condensed = width < 550;
 
     const logOut = async () => {
         await firebase.logout();

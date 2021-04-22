@@ -11,7 +11,7 @@ import signUpImage from "../resources/undraw_Savings_re_eq4w.svg";
 import {SubmittingImageContainer} from "./ConfirmWagerProposal";
 
 const customAmountInputCss = css`
-  color: white;
+  color: ${props => props.theme.interfaceColor};
   font-size: 1.2em;
   background: none;
   padding: 0.3em;
@@ -69,11 +69,11 @@ const WagerDescription = styled.div`
 
 const WagerDescriptionTextArea = styled.textarea`
   font-family: Avenir, sans-serif;
-  color: white;
+  color: ${props => props.theme.interfaceColor};
   font-size: 1.2em;
   background: none;
   padding: 0.3em;
-  border: 1px solid white;
+  border: 1px solid ${props => props.theme.interfaceColor};
   height: 30vh;
 `
 
@@ -96,11 +96,11 @@ const SubmitRow = styled.div`
 
 const SubmitBetButton = styled.button`
   border-radius: 0.3em;
-  color: white;
+  color: ${props => props.theme.interfaceColor};
   font-size: 1.2em;
   padding: 0.3em;
   width: 50%;
-  border: 1px solid white;
+  border: 1px solid ${props => props.theme.interfaceColor};
   background: none;
 
   :hover {
@@ -110,7 +110,7 @@ const SubmitBetButton = styled.button`
 `
 
 const CustomAmountWrapper = styled.div`
-  --border-color: white;
+  --border-color: ${props => props.theme.interfaceColor};
   display: flex;
   flex-direction: row;
   text-align: start;

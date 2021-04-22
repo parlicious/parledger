@@ -21,7 +21,7 @@ const searchClient = algoliasearch(
 
 const HitsContainer = styled.div`
 
-  //background: white;
+  //background: ${props => props.theme.interfaceColor};
   //box-shadow: 3px 3px 25px #0000001C;
   //margin-top: 0.5em;
   //border-radius: 0.3em;
@@ -32,7 +32,7 @@ const HitContainer = styled.div`
   text-align: center;
   padding: 0.3em;
 
-  background: white;
+  background: ${props => props.theme.interfaceColor};
   box-shadow: 3px 3px 25px #0000001C;
   margin-top: 0.5em;
   border-radius: 0.3em;
@@ -83,7 +83,7 @@ export const StyledSearchBox = styled.input`
   border: 0.3em;
 
   min-height: 40px;
-  background: white;
+  background: ${props => props.theme.interfaceColor};
   margin-top: 0.5em;
   border-radius: 0.3em;
 `

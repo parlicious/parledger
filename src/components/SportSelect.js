@@ -91,7 +91,7 @@ const SportButtonContainer = styled.div`
   margin: 0 0.3em;
 
   :hover {
-    background: white;
+    background: ${props => props.theme.interfaceColor};
     color: #0F2027;
   }
 `
@@ -116,7 +116,7 @@ const SportButton = ({sport, onSelected}) => {
 
 const ShowSelect = styled.div`
   width: 100%;
-  background: white;
+  background: ${props => props.theme.interfaceColor};
   color: #0F2027;
 
   text-align: center;

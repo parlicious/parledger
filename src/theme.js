@@ -7,7 +7,7 @@
 //         },
 //         focus: {
 //             border: {
-//                 color: "white"
+//                 color: "${props => props.theme.interfaceColor}"
 //             }
 //         },
 //         "colors": {
@@ -40,7 +40,7 @@
 //                 "dark": "#f8f8f8",
 //                 "light": "#444444"
 //             },
-//             "white": "#FFFFFF",
+//             "${props => props.theme.interfaceColor}": "#FFFFFF",
 //             "accent-1": "#f7d794",
 //             "accent-2": "#778beb",
 //             "accent-3": "#e77f67",
