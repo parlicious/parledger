@@ -11,7 +11,7 @@ const AppHeader = styled.div`
   display: flex;
   flex-direction: ${props => props.condensed ? 'column' : 'row'};
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-direction: ${props => props.condensed ? 'flex-end' : 'center'};
   border-bottom: 2px solid ${props => props.theme.interfaceColor};
 `
 

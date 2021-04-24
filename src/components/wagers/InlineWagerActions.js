@@ -6,9 +6,6 @@ import {statusDescription, statusIcons} from "../ManageWager";
 
 const WagerActionsGroup = styled.div`
   font-size: 0.8em;
-  button {
-    font-size: 0.8em;  
-  }
 `
 
 const ConfirmWagerContainer = styled.div`

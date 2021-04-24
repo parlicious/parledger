@@ -8,14 +8,14 @@ import {useEffect, useState} from 'react';
 
 const GroupInfoContainer = styled.div`
   border-radius: 0.3em;
-  background: ${props => props.theme.interfaceColor};
+  background: ${props => props.theme.textColor};
   margin: 0.5em;
-  color: #0f2027;
+  color: ${props => props.theme.backgroundColor};
   padding: 0.5em;
   
   cursor: pointer;
   :hover {
-    background: #dddddd;
+    background: ${props => props.theme.textColor + 'dd'};
   }
   display: flex;
   flex-direction: row;
