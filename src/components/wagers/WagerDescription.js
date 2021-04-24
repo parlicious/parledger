@@ -19,7 +19,7 @@ const WagerDescriptionIcon = styled.i`
   padding-right: 0.5em;
 `
 
-const MemberAndAmount = ({wager, risk, toWin}) => {
+export const MemberAndAmount = ({wager, risk, toWin}) => {
     const auth = useStoreState(state => state.firebase.auth);
     const proposedBy = wager.proposedBy.uid === auth.uid ? "You" : wager.proposedBy.displayName;
     const proposedTo = wager.proposedTo?.uid === auth.uid ? "You" : wager.proposedTo?.displayName;

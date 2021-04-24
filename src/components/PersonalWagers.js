@@ -15,7 +15,7 @@ export const PersonalWagers = ({}) => {
     const confirmWagerAction = useStoreActions(actions => actions.wagers.respondToWager);
     const wagers = Object.values(profile?.wagers ?? {})
         .filter(wager => wager.status !== 'rejected')
-        .sort((a, b) => b.lastUpdatedAt.toDate() - a.lastUpdatedAt.toDate());
+        .sort((a, b) => b.lastUpdatedAt?.toDate() - a.lastUpdatedAt?.toDate());
 
     console.log(wagers);
 

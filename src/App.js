@@ -26,6 +26,7 @@ import {PoolsPage} from './components/pools/PoolsPage';
 import {SelectGroupPage} from './pages/SelectGroupPage';
 import {ThemeProvider} from 'styled-components';
 import {GlobalStyle, theme} from './styles';
+import {ViewWager} from './components/ViewWager';
 
 function AuthIsLoaded({children}) {
     const auth = useStoreState(state => state.firebase.auth)
@@ -98,6 +99,9 @@ const App = () => {
                                         </PrivateRoute>
                                         <PrivateRoute exact path='/wagers/manage/:wagerId'>
                                             <ManageWager/>
+                                        </PrivateRoute>
+                                        <PrivateRoute exact path='/wagers/view/:wagerId'>
+                                            <ViewWager/>
                                         </PrivateRoute>
                                         <PrivateRoute exact path='/pools'>
                                             <SelectPoolsPage/>

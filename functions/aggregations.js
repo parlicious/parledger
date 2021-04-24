@@ -72,7 +72,7 @@ const parseAmount = (amountStr, btcPrice) => {
         if (!isNaN(floatAmount)) {
             const parsedAmount = floatAmount * factor;
             // console.log({unparsedAmount, parsedAmount, btcPrice});
-            return parsedAmount;
+            return parsedAmount;j
         }
 
         return 0;

@@ -5,6 +5,9 @@ import {createGlobalStyle} from 'styled-components';
 export const theme = {
   interfaceColor: '#FEFEFE',
   textColor: '#FEFEFE',
+  lowerContrastTextColor: '#a5b4c3',
+  invertedTextColor: '#222f3e',
+  invertedLowerContrastTextColor: '#242f3e',
   successColor: '#00C781',
   dangerColor: '#FF4040',
   backgroundColor: '#222f3e',
@@ -62,6 +65,8 @@ export const buttonCss = css`
   min-width: 100px;
 
   transition: all 0.2s;
+  font-size: 1em;
+  box-sizing: border-box;
 
   :hover {
     cursor: ${props => props.disabled ? 'not-allowed': 'pointer'};
@@ -88,12 +93,12 @@ export const ButtonLink = styled(Link)`
 
 export const PrimaryButton = styled.button`
   ${buttonCss};
-  background: #0f2027;
-
-  background: ${props => props.disabled ? '#FFFFFF99' : '#FFFFFF'};
+  
+  background: ${props => props.disabled ? props.theme.backgroundColor + 'cf' : props.theme.backgroundColor};
 
   :hover {
-    background: #0f2027cF;
+    background: ${props => props.theme.backgroundColor + 'cf'};
+    cursor: pointer;
   }
 `
 
