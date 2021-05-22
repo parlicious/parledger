@@ -1,30 +1,16 @@
 import styled, {css} from 'styled-components';
-import {useFirestoreConnect} from 'react-redux-firebase';
-import {useStoreState} from 'easy-peasy';
+import {isEmpty, isLoaded, useFirestoreConnect} from 'react-redux-firebase';
+import {useStoreActions, useStoreState} from 'easy-peasy';
 import {AppCell} from '../pages/NewWagerPage';
 import {MemberAndAmount} from './wagers/WagerDescription';
 import {useHistory} from 'react-router-dom';
-
-const horizontalActiveWagersContainerStyles = css`
-  flex-direction: row;
-  justify-content: space-between;
-  overflow-x: scroll;
-  white-space: nowrap;
-`;
-
-const verticalActiveWagersContainerStyles = css`
-  flex-direction: column;
-  justify-content: space-between;
-  overflow-x: scroll;
-  white-space: nowrap;
-`;
+import {useEffect} from 'react';
 
 const ActiveWagersContainer = styled.div`
   display: flex;
   margin-bottom: 1em;
-  ${props => props.direction === 'horizontal'
-          ? horizontalActiveWagersContainerStyles
-          : verticalActiveWagersContainerStyles};
+  flex-direction: column;
+  width: 100%;
 `
 
 const WagerCardContainer = styled.div`
@@ -33,7 +19,7 @@ const WagerCardContainer = styled.div`
   padding: 1em;
   border-radius: 0.8em;
   max-width: 50em;
-  margin: 0.5em;
+  margin: 0 1em 1em 0.5em;
 
   //width: calc(30% - 3em);
   display: flex;
@@ -108,10 +94,15 @@ const WagerCard = (props) => {
     )
 }
 
+const ActiveWagersComponent = styled.div`
+    width: 100%;
+`
+
 export const ActiveWagers = (props) => {
     const profile = useStoreState(state => state.firebase.profile)
     const activeGroup = useStoreState(state => state.users.activeGroup);
     useFirestoreConnect({collection: `groups/${activeGroup}/users`, storeAs: 'groupMembers'});
+
 
     useFirestoreConnect([{
         collection: `groups/${activeGroup}/wagers`,
@@ -124,11 +115,11 @@ export const ActiveWagers = (props) => {
 
 
     return (
-        <div>
+        <ActiveWagersComponent>
             <h3> Active Wagers </h3>
-            <ActiveWagersContainer direction='vertical'>
+            <ActiveWagersContainer>
                 {bookedWagers?.map(it => <WagerCard wager={it}/>)}
             </ActiveWagersContainer>
-        </div>
+        </ActiveWagersComponent>
     )
 }

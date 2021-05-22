@@ -42,18 +42,20 @@ const updateUsersGroupStats = async (uid, groupId) => {
 
     const btcPrices = await axios.get('https://api.coindesk.com/v1/bpi/currentprice.json');
     const btcPrice = btcPrices?.data?.bpi.USD.rate_float;
+    const parseWithPrice = parseAmount(btcPrice)
 
     const stats = {
-        pnl: _.sumBy(earnings,  it =>  parseAmount(it.winnings, btcPrice)),
-        averageWager: _.meanBy(earnings,  it =>  parseAmount(it.winnings, btcPrice)),
-        committedAmount: _.sumBy(earnings,  it =>  parseAmount(it.committed, btcPrice)),
+        pnl: _.sumBy(earnings, it => parseWithPrice(it.winnings)),
+        averageWager: _.meanBy(earnings, it => parseWithPrice(it.winnings)),
+        committedAmount: _.sumBy(earnings, it => parseWithPrice(it.committed)),
+        lifetimeWagerAmount: _.sumBy(earnings, it => parseWithPrice(it.wagered)),
     }
 
     await db.collection('users').doc(uid).update({stats});
     await db.collection('groups').doc(groupId).collection('users').doc(uid).update({stats});
 }
 
-const parseAmount = (amountStr, btcPrice) => {
+const parseAmount = btcPrice => amountStr => {
     let factor = 1;
 
     if (!amountStr) {
@@ -72,11 +74,12 @@ const parseAmount = (amountStr, btcPrice) => {
         if (!isNaN(floatAmount)) {
             const parsedAmount = floatAmount * factor;
             // console.log({unparsedAmount, parsedAmount, btcPrice});
-            return parsedAmount;j
+            return parsedAmount;
+            j
         }
 
         return 0;
-    } catch(e) {
+    } catch (e) {
         console.error(e);
         return 0;
     }
@@ -85,29 +88,40 @@ const parseAmount = (amountStr, btcPrice) => {
 const getWagerEarnings = (uid) => (wager) => {
     const proposedBy = uid === wager.proposedBy.uid
     const hasWinner = [Statuses.PAID, Statuses.PROPOSED].includes(wager.status);
+
+    if(wager.status === Statuses.REJECTED){
+        return {};
+    }
+
+    let statusBasedStats;
     if (hasWinner) {
         const userWon = uid === wager.winner.uid;
         if (proposedBy) {
             if (userWon) {
-                return {winnings: wager.details.toWin}
+                statusBasedStats = {winnings: wager.details.toWin}
             } else {
-                return {winnings: -1 * wager.details.risk}
+                statusBasedStats = {winnings: -1 * wager.details.risk}
             }
         } else {
             if (userWon) {
-                return {winnings: wager.details.risk}
+                statusBasedStats = {winnings: wager.details.risk}
             } else {
-                return {winnings: -1 * wager.details.toWin}
+                statusBasedStats = {winnings: -1 * wager.details.toWin}
             }
         }
     } else if (wager.status === Statuses.BOOKED) {
         if (proposedBy) {
-            return {committed: wager.details.risk}
+            statusBasedStats = {committed: wager.details.risk}
         } else {
-            return {committed: wager.details.toWin}
+            statusBasedStats = {committed: wager.details.toWin}
         }
     } else {
-        return {};
+        statusBasedStats = {};
+    }
+
+    return {
+        ...statusBasedStats,
+        wagered: proposedBy ? wager.details.risk : wager.details.toWin
     }
 }
 

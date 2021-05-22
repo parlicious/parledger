@@ -1,16 +1,17 @@
 import styled from 'styled-components';
-import {useStoreState} from 'easy-peasy';
-import {useFirestoreConnect} from 'react-redux-firebase';
-import React from 'react';
+import {useStoreActions, useStoreState} from 'easy-peasy';
+import {isEmpty, isLoaded, useFirestoreConnect} from 'react-redux-firebase';
+import React, {useEffect} from 'react';
 
 const GroupStatsContainer = styled.div`
-  width: 100%;
-  flex-basis: 50%;
-  border-collapse: separate;
 `
 
 const GroupStatsTable = styled.table`
+  background-color: ${props => props.theme.interfaceColor};
+  color: ${props => props.theme.backgroundColor};
   width: 100%;
+  padding: 1em;
+  border-radius: 0.8em;
 `
 
 const GroupMemberTableRow = styled.tr`
@@ -23,7 +24,7 @@ const EarningsData = styled.td`
 
 
 const formatCurrency = (num) => {
-    return `$ ${num.toFixed(2)}`
+    return `$ ${num?.toFixed(2)}`
 }
 
 const GroupMemberRow = (props) => {
@@ -33,6 +34,7 @@ const GroupMemberRow = (props) => {
             <td>{member.displayName}</td>
             <EarningsData>{formatCurrency(member.stats.pnl)}</EarningsData>
             <EarningsData>{formatCurrency(member.stats.committedAmount)}</EarningsData>
+            <EarningsData>{formatCurrency(member.stats.lifetimeWagerAmount)}</EarningsData>
         </GroupMemberTableRow>
     )
 }
@@ -41,6 +43,7 @@ const HeaderData = styled.td`
   font-weight: bold;
   font-size: 1em;
   text-align: ${props => props.number ? 'end' : 'inherit'};
+  
 `
 
 const GroupStatsHeader = styled.thead`
@@ -53,13 +56,14 @@ const HeaderRow = (props) => {
             <HeaderData> Name </HeaderData>
             <HeaderData number> Earnings </HeaderData>
             <HeaderData number> Active </HeaderData>
+            <HeaderData number> Lifetime </HeaderData>
         </GroupStatsHeader>
     )
 }
 
 export const GroupStats = (props) => {
     const activeGroup = useStoreState(state => state.users.activeGroup);
-
+    const profile =
     useFirestoreConnect([{
         collection: `groups/${activeGroup}/users`,
         storeAs: 'groupMembersWithStats',
@@ -68,7 +72,15 @@ export const GroupStats = (props) => {
     }]);
 
     const groupMembersWithStats = useStoreState(state => state.firestore.ordered.groupMembersWithStats)
-    console.log(groupMembersWithStats);
+
+    const initGroup = useStoreActions(actions => actions.users.loadActiveGroup);
+
+    useEffect(() => {
+        if(isLoaded(profile) && !isEmpty(profile)){
+            initGroup();
+        }
+    }, [profile])
+
 
     return (
         <GroupStatsContainer>
