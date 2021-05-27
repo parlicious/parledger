@@ -16,7 +16,7 @@ export const usersModel = {
         const storeState = helpers.getStoreState();
         const state = helpers.getState();
         if(!state.activeGroup){
-            actions.setActiveGroup(storeState.firebase?.profile?.groups[0]);
+            actions.setActiveGroup(storeState.firebase?.profile?.groups?.[0]);
         }
     })
 }

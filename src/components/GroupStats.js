@@ -24,7 +24,12 @@ const EarningsData = styled.td`
 
 
 const formatCurrency = (num) => {
-    return `$ ${num?.toFixed(2)}`
+    const truncated = num?.toFixed(2);
+    if(truncated < 0){
+        return `-$${Math.abs(truncated)}`
+    } else {
+        return `$${truncated}`
+    }
 }
 
 const GroupMemberRow = (props) => {

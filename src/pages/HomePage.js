@@ -37,7 +37,7 @@ export const HomePage = () => {
         <HomeScreenContainer>
             <ActiveWagers/>
             <GroupStats/>
-            {/*<GroupLedger/>*/}
+            <GroupLedger/>
         </HomeScreenContainer>
     )
 }
