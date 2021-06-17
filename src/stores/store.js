@@ -62,7 +62,9 @@ if (window.location.hostname === 'localhost' && process.env.REACT_APP_FIREBASE_P
     });
 } else {
     // only log sessions in Prod
-    LogRocket.init('0umj27/parledger');
+    if(window.location.hostname !== 'localhost'){
+        LogRocket.init('0umj27/parledger');
+    }
 }
 
 

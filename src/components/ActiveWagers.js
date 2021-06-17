@@ -19,9 +19,11 @@ export const WagerCardContainer = styled.div`
   padding: 1em;
   border-radius: 0.8em;
   max-width: 50em;
-  margin: 0 1em 1em 0.5em;
+  margin-bottom: 1em;
 
-  //width: calc(30% - 3em);
+  width: 100%;
+  box-sizing: border-box;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -43,6 +45,7 @@ export const CardMember = styled.span`
   align-self: center;
   grid-column: 1;
   line-height: 1.7;
+  font-weight: ${props => props.singleMember ? 'bold' : 'inherit'};
 `
 
 export const CardOpponent = styled.span`
@@ -115,7 +118,7 @@ export const WagerCard = (props) => {
                     : null}
             </MembersAndAmountGrid>
             <CardDescription>
-                {wager.details.description || 'No Description'}
+                {wager.details.description || wager?.details?.event?.description || 'No Description'}
             </CardDescription>
         </WagerCardContainer>
     )

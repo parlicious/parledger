@@ -9,6 +9,7 @@ import {GroupLedger} from '../components/wagers/GroupLedger';
 const HomeScreenContainer = styled.div`
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-column-gap: 0.5em;
   
   background: linear-gradient(to bottom, #FFFFFF04, #FFFFFF09);
   box-shadow: 3px 3px 25px #0000001C;
@@ -18,8 +19,10 @@ const HomeScreenContainer = styled.div`
   max-width: 900px;
   margin: auto;
 
-  @media(max-width: 550px){
+  @media(max-width: 768px){
     flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
   }
 `;
 

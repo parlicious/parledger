@@ -7,21 +7,28 @@ export const getLedgerItems = (wager) => {
     }
 
 
-    const to = {
-        ...common,
-        ...wager.proposedTo,
-        opponentName: wager.proposedBy.displayName,
-        amount: wonAmount ?? wager.details.toWin,
-        winner: wager.winner ? wager.winner.uid === wager.proposedTo.uid : null
-    };
-
     const by = {
         ...common,
         ...wager.proposedBy,
-        opponentName: wager.proposedTo.displayName,
+        id: `${wager.id}-${wager?.proposedBy?.uid}`,
+        opponentName: wager?.proposedTo?.displayName ?? 'Anyone',
         amount: wonAmount ?? wager.details.risk,
         winner: wager.winner ? wager.winner.uid === wager.proposedBy.uid : null
     };
 
-    return [to, by]
+    if(!wager.proposedTo){
+        return [by]
+    } else {
+        const to = {
+            ...common,
+            ...wager.proposedTo,
+            id: `${wager.id}-${wager?.proposedTo?.uid}`,
+            opponentName: wager?.proposedBy?.displayName,
+            amount: wonAmount ?? wager.details.toWin,
+            winner: wager.winner ? wager.winner.uid === wager.proposedTo.uid : null
+        };
+
+        return [to, by]
+    }
+
 }

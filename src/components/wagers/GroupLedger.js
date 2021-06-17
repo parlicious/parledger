@@ -15,6 +15,10 @@ import {useHistory} from 'react-router-dom';
 
 const GroupLedgerContainer = styled.div`
   grid-column: span 2;
+  
+  @media(max-width: 768px){
+    grid-column: span 1;
+  }
 `
 
 const LedgerTable = styled.table`
@@ -61,8 +65,8 @@ const LedgerItem = (props) => {
     return (
         <WagerCardContainer onClick={() => history.push(linkOptions.pathname, linkOptions.state)}>
             <MembersAndAmountGrid>
-                <CardMember> {ledgerItem.displayName} </CardMember>
-                <CardAmount singleAmount={true} winner={ledgerItem.winner}>
+                <CardMember singleMember> {ledgerItem.displayName} </CardMember>
+                <CardAmount singleAmount winner={ledgerItem.winner}>
                     {getLedgerAmountSign(ledgerItem.winner)}${ledgerItem.amount}
                 </CardAmount>
                 <CardOpponent> {getLedgerOpponentPreposition(ledgerItem.winner)} {ledgerItem.opponentName} </CardOpponent>
@@ -71,7 +75,7 @@ const LedgerItem = (props) => {
                 </CardDate>
             </MembersAndAmountGrid>
             <CardDescription>
-                {ledgerItem.wager.details.description || 'No Description'}
+                {ledgerItem.wager.details.description || ledgerItem.wager?.details?.event?.description || 'No Description'}
             </CardDescription>
         </WagerCardContainer>
     )
@@ -100,12 +104,11 @@ export const GroupLedger = (props) => {
         (a, b) => b.lastUpdatedAt.seconds - a.lastUpdatedAt.seconds);
     const groupMembers = useStoreState(state => state.firestore.data.groupMembers)
 
-    console.log(allWagers.flatMap(getLedgerItems));
     return (
         <GroupLedgerContainer>
             <h3> Ledger </h3>
             {sortedWagers?.flatMap(getLedgerItems).map(it =>
-                <LedgerItem ledgerItem={it}/>
+                <LedgerItem key={it.id} ledgerItem={it}/>
             )}
         </GroupLedgerContainer>
     )

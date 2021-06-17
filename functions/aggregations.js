@@ -39,20 +39,38 @@ const updateUsersGroupStats = async (uid, groupId) => {
     const allWagers = [...proposedTo, ...proposedBy];
 
     const earnings = allWagers.map(getWagerEarnings(uid));
+    const stats = calculateStatsFromEarnings(earnings)
 
-    const btcPrices = await axios.get('https://api.coindesk.com/v1/bpi/currentprice.json');
-    const btcPrice = btcPrices?.data?.bpi.USD.rate_float;
+    const earningsPerOpponent = _.groupBy(earnings, it => it?.opponent?.uid)
+
+    const statsByUser = Object.fromEntries(
+        Object.entries(earningsPerOpponent).map(it => [it[0], calculateStatsFromEarnings(it[1])]))
+
+    await db.collection('users').doc(uid).update({stats, statsByUser});
+    await db.collection('groups').doc(groupId).collection('users').doc(uid).update({stats, statsByUser});
+}
+
+let btcPrice;
+
+const getBTCPrice = async () => {
+    if (!btcPrice) {
+        const btcPrices = await axios.get('https://api.coindesk.com/v1/bpi/currentprice.json');
+        btcPrice = btcPrices?.data?.bpi.USD.rate_float;
+    }
+
+    return btcPrice;
+}
+
+const calculateStatsFromEarnings = (earnings) => {
+    const btcPrice = getBTCPrice();
     const parseWithPrice = parseAmount(btcPrice)
 
-    const stats = {
+    return {
         pnl: _.sumBy(earnings, it => parseWithPrice(it.winnings)),
         averageWager: _.meanBy(earnings, it => parseWithPrice(it.winnings)),
         committedAmount: _.sumBy(earnings, it => parseWithPrice(it.committed)),
         lifetimeWagerAmount: _.sumBy(earnings, it => parseWithPrice(it.wagered)),
     }
-
-    await db.collection('users').doc(uid).update({stats});
-    await db.collection('groups').doc(groupId).collection('users').doc(uid).update({stats});
 }
 
 const parseAmount = btcPrice => amountStr => {
@@ -89,7 +107,9 @@ const getWagerEarnings = (uid) => (wager) => {
     const proposedBy = uid === wager.proposedBy.uid
     const hasWinner = [Statuses.PAID, Statuses.PROPOSED].includes(wager.status);
 
-    if(wager.status === Statuses.REJECTED){
+    const opponent = proposedBy ? wager.proposedTo : wager.proposedBy;
+
+    if (wager.status === Statuses.REJECTED) {
         return {};
     }
 
@@ -121,6 +141,7 @@ const getWagerEarnings = (uid) => (wager) => {
 
     return {
         ...statusBasedStats,
+        opponent,
         wagered: proposedBy ? wager.details.risk : wager.details.toWin
     }
 }
@@ -146,6 +167,12 @@ const updateStatsForUsersOfGroup = async (groupId) => {
     await Promise.all(updateUserPromises);
 }
 
+const updateStatOnWagerWrite = async (change, context) => {
+    const groupId = context.params.groupId;
+    await updateStatsForUsersOfGroup(groupId);
+}
+
 module.exports = {
     manuallyUpdateUserStats,
+    updateStatOnWagerWrite
 }
