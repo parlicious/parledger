@@ -6,7 +6,7 @@ admin.initializeApp({
 });
 
 
-const { manuallyUpdateUserStats } = require('./aggregations')
+const { manuallyUpdateUserStats, updateStatOnWagerWrite } = require('./aggregations')
 const { onWagerWrite, manageWager, confirmWager, createWager } = require('./wagers');
 const { getAndSaveEventsFromBovada } = require('./bovada');
 const { isValidInvitation, joinGroup, createGroup } = require('./groups');
@@ -54,3 +54,6 @@ const runtimeOpts = {
 
 exports.sendWagerProposalEmail = functions.firestore.document('groups/{groupId}/wagers/{wagerId}')
     .onWrite(onWagerWrite);
+
+exports.updateUserStats = functions.firestore.document('groups/{groupId}/wagers/{wagerId}')
+    .onWrite(updateStatOnWagerWrite)

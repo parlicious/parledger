@@ -1,41 +1,29 @@
 import styled, {css} from 'styled-components';
-import {useFirestoreConnect} from 'react-redux-firebase';
-import {useStoreState} from 'easy-peasy';
+import {isEmpty, isLoaded, useFirestoreConnect} from 'react-redux-firebase';
+import {useStoreActions, useStoreState} from 'easy-peasy';
 import {AppCell} from '../pages/NewWagerPage';
 import {MemberAndAmount} from './wagers/WagerDescription';
 import {useHistory} from 'react-router-dom';
-
-const horizontalActiveWagersContainerStyles = css`
-  flex-direction: row;
-  justify-content: space-between;
-  overflow-x: scroll;
-  white-space: nowrap;
-`;
-
-const verticalActiveWagersContainerStyles = css`
-  flex-direction: column;
-  justify-content: space-between;
-  overflow-x: scroll;
-  white-space: nowrap;
-`;
+import {useEffect} from 'react';
 
 const ActiveWagersContainer = styled.div`
   display: flex;
   margin-bottom: 1em;
-  ${props => props.direction === 'horizontal'
-          ? horizontalActiveWagersContainerStyles
-          : verticalActiveWagersContainerStyles};
+  flex-direction: column;
+  width: 100%;
 `
 
-const WagerCardContainer = styled.div`
+export const WagerCardContainer = styled.div`
   background-color: ${props => props.theme.interfaceColor};
   color: ${props => props.theme.backgroundColor};
   padding: 1em;
   border-radius: 0.8em;
   max-width: 50em;
-  margin: 0.5em;
+  margin-bottom: 1em;
 
-  //width: calc(30% - 3em);
+  width: 100%;
+  box-sizing: border-box;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -47,30 +35,58 @@ const WagerCardContainer = styled.div`
   }
 `
 
-const MembersAndAmountGrid = styled.div`
+export const MembersAndAmountGrid = styled.div`
   display: grid;
   grid-template-columns: auto auto;
 `
 
-const CardMember = styled.span`
+export const CardMember = styled.span`
   color: ${props => props.theme.invertedTextColor};
   align-self: center;
   grid-column: 1;
   line-height: 1.7;
+  font-weight: ${props => props.singleMember ? 'bold' : 'inherit'};
 `
 
-const CardAmount = styled.span`
+export const CardOpponent = styled.span`
+  color: ${props => props.theme.invertedTextColor};
+  align-self: center;
+  grid-column: 1;
+  line-height: 1.7;
+  font-size: .8em;
+`
+
+export const CardDate = styled.span`
+  color: ${props => props.theme.invertedTextColor};
+  align-self: center;
+  line-height: 1;
+  font-size: .8em;
+  text-align: end;
+  grid-column: 2;
+`
+
+export const CardAmount = styled.span`
   font-size: 1.4em;
   margin-left: 0.4em;
   font-weight: bold;
   grid-column: 2;
-  grid-row-start: ${props => props.wagersEqual ? 'span 2' : 'span 1'};
+  grid-row-start: ${props => props.singleAmount ? 'span 2' : 'span 1'};
   display: flex;
   justify-content: flex-end;
   align-items: center;
-`
 
-const CardDescription = styled.article`
+  color: ${props => {
+    if (props.winner === true) {
+      return props.theme.successColor;
+    } else if (props.winner === false) {
+      return props.theme.dangerColor;
+    } else {
+      return props.theme.backgroundColor;
+    }
+  }}
+`;
+
+export const CardDescription = styled.summary`
   font-size: 0.6em;
   overflow: hidden;
   white-space: normal;
@@ -81,7 +97,7 @@ const CardDescription = styled.article`
   max-width: 40em;
 `
 
-const WagerCard = (props) => {
+export const WagerCard = (props) => {
     const {wager} = props;
     const wagersEqual = wager.details.risk === wager.details.toWin;
     const history = useHistory();
@@ -95,23 +111,28 @@ const WagerCard = (props) => {
         <WagerCardContainer onClick={() => history.push(linkOptions.pathname, linkOptions.state)}>
             <MembersAndAmountGrid>
                 <CardMember> {wager.proposedBy.displayName} </CardMember>
-                <CardAmount wagersEqual={wagersEqual}> ${wager.details.risk}</CardAmount>
+                <CardAmount singleAmount={wagersEqual}> ${wager.details.risk}</CardAmount>
                 <CardMember> {wager.proposedTo.displayName} </CardMember>
                 {!wagersEqual
                     ? <CardAmount> ${wager.details.toWin}</CardAmount>
                     : null}
             </MembersAndAmountGrid>
             <CardDescription>
-                {wager.details.description || 'No Description'}
+                {wager.details.description || wager?.details?.event?.description || 'No Description'}
             </CardDescription>
         </WagerCardContainer>
     )
 }
 
+const ActiveWagersComponent = styled.div`
+  width: 100%;
+`
+
 export const ActiveWagers = (props) => {
     const profile = useStoreState(state => state.firebase.profile)
     const activeGroup = useStoreState(state => state.users.activeGroup);
     useFirestoreConnect({collection: `groups/${activeGroup}/users`, storeAs: 'groupMembers'});
+
 
     useFirestoreConnect([{
         collection: `groups/${activeGroup}/wagers`,
@@ -124,11 +145,11 @@ export const ActiveWagers = (props) => {
 
 
     return (
-        <div>
+        <ActiveWagersComponent>
             <h3> Active Wagers </h3>
-            <ActiveWagersContainer direction='vertical'>
+            <ActiveWagersContainer>
                 {bookedWagers?.map(it => <WagerCard wager={it}/>)}
             </ActiveWagersContainer>
-        </div>
+        </ActiveWagersComponent>
     )
 }
