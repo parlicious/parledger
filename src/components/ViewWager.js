@@ -18,8 +18,13 @@ export const ViewWager = (props) => {
         storeAs: 'activeWager',
     }]);
 
+    const confirmWagerAction = useStoreActions(actions => actions.wagers.respondToWager);
+    const confirmWager = async (wagerId, groupId, acceptWager) => {
+        await confirmWagerAction({wagerId, groupId, accept: acceptWager})
+    };
+
     if(activeWager){
-        return <Wager wager={activeWager}/>
+        return <Wager wager={activeWager} onConfirm={confirmWager}/>
     } else {
         return <SplashScreen/>
     }
